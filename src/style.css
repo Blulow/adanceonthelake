@@ -1,0 +1,32 @@
+body {
+    margin: 0;
+    overflow: hidden;
+}
+
+button {
+    position: absolute;
+    z-index: 1;
+}
+
+div {
+    position: absolute;
+}
+
+#arena {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+}
+
+#text {
+    position: relative;
+    font-size: 100px;
+    transform: translateX(-50vh);
+    animation: movein 0.1s ease-out forwards;
+}
+
+@keyframes movein {
+    to {
+        transform: translateX(0);
+    }
+}
