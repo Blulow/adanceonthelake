@@ -71,7 +71,7 @@ function animateCharInWord() {
 	let lastWord = null;
 	let lastChar = null;
 	let lastTextElements = [];
-	
+
 	let textTopValue = "";
 	let textLeftValue = "";
 	let { x, y } = getRandomDirection();
@@ -92,8 +92,13 @@ function animateCharInWord() {
 							}
 						}
 						//random text pos
-						textTopValue = `${Math.random() * (window.innerHeight - text.offsetHeight)}px`;
-						textLeftValue = `${Math.random() * (window.innerWidth - text.offsetWidth)}px`;
+						const fullWord = document.createElement("div");
+						fullWord.innerText = unit.parent.text;
+						fullWord.style.fontSize = "200px"
+						arena.appendChild(fullWord);
+						textTopValue = `${Math.random() * (window.innerHeight - fullWord.offsetHeight)}px`;
+						textLeftValue = `${Math.random() * (window.innerWidth - fullWord.offsetWidth)}px`;
+						fullWord.remove();
 						({ x, y } = getRandomDirection());
 						
 						lastWord = unit.parent.text;
