@@ -5,14 +5,12 @@ const player = new Player({
 });
 
 const arena = document.getElementById("arena");
-let lyrics = [];
-let unitIndex = 0;
 
 player.addListener({
 	onAppReady: (app) => {
 		if (!app.managed) {
 			document.getElementById("play").addEventListener("click", () => {
-				player.requestMediaSeek(230 * 1000)
+				// player.requestMediaSeek(230 * 1000);
 				player.requestPlay();
 			});
 		}
@@ -22,32 +20,7 @@ player.addListener({
 	},
 	onVideoReady: () => {
 		if (!player.app.managed) {
-			let w = player.video.firstWord;
-			let lastWord = null;
-			let lastTextElement = null;
-			
-			while(w) {
-				w.animate = (now, unit) => {
-					if (unit.contains(now)) {
-						if (unit.text !== lastWord) {
-							if (lastTextElement) lastTextElement.remove();
-							const text = document.createElement("div");
-							text.id = "text";
-							
-							text.style.top = `${Math.random() * 80 + 10}%`;
-							text.style.left = `${Math.random() * 80 + 10}%`;
-							const { x, y } = getRandomDirection();
-							text.style.transform = `translate(${x}px, ${y}px)`;
-							
-							text.innerText = unit.text;
-							arena.appendChild(text);
-							lastTextElement = text;
-							lastWord = unit.text;
-						}
-					}
-				};
-				w = w.next;
-			}
+			animateCharInWord();
 		}
 	}
 });
@@ -62,4 +35,78 @@ function getRandomDirection() {
   const y = Math.sin(rad) * distance;
 
   return { x, y };
+}
+
+function animateWord() {
+	let w = player.video.firstWord;
+	let lastWord = null;
+	let lastTextElement = null;
+	
+	while(w) {
+		w.animate = (now, unit) => {
+			if (unit.contains(now)) {
+				if (unit.text !== lastWord) {
+					if (lastTextElement) lastTextElement.remove();
+					const text = document.createElement("div");
+					text.id = "text";
+					text.innerText = unit.text;
+					arena.appendChild(text);
+
+					text.style.top = `${Math.random() * (window.innerHeight - text.offsetHeight)}px`;
+					text.style.left = `${Math.random() * (window.innerWidth - text.offsetWidth)}px`;
+					const { x, y } = getRandomDirection();
+					text.style.transform = `translate(${x}px, ${y}px)`;
+
+					lastTextElement = text;
+					lastWord = unit.text;
+				}
+			}
+		};
+		w = w.next;
+	}
+}
+
+function animateCharInWord() {
+	let c = player.video.firstChar;
+	let lastWord = null;
+	let lastChar = null;
+	let lastTextElements = [];
+	
+	let textTopValue = "";
+	let textLeftValue = "";
+	let { x, y } = getRandomDirection();
+
+	while(c) {
+		c.animate = (now, unit) => {
+			if (unit.contains(now)) {
+				if (unit.text !== lastChar) {
+					const text = document.createElement("div");
+					text.id = "text";
+					text.innerText = unit.text;
+					arena.appendChild(text);
+					
+					if (unit.parent.text !== lastWord) {
+						if (lastTextElements) {
+							for (let i = 0; i < lastTextElements.length; i++) {
+								lastTextElements[i].remove();
+							}
+						}
+						//random text pos
+						textTopValue = `${Math.random() * (window.innerHeight - text.offsetHeight)}px`;
+						textLeftValue = `${Math.random() * (window.innerWidth - text.offsetWidth)}px`;
+						({ x, y } = getRandomDirection());
+						
+						lastWord = unit.parent.text;
+					}
+					text.style.top = textTopValue;
+					text.style.left = textLeftValue;
+					text.style.transform = `translate(${x}px, ${y}px)`;
+
+					lastTextElements.push(text);
+					lastChar = unit.text;
+				}
+			}
+		};
+		c = c.next;
+	}
 }
