@@ -5,6 +5,12 @@
         {
             "lyric": "一際",
             "index": 0,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -21,6 +27,12 @@
         {
             "lyric": "輝き",
             "index": 1,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -37,6 +49,12 @@
         {
             "lyric": "を",
             "index": 2,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -53,6 +71,12 @@
         {
             "lyric": "放ち",
             "index": 3,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -69,6 +93,12 @@
         {
             "lyric": "大通り",
             "index": 4,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -85,6 +115,12 @@
         {
             "lyric": "を",
             "index": 5,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -101,6 +137,12 @@
         {
             "lyric": "過ぎ",
             "index": 6,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -117,6 +159,12 @@
         {
             "lyric": "て",
             "index": 7,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -133,6 +181,12 @@
         {
             "lyric": "く",
             "index": 8,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -149,6 +203,12 @@
         {
             "lyric": "あなた",
             "index": 9,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -165,6 +225,12 @@
         {
             "lyric": "に",
             "index": 10,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -181,6 +247,12 @@
         {
             "lyric": "会い",
             "index": 11,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -197,6 +269,12 @@
         {
             "lyric": "たく",
             "index": 12,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -213,6 +291,12 @@
         {
             "lyric": "て",
             "index": 13,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -229,6 +313,12 @@
         {
             "lyric": "集まる",
             "index": 14,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -245,6 +335,12 @@
         {
             "lyric": "人",
             "index": 15,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -261,6 +357,12 @@
         {
             "lyric": "そこ",
             "index": 16,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -277,6 +379,12 @@
         {
             "lyric": "に",
             "index": 17,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -293,6 +401,12 @@
         {
             "lyric": "紛れ",
             "index": 18,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -309,6 +423,12 @@
         {
             "lyric": "て",
             "index": 19,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -325,6 +445,12 @@
         {
             "lyric": "いる",
             "index": 20,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -341,6 +467,12 @@
         {
             "lyric": "ん",
             "index": 21,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -357,6 +489,12 @@
         {
             "lyric": "だ",
             "index": 22,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -373,6 +511,12 @@
         {
             "lyric": "あなた",
             "index": 23,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -389,6 +533,12 @@
         {
             "lyric": "は",
             "index": 24,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -405,6 +555,12 @@
         {
             "lyric": "手",
             "index": 25,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -421,6 +577,12 @@
         {
             "lyric": "を",
             "index": 26,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -437,6 +599,12 @@
         {
             "lyric": "振っ",
             "index": 27,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -453,6 +621,12 @@
         {
             "lyric": "た",
             "index": 28,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -469,6 +643,12 @@
         {
             "lyric": "手",
             "index": 29,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -485,6 +665,12 @@
         {
             "lyric": "を",
             "index": 30,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -501,6 +687,12 @@
         {
             "lyric": "振り",
             "index": 31,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -517,6 +709,12 @@
         {
             "lyric": "かえし",
             "index": 32,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -533,6 +731,12 @@
         {
             "lyric": "盛り上がっ",
             "index": 33,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -549,6 +753,12 @@
         {
             "lyric": "た",
             "index": 34,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -565,6 +775,12 @@
         {
             "lyric": "あなた",
             "index": 35,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -581,6 +797,12 @@
         {
             "lyric": "は",
             "index": 36,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -597,6 +819,12 @@
         {
             "lyric": "声",
             "index": 37,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -613,6 +841,12 @@
         {
             "lyric": "を",
             "index": 38,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -629,6 +863,12 @@
         {
             "lyric": "発し",
             "index": 39,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -645,6 +885,12 @@
         {
             "lyric": "た",
             "index": 40,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -661,6 +907,12 @@
         {
             "lyric": "静か",
             "index": 41,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -677,6 +929,12 @@
         {
             "lyric": "に",
             "index": 42,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -693,6 +951,12 @@
         {
             "lyric": "耳",
             "index": 43,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -709,6 +973,12 @@
         {
             "lyric": "を",
             "index": 44,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -725,6 +995,12 @@
         {
             "lyric": "傾け",
             "index": 45,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -741,6 +1017,12 @@
         {
             "lyric": "て",
             "index": 46,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -757,6 +1039,12 @@
         {
             "lyric": "自分",
             "index": 47,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -773,6 +1061,12 @@
         {
             "lyric": "を",
             "index": 48,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -789,6 +1083,12 @@
         {
             "lyric": "重ね",
             "index": 49,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -805,6 +1105,12 @@
         {
             "lyric": "て",
             "index": 50,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -821,6 +1127,12 @@
         {
             "lyric": "聞い",
             "index": 51,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -837,6 +1149,12 @@
         {
             "lyric": "て",
             "index": 52,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -853,6 +1171,12 @@
         {
             "lyric": "た",
             "index": 53,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -869,6 +1193,12 @@
         {
             "lyric": "どれ",
             "index": 54,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -885,6 +1215,12 @@
         {
             "lyric": "ほど",
             "index": 55,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -901,6 +1237,12 @@
         {
             "lyric": "の",
             "index": 56,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -917,6 +1259,12 @@
         {
             "lyric": "苦しみ",
             "index": 57,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -933,6 +1281,12 @@
         {
             "lyric": "も",
             "index": 58,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -949,6 +1303,12 @@
         {
             "lyric": "悲しみ",
             "index": 59,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -965,6 +1325,12 @@
         {
             "lyric": "の",
             "index": 60,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -981,6 +1347,12 @@
         {
             "lyric": "向こう",
             "index": 61,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -997,6 +1369,12 @@
         {
             "lyric": "に",
             "index": 62,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -1013,6 +1391,12 @@
         {
             "lyric": "きっと",
             "index": 63,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -1029,6 +1413,12 @@
         {
             "lyric": "私",
             "index": 64,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -1045,6 +1435,12 @@
         {
             "lyric": "の",
             "index": 65,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -1061,6 +1457,12 @@
         {
             "lyric": "目指す",
             "index": 66,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -1077,6 +1479,12 @@
         {
             "lyric": "私",
             "index": 67,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -1093,6 +1501,12 @@
         {
             "lyric": "が",
             "index": 68,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -1109,6 +1523,12 @@
         {
             "lyric": "いる",
             "index": 69,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -1125,6 +1545,12 @@
         {
             "lyric": "と",
             "index": 70,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -1141,6 +1567,12 @@
         {
             "lyric": "信じ",
             "index": 71,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -1157,6 +1589,12 @@
         {
             "lyric": "続け",
             "index": 72,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -1173,6 +1611,12 @@
         {
             "lyric": "て",
             "index": 73,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -1189,6 +1633,12 @@
         {
             "lyric": "い",
             "index": 74,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -1205,6 +1655,12 @@
         {
             "lyric": "た",
             "index": 75,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -1221,6 +1677,12 @@
         {
             "lyric": "目覚め",
             "index": 76,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -1237,6 +1699,12 @@
         {
             "lyric": "た",
             "index": 77,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -1253,6 +1721,12 @@
         {
             "lyric": "僕",
             "index": 78,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -1269,6 +1743,12 @@
         {
             "lyric": "の",
             "index": 79,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -1285,6 +1765,12 @@
         {
             "lyric": "心",
             "index": 80,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -1301,6 +1787,12 @@
         {
             "lyric": "が",
             "index": 81,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -1317,6 +1809,12 @@
         {
             "lyric": "ざわつく",
             "index": 82,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -1333,6 +1831,12 @@
         {
             "lyric": "未来",
             "index": 83,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -1349,6 +1853,12 @@
         {
             "lyric": "は",
             "index": 84,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -1365,6 +1875,12 @@
         {
             "lyric": "何処",
             "index": 85,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -1381,6 +1897,12 @@
         {
             "lyric": "へ",
             "index": 86,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -1397,6 +1919,12 @@
         {
             "lyric": "行く",
             "index": 87,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -1413,6 +1941,12 @@
         {
             "lyric": "この",
             "index": 88,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -1429,6 +1963,12 @@
         {
             "lyric": "世界",
             "index": 89,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -1445,6 +1985,12 @@
         {
             "lyric": "を",
             "index": 90,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -1461,6 +2007,12 @@
         {
             "lyric": "果て",
             "index": 91,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -1477,6 +2029,12 @@
         {
             "lyric": "まで",
             "index": 92,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -1493,6 +2051,12 @@
         {
             "lyric": "探そ",
             "index": 93,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -1509,6 +2073,12 @@
         {
             "lyric": "う",
             "index": 94,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -1525,6 +2095,12 @@
         {
             "lyric": "とも",
             "index": 95,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -1541,6 +2117,12 @@
         {
             "lyric": "僕",
             "index": 96,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -1557,6 +2139,12 @@
         {
             "lyric": "の",
             "index": 97,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -1573,6 +2161,12 @@
         {
             "lyric": "問い",
             "index": 98,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -1589,6 +2183,12 @@
         {
             "lyric": "の",
             "index": 99,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -1605,6 +2205,12 @@
         {
             "lyric": "答え",
             "index": 100,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -1621,6 +2227,12 @@
         {
             "lyric": "は",
             "index": 101,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -1637,6 +2249,12 @@
         {
             "lyric": "ない",
             "index": 102,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -1653,6 +2271,12 @@
         {
             "lyric": "未来",
             "index": 103,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -1669,6 +2293,12 @@
         {
             "lyric": "予知",
             "index": 104,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -1685,6 +2315,12 @@
         {
             "lyric": "も",
             "index": 105,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -1701,6 +2337,12 @@
         {
             "lyric": "記憶",
             "index": 106,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -1717,6 +2359,12 @@
         {
             "lyric": "さえ",
             "index": 107,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -1733,6 +2381,12 @@
         {
             "lyric": "も",
             "index": 108,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -1749,6 +2403,12 @@
         {
             "lyric": "当て",
             "index": 109,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -1765,6 +2425,12 @@
         {
             "lyric": "に",
             "index": 110,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -1781,6 +2447,12 @@
         {
             "lyric": "なら",
             "index": 111,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -1797,6 +2469,12 @@
         {
             "lyric": "ない",
             "index": 112,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -1813,6 +2491,12 @@
         {
             "lyric": "よう",
             "index": 113,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -1829,6 +2513,12 @@
         {
             "lyric": "だ",
             "index": 114,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -1845,6 +2535,12 @@
         {
             "lyric": "目",
             "index": 115,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -1861,6 +2557,12 @@
         {
             "lyric": "の",
             "index": 116,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -1877,6 +2579,12 @@
         {
             "lyric": "前",
             "index": 117,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -1893,6 +2601,12 @@
         {
             "lyric": "の",
             "index": 118,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -1909,6 +2623,12 @@
         {
             "lyric": "色",
             "index": 119,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -1925,6 +2645,12 @@
         {
             "lyric": "の",
             "index": 120,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -1941,6 +2667,12 @@
         {
             "lyric": "無い",
             "index": 121,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -1957,6 +2689,12 @@
         {
             "lyric": "世界",
             "index": 122,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -1973,6 +2711,12 @@
         {
             "lyric": "を",
             "index": 123,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -1989,6 +2733,12 @@
         {
             "lyric": "自分",
             "index": 124,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -2005,6 +2755,12 @@
         {
             "lyric": "なり",
             "index": 125,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -2021,6 +2777,12 @@
         {
             "lyric": "に",
             "index": 126,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -2037,6 +2799,12 @@
         {
             "lyric": "でも",
             "index": 127,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -2053,6 +2821,12 @@
         {
             "lyric": "生き",
             "index": 128,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -2069,6 +2843,12 @@
         {
             "lyric": "て",
             "index": 129,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -2085,6 +2865,12 @@
         {
             "lyric": "色",
             "index": 130,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -2101,6 +2887,12 @@
         {
             "lyric": "を",
             "index": 131,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -2117,6 +2909,12 @@
         {
             "lyric": "放つ",
             "index": 132,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -2133,6 +2931,12 @@
         {
             "lyric": "姿",
             "index": 133,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -2149,6 +2953,12 @@
         {
             "lyric": "が",
             "index": 134,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -2165,6 +2975,12 @@
         {
             "lyric": "探し",
             "index": 135,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -2181,6 +2997,12 @@
         {
             "lyric": "て",
             "index": 136,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -2197,6 +3019,12 @@
         {
             "lyric": "た",
             "index": 137,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -2213,6 +3041,12 @@
         {
             "lyric": "もの",
             "index": 138,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -2229,6 +3063,12 @@
         {
             "lyric": "かも",
             "index": 139,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -2245,6 +3085,12 @@
         {
             "lyric": "分かっ",
             "index": 140,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -2261,6 +3107,12 @@
         {
             "lyric": "て",
             "index": 141,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -2277,6 +3129,12 @@
         {
             "lyric": "はいる",
             "index": 142,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -2293,6 +3151,12 @@
         {
             "lyric": "答え",
             "index": 143,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -2309,6 +3173,12 @@
         {
             "lyric": "は",
             "index": 144,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -2325,6 +3195,12 @@
         {
             "lyric": "とっくに",
             "index": 145,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -2341,6 +3217,12 @@
         {
             "lyric": "出",
             "index": 146,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -2357,6 +3239,12 @@
         {
             "lyric": "て",
             "index": 147,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -2373,6 +3261,12 @@
         {
             "lyric": "い",
             "index": 148,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -2389,6 +3283,12 @@
         {
             "lyric": "た",
             "index": 149,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -2405,6 +3305,12 @@
         {
             "lyric": "知ら",
             "index": 150,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -2421,6 +3327,12 @@
         {
             "lyric": "ない",
             "index": 151,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -2437,6 +3349,12 @@
         {
             "lyric": "ふり",
             "index": 152,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -2453,6 +3371,12 @@
         {
             "lyric": "し",
             "index": 153,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -2469,6 +3393,12 @@
         {
             "lyric": "て",
             "index": 154,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -2485,6 +3415,12 @@
         {
             "lyric": "走り",
             "index": 155,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -2501,6 +3437,12 @@
         {
             "lyric": "続ける",
             "index": 156,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -2517,6 +3459,12 @@
         {
             "lyric": "よ",
             "index": 157,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -2533,6 +3481,12 @@
         {
             "lyric": "まだ",
             "index": 158,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -2549,6 +3503,12 @@
         {
             "lyric": "行ける",
             "index": 159,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -2565,6 +3525,12 @@
         {
             "lyric": "よ",
             "index": 160,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -2581,6 +3547,12 @@
         {
             "lyric": "もう",
             "index": 161,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -2597,6 +3569,12 @@
         {
             "lyric": "終わっ",
             "index": 162,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -2613,6 +3591,12 @@
         {
             "lyric": "て",
             "index": 163,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -2629,6 +3613,12 @@
         {
             "lyric": "いる",
             "index": 164,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -2645,6 +3635,12 @@
         {
             "lyric": "よ",
             "index": 165,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -2661,6 +3657,12 @@
         {
             "lyric": "期待",
             "index": 166,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -2677,6 +3679,12 @@
         {
             "lyric": "し",
             "index": 167,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -2693,6 +3701,12 @@
         {
             "lyric": "てる",
             "index": 168,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -2709,6 +3723,12 @@
         {
             "lyric": "よ",
             "index": 169,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -2725,6 +3745,12 @@
         {
             "lyric": "後悔",
             "index": 170,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -2741,6 +3767,12 @@
         {
             "lyric": "する",
             "index": 171,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -2757,6 +3789,12 @@
         {
             "lyric": "よ",
             "index": 172,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -2773,6 +3811,12 @@
         {
             "lyric": "どこ",
             "index": 173,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -2789,6 +3833,12 @@
         {
             "lyric": "まで",
             "index": 174,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -2805,6 +3855,12 @@
         {
             "lyric": "も",
             "index": 175,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -2821,6 +3877,12 @@
         {
             "lyric": "平行",
             "index": 176,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -2837,6 +3899,12 @@
         {
             "lyric": "線",
             "index": 177,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -2853,6 +3921,12 @@
         {
             "lyric": "な",
             "index": 178,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -2869,6 +3943,12 @@
         {
             "lyric": "声",
             "index": 179,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -2885,6 +3965,12 @@
         {
             "lyric": "が",
             "index": 180,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -2901,6 +3987,12 @@
         {
             "lyric": "叫ん",
             "index": 181,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -2917,6 +4009,12 @@
         {
             "lyric": "で",
             "index": 182,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -2933,6 +4031,12 @@
         {
             "lyric": "いる",
             "index": 183,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -2949,6 +4053,12 @@
         {
             "lyric": "あなた",
             "index": 184,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -2965,6 +4075,12 @@
         {
             "lyric": "が",
             "index": 185,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -2981,6 +4097,12 @@
         {
             "lyric": "僕",
             "index": 186,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -2997,6 +4119,12 @@
         {
             "lyric": "なら",
             "index": 187,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -3013,6 +4141,12 @@
         {
             "lyric": "ば",
             "index": 188,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -3029,6 +4163,12 @@
         {
             "lyric": "どんな",
             "index": 189,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -3045,6 +4185,12 @@
         {
             "lyric": "答え",
             "index": 190,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -3061,6 +4207,12 @@
         {
             "lyric": "を",
             "index": 191,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -3077,6 +4229,12 @@
         {
             "lyric": "出す",
             "index": 192,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -3093,6 +4251,12 @@
         {
             "lyric": "でしょ",
             "index": 193,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -3109,6 +4273,12 @@
         {
             "lyric": "う",
             "index": 194,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -3125,6 +4295,12 @@
         {
             "lyric": "か",
             "index": 195,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -3141,6 +4317,12 @@
         {
             "lyric": "僕",
             "index": 196,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -3157,6 +4339,12 @@
         {
             "lyric": "が",
             "index": 197,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -3173,6 +4361,12 @@
         {
             "lyric": "あなた",
             "index": 198,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -3189,6 +4383,12 @@
         {
             "lyric": "なら",
             "index": 199,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -3205,6 +4405,12 @@
         {
             "lyric": "ば",
             "index": 200,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -3221,6 +4427,12 @@
         {
             "lyric": "迷っ",
             "index": 201,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -3237,6 +4449,12 @@
         {
             "lyric": "て",
             "index": 202,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -3253,6 +4471,12 @@
         {
             "lyric": "しまう",
             "index": 203,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -3269,6 +4493,12 @@
         {
             "lyric": "どんな",
             "index": 204,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -3285,6 +4515,12 @@
         {
             "lyric": "言葉",
             "index": 205,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -3301,6 +4537,12 @@
         {
             "lyric": "も",
             "index": 206,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -3317,6 +4559,12 @@
         {
             "lyric": "誰か",
             "index": 207,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -3333,6 +4581,12 @@
         {
             "lyric": "の",
             "index": 208,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -3349,6 +4603,12 @@
         {
             "lyric": "生きる",
             "index": 209,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -3365,6 +4625,12 @@
         {
             "lyric": "証",
             "index": 210,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -3381,6 +4647,12 @@
         {
             "lyric": "の",
             "index": 211,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -3397,6 +4669,12 @@
         {
             "lyric": "切れ端",
             "index": 212,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -3413,6 +4691,12 @@
         {
             "lyric": "で",
             "index": 213,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -3429,6 +4713,12 @@
         {
             "lyric": "しか",
             "index": 214,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -3445,6 +4735,12 @@
         {
             "lyric": "ない",
             "index": 215,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -3461,6 +4757,12 @@
         {
             "lyric": "のに",
             "index": 216,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -3477,6 +4779,12 @@
         {
             "lyric": "どうして",
             "index": 217,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -3493,6 +4801,12 @@
         {
             "lyric": "揺さぶら",
             "index": 218,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -3509,6 +4823,12 @@
         {
             "lyric": "れる",
             "index": 219,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -3525,6 +4845,12 @@
         {
             "lyric": "の",
             "index": 220,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -3541,6 +4867,12 @@
         {
             "lyric": "この",
             "index": 221,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -3557,6 +4889,12 @@
         {
             "lyric": "世界",
             "index": 222,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -3573,6 +4911,12 @@
         {
             "lyric": "を",
             "index": 223,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -3589,6 +4933,12 @@
         {
             "lyric": "果て",
             "index": 224,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -3605,6 +4955,12 @@
         {
             "lyric": "まで",
             "index": 225,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -3621,6 +4977,12 @@
         {
             "lyric": "探そ",
             "index": 226,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -3637,6 +4999,12 @@
         {
             "lyric": "う",
             "index": 227,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -3653,6 +5021,12 @@
         {
             "lyric": "とも",
             "index": 228,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -3669,6 +5043,12 @@
         {
             "lyric": "僕",
             "index": 229,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -3685,6 +5065,12 @@
         {
             "lyric": "の",
             "index": 230,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -3701,6 +5087,12 @@
         {
             "lyric": "問い",
             "index": 231,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -3717,6 +5109,12 @@
         {
             "lyric": "の",
             "index": 232,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -3733,6 +5131,12 @@
         {
             "lyric": "答え",
             "index": 233,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -3749,6 +5153,12 @@
         {
             "lyric": "は",
             "index": 234,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -3765,6 +5175,12 @@
         {
             "lyric": "ない",
             "index": 235,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -3781,6 +5197,12 @@
         {
             "lyric": "手",
             "index": 236,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -3797,6 +5219,12 @@
         {
             "lyric": "を",
             "index": 237,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -3813,6 +5241,12 @@
         {
             "lyric": "伸ばし",
             "index": 238,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -3829,6 +5263,12 @@
         {
             "lyric": "て",
             "index": 239,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -3845,6 +5285,12 @@
         {
             "lyric": "目",
             "index": 240,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -3861,6 +5307,12 @@
         {
             "lyric": "を",
             "index": 241,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -3877,6 +5329,12 @@
         {
             "lyric": "凝らし",
             "index": 242,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -3893,6 +5351,12 @@
         {
             "lyric": "て",
             "index": 243,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -3909,6 +5373,12 @@
         {
             "lyric": "彷徨",
             "index": 244,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -3925,6 +5395,12 @@
         {
             "lyric": "って",
             "index": 245,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -3941,6 +5417,12 @@
         {
             "lyric": "見え",
             "index": 246,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -3957,6 +5439,12 @@
         {
             "lyric": "た",
             "index": 247,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -3973,6 +5461,12 @@
         {
             "lyric": "目",
             "index": 248,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -3989,6 +5483,12 @@
         {
             "lyric": "の",
             "index": 249,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -4005,6 +5505,12 @@
         {
             "lyric": "前",
             "index": 250,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -4021,6 +5527,12 @@
         {
             "lyric": "の",
             "index": 251,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -4037,6 +5549,12 @@
         {
             "lyric": "色",
             "index": 252,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -4053,6 +5571,12 @@
         {
             "lyric": "の",
             "index": 253,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -4069,6 +5593,12 @@
         {
             "lyric": "無い",
             "index": 254,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -4085,6 +5615,12 @@
         {
             "lyric": "世界",
             "index": 255,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -4101,6 +5637,12 @@
         {
             "lyric": "を",
             "index": 256,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -4117,6 +5659,12 @@
         {
             "lyric": "自分",
             "index": 257,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -4133,6 +5681,12 @@
         {
             "lyric": "なり",
             "index": 258,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -4149,6 +5703,12 @@
         {
             "lyric": "に",
             "index": 259,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -4165,6 +5725,12 @@
         {
             "lyric": "でも",
             "index": 260,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -4181,6 +5747,12 @@
         {
             "lyric": "生き",
             "index": 261,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -4197,6 +5769,12 @@
         {
             "lyric": "て",
             "index": 262,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -4213,6 +5791,12 @@
         {
             "lyric": "色",
             "index": 263,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -4229,6 +5813,12 @@
         {
             "lyric": "を",
             "index": 264,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -4245,6 +5835,12 @@
         {
             "lyric": "放つ",
             "index": 265,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -4261,6 +5857,12 @@
         {
             "lyric": "姿",
             "index": 266,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -4277,6 +5879,12 @@
         {
             "lyric": "が",
             "index": 267,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -4293,6 +5901,12 @@
         {
             "lyric": "答え",
             "index": 268,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -4309,6 +5923,12 @@
         {
             "lyric": "に",
             "index": 269,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -4325,6 +5945,12 @@
         {
             "lyric": "なる",
             "index": 270,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -4341,6 +5967,12 @@
         {
             "lyric": "かも",
             "index": 271,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -4357,6 +5989,12 @@
         {
             "lyric": "まだ",
             "index": 272,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -4373,6 +6011,12 @@
         {
             "lyric": "行く",
             "index": 273,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -4389,6 +6033,12 @@
         {
             "lyric": "よ",
             "index": 274,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -4405,6 +6055,12 @@
         {
             "lyric": "迷わ",
             "index": 275,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -4421,6 +6077,12 @@
         {
             "lyric": "ない",
             "index": 276,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -4437,6 +6099,12 @@
         {
             "lyric": "よ",
             "index": 277,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -4453,6 +6121,12 @@
         {
             "lyric": "期待",
             "index": 278,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -4469,6 +6143,12 @@
         {
             "lyric": "し",
             "index": 279,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -4485,6 +6165,12 @@
         {
             "lyric": "てる",
             "index": 280,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -4501,6 +6187,12 @@
         {
             "lyric": "よ",
             "index": 281,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -4517,6 +6209,12 @@
         {
             "lyric": "後悔",
             "index": 282,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -4533,6 +6231,12 @@
         {
             "lyric": "し",
             "index": 283,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -4549,6 +6253,12 @@
         {
             "lyric": "ない",
             "index": 284,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -4565,6 +6275,12 @@
         {
             "lyric": "よ",
             "index": 285,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -4581,6 +6297,12 @@
         {
             "lyric": "どこ",
             "index": 286,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -4597,6 +6319,12 @@
         {
             "lyric": "に",
             "index": 287,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -4613,6 +6341,12 @@
         {
             "lyric": "い",
             "index": 288,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -4629,6 +6363,12 @@
         {
             "lyric": "て",
             "index": 289,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -4645,6 +6385,12 @@
         {
             "lyric": "も",
             "index": 290,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -4661,6 +6407,12 @@
         {
             "lyric": "聞こえる",
             "index": 291,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -4677,6 +6429,12 @@
         {
             "lyric": "声",
             "index": 292,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -4693,6 +6451,12 @@
         {
             "lyric": "が",
             "index": 293,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -4709,6 +6473,12 @@
         {
             "lyric": "叫ん",
             "index": 294,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -4725,6 +6495,12 @@
         {
             "lyric": "で",
             "index": 295,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",
@@ -4741,6 +6517,12 @@
         {
             "lyric": "いる",
             "index": 296,
+            "transitions": [
+                {
+                    "transition": "",
+                    "params": []
+                }
+            ],
             "patterns": [
                 {
                     "pattern": "",

@@ -28,9 +28,12 @@ player.addListener({
 			
 			while(w) {
 				w.animate = (now, unit) => {
-					lyrics.push({ lyric: unit.text, index: unitIndex, patterns: [{ pattern: "", params: [] }], attibutes: [{ attribute: "", params: [] }]});
+					//to be deleted: for generating json file
+					lyrics.push({ lyric: unit.text, index: unitIndex, transitions: [{ transition: "", params: [] }], patterns: [{ pattern: "", params: [] }], attibutes: [{ attribute: "", params: [] }]});
 					unitIndex++;
 					console.log(lyrics);
+					//
+
 					if (unit.contains(now)) {
 						if (unit.text !== lastWord) {
 							if (lastTextElement) lastTextElement.remove();
