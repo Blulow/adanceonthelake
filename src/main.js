@@ -7,10 +7,11 @@ const player = new Player({
 const arena = document.getElementById("arena");
 
 player.addListener({
-	onAppReady: (app) => {
+	onAppReady(app) {
 		if (!app.managed) {
 			document.getElementById("play").addEventListener("click", () => {
 				// player.requestMediaSeek(230 * 1000);
+				player.requestMediaSeek(15 * 1000);
 				player.requestPlay();
 			});
 		}
@@ -18,9 +19,9 @@ player.addListener({
 			player.createFromSongUrl("https://piapro.jp/t/6W2N/20251215164617"); // song url
 		}
 	},
-	onVideoReady: () => {
+	onVideoReady() {
 		if (!player.app.managed) {
-			animateCharInWord();
+			animateCharInChord();
 		}
 	}
 });
@@ -91,10 +92,10 @@ function animateCharInWord() {
 								lastTextElements[i].remove();
 							}
 						}
-						//random text pos
+						
 						const fullWord = document.createElement("div");
 						fullWord.innerText = unit.parent.text;
-						fullWord.style.fontSize = "200px"
+						fullWord.style.fontSize = "200px";
 						arena.appendChild(fullWord);
 						textTopValue = `${Math.random() * (window.innerHeight - fullWord.offsetHeight)}px`;
 						textLeftValue = `${Math.random() * (window.innerWidth - fullWord.offsetWidth)}px`;
@@ -102,6 +103,66 @@ function animateCharInWord() {
 						({ x, y } = getRandomDirection());
 						
 						lastWord = unit.parent.text;
+					}
+					text.style.top = textTopValue;
+					text.style.left = textLeftValue;
+					text.style.transform = `translate(${x}px, ${y}px)`;
+
+					lastTextElements.push(text);
+					lastChar = unit.text;
+				}
+			}
+		};
+		c = c.next;
+	}
+}
+
+function animateCharInChord() {
+	let c = player.video.firstChar;
+	let lastWord = null;
+	let lastChar = null;
+	let lastTextElements = [];
+	let lastChord = null;
+	
+	let textTopValue = "";
+	let textLeftValue = "";
+	let { x, y } = getRandomDirection();
+
+	while(c) {
+		c.animate = (now, unit) => {
+			if (unit.contains(now)) {
+				if (unit.text !== lastChar) {
+					const chordChange = player.findChordChange(player.videoPosition, now);
+					const chord = chordChange.current;
+					
+					const text = document.createElement("div");
+					text.id = "text";
+					text.innerText = unit.text;
+					arena.appendChild(text);
+					
+					if (chord !== lastChord) {
+						if (lastTextElements) {
+							for (let i = 0; i < lastTextElements.length; i++) {
+								lastTextElements[i].remove();
+							}
+						}
+
+						const charsInChord = player.video.chars
+							.filter(w => w.startTime >= chord.startTime && w.startTime < chord.endTime)
+							.map(w => w.text)
+							.join("");
+							
+						const fullWord = document.createElement("div");
+						fullWord.innerText = charsInChord;
+						fullWord.style.fontSize = "200px";
+						arena.appendChild(fullWord);
+						textTopValue = `${Math.random() * (window.innerHeight - fullWord.offsetHeight)}px`;
+						textLeftValue = `${Math.random() * (window.innerWidth - fullWord.offsetWidth)}px`;
+						fullWord.remove();
+						({ x, y } = getRandomDirection());
+						
+						lastWord = charsInChord;
+						lastChord = chord;
 					}
 					text.style.top = textTopValue;
 					text.style.left = textLeftValue;
