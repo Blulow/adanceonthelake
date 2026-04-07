@@ -62,6 +62,9 @@ function animateWord() {
 					lastWord = unit.text;
 				}
 			}
+			if (!player.video.findChar(now)) {
+				if (lastTextElement) lastTextElement.remove();
+			}
 		};
 		w = w.next;
 	}
@@ -110,6 +113,13 @@ function animateCharInWord() {
 
 					lastTextElements.push(text);
 					lastChar = unit.text;
+				}
+			}
+			if (!player.video.findChar(now)) {
+				if (lastTextElements) {
+					for (let i = 0; i < lastTextElements.length; i++) {
+						lastTextElements[i].remove();
+					}
 				}
 			}
 		};
@@ -170,6 +180,13 @@ function animateCharInChord() {
 
 					lastTextElements.push(text);
 					lastChar = unit.text;
+				}
+			}
+			if (!player.video.findChar(now)) {
+				if (lastTextElements) {
+					for (let i = 0; i < lastTextElements.length; i++) {
+						lastTextElements[i].remove();
+					}
 				}
 			}
 		};
