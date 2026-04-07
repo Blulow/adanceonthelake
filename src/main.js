@@ -49,7 +49,7 @@ function animateWord() {
 				if (unit.text !== lastWord) {
 					if (lastTextElement) lastTextElement.remove();
 					const text = document.createElement("div");
-					text.id = "text";
+					text.classList.add("text");
 					text.innerText = unit.text;
 					arena.appendChild(text);
 
@@ -85,7 +85,7 @@ function animateCharInWord() {
 			if (unit.contains(now)) {
 				if (unit.text !== lastChar) {
 					const text = document.createElement("div");
-					text.id = "text";
+					text.classList.add("text");
 					text.innerText = unit.text;
 					arena.appendChild(text);
 					
@@ -131,12 +131,14 @@ function animateCharInChord() {
 	let c = player.video.firstChar;
 	let lastWord = null;
 	let lastChar = null;
-	let lastTextElements = [];
+	let lastTextGroups = [];
 	let lastChord = null;
 	
 	let textTopValue = "";
 	let textLeftValue = "";
 	let { x, y } = getRandomDirection();
+
+	let textGroup = null;
 
 	while(c) {
 		c.animate = (now, unit) => {
@@ -146,17 +148,14 @@ function animateCharInChord() {
 					const chord = chordChange.current;
 					
 					const text = document.createElement("div");
-					text.id = "text";
+					text.classList.add("text");
 					text.innerText = unit.text;
-					arena.appendChild(text);
-					
-					if (chord !== lastChord) {
-						if (lastTextElements) {
-							for (let i = 0; i < lastTextElements.length; i++) {
-								lastTextElements[i].remove();
-							}
-						}
 
+					if (chord !== lastChord) {
+						textGroup = document.createElement("div");
+						textGroup.classList.add("text-group");
+						arena.appendChild(textGroup);
+								
 						const charsInChord = player.video.chars
 							.filter(w => w.startTime >= chord.startTime && w.startTime < chord.endTime)
 							.map(w => w.text)
@@ -173,20 +172,27 @@ function animateCharInChord() {
 						
 						lastWord = charsInChord;
 						lastChord = chord;
+						lastTextGroups.push(textGroup);
 					}
+
+					text.addEventListener("animationend", e => {
+						if (e.animationName === "movein") {
+							text.classList.add("fadeout");
+						} else if (e.animationName === "fadeout") {
+							if (Array.from(text.parentElement.children).indexOf(text) === text.parentElement.children.length - 1) {
+								text.parentElement.remove();
+								lastTextGroups.splice(lastTextGroups.indexOf(text.parentElement), 1);
+							}
+						}
+					});
+					textGroup.appendChild(text);
 					text.style.top = textTopValue;
 					text.style.left = textLeftValue;
-					text.style.transform = `translate(${x}px, ${y}px)`;
-
-					lastTextElements.push(text);
+					text.style.setProperty("--start-x", `${x}px`);
+					text.style.setProperty("--start-y", `${y}px`);
+					console.log(text);
+					
 					lastChar = unit.text;
-				}
-			}
-			if (!player.video.findChar(now)) {
-				if (lastTextElements) {
-					for (let i = 0; i < lastTextElements.length; i++) {
-						lastTextElements[i].remove();
-					}
 				}
 			}
 		};

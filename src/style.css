@@ -1,3 +1,8 @@
+:root {
+    --start-x: 0px;
+    --start-y: 0px;
+}
+
 body {
     margin: 0;
     overflow: hidden;
@@ -20,15 +25,31 @@ div {
     display: flex;
 }
 
-#text {
+.text-group {
+    position: absolute;
+    display: flex;
+}
+
+.text {
     position: relative;
     font-size: 200px;
-    transform: translateX(-50vh);
-    animation: movein 0.1s ease-out forwards;
+    animation: movein 0.5s ease-out forwards;
+    transform: translate(var(--start-x), var(--start-y));
+}
+
+.fadeout {
+    animation: movein 0.5s ease-out forwards,
+        fadeout 0.5s forwards;
 }
 
 @keyframes movein {
     to {
-        transform: translateX(0);
+        transform: translate(0, 0);
+    }
+}
+
+@keyframes fadeout {
+    to {
+        opacity: 0%;
     }
 }
