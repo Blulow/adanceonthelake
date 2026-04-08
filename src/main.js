@@ -6,17 +6,20 @@ const player = new Player({
 
 const arena = document.getElementById("arena");
 
+console.log(window.innerWidth);
+console.log(window.innerHeight);
+
 player.addListener({
 	onAppReady(app) {
 		if (!app.managed) {
 			document.getElementById("play").addEventListener("click", () => {
 				// player.requestMediaSeek(230 * 1000);
-				player.requestMediaSeek(15 * 1000);
+				// player.requestMediaSeek(15 * 1000);
 				player.requestPlay();
 			});
 		}
 		if (!app.songUrl) {
-			player.createFromSongUrl("https://piapro.jp/t/6W2N/20251215164617"); // song url
+			player.createFromSongUrl("http://piapro.jp/t/C0lr/20180328201242"); // song url
 		}
 	},
 	onVideoReady() {
@@ -98,7 +101,7 @@ function animateCharInWord() {
 						
 						const fullWord = document.createElement("div");
 						fullWord.innerText = unit.parent.text;
-						fullWord.style.fontSize = "200px";
+						fullWord.style.fontSize = "10vw";
 						arena.appendChild(fullWord);
 						textTopValue = `${Math.random() * (window.innerHeight - fullWord.offsetHeight)}px`;
 						textLeftValue = `${Math.random() * (window.innerWidth - fullWord.offsetWidth)}px`;
@@ -163,7 +166,7 @@ function animateCharInChord() {
 							
 						const fullWord = document.createElement("div");
 						fullWord.innerText = charsInChord;
-						fullWord.style.fontSize = "200px";
+						fullWord.style.fontSize = "10vw";
 						arena.appendChild(fullWord);
 						textTopValue = `${Math.random() * (window.innerHeight - fullWord.offsetHeight)}px`;
 						textLeftValue = `${Math.random() * (window.innerWidth - fullWord.offsetWidth)}px`;
