@@ -31,6 +31,7 @@ div {
 }
 
 .text {
+    display: flex;
     position: relative;
     font-size: 10vw;
     animation: movein 0.5s ease-out forwards;

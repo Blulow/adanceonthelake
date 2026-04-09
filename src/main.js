@@ -15,7 +15,7 @@ player.addListener({
 		if (!app.managed) {
 			document.getElementById("play").addEventListener("click", () => {
 				// player.requestMediaSeek(230 * 1000);
-				// player.requestMediaSeek(15 * 1000);
+				player.requestMediaSeek(15 * 1000);
 				player.requestPlay();
 			});
 		}
@@ -30,17 +30,7 @@ player.addListener({
 	}
 });
 
-function getRandomDirection() {
-  const angle = Math.random() * 360;
-  const rad = angle * (Math.PI / 180);
 
-  const distance = 300;
-
-  const x = Math.cos(rad) * distance;
-  const y = Math.sin(rad) * distance;
-
-  return { x, y };
-}
 
 function animateWord() {
 	let w = player.video.firstWord;
