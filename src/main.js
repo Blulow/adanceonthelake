@@ -1,6 +1,7 @@
 import { Player } from "textalive-app-api";
 import WordPattern from "./spawn-patterns/word-pattern";
 import CharInWordPattern from "./spawn-patterns/char-in-word-pattern";
+import CharInChordPattern from "./spawn-patterns/char-in-chord-pattern";
 
 const player = new Player({
 	app: { token: "4fLfxYZ0Ntw6flJe" }
@@ -23,7 +24,7 @@ player.addListener({
 	},
 	onVideoReady() {
 		if (!player.app.managed) {
-			new CharInWordPattern(player, arena).animate();
+			new CharInChordPattern(player, arena).animate();
 		}
 	}
 });
