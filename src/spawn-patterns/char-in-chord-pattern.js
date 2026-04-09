@@ -39,7 +39,7 @@ export default class CharInChordPattern extends SpawnPattern {
                                 .join("");
 
                             const fullWord = document.createElement("div");
-                            fullWord.innerText = unit.parent.text;
+                            fullWord.innerText = charsInChord;
                             fullWord.style.fontSize = "10vw";
                             this.arena.appendChild(fullWord);
                             this.textTopValue = `${Math.random() * (window.innerHeight - fullWord.offsetHeight)}px`;
