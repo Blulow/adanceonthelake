@@ -7,9 +7,6 @@ const player = new Player({
 
 const arena = document.getElementById("arena");
 
-console.log(window.innerWidth);
-console.log(window.innerHeight);
-
 player.addListener({
 	onAppReady(app) {
 		if (!app.managed) {
