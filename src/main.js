@@ -1,5 +1,6 @@
 import { Player } from "textalive-app-api";
 import WordPattern from "./spawn-patterns/word-pattern";
+import CharInWordPattern from "./spawn-patterns/char-in-word-pattern";
 
 const player = new Player({
 	app: { token: "4fLfxYZ0Ntw6flJe" }
@@ -22,44 +23,10 @@ player.addListener({
 	},
 	onVideoReady() {
 		if (!player.app.managed) {
-			new WordPattern(player, arena).animate();
+			new CharInWordPattern(player, arena).animate();
 		}
 	}
 });
-
-
-
-function animateWord() {
-	let w = player.video.firstWord;
-	let lastWord = null;
-	let lastTextElement = null;
-	
-	while(w) {
-		w.animate = (now, unit) => {
-			if (unit.contains(now)) {
-				if (unit.text !== lastWord) {
-					if (lastTextElement) lastTextElement.remove();
-					const text = document.createElement("div");
-					text.classList.add("text");
-					text.innerText = unit.text;
-					arena.appendChild(text);
-
-					text.style.top = `${Math.random() * (window.innerHeight - text.offsetHeight)}px`;
-					text.style.left = `${Math.random() * (window.innerWidth - text.offsetWidth)}px`;
-					const { x, y } = getRandomDirection();
-					text.style.transform = `translate(${x}px, ${y}px)`;
-
-					lastTextElement = text;
-					lastWord = unit.text;
-				}
-			}
-			if (!player.video.findChar(now)) {
-				if (lastTextElement) lastTextElement.remove();
-			}
-		};
-		w = w.next;
-	}
-}
 
 function animateCharInWord() {
 	let c = player.video.firstChar;
