@@ -1,5 +1,13 @@
-class AttackPattern {
+export default class AttackPattern {
     constructor() {
         
+    }
+
+    telegraph() {
+        
+    }
+
+    shoot() {
+
     }
 }

@@ -24,7 +24,7 @@ player.addListener({
 	},
 	onVideoReady() {
 		if (!player.app.managed) {
-			new CharInChordPattern(player, arena).animate();
+			new CharInWordPattern(player, arena).animate();
 		}
 	}
 });
