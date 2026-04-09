@@ -1,4 +1,5 @@
 import { Player } from "textalive-app-api";
+import WordPattern from "./spawn-patterns/word-pattern";
 
 const player = new Player({
 	app: { token: "4fLfxYZ0Ntw6flJe" }
@@ -19,12 +20,12 @@ player.addListener({
 			});
 		}
 		if (!app.songUrl) {
-			player.createFromSongUrl("http://piapro.jp/t/C0lr/20180328201242"); // song url
+			player.createFromSongUrl("https://piapro.jp/t/6W2N/20251215164617"); // song url
 		}
 	},
 	onVideoReady() {
 		if (!player.app.managed) {
-			animateCharInChord();
+			new WordPattern(player, arena).animate();
 		}
 	}
 });
@@ -193,7 +194,6 @@ function animateCharInChord() {
 					text.style.left = textLeftValue;
 					text.style.setProperty("--start-x", `${x}px`);
 					text.style.setProperty("--start-y", `${y}px`);
-					console.log(text);
 					
 					lastChar = unit.text;
 				}
