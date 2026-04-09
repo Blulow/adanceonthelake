@@ -23,18 +23,11 @@ export default class CharInWordPattern extends SpawnPattern {
                         const text = document.createElement("div");
                         text.classList.add("text");
                         text.innerText = unit.text;
-                        this.arena.appendChild(text);
                         
                         if (unit.parent.text !== this.lastWord) {
                             this.textGroup = document.createElement("div");
                             this.textGroup.classList.add("text-group");
                             this.arena.appendChild(this.textGroup);
-
-                            if (this.lastTextElements) {
-                                for (let i = 0; i < this.lastTextElements.length; i++) {
-                                    this.lastTextElements[i].remove();
-                                }
-                            }
                             
                             const fullWord = document.createElement("div");
                             fullWord.innerText = unit.parent.text;
@@ -67,13 +60,6 @@ export default class CharInWordPattern extends SpawnPattern {
 					    text.style.setProperty("--start-y", `${this.y}px`);
 
                         this.lastChar = unit.text;
-                    }
-                }
-                if (!this.player.video.findChar(now)) {
-                    if (this.lastTextElements) {
-                        for (let i = 0; i < this.lastTextElements.length; i++) {
-                            this.lastTextElements[i].remove();
-                        }
                     }
                 }
             };
