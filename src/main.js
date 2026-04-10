@@ -15,7 +15,7 @@ player.addListener({
 			document.getElementById("play").addEventListener("click", () => {
 				player.requestPlay();
 				// player.requestMediaSeek(230 * 1000);
-				// player.requestMediaSeek(15 * 1000);
+				player.requestMediaSeek(15 * 1000);
 			});
 		}
 		if (!app.songUrl) {
@@ -24,7 +24,7 @@ player.addListener({
 	},
 	onVideoReady() {
 		if (!player.app.managed) {
-			new WordPattern(player, arena).animate();
+			new CharInChordPattern(player, arena).animate();
 		}
 	}
 });

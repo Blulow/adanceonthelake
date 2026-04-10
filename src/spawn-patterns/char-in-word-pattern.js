@@ -50,7 +50,7 @@ export default class CharInWordPattern extends SpawnPattern {
                         });
 
                         lyric.spawn(this.textGroup);
-                        lyric.setPosAndMoveIn(this.textTopValue, this.textLeftValue, this.x, this.y);
+                        lyric.setPosAndMoveIn(this.textLeftValue, this.textTopValue, this.x, this.y);
 
                         this.lastChar = unit.text;
                     }
