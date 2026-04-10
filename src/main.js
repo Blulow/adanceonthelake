@@ -25,7 +25,7 @@ player.addListener({
 	},
 	onVideoReady() {
 		if (!player.app.managed) {
-			new CharInChordPattern(player, lyricsArena, new PosTelegraph()).animate();
+			new CharInChordPattern(player, lyricsArena, PosTelegraph).animate();
 		}
 	}
 });

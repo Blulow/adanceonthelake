@@ -6,7 +6,10 @@ export default class PosTelegraph extends Telegraph {
         this.telegraph.classList.add("pos-telegraph");
     }
 
-    fadeOut() {
+    fadeOutAndRemove() {
         this.telegraph.classList.add("fadeout");
+        this.telegraph.addEventListener("animationend", e => {
+            if (e.animationName === "fadeout") this.telegraph.remove();
+        });
     }
 }

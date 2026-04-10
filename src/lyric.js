@@ -1,5 +1,5 @@
 export default class Lyric {
-    constructor(unit, telegraph) {
+    constructor(unit, Telegraph) {
         this.text = document.createElement("div");
         this.text.classList.add("text");
         this.text.innerText = unit.text;
@@ -7,7 +7,7 @@ export default class Lyric {
         this.x = 0;
         this.y = 0;
 
-        this.telegraph = telegraph;
+        this.telegraph = new Telegraph();
     }
 
     spawn(parent) {
