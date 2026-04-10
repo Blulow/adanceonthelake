@@ -1,4 +1,5 @@
 import SpawnPattern from "./spawn-pattern";
+import Lyric from "../lyric";
 
 export default class CharInChordPattern extends SpawnPattern {
     constructor(player, arena) {
@@ -24,9 +25,7 @@ export default class CharInChordPattern extends SpawnPattern {
                         const chordChange = this.player.findChordChange(this.player.videoPosition, now);
 					    const chord = chordChange.current;
 
-                        const text = document.createElement("div");
-                        text.classList.add("text");
-                        text.innerText = unit.text;
+                        const lyric = new Lyric(unit);
                         
                         if (chord !== this.lastChord) {
                             this.textGroup = document.createElement("div");
@@ -52,22 +51,16 @@ export default class CharInChordPattern extends SpawnPattern {
                             this.lastTextGroups.push(this.textGroup);
                         }
 
-                        text.addEventListener("animationend", e => {
-                            if (e.animationName === "movein") {
-                                text.classList.add("fadeout");
-                            } else if (e.animationName === "fadeout") {
-                                if (Array.from(text.parentElement.children).indexOf(text) === text.parentElement.children.length - 1) {
-                                    text.parentElement.remove();
-                                    this.lastTextGroups.splice(this.lastTextGroups.indexOf(text.parentElement), 1);
-                                }
+                        lyric.onFadeOut(() => {
+                            const text = lyric.text;
+                            if (Array.from(text.parentElement.children).indexOf(text) === text.parentElement.children.length - 1) {
+                                text.parentElement.remove();
+                                this.lastTextGroups.splice(this.lastTextGroups.indexOf(text.parentElement), 1);
                             }
-                        });
+                        })
 
-                        this.textGroup.appendChild(text);
-                        text.style.top = this.textTopValue;
-                        text.style.left = this.textLeftValue;
-                        text.style.setProperty("--start-x", `${this.x}px`);
-                        text.style.setProperty("--start-y", `${this.y}px`);
+                        lyric.spawn(this.textGroup);
+                        lyric.setPosAndMoveIn(this.textLeftValue, this.textTopValue, this.x, this.y);
 
                         this.lastChar = unit.text;
                     }

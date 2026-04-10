@@ -1,4 +1,5 @@
 import SpawnPattern from "./spawn-pattern";
+import Lyric from "../lyric";
 
 export default class WordPattern extends SpawnPattern {
     constructor(player, arena) {
@@ -13,27 +14,21 @@ export default class WordPattern extends SpawnPattern {
             this.w.animate = (now, unit) => {
                 if (unit.contains(now)) {
                     if (unit.text !== this.lastWord) {
-                        const text = document.createElement("div");
-                        text.classList.add("text-word", "text");
-                        text.innerText = unit.text;
-                        this.arena.appendChild(text);
+                        const lyric = new Lyric(unit);
+                        lyric.spawn(this.arena);
 
-                        text.style.top = `${Math.random() * (window.innerHeight - text.offsetHeight)}px`;
-                        text.style.left = `${Math.random() * (window.innerWidth - text.offsetWidth)}px`;
+                        const textTopValue = Math.random() * (window.innerHeight - text.offsetHeight);
+                        const textLeftValue = Math.random() * (window.innerWidth - text.offsetWidth);
                         const { x, y } = this.getRandomDirection();
-                        text.style.setProperty("--start-x", `${x}px`);
-					    text.style.setProperty("--start-y", `${y}px`);
+                        lyric.setPosAndMoveIn(textLeftValue, textTopValue, x, y);
                         
-                        this.lastTextElements.push(text);
+                        this.lastTextElements.push(lyric.text);
                         this.lastWord = unit.text;
 
-                        text.addEventListener("animationend", e => {
-                            if (e.animationName === "movein") {
-                                text.classList.add("fadeout");
-                            } else if (e.animationName === "fadeout") {
-                                text.remove();
-                                this.lastTextElements.splice(this.lastTextElements.indexOf(text), 1);
-                            }
+                        lyric.onFadeOut(() => {
+                            const text = lyric.text;
+                            text.remove();
+                            this.lastTextElements.splice(this.lastTextElements.indexOf(text), 1);
                         });
                     }
                 }

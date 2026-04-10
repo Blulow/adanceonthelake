@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "devDependencies": {
-    "vite": "^8.0.1"
+    "vite": "^8.0.8"
   },
   "dependencies": {
     "textalive-app-api": "^0.4.0"

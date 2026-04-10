@@ -13,9 +13,9 @@ player.addListener({
 	onAppReady(app) {
 		if (!app.managed) {
 			document.getElementById("play").addEventListener("click", () => {
-				// player.requestMediaSeek(230 * 1000);
-				player.requestMediaSeek(15 * 1000);
 				player.requestPlay();
+				// player.requestMediaSeek(230 * 1000);
+				// player.requestMediaSeek(15 * 1000);
 			});
 		}
 		if (!app.songUrl) {
@@ -24,7 +24,7 @@ player.addListener({
 	},
 	onVideoReady() {
 		if (!player.app.managed) {
-			new CharInWordPattern(player, arena).animate();
+			new WordPattern(player, arena).animate();
 		}
 	}
 });
