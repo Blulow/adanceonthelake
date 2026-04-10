@@ -15,10 +15,11 @@ export default class WordPattern extends SpawnPattern {
                 if (unit.contains(now)) {
                     if (unit.text !== this.lastWord) {
                         const lyric = new Lyric(unit);
+                        lyric.text.classList.add("text-word");
                         lyric.spawn(this.arena);
 
-                        const textTopValue = Math.random() * (window.innerHeight - text.offsetHeight);
-                        const textLeftValue = Math.random() * (window.innerWidth - text.offsetWidth);
+                        const textTopValue = Math.random() * (window.innerHeight - lyric.text.offsetHeight);
+                        const textLeftValue = Math.random() * (window.innerWidth - lyric.text.offsetWidth);
                         const { x, y } = this.getRandomDirection();
                         lyric.setPosAndMoveIn(textLeftValue, textTopValue, x, y);
                         

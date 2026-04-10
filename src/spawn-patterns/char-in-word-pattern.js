@@ -32,8 +32,8 @@ export default class CharInWordPattern extends SpawnPattern {
                             fullWord.innerText = unit.parent.text;
                             fullWord.style.fontSize = "10vw";
                             this.arena.appendChild(fullWord);
-                            this.textTopValue = `${Math.random() * (window.innerHeight - fullWord.offsetHeight)}px`;
-                            this.textLeftValue = `${Math.random() * (window.innerWidth - fullWord.offsetWidth)}px`;
+                            this.textTopValue = Math.random() * (window.innerHeight - fullWord.offsetHeight);
+                            this.textLeftValue = Math.random() * (window.innerWidth - fullWord.offsetWidth);
                             fullWord.remove();
                             ({ x: this.x, y: this.y } = this.getRandomDirection());
                             

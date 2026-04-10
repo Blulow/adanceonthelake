@@ -16,8 +16,9 @@ export default class Lyric {
     setPosAndMoveIn(x, y, startX, startY) {
         this.x = x;
         this.y = y;
-        this.text.style.left = x;
-        this.text.style.top = y;
+        this.text.style.left = `${x}px`;
+        this.text.style.top = `${y}px`;
+        console.log()
         console.log([x, y]);
         this.text.style.setProperty("--start-x", `${startX}px`);
         this.text.style.setProperty("--start-y", `${startY}px`);
