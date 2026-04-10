@@ -13,7 +13,7 @@ export default class SpawnPattern {
         const angle = Math.random() * 360;
         const rad = angle * (Math.PI / 180);
 
-        const distance = 300;
+        const distance = 700;
 
         const x = Math.cos(rad) * distance;
         const y = Math.sin(rad) * distance;

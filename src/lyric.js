@@ -12,7 +12,7 @@ export default class Lyric {
 
     spawn(parent) {
         parent.appendChild(this.text);
-        this.telegraph.spawn(document.getElementById("telegraphs"), this.x, this.y);
+        this.telegraph.spawn(document.getElementById("telegraphs"), this.x, this.y, this.text);
     }
     
     setPosAndMoveIn(x, y, startX, startY) {

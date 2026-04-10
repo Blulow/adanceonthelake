@@ -40,7 +40,8 @@ div {
     position: absolute;
     display: block;
     font-size: 10vw;
-    animation: movein 0.5s ease-out forwards;
+    line-height: 1;
+    animation: movein 1s ease-out forwards;
     transform: translate(var(--start-x), var(--start-y));
 }
 
@@ -49,7 +50,7 @@ div {
 }
 
 .fadeout-movein {
-    animation: movein 0.5s ease-out forwards,
+    animation: movein 1s ease-out forwards,
         fadeout 0.5s forwards;
 }
 

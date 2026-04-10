@@ -7,6 +7,8 @@ export default class WordPattern extends SpawnPattern {
         this.w = player.video.firstWord;
         this.lastWord = null;
         this.lastTextElements = [];
+
+        this.isColumn = false;
     }
 
     animate() {
@@ -16,6 +18,8 @@ export default class WordPattern extends SpawnPattern {
                     if (unit.text !== this.lastWord) {
                         const lyric = new Lyric(unit, this.telegraph);
                         lyric.text.classList.add("text-word");
+                        
+                        if (Math.random() > 0.5) this.isColumn = !this.isColumn;
                         
                         const fullWord = document.createElement("div");
                         fullWord.innerText = unit.text;
