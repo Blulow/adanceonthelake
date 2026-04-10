@@ -2,12 +2,13 @@ import { Player } from "textalive-app-api";
 import WordPattern from "./spawn-patterns/word-pattern";
 import CharInWordPattern from "./spawn-patterns/char-in-word-pattern";
 import CharInChordPattern from "./spawn-patterns/char-in-chord-pattern";
+import PosTelegraph from "./telegraphs/pos-telegraph";
 
 const player = new Player({
 	app: { token: "4fLfxYZ0Ntw6flJe" }
 });
 
-const arena = document.getElementById("arena");
+const lyricsArena = document.getElementById("lyrics");
 
 player.addListener({
 	onAppReady(app) {
@@ -24,7 +25,7 @@ player.addListener({
 	},
 	onVideoReady() {
 		if (!player.app.managed) {
-			new CharInChordPattern(player, arena).animate();
+			new CharInChordPattern(player, lyricsArena, new PosTelegraph()).animate();
 		}
 	}
 });

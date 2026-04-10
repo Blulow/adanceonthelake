@@ -41,9 +41,13 @@ div {
     position: absolute;
 }
 
-.fadeout {
+.fadeout-movein {
     animation: movein 0.5s ease-out forwards,
         fadeout 0.5s forwards;
+}
+
+.fadeout {
+    animation: fadeout 0.5 forwards;
 }
 
 @keyframes movein {
@@ -56,4 +60,12 @@ div {
     to {
         opacity: 0%;
     }
+}
+
+.pos-telegraph {
+    position: absolute;
+    width: 3vw;
+    aspect-ratio: 1;
+    background-color: #fff;
+    opacity: 0.5;
 }

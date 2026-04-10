@@ -1,7 +1,8 @@
 export default class SpawnPattern {
-    constructor(player, arena) {
+    constructor(player, arena, telegraph) {
         this.player = player;
         this.arena = arena;
+        this.telegraph = telegraph;
     }
 
     animate() {

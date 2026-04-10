@@ -2,8 +2,8 @@ import SpawnPattern from "./spawn-pattern";
 import Lyric from "../lyric";
 
 export default class CharInChordPattern extends SpawnPattern {
-    constructor(player, arena) {
-        super(player, arena);
+    constructor(player, arena, telegraph) {
+        super(player, arena, telegraph);
         this.c = player.video.firstChar;
         this.lastWord = null;
         this.lastChar = null;
@@ -25,7 +25,7 @@ export default class CharInChordPattern extends SpawnPattern {
                         const chordChange = this.player.findChordChange(this.player.videoPosition, now);
 					    const chord = chordChange.current;
 
-                        const lyric = new Lyric(unit);
+                        const lyric = new Lyric(unit, this.telegraph);
                         
                         if (chord !== this.lastChord) {
                             this.textGroup = document.createElement("div");
@@ -49,6 +49,9 @@ export default class CharInChordPattern extends SpawnPattern {
                             this.lastWord = charsInChord;
                             this.lastChord = chord;
                             this.lastTextGroups.push(this.textGroup);
+                        } else {
+                            this.textLeftValue += lyric.text.clientWidth;
+                            console.log(lyric.text);
                         }
 
                         lyric.onFadeOut(() => {
@@ -59,8 +62,9 @@ export default class CharInChordPattern extends SpawnPattern {
                             }
                         })
 
-                        lyric.spawn(this.textGroup);
                         lyric.setPosAndMoveIn(this.textLeftValue, this.textTopValue, this.x, this.y);
+                        // console.log(this.textLeftValue);
+                        lyric.spawn(this.textGroup);
 
                         this.lastChar = unit.text;
                     }

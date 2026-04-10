@@ -2,8 +2,8 @@ import SpawnPattern from "./spawn-pattern";
 import Lyric from "../lyric";
 
 export default class CharInWordPattern extends SpawnPattern {
-    constructor(player, arena) {
-        super(player, arena);
+    constructor(player, arena, telegraph) {
+        super(player, arena, telegraph);
         this.c = player.video.firstChar;
         this.lastWord = null;
         this.lastChar = null;
@@ -21,7 +21,7 @@ export default class CharInWordPattern extends SpawnPattern {
             this.c.animate = (now, unit) => {
                 if (unit.contains(now)) {
                     if (unit.text !== this.lastChar) {
-                        const lyric = new Lyric(unit);
+                        const lyric = new Lyric(unit, this.telegraph);
 
                         if (unit.parent.text !== this.lastWord) {
                             this.textGroup = document.createElement("div");
@@ -49,8 +49,8 @@ export default class CharInWordPattern extends SpawnPattern {
                             }
                         });
 
-                        lyric.spawn(this.textGroup);
                         lyric.setPosAndMoveIn(this.textLeftValue, this.textTopValue, this.x, this.y);
+                        lyric.spawn(this.textGroup);
 
                         this.lastChar = unit.text;
                     }
