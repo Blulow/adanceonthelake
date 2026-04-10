@@ -17,8 +17,13 @@ export default class WordPattern extends SpawnPattern {
                         const lyric = new Lyric(unit, this.telegraph);
                         lyric.text.classList.add("text-word");
                         
-                        const textTopValue = Math.random() * (window.innerHeight - lyric.text.offsetHeight);
-                        const textLeftValue = Math.random() * (window.innerWidth - lyric.text.offsetWidth);
+                        const fullWord = document.createElement("div");
+                        fullWord.innerText = unit.text;
+                        fullWord.style.fontSize = "10vw";
+                        this.arena.appendChild(fullWord);
+                        const textTopValue = Math.random() * (window.innerHeight - fullWord.offsetHeight);
+                        const textLeftValue = Math.random() * (window.innerWidth - fullWord.offsetWidth);
+                        fullWord.remove();
                         const { x, y } = this.getRandomDirection();
                         lyric.setPosAndMoveIn(textLeftValue, textTopValue, x, y);
                         lyric.spawn(this.arena);

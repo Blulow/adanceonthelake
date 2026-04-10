@@ -49,9 +49,6 @@ export default class CharInChordPattern extends SpawnPattern {
                             this.lastWord = charsInChord;
                             this.lastChord = chord;
                             this.lastTextGroups.push(this.textGroup);
-                        } else {
-                            this.textLeftValue += lyric.text.clientWidth;
-                            console.log(lyric.text);
                         }
 
                         lyric.onFadeOut(() => {
@@ -65,6 +62,7 @@ export default class CharInChordPattern extends SpawnPattern {
                         lyric.setPosAndMoveIn(this.textLeftValue, this.textTopValue, this.x, this.y);
                         // console.log(this.textLeftValue);
                         lyric.spawn(this.textGroup);
+                        if (chord === this.lastChord) this.textLeftValue += lyric.text.clientWidth;
 
                         this.lastChar = unit.text;
                     }

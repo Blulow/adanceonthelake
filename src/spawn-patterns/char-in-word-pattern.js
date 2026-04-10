@@ -51,6 +51,7 @@ export default class CharInWordPattern extends SpawnPattern {
 
                         lyric.setPosAndMoveIn(this.textLeftValue, this.textTopValue, this.x, this.y);
                         lyric.spawn(this.textGroup);
+                        if (unit.parent.text === this.lastWord) this.textLeftValue += lyric.text.clientWidth;
 
                         this.lastChar = unit.text;
                     }
