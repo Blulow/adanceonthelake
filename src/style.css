@@ -53,19 +53,9 @@ div {
         fadeout 0.5s forwards;
 }
 
-.fadeout {
-    animation: fadeout 0.5 forwards;
-}
-
 @keyframes movein {
     to {
         transform: translate(0, 0);
-    }
-}
-
-@keyframes fadeout {
-    to {
-        opacity: 0%;
     }
 }
 
@@ -75,4 +65,14 @@ div {
     aspect-ratio: 1;
     background-color: #fff;
     opacity: 0.5;
+}
+
+.fadeout {
+    animation: fadeout 0.5s forwards;
+}
+
+@keyframes fadeout {
+    to {
+        opacity: 0%;
+    }
 }

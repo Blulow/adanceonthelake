@@ -28,6 +28,7 @@ export default class Lyric {
         this.text.addEventListener("animationend", e => {
             if (e.animationName === "movein") {
                 this.text.classList.add("fadeout-movein");
+                this.telegraph.fadeOutAndRemove();
             } else if (e.animationName === "fadeout") {
                 action();
             }
