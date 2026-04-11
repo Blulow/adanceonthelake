@@ -24,11 +24,14 @@ export default class WordPattern extends SpawnPattern {
                         const fullWord = document.createElement("div");
                         fullWord.innerText = unit.text;
                         fullWord.style.fontSize = "10vw";
+                        if (this.isColumn) fullWord.style.writingMode = "vertical-rl";
                         this.arena.appendChild(fullWord);
                         const textTopValue = Math.random() * (window.innerHeight - fullWord.offsetHeight);
                         const textLeftValue = Math.random() * (window.innerWidth - fullWord.offsetWidth);
                         fullWord.remove();
                         const { x, y } = this.getRandomDirection();
+
+                        if (this.isColumn) lyric.text.style.writingMode = "vertical-rl";
                         lyric.setPosAndMoveIn(textLeftValue, textTopValue, x, y);
                         lyric.spawn(this.arena);
                         

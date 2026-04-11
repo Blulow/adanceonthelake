@@ -28,9 +28,9 @@ export default class Lyric {
         this.text.addEventListener("animationend", e => {
             if (e.animationName === "movein") {
                 this.text.classList.add("fadeout-movein");
-                const x = this.x + this.text.clientWidth / 2 - this.attack.telegraph.telegraph.clientWidth;
-                const y = this.x + this.text.clientHeight / 2 - this.attack.telegraph.telegraph.clientHeight;
-                this.attack.shoot(x, y, params);
+                // const x = this.x + this.text.clientWidth / 2 - this.attack.bullet.clientWidth / 2;
+                // const y = this.y + this.text.clientHeight / 2 - this.attack.bullet.clientHeight / 2;
+                this.attack.shoot(this.x, this.y, this.text, params);
                 this.attack.telegraph.fadeOutAndRemove();
             } else if (e.animationName === "fadeout") {
                 action();
