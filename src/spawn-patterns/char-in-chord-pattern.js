@@ -7,8 +7,8 @@ export default class CharInChordPattern extends SpawnPattern {
         this.c = player.video.firstChar;
         this.lastWord = null;
         this.lastChar = null;
-        this.lastTextGroups = [];
-        this.lastTextGroupLengths = [];
+        this.lastTextGroups = new Map();
+        // this.lastTextGroupLengths = [];
         this.lastChord = null;
 
         this.textTopValue = "";
@@ -76,15 +76,31 @@ export default class CharInChordPattern extends SpawnPattern {
                             
                             this.lastWord = charsInChord;
                             this.lastChord = chord;
-                            this.lastTextGroups.push(this.textGroup);
-                            this.lastTextGroupLengths.push(charsInChord.length);
+                            this.textGroup.dataset.length = charsInChord.length;
+                            console.log(this.textGroup, charsInChord.length);
+                            // this.lastTextGroups.set(this.textGroup, charsInChord.length);
+                            // this.lastTextGroups.push(this.textGroup);
+                            // this.lastTextGroupLengths.push(charsInChord.length);
+                            // console.log(this.textGroup);
+                            // console.log(charsInChord.length);
                         }
                         
                         lyric.onFadeOut(() => {
                             const text = lyric.text;
-                            if (Array.from(text.parentElement.children).indexOf(text) === this.lastTextGroupLengths[Array.from(this.lastTextGroupLengths).indexOf(text.parentElement)] - 1) {
+                            // console.log(this.lastTextGroupLengths[this.lastTextGroups.indexOf(text.parentElement)]);
+                            // console.log(this.lastTextGroups[this.lastTextGroups.indexOf(text.parentElement)]);
+                            // if (Array.from(text.parentElement.children).indexOf(text) === this.lastTextGroupLengths[this.lastTextGroups.indexOf(text.parentElement)] - 1) {
+                            // console.log(Array.from(text.parentElement.children).indexOf(text), this.lastTextGroups.get(text.parentElement) - 1);
+                            // console.log(this.lastTextGroups);
+                            // if (Array.from(text.parentElement.children).indexOf(text) === this.lastTextGroups.get(text.parentElement) - 1) {
+                            text.parentElement.dataset.length--;
+                            // console.log(text.parentElement.dataset.length, text.innerText);
+                            // if (Array.from(text.parentElement.children).indexOf(text) === text.parentElement.dataset.length) {
+                            if (text.parentElement.dataset.length <= 0) {
                                 text.parentElement.remove();
-                                this.lastTextGroups.splice(this.lastTextGroups.indexOf(text.parentElement), 1);
+                                // this.lastTextGroups.delete(text.parentElement);
+                                // this.lastTextGroups.splice(this.lastTextGroups.indexOf(text.parentElement), 1);
+                                // this.lastTextGroupLengths.splice(this.lastTextGroups.indexOf(text.parentElement), 1);
                             }
                         }, { isColumn: this.isColumn });
 
