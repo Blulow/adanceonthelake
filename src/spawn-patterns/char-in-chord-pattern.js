@@ -2,8 +2,8 @@ import SpawnPattern from "./spawn-pattern";
 import Lyric from "../lyric";
 
 export default class CharInChordPattern extends SpawnPattern {
-    constructor(player, arena, telegraph) {
-        super(player, arena, telegraph);
+    constructor(player, arena, attack, telegraph) {
+        super(player, arena, attack, telegraph);
         this.c = player.video.firstChar;
         this.lastWord = null;
         this.lastChar = null;
@@ -32,7 +32,7 @@ export default class CharInChordPattern extends SpawnPattern {
                         const chordChange = this.player.findChordChange(this.player.videoPosition, now);
 					    const chord = chordChange.current;
 
-                        const lyric = new Lyric(unit, this.telegraph);
+                        const lyric = new Lyric(unit, this.attack, this.telegraph);
                         
                         if (chord !== this.lastChord) {
                             if (Math.random() > 0.5) this.isColumn = !this.isColumn;

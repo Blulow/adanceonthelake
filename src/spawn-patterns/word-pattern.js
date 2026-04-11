@@ -2,8 +2,8 @@ import SpawnPattern from "./spawn-pattern";
 import Lyric from "../lyric";
 
 export default class WordPattern extends SpawnPattern {
-    constructor(player, arena, telegraph) {
-        super(player, arena, telegraph);
+    constructor(player, arena, attack, telegraph) {
+        super(player, arena, attack, telegraph);
         this.w = player.video.firstWord;
         this.lastWord = null;
         this.lastTextElements = [];
@@ -16,7 +16,7 @@ export default class WordPattern extends SpawnPattern {
             this.w.animate = (now, unit) => {
                 if (unit.contains(now)) {
                     if (unit.text !== this.lastWord) {
-                        const lyric = new Lyric(unit, this.telegraph);
+                        const lyric = new Lyric(unit, this.attack, this.telegraph);
                         lyric.text.classList.add("text-word");
                         
                         if (Math.random() > 0.5) this.isColumn = !this.isColumn;

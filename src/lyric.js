@@ -1,5 +1,5 @@
 export default class Lyric {
-    constructor(unit, Telegraph) {
+    constructor(unit, Attack, Telegraph) {
         this.text = document.createElement("div");
         this.text.classList.add("text");
         this.text.innerText = unit.text;
@@ -7,12 +7,12 @@ export default class Lyric {
         this.x = 0;
         this.y = 0;
 
-        this.telegraph = new Telegraph();
+        this.attack = new Attack(Telegraph);
     }
 
     spawn(parent) {
         parent.appendChild(this.text);
-        this.telegraph.spawn(document.getElementById("telegraphs"), this.x, this.y, this.text);
+        this.attack.telegraph.spawn(document.getElementById("telegraphs"), this.x, this.y, this.text);
     }
     
     setPosAndMoveIn(x, y, startX, startY) {
@@ -28,7 +28,7 @@ export default class Lyric {
         this.text.addEventListener("animationend", e => {
             if (e.animationName === "movein") {
                 this.text.classList.add("fadeout-movein");
-                this.telegraph.fadeOutAndRemove();
+                this.attack.telegraph.fadeOutAndRemove();
             } else if (e.animationName === "fadeout") {
                 action();
             }

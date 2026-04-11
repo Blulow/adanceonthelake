@@ -3,6 +3,7 @@ import WordPattern from "./spawn-patterns/word-pattern";
 import CharInWordPattern from "./spawn-patterns/char-in-word-pattern";
 import CharInChordPattern from "./spawn-patterns/char-in-chord-pattern";
 import PosTelegraph from "./telegraphs/pos-telegraph";
+import LinePattern from "./attack-patterns/line-pattern";
 
 const player = new Player({
 	app: { token: "4fLfxYZ0Ntw6flJe" }
@@ -16,7 +17,7 @@ player.addListener({
 			document.getElementById("play").addEventListener("click", () => {
 				player.requestPlay();
 				// player.requestMediaSeek(230 * 1000);
-				player.requestMediaSeek(189 * 1000);
+				// player.requestMediaSeek(189 * 1000);
 			});
 		}
 		if (!app.songUrl) {
@@ -25,7 +26,7 @@ player.addListener({
 	},
 	onVideoReady() {
 		if (!player.app.managed) {
-			new CharInWordPattern(player, lyricsArena, PosTelegraph).animate();
+			new CharInChordPattern(player, lyricsArena, LinePattern, PosTelegraph).animate();
 		}
 	}
 });
