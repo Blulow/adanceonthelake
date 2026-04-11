@@ -26,7 +26,10 @@ player.addListener({
 	},
 	onVideoReady() {
 		if (!player.app.managed) {
-			new CharInChordPattern(player, lyricsArena, LinePattern, PosTelegraph).animate();
+			document.getElementById("lyrics").replaceChildren();
+			document.getElementById("telegraphs").replaceChildren();
+			document.getElementById("bullets").replaceChildren();
+			new WordPattern(player, lyricsArena, LinePattern, PosTelegraph).animate();
 		}
 	}
 });

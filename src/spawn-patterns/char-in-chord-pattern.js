@@ -7,8 +7,6 @@ export default class CharInChordPattern extends SpawnPattern {
         this.c = player.video.firstChar;
         this.lastWord = null;
         this.lastChar = null;
-        this.lastTextGroups = new Map();
-        // this.lastTextGroupLengths = [];
         this.lastChord = null;
 
         this.textTopValue = "";
@@ -29,7 +27,7 @@ export default class CharInChordPattern extends SpawnPattern {
             this.c.animate = (now, unit) => {
                 if (unit.contains(now)) {
                     if (unit.text !== this.lastChar) {
-                        const chordChange = this.player.findChordChange(this.player.videoPosition, now);
+                        const chordChange = this.player.findChordChange(this.player.videoPosition, unit.startTime);
 					    const chord = chordChange.current;
 
                         const lyric = new Lyric(unit, this.attack, this.telegraph);
@@ -77,31 +75,12 @@ export default class CharInChordPattern extends SpawnPattern {
                             this.lastWord = charsInChord;
                             this.lastChord = chord;
                             this.textGroup.dataset.length = charsInChord.length;
-                            console.log(this.textGroup, charsInChord.length);
-                            // this.lastTextGroups.set(this.textGroup, charsInChord.length);
-                            // this.lastTextGroups.push(this.textGroup);
-                            // this.lastTextGroupLengths.push(charsInChord.length);
-                            // console.log(this.textGroup);
-                            // console.log(charsInChord.length);
                         }
                         
                         lyric.onFadeOut(() => {
                             const text = lyric.text;
-                            // console.log(this.lastTextGroupLengths[this.lastTextGroups.indexOf(text.parentElement)]);
-                            // console.log(this.lastTextGroups[this.lastTextGroups.indexOf(text.parentElement)]);
-                            // if (Array.from(text.parentElement.children).indexOf(text) === this.lastTextGroupLengths[this.lastTextGroups.indexOf(text.parentElement)] - 1) {
-                            // console.log(Array.from(text.parentElement.children).indexOf(text), this.lastTextGroups.get(text.parentElement) - 1);
-                            // console.log(this.lastTextGroups);
-                            // if (Array.from(text.parentElement.children).indexOf(text) === this.lastTextGroups.get(text.parentElement) - 1) {
                             text.parentElement.dataset.length--;
-                            // console.log(text.parentElement.dataset.length, text.innerText);
-                            // if (Array.from(text.parentElement.children).indexOf(text) === text.parentElement.dataset.length) {
-                            if (text.parentElement.dataset.length <= 0) {
-                                text.parentElement.remove();
-                                // this.lastTextGroups.delete(text.parentElement);
-                                // this.lastTextGroups.splice(this.lastTextGroups.indexOf(text.parentElement), 1);
-                                // this.lastTextGroupLengths.splice(this.lastTextGroups.indexOf(text.parentElement), 1);
-                            }
+                            if (text.parentElement.dataset.length <= 0) text.parentElement.remove();
                         }, { isColumn: this.isColumn });
 
                         lyric.setPosAndMoveIn(this.textLeftValue, this.textTopValue, this.x, this.y);
@@ -121,5 +100,6 @@ export default class CharInChordPattern extends SpawnPattern {
             };
             this.c = this.c.next;
         }
+
     }
 }

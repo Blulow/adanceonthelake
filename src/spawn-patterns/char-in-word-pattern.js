@@ -7,8 +7,6 @@ export default class CharInWordPattern extends SpawnPattern {
         this.c = player.video.firstChar;
         this.lastWord = null;
         this.lastChar = null;
-        this.lastTextGroups = [];
-        this.lastTextGroupLengths = [];
 
         this.textTopValue = "";
         this.textLeftValue = "";
@@ -65,16 +63,13 @@ export default class CharInWordPattern extends SpawnPattern {
                             ({ x: this.x, y: this.y } = this.getRandomDirection());
                             
                             this.lastWord = unit.parent.text;
-                            this.lastTextGroups.push(this.textGroup);
-                            this.lastTextGroupLengths.push(unit.parent.text.length);
+                            this.textGroup.dataset.length = unit.parent.text.length;
                         }
 
                         lyric.onFadeOut(() => {
                             const text = lyric.text;
-                            if (Array.from(text.parentElement.children).indexOf(text) === this.lastTextGroupLengths[Array.from(this.lastTextGroupLengths).indexOf(text.parentElement)] - 1) {
-                                text.parentElement.remove();
-                                this.lastTextGroups.splice(this.lastTextGroups.indexOf(text.parentElement), 1);
-                            }
+                            text.parentElement.dataset.length--;
+                            if (text.parentElement.dataset.length <= 0) text.parentElement.remove();
                         }, { isColumn: this.isColumn });
 
                         lyric.setPosAndMoveIn(this.textLeftValue, this.textTopValue, this.x, this.y);
