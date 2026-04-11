@@ -39,7 +39,7 @@ export default class WordPattern extends SpawnPattern {
                             const text = lyric.text;
                             text.remove();
                             this.lastTextElements.splice(this.lastTextElements.indexOf(text), 1);
-                        });
+                        }, { isColumn: this.isColumn });
                     }
                 }
             };

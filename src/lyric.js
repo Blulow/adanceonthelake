@@ -24,10 +24,11 @@ export default class Lyric {
         this.text.style.setProperty("--start-y", `${startY}px`);
     }
 
-    onFadeOut(action) {
+    onFadeOut(action, params) {
         this.text.addEventListener("animationend", e => {
             if (e.animationName === "movein") {
                 this.text.classList.add("fadeout-movein");
+                this.attack.shoot(this.x, this.y, params);
                 this.attack.telegraph.fadeOutAndRemove();
             } else if (e.animationName === "fadeout") {
                 action();

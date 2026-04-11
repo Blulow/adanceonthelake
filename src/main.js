@@ -18,6 +18,7 @@ player.addListener({
 				player.requestPlay();
 				// player.requestMediaSeek(230 * 1000);
 				// player.requestMediaSeek(189 * 1000);
+				player.requestMediaSeek(15 * 1000);
 			});
 		}
 		if (!app.songUrl) {

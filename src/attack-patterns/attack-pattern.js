@@ -4,7 +4,7 @@ export default class AttackPattern {
        this.telegraph = new Telegraph();
     }
 
-    shoot() {
-        document.getElementById("bullets").appendChild(this.bullet);
+    shoot(x, y) {
+
     }
 }

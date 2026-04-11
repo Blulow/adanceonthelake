@@ -86,7 +86,7 @@ export default class CharInChordPattern extends SpawnPattern {
                                 text.parentElement.remove();
                                 this.lastTextGroups.splice(this.lastTextGroups.indexOf(text.parentElement), 1);
                             }
-                        })
+                        }, { isColumn: this.isColumn });
 
                         lyric.setPosAndMoveIn(this.textLeftValue, this.textTopValue, this.x, this.y);
                         lyric.spawn(this.textGroup);
