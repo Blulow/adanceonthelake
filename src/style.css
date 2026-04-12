@@ -25,6 +25,13 @@ div {
     display: flex;
 }
 
+.player {
+	width: 3vw;
+	aspect-ratio: 1;
+	border-radius: 50%;
+	background-color: #39e1c2;
+}
+
 #lyrics, #telegraphs {
     position: absolute;
     width: 100%;

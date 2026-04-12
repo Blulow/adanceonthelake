@@ -1,4 +1,5 @@
 import { Player } from "textalive-app-api";
+import PlayerCharacter from "./player-character";
 import WordPattern from "./spawn-patterns/word-pattern";
 import CharInWordPattern from "./spawn-patterns/char-in-word-pattern";
 import CharInChordPattern from "./spawn-patterns/char-in-chord-pattern";
@@ -8,6 +9,8 @@ import LinePattern from "./attack-patterns/line-pattern";
 const player = new Player({
 	app: { token: "4fLfxYZ0Ntw6flJe" }
 });
+
+const pc = new PlayerCharacter();
 
 const lyricsArena = document.getElementById("lyrics");
 
@@ -29,7 +32,14 @@ player.addListener({
 			document.getElementById("lyrics").replaceChildren();
 			document.getElementById("telegraphs").replaceChildren();
 			document.getElementById("bullets").replaceChildren();
-			new WordPattern(player, lyricsArena, LinePattern, PosTelegraph).animate();
+			pc.spawn();
+			new CharInChordPattern(player, lyricsArena, LinePattern, PosTelegraph).animate();
 		}
 	}
 });
+
+function gameUpdate() {
+	pc.update();
+	requestAnimationFrame(gameUpdate);
+}
+gameUpdate();
