@@ -33,7 +33,7 @@ player.addListener({
 			document.getElementById("telegraphs").replaceChildren();
 			document.getElementById("bullets").replaceChildren();
 			pc.spawn();
-			new CharInChordPattern(player, lyricsArena, LinePattern, PosTelegraph).animate();
+			new CharInWordPattern(player, lyricsArena, LinePattern, PosTelegraph).animate();
 		}
 	}
 });
