@@ -32,6 +32,24 @@ div {
 	background-color: #39e1c2;
 }
 
+.dash-cooldown-bar {
+	width: 0%;
+	height: 10%;
+	background-color: #fff;
+	opacity: 0.4;
+	top: -20%;
+}
+
+.dash-cooldown-bar-active {
+	animation: dash-cooldown-bar-active 2s;
+}
+
+@keyframes dash-cooldown-bar-active {
+	to {
+		width: 100%;
+	}
+}
+
 #lyrics, #telegraphs {
     position: absolute;
     width: 100%;
