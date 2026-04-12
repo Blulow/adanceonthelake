@@ -7,6 +7,13 @@ export default class PlayerCharacter {
         this.x = 0;
         this.y = 0;
         this.speed = 7;
+
+        this.keys = {
+            ArrowUp: false,
+            ArrowDown: false,
+            ArrowLeft: false,
+            ArrowRight: false,
+        }
     }
 
     spawn() {
@@ -16,40 +23,23 @@ export default class PlayerCharacter {
         this.pc.style.top = `${this.y}px`;
         this.pc.style.left = `${this.x}px`;
         window.addEventListener("keydown", e => {
-            switch(e.key) {
-                case "ArrowUp":
-                    this.velocity.y = -1;
-                    break;
-                case "ArrowDown":
-                    this.velocity.y = 1;
-                    break;
-                case "ArrowLeft":
-                    this.velocity.x = -1;
-                    break;
-                case "ArrowRight":
-                    this.velocity.x = 1;
-                    break;
-            }
+            if (this.keys.hasOwnProperty(e.key)) this.keys[e.key] = true;
         });
         window.addEventListener("keyup", e => {
-            switch(e.key) {
-                case "ArrowUp":
-                    this.velocity.y = 0;
-                    break;
-                case "ArrowDown":
-                    this.velocity.y = 0;
-                    break;
-                case "ArrowLeft":
-                    this.velocity.x = 0;
-                    break;
-                case "ArrowRight":
-                    this.velocity.x = 0;
-                    break;
-            }
+            if (this.keys.hasOwnProperty(e.key)) this.keys[e.key] = false;
+            console.log(this.keys);
         });
     }
 
     update() {
+        this.velocity.x = 0;
+        this.velocity.y = 0;
+
+        if (this.keys.ArrowUp) this.velocity.y -= 1;
+        if (this.keys.ArrowDown) this.velocity.y += 1;
+        if (this.keys.ArrowLeft) this.velocity.x -= 1;
+        if (this.keys.ArrowRight) this.velocity.x += 1;
+        
         const veloNorm = this.normalize(this.velocity);
         this.x += veloNorm.x * this.speed;
         this.y += veloNorm.y * this.speed;
