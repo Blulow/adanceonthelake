@@ -1,8 +1,9 @@
 export default class PlayerCharacter {
     constructor() {
         this.NORMAL_SPEED = 7;
-        this.DASH_SPEED = 20;
-        this.DASH_COOLDOWN = 2000;
+        this.DASH_SPEED = 50;
+        this.DASH_TIME = 100;
+        this.DASH_COOLDOWN = 500;
 
         this.pc = document.createElement("div");
         this.pc.classList.add("player");
@@ -21,9 +22,11 @@ export default class PlayerCharacter {
         this.isMoving = false;
         this.isDashed = false;
         this.isDashing = false;
+        this.isDashCoolDownFinished = false;
 
         this.dashCooldownBar = document.createElement("div");
         this.dashCooldownBar.classList.add("dash-cooldown-bar");
+        this.dashCooldownBar.style.setProperty("--dash-cooldown", `${this.DASH_COOLDOWN/1000}s`)
         this.dashCooldownBar.addEventListener("animationend", e => {
             if (this.dashCooldownBar.classList.contains("dash-cooldown-bar-active") && e.animationName === "dash-cooldown-bar-active") {
                 this.dashCooldownBar.classList.remove("dash-cooldown-bar-active");
@@ -55,9 +58,6 @@ export default class PlayerCharacter {
                 this.isMoving = true;
                 this.keys[e.key] = false;
             }
-            if (e.key === "Shift" && !this.isDashing) {
-                this.isDashed = false;
-            }
         });
     }
 
@@ -77,11 +77,15 @@ export default class PlayerCharacter {
         this.pc.style.left = `${this.x}px`;
 
         const collisions = this.checkCollisions();
-        if (collisions.length > 0) {
-            collisions.forEach(e => {
-                e.style.backgroundColor = "#00ff00";
-            });
+        if (collisions) {
+            if (collisions.length > 0) {
+                collisions.forEach(e => {
+                    e.style.backgroundColor = "#00ff00";
+                });
+            }
         }
+        
+        if (this.isDashCoolDownFinished) this.isDashed = false;
     }
 
     normalize(v) {
@@ -91,6 +95,8 @@ export default class PlayerCharacter {
     }
 
     checkCollisions() {
+        if (this.isDashing) return;
+
         const hitbox = this.pc.getBoundingClientRect();
         const bullets = [...document.getElementsByClassName("bullet")];
 
@@ -106,13 +112,15 @@ export default class PlayerCharacter {
 
     dash() {
         this.isDashing = true;
+        this.isDashCoolDownFinished = false;
         this.speed = this.DASH_SPEED;
         setTimeout(() => {
             this.speed = this.NORMAL_SPEED;
             this.dashCooldownBar.classList.add("dash-cooldown-bar-active");
-        }, 100);
-        setTimeout(() => {
             this.isDashing = false;
+        }, this.DASH_TIME);
+        setTimeout(() => {
+            this.isDashCoolDownFinished = true;
         }, this.DASH_COOLDOWN);
     }
 }

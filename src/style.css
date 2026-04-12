@@ -41,7 +41,7 @@ div {
 }
 
 .dash-cooldown-bar-active {
-	animation: dash-cooldown-bar-active 2s;
+	animation: dash-cooldown-bar-active var(--dash-cooldown);
 }
 
 @keyframes dash-cooldown-bar-active {
