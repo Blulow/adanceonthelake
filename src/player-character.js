@@ -1,19 +1,26 @@
 export default class PlayerCharacter {
     constructor() {
+        this.NORMAL_SPEED = 7;
+        this.DASH_SPEED = 20;
+        this.DASH_COOLDOWN = 2000;
+
         this.pc = document.createElement("div");
         this.pc.classList.add("player");
 
         this.velocity = { x: 0, y: 0 };
         this.x = 0;
         this.y = 0;
-        this.speed = 7;
+        this.speed = this.NORMAL_SPEED;
 
         this.keys = {
             ArrowUp: false,
             ArrowDown: false,
             ArrowLeft: false,
             ArrowRight: false,
-        }
+        };
+        this.isMoving = false;
+        this.isDashed = false;
+        this.isDashing = false;
     }
 
     spawn() {
@@ -23,11 +30,25 @@ export default class PlayerCharacter {
         this.pc.style.top = `${this.y}px`;
         this.pc.style.left = `${this.x}px`;
         window.addEventListener("keydown", e => {
-            if (this.keys.hasOwnProperty(e.key)) this.keys[e.key] = true;
+            if (this.keys.hasOwnProperty(e.key)) {
+                this.isMoving = true;
+                this.keys[e.key] = true;
+            }
+            if (e.key === "Shift") {
+                if (this.isMoving && !this.isDashed) {
+                    this.dash();
+                    this.isDashed = true;
+                }
+            }
         });
         window.addEventListener("keyup", e => {
-            if (this.keys.hasOwnProperty(e.key)) this.keys[e.key] = false;
-            console.log(this.keys);
+            if (this.keys.hasOwnProperty(e.key)) {
+                this.isMoving = true;
+                this.keys[e.key] = false;
+            }
+            if (e.key === "Shift" && !this.isDashing) {
+                this.isDashed = false;
+            }
         });
     }
 
@@ -72,5 +93,16 @@ export default class PlayerCharacter {
         ));
 
         return collided;
+    }
+
+    dash() {
+        this.isDashing = true;
+        this.speed = this.DASH_SPEED;
+        setTimeout(() => {
+            this.speed = this.NORMAL_SPEED;
+        }, 100);
+        setTimeout(() => {
+            this.isDashing = false;
+        }, this.DASH_COOLDOWN);
     }
 }
