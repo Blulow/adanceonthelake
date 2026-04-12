@@ -55,11 +55,32 @@ export default class PlayerCharacter {
         this.y += veloNorm.y * this.speed;
         this.pc.style.top = `${this.y}px`;
         this.pc.style.left = `${this.x}px`;
+
+        const collisions = this.checkCollisions();
+        if (collisions.length > 0) {
+            collisions.forEach(e => {
+                e.style.backgroundColor = "#00ff00";
+            });
+        }
     }
 
     normalize(v) {
         const length = Math.hypot(v.x, v.y);
         if (length === 0) return { x: 0, y: 0 };
         return { x: v.x / length, y: v.y / length };
+    }
+
+    checkCollisions() {
+        const hitbox = this.pc.getBoundingClientRect();
+        const bullets = [...document.getElementsByClassName("bullet")];
+
+        const collided = bullets.filter(e => !(
+            hitbox.right < e.getBoundingClientRect().left || 
+            hitbox.left > e.getBoundingClientRect().right || 
+            hitbox.bottom < e.getBoundingClientRect().top || 
+            hitbox.top > e.getBoundingClientRect().bottom
+        ));
+
+        return collided;
     }
 }
