@@ -1,7 +1,8 @@
 export default class PlayerCharacter {
     constructor() {
-        this.NORMAL_SPEED = 7;
-        this.DASH_SPEED = 50;
+        const maxWidth = Math.max(window.innerHeight, window.innerWidth);
+        this.NORMAL_SPEED = maxWidth > 1024 ? 7 : 3;
+        this.DASH_SPEED = maxWidth > 1024 ? 50 : 20;
         this.DASH_TIME = 100;
         this.DASH_COOLDOWN = 500;
 
@@ -71,21 +72,23 @@ export default class PlayerCharacter {
         });
 
         window.addEventListener("touchstart", e => {
+            if (this.touch) this.dash();
+
             this.joystick.style.visibility = "visible";
             this.stick.style.visibility = "visible";
             this.initialTouchPos.x = e.touches[0].clientX;
             this.initialTouchPos.y = e.touches[0].clientY;
             this.joystick.style.top = `${this.initialTouchPos.y - this.joystick.offsetHeight / 2}px`;
             this.joystick.style.left = `${this.initialTouchPos.x - this.joystick.offsetWidth / 2}px`;
-            this.stick.style.top = `${this.initialTouchPos.y - this.joystick.offsetHeight / 2}px`;
-            this.stick.style.left = `${this.initialTouchPos.x - this.joystick.offsetWidth / 2}px`;
+            this.stick.style.top = `${this.initialTouchPos.y - this.stick.offsetHeight / 2}px`;
+            this.stick.style.left = `${this.initialTouchPos.x - this.stick.offsetWidth / 2}px`;
             this.touch = true;
         });
 
         window.addEventListener("touchmove", e => {
             this.touchPos.x = e.touches[0].clientX;
             this.touchPos.y = e.touches[0].clientY;
-            this.updateJoystick()
+            this.updateJoystick();
         });
 
         window.addEventListener("touchend", e => {
@@ -120,7 +123,7 @@ export default class PlayerCharacter {
         if (collisions) {
             if (collisions.length > 0) {
                 collisions.forEach(e => {
-                    e.style.backgroundColor = "#00ff00";
+                    e.style.backgroundColor = "#ffff00";
                 });
             }
         }
@@ -167,11 +170,8 @@ export default class PlayerCharacter {
     updateJoystick() {
         const relWidth = this.touchPos.x - this.initialTouchPos.x;
         const relHeight = this.touchPos.y - this.initialTouchPos.y;
-        //const relAngle = Math.atan(Math.abs(relWidth / relHeight));
         const relDist = Math.hypot(relWidth, relHeight);
         const unitDist = this.joystick.offsetWidth / 2;
-        //const unitX = Math.sin(relAngle) * unitDist;
-        //const unitY = Math.cos(relAngle) * unitDist;
         const unitVec = this.normalize({ x: relWidth, y: relHeight });
         if (relDist / unitDist > 1) {
             let posX = this.initialTouchPos.x + unitVec.x * unitDist;
@@ -182,7 +182,6 @@ export default class PlayerCharacter {
             this.stick.style.top = `${this.touchPos.y - this.joystick.offsetHeight / 4}px`;
             this.stick.style.left = `${this.touchPos.x - this.joystick.offsetWidth / 4}px`;
         }
-        //console.log(unitX, unitY)
         this.velocity.x = unitVec.x;
         this.velocity.y = unitVec.y;
     }
