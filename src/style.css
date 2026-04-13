@@ -8,6 +8,7 @@ body {
     overflow: hidden;
     background-color: black;
     color: white;
+	user-select: none;
 }
 
 button {
@@ -47,6 +48,34 @@ div {
 @keyframes dash-cooldown-bar-active {
 	to {
 		width: 100%;
+	}
+}
+
+#joystick {
+	width: 12vh;
+	aspect-ratio: 1;
+	border-radius: 50%;
+	outline: 1px solid #fff;
+	opacity: 0.4;
+	visibility: hidden;
+}
+
+#stick {
+	width: 6vh;
+	aspect-ratio: 1;
+	border-radius: 50%;
+	background-color: #fff;
+	opacity: 0.4;
+	visibility: hidden;
+}
+
+@media (orientation: landscape) {
+	#joystick {
+		width: 12vw;
+	}
+
+	#stick {
+		width: 6vw;
 	}
 }
 

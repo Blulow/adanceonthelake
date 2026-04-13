@@ -20,7 +20,7 @@ player.addListener({
 			document.getElementById("play").addEventListener("click", () => {
 				player.requestPlay();
 				// player.requestMediaSeek(230 * 1000);
-				player.requestMediaSeek(30 * 1000);
+				// player.requestMediaSeek(30 * 1000);
 			});
 		}
 		if (!app.songUrl) {

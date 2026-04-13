@@ -26,17 +26,27 @@ export default class PlayerCharacter {
 
         this.dashCooldownBar = document.createElement("div");
         this.dashCooldownBar.classList.add("dash-cooldown-bar");
-        this.dashCooldownBar.style.setProperty("--dash-cooldown", `${this.DASH_COOLDOWN/1000}s`)
+        this.dashCooldownBar.style.setProperty("--dash-cooldown", `${this.DASH_COOLDOWN / 1000}s`)
         this.dashCooldownBar.addEventListener("animationend", e => {
             if (this.dashCooldownBar.classList.contains("dash-cooldown-bar-active") && e.animationName === "dash-cooldown-bar-active") {
                 this.dashCooldownBar.classList.remove("dash-cooldown-bar-active");
             }
         })
         this.pc.appendChild(this.dashCooldownBar);
+
+        //mobile
+        this.joystick = document.getElementById("joystick");
+        this.stick = document.getElementById("stick");
+
+        this.touch = false;
+        this.initialTouchPos = { x: 0, y: 0 };
+        this.touchPos = { x: 0, y: 0 };
+        //
+
     }
 
     spawn() {
-        document.getElementById("arena").appendChild(this.pc);
+        document.getElementById("arena").appendChild(this.pc, this.joystick);
         this.x = window.innerWidth / 2;
         this.y = window.innerHeight / 2;
         this.pc.style.top = `${this.y}px`;
@@ -59,17 +69,43 @@ export default class PlayerCharacter {
                 this.keys[e.key] = false;
             }
         });
+
+        window.addEventListener("touchstart", e => {
+            this.joystick.style.visibility = "visible";
+            this.stick.style.visibility = "visible";
+            this.initialTouchPos.x = e.touches[0].clientX;
+            this.initialTouchPos.y = e.touches[0].clientY;
+            this.joystick.style.top = `${this.initialTouchPos.y - this.joystick.offsetHeight / 2}px`;
+            this.joystick.style.left = `${this.initialTouchPos.x - this.joystick.offsetWidth / 2}px`;
+            this.stick.style.top = `${this.initialTouchPos.y - this.joystick.offsetHeight / 2}px`;
+            this.stick.style.left = `${this.initialTouchPos.x - this.joystick.offsetWidth / 2}px`;
+            this.touch = true;
+        });
+
+        window.addEventListener("touchmove", e => {
+            this.touchPos.x = e.touches[0].clientX;
+            this.touchPos.y = e.touches[0].clientY;
+            this.updateJoystick()
+        });
+
+        window.addEventListener("touchend", e => {
+            this.joystick.style.visibility = "hidden";
+            this.stick.style.visibility = "hidden";
+            this.touch = false;
+        })
     }
 
     update() {
-        this.velocity.x = 0;
-        this.velocity.y = 0;
+        if (!this.touch) {
+            this.velocity.x = 0;
+            this.velocity.y = 0;
+        }
 
         if (this.keys.ArrowUp) this.velocity.y -= 1;
         if (this.keys.ArrowDown) this.velocity.y += 1;
         if (this.keys.ArrowLeft) this.velocity.x -= 1;
         if (this.keys.ArrowRight) this.velocity.x += 1;
-        
+
         const veloNorm = this.normalize(this.velocity);
         this.x += veloNorm.x * this.speed;
         this.y += veloNorm.y * this.speed;
@@ -84,7 +120,7 @@ export default class PlayerCharacter {
                 });
             }
         }
-        
+
         if (this.isDashCoolDownFinished) this.isDashed = false;
     }
 
@@ -101,9 +137,9 @@ export default class PlayerCharacter {
         const bullets = [...document.getElementsByClassName("bullet")];
 
         const collided = bullets.filter(e => !(
-            hitbox.right < e.getBoundingClientRect().left || 
-            hitbox.left > e.getBoundingClientRect().right || 
-            hitbox.bottom < e.getBoundingClientRect().top || 
+            hitbox.right < e.getBoundingClientRect().left ||
+            hitbox.left > e.getBoundingClientRect().right ||
+            hitbox.bottom < e.getBoundingClientRect().top ||
             hitbox.top > e.getBoundingClientRect().bottom
         ));
 
@@ -122,5 +158,28 @@ export default class PlayerCharacter {
         setTimeout(() => {
             this.isDashCoolDownFinished = true;
         }, this.DASH_COOLDOWN);
+    }
+
+    updateJoystick() {
+        const relWidth = this.touchPos.x - this.initialTouchPos.x;
+        const relHeight = this.touchPos.y - this.initialTouchPos.y;
+        //const relAngle = Math.atan(Math.abs(relWidth / relHeight));
+        const relDist = Math.hypot(relWidth, relHeight);
+        const unitDist = this.joystick.offsetWidth / 2;
+        //const unitX = Math.sin(relAngle) * unitDist;
+        //const unitY = Math.cos(relAngle) * unitDist;
+        const unitVec = this.normalize({ x: relWidth, y: relHeight });
+        if (relDist / unitDist > 1) {
+            let posX = this.initialTouchPos.x + unitVec.x * unitDist;
+            let posY = this.initialTouchPos.y + unitVec.y * unitDist;
+            this.stick.style.top = `${posY - this.joystick.offsetHeight / 4}px`;
+            this.stick.style.left = `${posX - this.joystick.offsetWidth / 4}px`;
+        } else {
+            this.stick.style.top = `${this.touchPos.y - this.joystick.offsetHeight / 4}px`;
+            this.stick.style.left = `${this.touchPos.x - this.joystick.offsetWidth / 4}px`;
+        }
+        //console.log(unitX, unitY)
+        this.velocity.x = unitVec.x;
+        this.velocity.y = unitVec.y;
     }
 }
