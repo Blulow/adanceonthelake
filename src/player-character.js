@@ -42,6 +42,7 @@ export default class PlayerCharacter {
         this.touch = false;
         this.initialTouchPos = { x: 0, y: 0 };
         this.touchPos = { x: 0, y: 0 };
+        this.joystickTouchId = null;
         //
 
     }
@@ -69,32 +70,57 @@ export default class PlayerCharacter {
                 this.isMoving = true;
                 this.keys[e.key] = false;
             }
-        });
+        }, { passive: false });
 
         window.addEventListener("touchstart", e => {
-            if (this.touch) this.dash();
+            console.log(e.target.id, e.target.classList);
+            if (e.target.closest("#play")) return;
 
-            this.joystick.style.visibility = "visible";
-            this.stick.style.visibility = "visible";
-            this.initialTouchPos.x = e.touches[0].clientX;
-            this.initialTouchPos.y = e.touches[0].clientY;
-            this.joystick.style.top = `${this.initialTouchPos.y - this.joystick.offsetHeight / 2}px`;
-            this.joystick.style.left = `${this.initialTouchPos.x - this.joystick.offsetWidth / 2}px`;
-            this.stick.style.top = `${this.initialTouchPos.y - this.stick.offsetHeight / 2}px`;
-            this.stick.style.left = `${this.initialTouchPos.x - this.stick.offsetWidth / 2}px`;
-            this.touch = true;
-        });
+            e.preventDefault();
+            for (let touch of e.changedTouches) {
+                if (this.joystickTouchId === null) {
+                    this.joystickTouchId = touch.identifier;
+                    this.joystick.style.visibility = "visible";
+                    this.stick.style.visibility = "visible";
+                    this.initialTouchPos.x = touch.clientX;
+                    this.initialTouchPos.y = touch.clientY;
+                    this.joystick.style.top = `${this.initialTouchPos.y - this.joystick.offsetHeight / 2}px`;
+                    this.joystick.style.left = `${this.initialTouchPos.x - this.joystick.offsetWidth / 2}px`;
+                    this.stick.style.top = `${this.initialTouchPos.y - this.stick.offsetHeight / 2}px`;
+                    this.stick.style.left = `${this.initialTouchPos.x - this.stick.offsetWidth / 2}px`;
+                    this.touch = true;
+                } else this.dash();
+            }
+        }, { passive: false });
 
         window.addEventListener("touchmove", e => {
-            this.touchPos.x = e.touches[0].clientX;
-            this.touchPos.y = e.touches[0].clientY;
-            this.updateJoystick();
-        });
+            if (e.target.closest("#play")) return;
+            e.preventDefault();
+            for (let touch of e.touches) {
+                if (touch.identifier === this.joystickTouchId) {
+                    this.touchPos.x = touch.clientX;
+                    this.touchPos.y = touch.clientY;
+                    this.updateJoystick();
+                }
+            }
+        }, { passive: false });
 
         window.addEventListener("touchend", e => {
-            this.joystick.style.visibility = "hidden";
-            this.stick.style.visibility = "hidden";
-            this.touch = false;
+            console.log(e.target.id, e.target.classList);
+            console.log("ee")
+            if (e.target.closest("#play")) return;
+            console.log(e)
+            e.preventDefault();
+            console.log(e.changedTouches)
+            for (let touch of e.changedTouches) {
+                console.log("eeeee", this.joystickTouchId)
+                if (touch.identifier === this.joystickTouchId) {
+                    this.joystick.style.visibility = "hidden";
+                    this.stick.style.visibility = "hidden";
+                    this.touch = false;
+                    this.joystickTouchId = null;
+                }
+            }
         })
     }
 
