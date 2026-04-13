@@ -107,10 +107,14 @@ export default class PlayerCharacter {
         if (this.keys.ArrowRight) this.velocity.x += 1;
 
         const veloNorm = this.normalize(this.velocity);
-        this.x += veloNorm.x * this.speed;
-        this.y += veloNorm.y * this.speed;
-        this.pc.style.top = `${this.y}px`;
+        if (this.x + veloNorm.x * this.speed <= window.innerWidth - this.pc.offsetWidth && this.x + veloNorm.x * this.speed >= 0) {
+            this.x += veloNorm.x * this.speed;
+        }
+        if (this.y + veloNorm.y * this.speed <= window.innerHeight - this.pc.offsetHeight && this.y + veloNorm.y * this.speed >= 0) {
+            this.y += veloNorm.y * this.speed;
+        }
         this.pc.style.left = `${this.x}px`;
+        this.pc.style.top = `${this.y}px`;
 
         const collisions = this.checkCollisions();
         if (collisions) {
