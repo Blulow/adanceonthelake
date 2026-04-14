@@ -1,3 +1,5 @@
+import Coin from "./coin";
+
 export default class PlayerCharacter {
     constructor() {
         const maxWidth = Math.max(window.innerHeight, window.innerWidth);
@@ -13,6 +15,9 @@ export default class PlayerCharacter {
         this.x = 0;
         this.y = 0;
         this.speed = this.NORMAL_SPEED;
+
+        this.hits = 0;
+        this.coins = 0;
 
         this.keys = {
             ArrowUp: false,
@@ -141,11 +146,29 @@ export default class PlayerCharacter {
         this.pc.style.left = `${this.x}px`;
         this.pc.style.top = `${this.y}px`;
 
-        const collisions = this.checkCollisions();
-        if (collisions) {
-            if (collisions.length > 0) {
-                collisions.forEach(e => {
-                    e.style.backgroundColor = "#ffff00";
+        const bulletCollisions = this.checkBulletCollisions();
+        if (bulletCollisions) {
+            if (bulletCollisions.length > 0) {
+                bulletCollisions.forEach(e => {
+                    if (!e.classList.contains("hit")) {
+                        e.classList.add("hit");
+                        this.hits++;
+                        document.getElementById("hit-count").innerText = this.hits;
+                    }
+                });
+            }
+        }
+
+        const coinCollisions = this.checkCoinCollisions();
+        if (coinCollisions) {
+            if (coinCollisions.length > 0) {
+                coinCollisions.forEach(e => {
+                    if (!e.classList.contains("coin-spin-fade")) {
+                        e.classList.add("coin-spin-fade");
+                        this.coins++;
+                        document.getElementById("coin-count").innerText = this.coins;
+                        new Coin().spawn();
+                    }
                 });
             }
         }
@@ -159,13 +182,29 @@ export default class PlayerCharacter {
         return { x: v.x / length, y: v.y / length };
     }
 
-    checkCollisions() {
+    checkBulletCollisions() {
         if (this.isDashing) return;
 
         const hitbox = this.pc.getBoundingClientRect();
         const bullets = [...document.getElementsByClassName("bullet")];
 
         const collided = bullets.filter(e => !(
+            hitbox.right < e.getBoundingClientRect().left ||
+            hitbox.left > e.getBoundingClientRect().right ||
+            hitbox.bottom < e.getBoundingClientRect().top ||
+            hitbox.top > e.getBoundingClientRect().bottom
+        ));
+
+        return collided;
+    }
+
+    checkCoinCollisions() {
+        if (this.isDashing) return;
+
+        const hitbox = this.pc.getBoundingClientRect();
+        const coins = [...document.getElementsByClassName("coin")];
+
+        const collided = coins.filter(e => !(
             hitbox.right < e.getBoundingClientRect().left ||
             hitbox.left > e.getBoundingClientRect().right ||
             hitbox.bottom < e.getBoundingClientRect().top ||
@@ -183,11 +222,9 @@ export default class PlayerCharacter {
             this.speed = this.NORMAL_SPEED;
             this.dashCooldownBar.classList.add("dash-cooldown-bar-active");
             this.isDashing = false;
-            console.log("dashed");
         }, this.DASH_TIME);
         setTimeout(() => {
             this.isDashCoolDownFinished = true;
-            console.log("cooldowned");
         }, this.DASH_COOLDOWN);
     }
 

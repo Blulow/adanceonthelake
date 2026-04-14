@@ -1,5 +1,6 @@
 import { Player } from "textalive-app-api";
 import PlayerCharacter from "./player-character";
+import Coin from "./coin";
 import WordPattern from "./spawn-patterns/word-pattern";
 import CharInWordPattern from "./spawn-patterns/char-in-word-pattern";
 import CharInChordPattern from "./spawn-patterns/char-in-chord-pattern";
@@ -21,6 +22,7 @@ player.addListener({
 				player.requestPlay();
 				// player.requestMediaSeek(230 * 1000);
 				// player.requestMediaSeek(30 * 1000);
+				new Coin().spawn();
 			});
 		}
 		if (!app.songUrl) {
