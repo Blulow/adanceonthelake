@@ -33,6 +33,7 @@ export default class Lyric {
                 this.attack.shoot(this.x, this.y, this.text, params);
                 this.attack.telegraph.fadeOutAndRemove();
             } else if (e.animationName === "fadeout") {
+                this.text.style.display = "none";
                 action();
             }
         });

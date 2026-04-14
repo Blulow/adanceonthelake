@@ -70,11 +70,11 @@ export default class PlayerCharacter {
                 this.isMoving = true;
                 this.keys[e.key] = false;
             }
-        }, { passive: false });
+        });
 
         window.addEventListener("touchstart", e => {
-            console.log(e.target.id, e.target.classList);
             if (e.target.closest("#play")) return;
+            console.log(e.target.id, e.target.classList);
 
             e.preventDefault();
             for (let touch of e.changedTouches) {
@@ -94,6 +94,7 @@ export default class PlayerCharacter {
         }, { passive: false });
 
         window.addEventListener("touchmove", e => {
+            console.log(e.target.id, e.target.classList);
             if (e.target.closest("#play")) return;
             e.preventDefault();
             for (let touch of e.touches) {
@@ -112,16 +113,14 @@ export default class PlayerCharacter {
             console.log(e)
             e.preventDefault();
             console.log(e.changedTouches)
-            for (let touch of e.changedTouches) {
-                console.log("eeeee", this.joystickTouchId)
-                if (touch.identifier === this.joystickTouchId) {
-                    this.joystick.style.visibility = "hidden";
-                    this.stick.style.visibility = "hidden";
-                    this.touch = false;
-                    this.joystickTouchId = null;
-                }
-            }
-        })
+            this.touchEndHelper(e);
+        }, { passive: false });
+        
+        window.addEventListener("touchcancel", e => {
+            if (e.target.closest("#play")) return;
+            e.preventDefault();
+            this.touchEndHelper(e);    
+        }, { passive: false });
     }
 
     update() {
@@ -210,5 +209,17 @@ export default class PlayerCharacter {
         }
         this.velocity.x = unitVec.x;
         this.velocity.y = unitVec.y;
+    }
+
+    touchEndHelper(e) {
+        for (let touch of e.changedTouches) {
+            console.log("eeeee", this.joystickTouchId)
+            if (touch.identifier === this.joystickTouchId) {
+                this.joystick.style.visibility = "hidden";
+                this.stick.style.visibility = "hidden";
+                this.touch = false;
+                this.joystickTouchId = null;
+            }
+        }
     }
 }
