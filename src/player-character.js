@@ -74,7 +74,6 @@ export default class PlayerCharacter {
 
         window.addEventListener("touchstart", e => {
             if (e.target.closest("#play")) return;
-            console.log(e.target.id, e.target.classList);
 
             e.preventDefault();
             for (let touch of e.changedTouches) {
@@ -88,14 +87,20 @@ export default class PlayerCharacter {
                     this.joystick.style.left = `${this.initialTouchPos.x - this.joystick.offsetWidth / 2}px`;
                     this.stick.style.top = `${this.initialTouchPos.y - this.stick.offsetHeight / 2}px`;
                     this.stick.style.left = `${this.initialTouchPos.x - this.stick.offsetWidth / 2}px`;
+                    this.isMoving = true;
                     this.touch = true;
-                } else this.dash();
+                } else {
+                    if (this.isMoving && !this.isDashed) {
+                        this.dash();
+                        this.isDashed = true;
+                    }
+                }
             }
         }, { passive: false });
 
         window.addEventListener("touchmove", e => {
-            console.log(e.target.id, e.target.classList);
             if (e.target.closest("#play")) return;
+
             e.preventDefault();
             for (let touch of e.touches) {
                 if (touch.identifier === this.joystickTouchId) {
@@ -107,20 +112,12 @@ export default class PlayerCharacter {
         }, { passive: false });
 
         window.addEventListener("touchend", e => {
-            console.log(e.target.id, e.target.classList);
-            console.log("ee")
-            if (e.target.closest("#play")) return;
-            console.log(e)
-            e.preventDefault();
-            console.log(e.changedTouches)
             this.touchEndHelper(e);
-        }, { passive: false });
+        });
         
         window.addEventListener("touchcancel", e => {
-            if (e.target.closest("#play")) return;
-            e.preventDefault();
             this.touchEndHelper(e);    
-        }, { passive: false });
+        });
     }
 
     update() {
@@ -186,9 +183,11 @@ export default class PlayerCharacter {
             this.speed = this.NORMAL_SPEED;
             this.dashCooldownBar.classList.add("dash-cooldown-bar-active");
             this.isDashing = false;
+            console.log("dashed");
         }, this.DASH_TIME);
         setTimeout(() => {
             this.isDashCoolDownFinished = true;
+            console.log("cooldowned");
         }, this.DASH_COOLDOWN);
     }
 
@@ -213,7 +212,6 @@ export default class PlayerCharacter {
 
     touchEndHelper(e) {
         for (let touch of e.changedTouches) {
-            console.log("eeeee", this.joystickTouchId)
             if (touch.identifier === this.joystickTouchId) {
                 this.joystick.style.visibility = "hidden";
                 this.stick.style.visibility = "hidden";

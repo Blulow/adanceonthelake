@@ -10,11 +10,13 @@ body {
     color: white;
 	touch-action: none;
 	user-select: none;
+	pointer-events: none;
 }
 
 button {
     position: absolute;
     z-index: 3;
+	pointer-events: all;
 }
 
 div {
