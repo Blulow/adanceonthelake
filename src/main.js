@@ -1,9 +1,10 @@
 import { Player } from "textalive-app-api";
 import PlayerCharacter from "./player-character";
 import Coin from "./coin";
-import WordPattern from "./spawn-patterns/word-pattern";
-import CharInWordPattern from "./spawn-patterns/char-in-word-pattern";
-import CharInChordPattern from "./spawn-patterns/char-in-chord-pattern";
+import WordType from "./spawn-type/word-type";
+import CharInWordType from "./spawn-type/char-in-word-type";
+import CharInChordType from "./spawn-type/char-in-chord-type";
+import RandomDirPosPattern from "./spawn-patterns/random-dir-pos-pattern";
 import PosTelegraph from "./telegraphs/pos-telegraph";
 import LinePattern from "./attack-patterns/line-pattern";
 
@@ -35,7 +36,7 @@ player.addListener({
 			document.getElementById("telegraphs").replaceChildren();
 			document.getElementById("bullets").replaceChildren();
 			pc.spawn();
-			new CharInWordPattern(player, lyricsArena, LinePattern, PosTelegraph).animate();
+			new WordType(player, lyricsArena, new RandomDirPosPattern(), LinePattern, PosTelegraph).animate();
 		}
 	}
 });

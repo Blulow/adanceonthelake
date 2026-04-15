@@ -1,9 +1,9 @@
-import SpawnPattern from "./spawn-pattern";
+import SpawnType from "./spawn-type";
 import Lyric from "../lyric";
 
-export default class WordPattern extends SpawnPattern {
-    constructor(player, arena, attack, telegraph) {
-        super(player, arena, attack, telegraph);
+export default class WordType extends SpawnType {
+    constructor(player, arena, pattern, attack, telegraph) {
+        super(player, arena, pattern, attack, telegraph);
         this.w = player.video.firstWord;
         this.lastWord = null;
         this.lastTextElements = [];
@@ -17,6 +17,13 @@ export default class WordPattern extends SpawnPattern {
                 if (unit.contains(now)) {
                     if (unit.text !== this.lastWord) {
                         const lyric = new Lyric(unit, this.attack, this.telegraph);
+                        lyric.text.classList.add("text-word");
+
+                        this.pattern.spawnGroup(unit.text, arena);
+                        this.pattern.spawnLyric(lyric);
+
+                        this.lastWord = unit.text;
+                        /*const lyric = new Lyric(unit, this.attack, this.telegraph);
                         lyric.text.classList.add("text-word");
                         
                         if (Math.random() > 0.5) this.isColumn = !this.isColumn;
@@ -42,7 +49,7 @@ export default class WordPattern extends SpawnPattern {
                             const text = lyric.text;
                             text.remove();
                             this.lastTextElements.splice(this.lastTextElements.indexOf(text), 1);
-                        }, { isColumn: this.isColumn });
+                        }, { isColumn: this.isColumn });*/
                     }
                 }
             };
