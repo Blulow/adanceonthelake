@@ -154,6 +154,10 @@ div {
     }
 }
 
+.column {
+	writing-mode: vertical-rl;
+}
+
 .pos-telegraph {
     position: absolute;
     width: 3vw;

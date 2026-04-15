@@ -14,10 +14,10 @@ export default class RandomDirPosPattern extends SpawnPattern {
         this.textLeftValueCache = "";
         this.maxFitHeight = 0;
         this.maxFitWidth = 0;
-    
     }
 
-    spawnGroup(textInGroup, arena) {
+    spawnGroup(textInGroup, arena, isWord = false) {
+        // console.log(textInGroup);
         if (Math.random() > 0.5) this.isColumn = !this.isColumn;
         if (Math.random() > 0.5) this.reverse = !this.reverse;
 
@@ -73,7 +73,8 @@ export default class RandomDirPosPattern extends SpawnPattern {
         unitWord.remove();
         ({ x: this.x, y: this.y } = this.getRandomDirection());
 
-        this.textGroup.dataset.length = textInGroup.length;
+        if (isWord) this.textGroup.dataset.length = 1;
+        else this.textGroup.dataset.length = textInGroup.length;
     }
 
     getRandomDirection() {
@@ -89,6 +90,7 @@ export default class RandomDirPosPattern extends SpawnPattern {
     }
 
     spawnLyric(lyric) {
+        if (this.isColumn) lyric.text.classList.add("column");
         lyric.onFadeOut(() => {
             const text = lyric.text;
             text.parentElement.dataset.length--;
