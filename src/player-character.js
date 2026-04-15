@@ -9,7 +9,7 @@ export default class PlayerCharacter {
         this.DASH_COOLDOWN = 500;
 
         this.pc = document.createElement("div");
-        this.pc.classList.add("player");
+        this.pc.id = "player";
 
         this.velocity = { x: 0, y: 0 };
         this.x = 0;

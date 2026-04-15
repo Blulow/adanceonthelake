@@ -30,7 +30,7 @@ div {
 	touch-action: none;
 }
 
-.player {
+#player {
 	width: 3vw;
 	aspect-ratio: 1;
 	border-radius: 50%;
@@ -134,9 +134,12 @@ div {
     display: block;
     font-size: 10vw;
     line-height: 1;
-    animation: movein 1s ease-out forwards;
-    transform: translate(var(--start-x), var(--start-y));
 	user-select: none;
+}
+
+.text-movein {
+	animation: movein 1s ease-out forwards;
+	transform: translate(var(--start-x), var(--start-y));
 }
 
 .text-word {
@@ -152,6 +155,21 @@ div {
     to {
         transform: translate(0, 0);
     }
+}
+
+.text-movetoedge {
+	animation: movetoedge 1s forwards;
+}
+
+.fadeout-movetoedge {
+    animation: movetoedge 1s forwards,
+        fadeout 0.5s forwards;
+}
+
+@keyframes movetoedge {
+	to {
+		transform: translate(var(--end-x), var(--end-y));
+	}
 }
 
 .column {

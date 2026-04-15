@@ -5,6 +5,7 @@ import WordType from "./spawn-type/word-type";
 import CharInWordType from "./spawn-type/char-in-word-type";
 import CharInChordType from "./spawn-type/char-in-chord-type";
 import RandomDirPosPattern from "./spawn-patterns/random-dir-pos-pattern";
+import RandomDirPattern from "./spawn-patterns/random-dir-pattern";
 import PosTelegraph from "./telegraphs/pos-telegraph";
 import LinePattern from "./attack-patterns/line-pattern";
 
@@ -22,7 +23,7 @@ player.addListener({
 			document.getElementById("play").addEventListener("click", () => {
 				player.requestPlay();
 				// player.requestMediaSeek(230 * 1000);
-				// player.requestMediaSeek(30 * 1000);
+				player.requestMediaSeek(30 * 1000);
 				new Coin().spawn();
 			});
 		}
@@ -36,7 +37,7 @@ player.addListener({
 			document.getElementById("telegraphs").replaceChildren();
 			document.getElementById("bullets").replaceChildren();
 			pc.spawn();
-			new WordType(player, lyricsArena, new RandomDirPosPattern(), LinePattern, PosTelegraph).animate();
+			new CharInChordType(player, lyricsArena, new RandomDirPattern(pc), LinePattern, PosTelegraph).animate();
 		}
 	}
 });

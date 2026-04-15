@@ -17,7 +17,6 @@ export default class RandomDirPosPattern extends SpawnPattern {
     }
 
     spawnGroup(textInGroup, arena, isWord = false) {
-        // console.log(textInGroup);
         if (Math.random() > 0.5) this.isColumn = !this.isColumn;
         if (Math.random() > 0.5) this.reverse = !this.reverse;
 
@@ -90,7 +89,9 @@ export default class RandomDirPosPattern extends SpawnPattern {
     }
 
     spawnLyric(lyric) {
+        lyric.text.classList.add("text-movein");
         if (this.isColumn) lyric.text.classList.add("column");
+
         lyric.onFadeOut(() => {
             const text = lyric.text;
             text.parentElement.dataset.length--;
