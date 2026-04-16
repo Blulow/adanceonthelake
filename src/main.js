@@ -41,7 +41,21 @@ player.addListener({
 			document.getElementById("telegraphs").replaceChildren();
 			document.getElementById("bullets").replaceChildren();
 			pc.spawn();
-			new WordType(player, lyricsArena, new RandomDirPosPattern(pc), BulletShootPattern, PosTelegraph).animate();
+			let changes = 0;
+			let round = new WordType(player, lyricsArena, new RandomDirPosPattern(pc), BulletShootPattern, PosTelegraph);
+			while (round.iter) {
+				round.iter.animate = (now, unit) => {
+					if (unit.contains(now)) {
+						round.animate(now, unit);
+
+						if (changes === 0 && now >= 30000) {
+							round = new CharInChordType(player, lyricsArena, new RandomDirPattern(pc), AttackPattern, Telegraph);
+							changes++;
+						}
+					}
+				};
+				round.iter = round.iter.next;
+			}
 		}
 	}
 });
