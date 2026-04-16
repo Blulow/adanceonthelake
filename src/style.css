@@ -158,11 +158,11 @@ div {
 }
 
 .text-movetoedge {
-	animation: movetoedge 1s forwards;
+	animation: movetoedge 3s forwards;
 }
 
 .fadeout-movetoedge {
-    animation: movetoedge 1s forwards,
+    animation: movetoedge 3s forwards,
         fadeout 0.5s forwards;
 }
 

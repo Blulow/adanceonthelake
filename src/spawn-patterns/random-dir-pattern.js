@@ -18,6 +18,7 @@ export default class RandomDirPattern extends SpawnPattern {
             RIGHT: 3
         }
         this.side = this.sides.TOP;
+        this.unitDim = { width: 0, height: 0 };
 
         this.reverse = false;
     }
@@ -54,6 +55,7 @@ export default class RandomDirPattern extends SpawnPattern {
                 this.textLeftValue = window.innerWidth;
                 break;
         }
+        this.unitDim = { width: unitWord.clientWidth, height: unitWord.clientHeight };
         unitWord.remove();
         
         if (isWord) this.textGroup.dataset.length = 1;
@@ -71,23 +73,23 @@ export default class RandomDirPattern extends SpawnPattern {
         
         const lyricPos = { x: this.textLeftValue, y: this.textTopValue };
         
-        const endPos = this.getEndPos(lyricPos, lyric);
-        lyric.setPosAndMoveToEdge(this.textLeftValue, this.textTopValue, endPos.x - lyricPos.x, endPos.y - lyric.y);
+        const endPos = this.getEndPos(lyricPos, this.unitDim);
+        lyric.setPosAndMoveToEdge(this.textLeftValue, this.textTopValue, endPos.x - lyricPos.x, endPos.y - lyricPos.y);
         lyric.spawn(this.textGroup);
     }
 
-    getEndPos(lyricPos, lyric) {
+    getEndPos(lyricPos, lyricDim) {
         const relX = this.player.x - lyricPos.x;
         const relY = this.player.y - lyricPos.y;
 
         const values = [];
 
         if (relX !== 0) {
-            values.push((-lyric.text.clientWidth - lyricPos.x) / relX);
+            values.push((-lyricDim.width - lyricPos.x) / relX);
             values.push((window.innerWidth - lyricPos.x) / relX);
         }
         if (relY !== 0) {
-            values.push((-lyric.text.clientHeight - lyricPos.y) / relY);
+            values.push((-lyricDim.height - lyricPos.y) / relY);
             values.push((window.innerHeight - lyricPos.y) / relY);
         }
 
