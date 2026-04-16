@@ -161,6 +161,20 @@ div {
 	animation: movetoedge 3s forwards;
 }
 
+.lyric-bullet {
+	font-size: 7vw;
+}
+
+@media (max-width: 1024px) {
+	.lyric-bullet {
+		font-size: 10vw;
+	}
+}
+
+.lyric-bullet-hit {
+	color: #ff0;
+}
+
 .fadeout-movetoedge {
     animation: movetoedge 3s forwards,
         fadeout 0.5s forwards;
@@ -269,6 +283,6 @@ div {
 	}
 }
 
-.hit {
+.beam-hit {
 	background-color: #ff0;
 }

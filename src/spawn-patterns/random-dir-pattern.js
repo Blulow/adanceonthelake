@@ -7,7 +7,6 @@ export default class RandomDirPattern extends SpawnPattern {
 
         this.textTopValue = 0;
         this.textLeftValue = 0;
-        // ({ x: this.x, y: this.y } = { x: 0, y: 0 });
 
         this.textGroup = null;
 
@@ -63,6 +62,7 @@ export default class RandomDirPattern extends SpawnPattern {
     }
     
     spawnLyric(lyric) {
+        lyric.text.classList.add("bullet", "lyric-bullet");
         lyric.text.classList.add("text-movetoedge");
         
         lyric.onMoveToEdge(() => {
