@@ -31,7 +31,7 @@ export default class RandomDirPattern extends SpawnPattern {
 
         const unitWord = document.createElement("div");
         unitWord.innerText = textInGroup[0];
-        unitWord.style.fontSize = "10vw";
+        unitWord.style.fontSize = "7vw";
         unitWord.style.lineHeight = "1";
         arena.appendChild(unitWord);
 

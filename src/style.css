@@ -132,7 +132,7 @@ div {
 	z-index: 1;
     position: absolute;
     display: block;
-    font-size: 10vw;
+    font-size: 7vw;
     line-height: 1;
 	user-select: none;
 }
@@ -163,12 +163,6 @@ div {
 
 .lyric-bullet {
 	font-size: 7vw;
-}
-
-@media (max-width: 1024px) {
-	.lyric-bullet {
-		font-size: 10vw;
-	}
 }
 
 .lyric-bullet-hit {
@@ -214,7 +208,7 @@ div {
 }
 
 .beam-wrapper {
-	width: 10vw;
+	width: 7vw;
 	height: 100%;
 	top: 0px;
 	position: absolute;
@@ -223,7 +217,7 @@ div {
 }
 
 .beam-column-wrapper {
-	height: 10vw;
+	height: 7vw;
 	width: 100%;
 	left: 0px;
 	position: absolute;
@@ -285,4 +279,17 @@ div {
 
 .beam-hit {
 	background-color: #ff0;
+}
+
+.bullet-shoot {
+	width: 1vw;
+	aspect-ratio: 1;
+	border-radius: 50%;
+	background-color: white;
+}
+
+@media (max-width: 1024px) {
+	.text, .lyric-bullet, .beam-wrapper, .beam-column-wrapper {
+		font-size: 10vw;
+	}
 }

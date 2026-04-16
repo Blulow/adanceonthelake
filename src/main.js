@@ -10,6 +10,7 @@ import PosTelegraph from "./telegraphs/pos-telegraph";
 import LinePattern from "./attack-patterns/line-pattern";
 import AttackPattern from "./attack-patterns/attack-pattern";
 import Telegraph from "./telegraphs/telegraph";
+import BulletShootPattern from "./attack-patterns/bullet-shoot-pattern";
 
 const player = new Player({
 	app: { token: "4fLfxYZ0Ntw6flJe" }
@@ -26,7 +27,7 @@ player.addListener({
 				player.requestPlay();
 				// player.requestMediaSeek(230 * 1000);
 				// player.requestMediaSeek(30 * 1000);
-				player.requestMediaSeek(15 * 1000);
+				player.requestMediaSeek(18 * 1000);
 				new Coin().spawn();
 			});
 		}
@@ -40,7 +41,7 @@ player.addListener({
 			document.getElementById("telegraphs").replaceChildren();
 			document.getElementById("bullets").replaceChildren();
 			pc.spawn();
-			new CharInChordType(player, lyricsArena, new RandomDirPattern(pc), AttackPattern, Telegraph).animate();
+			new WordType(player, lyricsArena, new RandomDirPosPattern(pc), BulletShootPattern, PosTelegraph).animate();
 		}
 	}
 });

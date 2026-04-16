@@ -1,7 +1,9 @@
 import SpawnPattern from "./spawn-pattern";
 export default class RandomDirPosPattern extends SpawnPattern {
-    constructor() {
+    constructor(player) {
         super();
+        this.player = player;
+
         this.textTopValue = "";
         this.textLeftValue = "";
         ({ x: this.x, y: this.y } = this.getRandomDirection());
@@ -26,7 +28,7 @@ export default class RandomDirPosPattern extends SpawnPattern {
 
         const unitWord = document.createElement("div");
         unitWord.innerText = textInGroup[0];
-        unitWord.style.fontSize = "10vw";
+        unitWord.style.fontSize = "7vw";
         unitWord.style.lineHeight = "1";
         arena.appendChild(unitWord);
 
@@ -91,16 +93,15 @@ export default class RandomDirPosPattern extends SpawnPattern {
     spawnLyric(lyric) {
         lyric.text.classList.add("text-movein");
         if (this.isColumn) lyric.text.classList.add("column");
-
+        
         lyric.onFadeOut(() => {
             const text = lyric.text;
             text.parentElement.dataset.length--;
             if (text.parentElement.dataset.length <= 0) text.parentElement.remove();
-        }, { isColumn: this.isColumn });
+        }, { isColumn: this.isColumn, playerPos: { x: this.player.x, y: this.player.y }});
         
         lyric.setPosAndMoveIn(this.textLeftValue, this.textTopValue, this.x, this.y);
         lyric.spawn(this.textGroup);
-        console.dir(lyric.text);
     }
 
     offsetText(lyric) {
