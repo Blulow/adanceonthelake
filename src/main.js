@@ -8,6 +8,8 @@ import RandomDirPosPattern from "./spawn-patterns/random-dir-pos-pattern";
 import RandomDirPattern from "./spawn-patterns/random-dir-pattern";
 import PosTelegraph from "./telegraphs/pos-telegraph";
 import LinePattern from "./attack-patterns/line-pattern";
+import AttackPattern from "./attack-patterns/attack-pattern";
+import Telegraph from "./telegraphs/telegraph";
 
 const player = new Player({
 	app: { token: "4fLfxYZ0Ntw6flJe" }
@@ -38,7 +40,7 @@ player.addListener({
 			document.getElementById("telegraphs").replaceChildren();
 			document.getElementById("bullets").replaceChildren();
 			pc.spawn();
-			new CharInChordType(player, lyricsArena, new RandomDirPattern(pc), LinePattern, PosTelegraph).animate();
+			new CharInChordType(player, lyricsArena, new RandomDirPattern(pc), AttackPattern, Telegraph).animate();
 		}
 	}
 });

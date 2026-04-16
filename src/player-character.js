@@ -3,7 +3,6 @@ import Coin from "./coin";
 export default class PlayerCharacter {
     constructor() {
         const maxWidth = Math.max(window.innerHeight, window.innerWidth);
-        console.log(maxWidth);
         this.NORMAL_SPEED = maxWidth > 1024 ? 10 : 3;
         this.DASH_SPEED = maxWidth > 1024 ? 50 : 20;
         this.DASH_TIME = 100;
@@ -153,7 +152,7 @@ export default class PlayerCharacter {
                 bulletCollisions.forEach(e => {
                     if (!e.classList.contains("hit")) {
                         e.classList.add("hit");
-                        if (e.classList.contains("beam")) e.classList.add("beam-hit");
+                        if (e.classList.contains("beam") || e.classList.contains("beam-column")) e.classList.add("beam-hit");
                         else if (e.classList.contains("lyric-bullet")) e.classList.add("lyric-bullet-hit");
                         this.hits++;
                         document.getElementById("hit-count").innerText = this.hits;

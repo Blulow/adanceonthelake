@@ -64,6 +64,7 @@ export default class RandomDirPattern extends SpawnPattern {
     spawnLyric(lyric) {
         lyric.text.classList.add("bullet", "lyric-bullet");
         lyric.text.classList.add("text-movetoedge");
+        if (this.side === this.sides.TOP || this.side === this.sides.BOTTOM) lyric.text.classList.add("column");
         
         lyric.onMoveToEdge(() => {
             const text = lyric.text;

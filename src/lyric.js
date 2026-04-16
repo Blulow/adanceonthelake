@@ -12,7 +12,7 @@ export default class Lyric {
 
     spawn(parent) {
         parent.appendChild(this.text);
-        this.attack.telegraph.spawn(document.getElementById("telegraphs"), this.x, this.y, this.text);
+        if (this.attack) this.attack.telegraph.spawn(document.getElementById("telegraphs"), this.x, this.y, this.text);
     }
     
     setPosAndMoveIn(x, y, startX, startY) {
@@ -28,8 +28,10 @@ export default class Lyric {
         this.text.addEventListener("animationend", e => {
             if (e.animationName === "movein") {
                 this.text.classList.add("fadeout-movein");
-                this.attack.shoot(this.x, this.y, this.text, params);
-                this.attack.telegraph.fadeOutAndRemove();
+                if (this.attack) {
+                    this.attack.shoot(this.x, this.y, this.text, params);
+                    this.attack.telegraph.fadeOutAndRemove();
+                }
             } else if (e.animationName === "fadeout") {
                 this.text.style.display = "none";
                 action();

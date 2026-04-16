@@ -100,6 +100,7 @@ export default class RandomDirPosPattern extends SpawnPattern {
         
         lyric.setPosAndMoveIn(this.textLeftValue, this.textTopValue, this.x, this.y);
         lyric.spawn(this.textGroup);
+        console.dir(lyric.text);
     }
 
     offsetText(lyric) {

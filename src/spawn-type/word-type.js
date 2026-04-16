@@ -6,9 +6,6 @@ export default class WordType extends SpawnType {
         super(player, arena, pattern, attack, telegraph);
         this.w = player.video.firstWord;
         this.lastWord = null;
-        this.lastTextElements = [];
-
-        this.isColumn = false;
     }
 
     animate() {
