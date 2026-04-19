@@ -20,6 +20,8 @@ const pc = new PlayerCharacter();
 
 const lyricsArena = document.getElementById("lyrics");
 
+let changes = 0;
+
 player.addListener({
 	onAppReady(app) {
 		if (!app.managed) {
@@ -41,24 +43,30 @@ player.addListener({
 			document.getElementById("telegraphs").replaceChildren();
 			document.getElementById("bullets").replaceChildren();
 			pc.spawn();
-			let changes = 0;
+			changes = 0;
 			let round = new WordType(player, lyricsArena, new RandomDirPosPattern(pc), BulletShootPattern, PosTelegraph);
-			while (round.iter) {
-				round.iter.animate = (now, unit) => {
-					if (unit.contains(now)) {
-						round.animate(now, unit);
-
-						if (changes === 0 && now >= 30000) {
-							round = new CharInChordType(player, lyricsArena, new RandomDirPattern(pc), AttackPattern, Telegraph);
-							changes++;
-						}
-					}
-				};
-				round.iter = round.iter.next;
-			}
+			lyricUpdate(round, 20000);
 		}
 	}
 });
+
+function lyricUpdate(round, changeTime) {
+	while (round.iter) {
+		round.iter.animate = (now, unit) => {
+			if (unit.contains(now)) {
+				round.animate(now, unit);
+				
+				if (changes === 0 && unit.startTime >= 20000) {
+					changes++;
+					const newRound = new CharInChordType(player, lyricsArena, new RandomDirPattern(pc), AttackPattern, Telegraph);
+					lyricUpdate(newRound, 40000);
+				}
+			}
+		};
+		if (round.iter.startTime >= changeTime) break;
+		round.iter = round.iter.next;
+	}
+}
 
 function gameUpdate() {
 	pc.update();
