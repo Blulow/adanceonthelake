@@ -19,16 +19,37 @@ export default class PlayerCharacter {
         this.hits = 0;
         this.coins = 0;
 
+        this.hitbox = document.createElement("div");
+        this.hitbox.classList.add("hitbox");
+        this.pc.appendChild(this.hitbox);
+
         this.keys = {
             ArrowUp: false,
             ArrowDown: false,
             ArrowLeft: false,
             ArrowRight: false,
         };
-        this.isMoving = false;
         this.isDashed = false;
         this.isDashing = false;
         this.isDashCoolDownFinished = false;
+
+        this.dirs = {
+            BOTTOM: 0,
+            BOTTOMRIGHT: 1,
+            RIGHT: 2,
+            TOPRIGHT: 3,
+            TOP: 4,
+            TOPLEFT: 5,
+            LEFT: 6,
+            BOTTOMLEFT: 7
+        }
+        this.dir = this.dirs.BOTTOM;
+        this.idleAnim = "idlebottom";
+        this.glideAnim = "glidebottom";
+        this.currentAnim = this.idleAnim;
+        
+        this.splash = document.createElement("div");
+        this.pc.appendChild(this.splash);
 
         this.dashCooldownBar = document.createElement("div");
         this.dashCooldownBar.classList.add("dash-cooldown-bar");
@@ -49,7 +70,6 @@ export default class PlayerCharacter {
         this.touchPos = { x: 0, y: 0 };
         this.joystickTouchId = null;
         //
-
     }
 
     spawn() {
@@ -60,11 +80,10 @@ export default class PlayerCharacter {
         this.pc.style.left = `${this.x}px`;
         window.addEventListener("keydown", e => {
             if (this.keys.hasOwnProperty(e.key)) {
-                this.isMoving = true;
                 this.keys[e.key] = true;
             }
             if (e.key === "Shift") {
-                if (this.isMoving && !this.isDashed) {
+                if ((this.velocity.x !== 0 || this.velocity.y !== 0) && !this.isDashed) {
                     this.dash();
                     this.isDashed = true;
                 }
@@ -72,7 +91,6 @@ export default class PlayerCharacter {
         });
         window.addEventListener("keyup", e => {
             if (this.keys.hasOwnProperty(e.key)) {
-                this.isMoving = true;
                 this.keys[e.key] = false;
             }
         });
@@ -92,10 +110,9 @@ export default class PlayerCharacter {
                     this.joystick.style.left = `${this.initialTouchPos.x - this.joystick.offsetWidth / 2}px`;
                     this.stick.style.top = `${this.initialTouchPos.y - this.stick.offsetHeight / 2}px`;
                     this.stick.style.left = `${this.initialTouchPos.x - this.stick.offsetWidth / 2}px`;
-                    this.isMoving = true;
                     this.touch = true;
                 } else {
-                    if (this.isMoving && !this.isDashed) {
+                    if ((this.velocity.x !== 0 || this.velocity.y !== 0) && !this.isDashed) {
                         this.dash();
                         this.isDashed = true;
                     }
@@ -146,6 +163,93 @@ export default class PlayerCharacter {
         this.pc.style.left = `${this.x}px`;
         this.pc.style.top = `${this.y}px`;
 
+        if (this.currentAnim) this.pc.classList.remove(this.currentAnim);
+
+        if (this.velocity.x !== 0 || this.velocity.y !== 0) {
+            const angle = Math.round(Math.atan2(this.velocity.y, this.velocity.x) / (Math.PI/4)) * (Math.PI/4);
+            switch (angle) {
+                case Math.PI / 2:
+                    this.dir = this.dirs.BOTTOM;
+                    break;
+                case Math.PI / 4:
+                    this.dir = this.dirs.BOTTOMRIGHT;
+                    break;
+                case 0:
+                    this.dir = this.dirs.RIGHT;
+                    break;
+                case -Math.PI / 4:
+                    this.dir = this.dirs.TOPRIGHT;
+                    break;
+                case -Math.PI / 2:
+                    this.dir = this.dirs.TOP;
+                    break;
+                case 3 * -Math.PI / 4:
+                    this.dir = this.dirs.TOPLEFT;
+                    break;
+                case Math.PI:
+                    this.dir = this.dirs.LEFT;
+                    break;
+                case 3 * Math.PI / 4:
+                    this.dir = this.dirs.BOTTOMLEFT;
+                    break;
+            }
+
+            switch (this.dir) {
+                case this.dirs.BOTTOM:
+                    this.idleAnim = "idlebottom";
+                    this.glideAnim = "glidebottom";
+                    break;
+                case this.dirs.BOTTOMRIGHT:
+                    this.idleAnim = "idlebottomright";
+                    this.glideAnim = "glidebottomright";
+                    break;
+                case this.dirs.RIGHT:
+                    this.idleAnim = "idleright";
+                    this.glideAnim = "glideright";
+                    break;
+                case this.dirs.TOPRIGHT:
+                    this.idleAnim = "idletopright";
+                    this.glideAnim = "glidetopright";
+                    break;
+                case this.dirs.TOP:
+                    this.idleAnim = "idletop";
+                    this.glideAnim = "glidetop";
+                    break;
+                case this.dirs.TOPLEFT:
+                    this.idleAnim = "idletopleft";
+                    this.glideAnim = "glidetopleft";
+                    break;
+                case this.dirs.LEFT:
+                    this.idleAnim = "idleleft";
+                    this.glideAnim = "glideleft";
+                    break;
+                case this.dirs.BOTTOMLEFT:
+                    this.idleAnim = "idlebottomleft";
+                    this.glideAnim = "glidebottomleft";
+                    break;
+            }
+        }
+
+        this.currentAnim = (this.velocity.x === 0 && this.velocity.y === 0) ? this.idleAnim : this.glideAnim;
+        if (this.velocity.x === 0 && this.velocity.y === 0) {
+            this.currentAnim = this.idleAnim;
+            if (this.splash.classList.contains("idlewater")) {
+                this.splash.classList.add("idlewater");
+            } else {
+                this.splash.classList.remove("splashwater");
+                this.splash.classList.add("idlewater");
+            }
+        } else {
+            this.currentAnim = this.glideAnim;
+            if (this.splash.classList.contains("splashwater")) {
+                this.splash.classList.add("splashwater");
+            } else {
+                this.splash.classList.remove("idlewater");
+                this.splash.classList.add("splashwater");
+            }
+        }
+        this.pc.classList.add(this.currentAnim);
+
         const bulletCollisions = this.checkBulletCollisions();
         if (bulletCollisions) {
             if (bulletCollisions.length > 0) {
@@ -187,7 +291,7 @@ export default class PlayerCharacter {
     checkBulletCollisions() {
         if (this.isDashing) return;
 
-        const hitbox = this.pc.getBoundingClientRect();
+        const hitbox = this.hitbox.getBoundingClientRect();
         const bullets = [...document.getElementsByClassName("bullet")];
 
         const collided = bullets.filter(e => !(

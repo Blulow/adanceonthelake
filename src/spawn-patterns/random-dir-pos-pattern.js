@@ -28,7 +28,8 @@ export default class RandomDirPosPattern extends SpawnPattern {
 
         const unitWord = document.createElement("div");
         unitWord.innerText = textInGroup[0];
-        unitWord.style.fontSize = "7vw";
+        const maxWidth = Math.max(window.innerHeight, window.innerWidth);
+        unitWord.style.fontSize = maxWidth > 1024 ? "7vw" : "10vw";
         unitWord.style.lineHeight = "1";
         arena.appendChild(unitWord);
 

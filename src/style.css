@@ -1,16 +1,32 @@
 :root {
     --start-x: 0px;
     --start-y: 0px;
+	--vw-image-ratio: calc(100vh / 360px);
 }
 
 body {
     margin: 0;
+	width: 100%;
+	height: 100vh;
     overflow: hidden;
     background-color: black;
     color: white;
 	touch-action: none;
 	user-select: none;
 	pointer-events: none;
+	background: url("../assets/background.png");
+	background-repeat: no-repeat;
+	background-size: 500vw 100%;
+	animation: bg-anim 3s steps(5) infinite;
+}
+
+@keyframes bg-anim {
+	from {
+		background-position: 0 0;
+	}
+	to {
+		background-position: -500vw 0;
+	}
 }
 
 button {
@@ -31,10 +47,203 @@ div {
 }
 
 #player {
-	width: 3vw;
+	width: 5vw;
 	aspect-ratio: 1;
-	border-radius: 50%;
-	background-color: #39e1c2;
+	image-rendering: pixelated;
+}
+
+.hitbox {
+	width: 40%;
+	height: 100%;
+	left: 30%;
+}
+
+.idlebottom {
+	background: url("../assets/idlebottom.png");
+	background-size: 200%;
+	animation: idlebottom 1s steps(2) infinite;
+}
+
+@keyframes idlebottom {
+	to { background-position: -200% 0; }
+}
+
+.glidebottom {
+	background: url("../assets/glidebottom.png");
+	background-size: 300%;
+	animation: glidebottom 0.7s steps(3) infinite;
+}
+
+@keyframes glidebottom {
+	to { background-position: -300% 0; }
+}
+
+.idlebottomright {
+	background: url("../assets/idlebottomright.png");
+	background-size: 200%;
+	animation: idlebottomright 1s steps(2) infinite;
+}
+
+@keyframes idlebottomright {
+	to { background-position: -200% 0; }
+}
+
+.glidebottomright {
+	background: url("../assets/glidebottomright.png");
+	background-size: 300%;
+	animation: glidebottomright 0.7s steps(3) infinite;
+}
+
+@keyframes glidebottomright {
+	to { background-position: -300% 0; }
+}
+
+.idleright {
+	background: url("../assets/idleright.png");
+	background-size: 200%;
+	animation: idleright 1s steps(2) infinite;
+}
+
+@keyframes idleright {
+	to { background-position: -200% 0; }
+}
+
+.glideright {
+	background: url("../assets/glideright.png");
+	background-size: 300%;
+	animation: glideright 0.7s steps(3) infinite;
+}
+
+@keyframes glideright {
+	to { background-position: -300% 0; }
+}
+
+.idletopright {
+	background: url("../assets/idletopright.png");
+	background-size: 200%;
+	animation: idletopright 1s steps(2) infinite;
+}
+
+@keyframes idletopright {
+	to { background-position: -200% 0; }
+}
+
+.glidetopright {
+	background: url("../assets/glidetopright.png");
+	background-size: 300%;
+	animation: glidetopright 0.7s steps(3) infinite;
+}
+
+@keyframes glidetopright {
+	to { background-position: -300% 0; }
+}
+
+.idletop {
+	background: url("../assets/idletop.png");
+	background-size: 200%;
+	animation: idletop 1s steps(2) infinite;
+}
+
+@keyframes idletop {
+	to { background-position: -200% 0; }
+}
+
+.glidetop {
+	background: url("../assets/glidetop.png");
+	background-size: 300%;
+	animation: glidetop 0.7s steps(3) infinite;
+}
+
+@keyframes glidetop {
+	to { background-position: -300% 0; }
+}
+
+.idletopleft {
+	background: url("../assets/idletopleft.png");
+	background-size: 200%;
+	animation: idletopleft 1s steps(2) infinite;
+}
+
+@keyframes idletopleft {
+	to { background-position: -200% 0; }
+}
+
+.glidetopleft {
+	background: url("../assets/glidetopleft.png");
+	background-size: 300%;
+	animation: glidetopleft 0.7s steps(3) infinite;
+}
+
+@keyframes glidetopleft {
+	to { background-position: -300% 0; }
+}
+
+.idleleft {
+	background: url("../assets/idleleft.png");
+	background-size: 200%;
+	animation: idleleft 1s steps(2) infinite;
+}
+
+@keyframes idleleft {
+	to { background-position: -200% 0; }
+}
+
+.glideleft {
+	background: url("../assets/glideleft.png");
+	background-size: 300%;
+	animation: glideleft 0.7s steps(3) infinite;
+}
+
+@keyframes glideleft {
+	to { background-position: -300% 0; }
+}
+
+.idlebottomleft {
+	background: url("../assets/idlebottomleft.png");
+	background-size: 200%;
+	animation: idlebottomleft 1s steps(2) infinite;
+}
+
+@keyframes idlebottomleft {
+	to { background-position: -200% 0; }
+}
+
+.glidebottomleft {
+	background: url("../assets/glidebottomleft.png");
+	background-size: 300%;
+	animation: glidebottomleft 0.7s steps(3) infinite;
+}
+
+@keyframes glidebottomleft {
+	to { background-position: -300% 0; }
+}
+
+.idlewater {
+	background: url("../assets/idlewater.png");
+	background-size: 300% 100%;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+	transform: translateY(5%);
+	animation: idlewater 1s steps(3) infinite;
+}
+
+@keyframes idlewater {
+	to { background-position: -300% 0; }
+}
+
+.splashwater {
+	background: url("../assets/splashwater.png");
+	background-size: 300% 100%;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+	transform: translateY(5%);
+	animation: splashwater 0.5s steps(3) infinite;
+}
+
+@keyframes splashwater {
+	to { background-position: -300% 0; }
 }
 
 .dash-cooldown-bar {
