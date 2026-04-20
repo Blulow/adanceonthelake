@@ -44,12 +44,52 @@ export default class PlayerCharacter {
             BOTTOMLEFT: 7
         }
         this.dir = this.dirs.BOTTOM;
+        this.lastDir = 0;
         this.idleAnim = "idlebottom";
         this.glideAnim = "glidebottom";
         this.currentAnim = this.idleAnim;
+        this.lastAnim = "";
         
         this.splash = document.createElement("div");
         this.pc.appendChild(this.splash);
+
+        this.watertrail = document.createElement("div");
+        this.pc.appendChild(this.watertrail);
+        this.watertrail.addEventListener("animationend", e => {
+            switch (e.animationName) {
+                case "watertrailstraight-fadein":
+                    this.watertrail.classList.remove("watertrailstraight-fadein");
+                    if (this.lastAnim.includes("idle")) {
+                        this.watertrail.classList.add("watertrailstraight-fadeout");
+                    } else {
+                        this.watertrail.classList.add("watertrailstraight-sustain");
+                    }
+                    break;
+                case "watertrailstraight-sustain":
+                    this.watertrail.classList.remove("watertrailstraight-sustain", "watertrailstraight-sustain-end");
+                    console.log(this.watertrail.classList);
+                    this.watertrail.classList.add("watertrailstraight-fadeout");
+                    break;
+                case "watertrailstraight-fadeout":
+                    this.watertrail.classList.remove("watertrailstraight-fadeout");
+                    break;
+                case "watertraildiagonal-fadein":
+                    this.watertrail.classList.remove("watertraildiagonal-fadein");
+                    if (this.lastAnim.includes("idle")) {
+                        this.watertrail.classList.add("watertraildiagonal-fadeout");
+                    } else {
+                        this.watertrail.classList.add("watertraildiagonal-sustain");
+                    }
+                    break;
+                case "watertraildiagonal-sustain":
+                    this.watertrail.classList.remove("watertraildiagonal-sustain", "watertraildiagonal-sustain-end");
+                    this.watertrail.classList.add("watertraildiagonal-fadeout");
+                    break;
+                case "watertraildiagonal-fadeout":
+                    this.watertrail.classList.remove("watertraildiagonal-fadeout");
+                    break;
+            }
+        });
 
         this.dashCooldownBar = document.createElement("div");
         this.dashCooldownBar.classList.add("dash-cooldown-bar");
@@ -233,22 +273,39 @@ export default class PlayerCharacter {
         this.currentAnim = (this.velocity.x === 0 && this.velocity.y === 0) ? this.idleAnim : this.glideAnim;
         if (this.velocity.x === 0 && this.velocity.y === 0) {
             this.currentAnim = this.idleAnim;
-            if (this.splash.classList.contains("idlewater")) {
-                this.splash.classList.add("idlewater");
-            } else {
-                this.splash.classList.remove("splashwater");
-                this.splash.classList.add("idlewater");
+            if (this.lastAnim.includes("glide")) this.splash.classList.remove("splashwater");
+            this.splash.classList.add("idlewater");
+
+            if (this.watertrail.classList.contains("watertrailstraight-sustain") && (this.dir === this.dirs.BOTTOM || this.dir === this.dirs.RIGHT || this.dir === this.dirs.TOP || this.dir === this.dirs.LEFT)) {
+                this.watertrail.classList.remove("watertrailstraight-sustain");
+                this.watertrail.classList.add("watertrailstraight-sustain-end");
+            } else if (this.watertrail.classList.contains("watertraildiagonal-sustain") && (this.dir === this.dirs.BOTTOMRIGHT || this.dir === this.dirs.TOPRIGHT || this.dir === this.dirs.TOPLEFT || this.dir === this.dirs.BOTTOMLEFT)) {
+                this.watertrail.classList.remove("watertrailsdiagonal-sustain");
+                this.watertrail.classList.add("watertraildiagonal-sustain-end");
             }
         } else {
             this.currentAnim = this.glideAnim;
-            if (this.splash.classList.contains("splashwater")) {
-                this.splash.classList.add("splashwater");
+            if (this.lastAnim.includes("idle")) this.splash.classList.remove("idlewater");
+            this.splash.classList.add("splashwater");
+
+            if (this.dir === this.dirs.BOTTOM || this.dir === this.dirs.RIGHT || this.dir === this.dirs.TOP || this.dir === this.dirs.LEFT) {
+                if (this.lastDir === this.dirs.BOTTOMRIGHT || this.lastDir === this.dirs.TOPRIGHT || this.lastDir === this.dirs.TOPLEFT || this.lastDir === this.dirs.BOTTOMLEFT) {
+                    this.watertrail.classList.remove("watertraildiagonal-fadein", "watertraildiagonal-sustain", "watertraildiagonal-fadeout");
+                    this.watertrail.classList.add("watertrailstraight-fadein");
+                }
+                if (this.lastAnim.includes("idle")) this.watertrail.classList.add("watertrailstraight-fadein");
             } else {
-                this.splash.classList.remove("idlewater");
-                this.splash.classList.add("splashwater");
+                if (this.lastDir === this.dirs.BOTTOM || this.lastDir === this.dirs.RIGHT || this.lastDir === this.dirs.TOP || this.lastDir === this.dirs.LEFT) {
+                    this.watertrail.classList.remove("watertrailstraight-fadein", "watertrailstraight-sustain", "watertrailstraight-fadeout");
+                    this.watertrail.classList.add("watertraildiagonal-fadein");
+                }
+                if (this.lastAnim.includes("idle")) this.watertrail.classList.add("watertraildiagonal-fadein");
             }
+            this.watertrail.style.setProperty("--angle-index", Math.floor(this.dir/2));
         }
         this.pc.classList.add(this.currentAnim);
+        this.lastAnim = this.currentAnim;
+        this.lastDir = this.dir;
 
         const bulletCollisions = this.checkBulletCollisions();
         if (bulletCollisions) {

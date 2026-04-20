@@ -30,7 +30,7 @@ player.addListener({
 				player.requestPlay();
 				// player.requestMediaSeek(230 * 1000);
 				// player.requestMediaSeek(30 * 1000);
-				// player.requestMediaSeek(18 * 1000);
+				player.requestMediaSeek(18 * 1000);
 				new Coin().spawn();
 			});
 		}

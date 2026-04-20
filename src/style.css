@@ -246,6 +246,106 @@ div {
 	to { background-position: -300% 0; }
 }
 
+.watertrailstraight-fadein {
+	background: url("../assets/watertrailstraightfade.png");
+	background-size: 500% 100%;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+	transform-origin: 50% -5%;
+	transform: translate(0, 100%) rotate(calc(var(--angle-index) * -90deg + 180deg));
+	animation: watertrailstraight-fadein 0.2s steps(3) forwards;
+}
+
+@keyframes watertrailstraight-fadein {
+	to { background-position: -300% 0; }
+}
+
+.watertrailstraight-sustain {
+	background: url("../assets/watertrailstraightsustain.png");
+	background-size: 300% 100%;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+	transform-origin: 50% -5%;
+	transform: translate(0, 100%) rotate(calc(var(--angle-index) * -90deg + 180deg));
+	animation: watertrailstraight-sustain 0.5s steps(3) infinite;
+}
+
+.watertrailstraight-sustain-end {
+	animation: watertrailstraight-sustain 0.1s steps(3) forwards;
+}
+
+@keyframes watertrailstraight-sustain {
+	to { background-position: -300% 0; }
+}
+
+.watertrailstraight-fadeout {
+	background: url("../assets/watertrailstraightfade.png");
+	background-size: 500% 100%;
+	background-position: -200% 0;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+	transform-origin: 50% -5%;
+	transform: translate(0, 100%) rotate(calc(var(--angle-index) * -90deg + 180deg));
+	animation: watertrailstraight-fadeout 0.2s steps(3) forwards;
+}
+
+@keyframes watertrailstraight-fadeout {
+	to { background-position: -500% 0; }
+}
+
+.watertraildiagonal-fadein {
+	background: url("../assets/watertraildiagonalfade.png");
+	background-size: 500% 100%;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+	transform-origin: 0 -5%;
+	transform: translate(50%, 100%) rotate(calc(var(--angle-index) * -90deg + 180deg));
+	animation: watertraildiagonal-fadein 0.2s steps(3) forwards;
+}
+
+@keyframes watertraildiagonal-fadein {
+	to { background-position: -300% 0; }
+}
+
+.watertraildiagonal-sustain {
+	background: url("../assets/watertraildiagonalsustain.png");
+	background-size: 300% 100%;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+	transform-origin: 0 -5%;
+	transform: translate(50%, 100%) rotate(calc(var(--angle-index) * -90deg + 180deg));
+	animation: watertraildiagonal-sustain 0.5s steps(3) infinite;
+}
+
+.watertraildiagonal-sustain-end {
+	animation: watertraildiagonal-sustain 0.1s steps(3) forwards;
+}
+
+@keyframes watertraildiagonal-sustain {
+	to { background-position: -300% 0; }
+}
+
+.watertraildiagonal-fadeout {
+	background: url("../assets/watertraildiagonalfade.png");
+	background-size: 500% 100%;
+	background-position: -200% 0;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+	transform-origin: 0 -5%;
+	transform: translate(50%, 100%) rotate(calc(var(--angle-index) * -90deg + 180deg));
+	animation: watertraildiagonal-fadeout 0.2s steps(3) forwards;
+}
+
+@keyframes watertraildiagonal-fadeout {
+	to { background-position: -500% 0; }
+}
+
 .dash-cooldown-bar {
 	width: 0%;
 	height: 10%;
