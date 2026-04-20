@@ -11,6 +11,7 @@ import LinePattern from "./attack-patterns/line-pattern";
 import AttackPattern from "./attack-patterns/attack-pattern";
 import Telegraph from "./telegraphs/telegraph";
 import BulletShootPattern from "./attack-patterns/bullet-shoot-pattern";
+import FallingPattern from "./spawn-patterns/falling-pattern";
 
 const player = new Player({
 	app: { token: "4fLfxYZ0Ntw6flJe" }
@@ -29,7 +30,7 @@ player.addListener({
 				player.requestPlay();
 				// player.requestMediaSeek(230 * 1000);
 				// player.requestMediaSeek(30 * 1000);
-				player.requestMediaSeek(18 * 1000);
+				// player.requestMediaSeek(18 * 1000);
 				new Coin().spawn();
 			});
 		}
@@ -44,8 +45,8 @@ player.addListener({
 			document.getElementById("bullets").replaceChildren();
 			pc.spawn();
 			changes = 0;
-			let round = new WordType(player, lyricsArena, new RandomDirPosPattern(pc), BulletShootPattern, PosTelegraph);
-			lyricUpdate(round, 20000);
+			let round = new CharInChordType(player, lyricsArena, new FallingPattern(pc), AttackPattern, PosTelegraph);
+			lyricUpdate(round);
 		}
 	}
 });
@@ -56,14 +57,16 @@ function lyricUpdate(round, changeTime) {
 			if (unit.contains(now)) {
 				round.animate(now, unit);
 				
-				if (changes === 0 && unit.startTime >= 20000) {
-					changes++;
-					const newRound = new CharInChordType(player, lyricsArena, new RandomDirPattern(pc), AttackPattern, Telegraph);
-					lyricUpdate(newRound, 40000);
-				}
+				// if (changes === 0 && unit.startTime >= 20000) {
+				// 	changes++;
+				// 	const newRound = new CharInChordType(player, lyricsArena, new RandomDirPattern(pc), AttackPattern, Telegraph);
+				// 	lyricUpdate(newRound, 40000);
+				// }
 			}
 		};
-		if (round.iter.startTime >= changeTime) break;
+		if (changeTime) {
+			if (round.iter.startTime >= changeTime) break;
+		}
 		round.iter = round.iter.next;
 	}
 }

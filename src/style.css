@@ -389,6 +389,29 @@ div {
 	}
 }
 
+.text-fall {
+	animation: fall 1s forwards;
+	transform: translate(0, -100vh);
+}
+
+@keyframes fall {
+	to {
+		transform: translate(0, 0);
+	}
+}
+
+.fadeout-fall {
+	animation: fall 1s forwards,
+	    fadeout-fall 3s forwards,
+	    fadeout 3s forwards;
+}
+
+@keyframes fadeout-fall {
+	to {
+		transform: translate(0, 200px);
+	}
+}
+
 .column {
 	writing-mode: vertical-rl;
 }
