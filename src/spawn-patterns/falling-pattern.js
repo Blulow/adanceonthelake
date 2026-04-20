@@ -16,7 +16,6 @@ export default class FallingPattern extends SpawnPattern {
         this.textLeftValueCache = "";
         this.maxFitHeight = 0;
         this.maxFitWidth = 0;
-        console.log("e")
     }
 
     spawnGroup(textInGroup, arena, isWord = false) {

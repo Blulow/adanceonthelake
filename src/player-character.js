@@ -67,7 +67,6 @@ export default class PlayerCharacter {
                     break;
                 case "watertrailstraight-sustain":
                     this.watertrail.classList.remove("watertrailstraight-sustain", "watertrailstraight-sustain-end");
-                    console.log(this.watertrail.classList);
                     this.watertrail.classList.add("watertrailstraight-fadeout");
                     break;
                 case "watertrailstraight-fadeout":

@@ -6,12 +6,12 @@ import CharInWordType from "./spawn-type/char-in-word-type";
 import CharInChordType from "./spawn-type/char-in-chord-type";
 import RandomDirPosPattern from "./spawn-patterns/random-dir-pos-pattern";
 import RandomDirPattern from "./spawn-patterns/random-dir-pattern";
-import PosTelegraph from "./telegraphs/pos-telegraph";
-import LinePattern from "./attack-patterns/line-pattern";
-import AttackPattern from "./attack-patterns/attack-pattern";
-import Telegraph from "./telegraphs/telegraph";
-import BulletShootPattern from "./attack-patterns/bullet-shoot-pattern";
 import FallingPattern from "./spawn-patterns/falling-pattern";
+import AttackPattern from "./attack-patterns/attack-pattern";
+import LinePattern from "./attack-patterns/line-pattern";
+import BulletShootPattern from "./attack-patterns/bullet-shoot-pattern";
+import Telegraph from "./telegraphs/telegraph";
+import PosTelegraph from "./telegraphs/pos-telegraph";
 
 const player = new Player({
 	app: { token: "4fLfxYZ0Ntw6flJe" }
@@ -21,7 +21,14 @@ const pc = new PlayerCharacter();
 
 const lyricsArena = document.getElementById("lyrics");
 
+const chart = [
+	{ time: 0, type: CharInChordType, pattern: FallingPattern, attack: AttackPattern, telegraph: PosTelegraph },
+	{ time: 20000, type: WordType, pattern: RandomDirPattern, attack: AttackPattern, telegraph: Telegraph },
+	{ time: 25000, type: CharInWordType, pattern: RandomDirPosPattern, attack: LinePattern, telegraph: PosTelegraph },
+]
+
 let changes = 0;
+let currentRound = null;
 
 player.addListener({
 	onAppReady(app) {
@@ -45,24 +52,40 @@ player.addListener({
 			document.getElementById("bullets").replaceChildren();
 			pc.spawn();
 			changes = 0;
-			let round = new CharInChordType(player, lyricsArena, new FallingPattern(pc), AttackPattern, PosTelegraph);
-			lyricUpdate(round);
+			currentRound = createRound(chart[changes]);
+			// let round = new CharInChordType(player, lyricsArena, new FallingPattern(pc), AttackPattern, PosTelegraph);
+			// lyricUpdate(round, 20000);
+			lyricUpdate(currentRound, chart[changes + 1].time);
 		}
 	}
 });
 
+function createRound(data) {
+	return new data.type(player, lyricsArena, new data.pattern(pc), data.attack, data.telegraph);
+}
+
+function updateRound(now) {
+	const next = chart[changes + 1];
+
+	if (next && now >= next.time) {
+		changes++;
+
+		const newRound = createRound(next);
+		const upcoming = chart[changes + 1];
+		lyricUpdate(newRound, upcoming ? upcoming.time : null);
+	}
+}
+
+let prev = 0;
 function lyricUpdate(round, changeTime) {
 	while (round.iter) {
 		round.iter.animate = (now, unit) => {
+			if (player.findBeatChange(prev, player.mediaPosition).entered.length !== 0) console.log(now);
 			if (unit.contains(now)) {
 				round.animate(now, unit);
-				
-				// if (changes === 0 && unit.startTime >= 20000) {
-				// 	changes++;
-				// 	const newRound = new CharInChordType(player, lyricsArena, new RandomDirPattern(pc), AttackPattern, Telegraph);
-				// 	lyricUpdate(newRound, 40000);
-				// }
+				updateRound(unit.startTime);
 			}
+			prev = player.mediaPosition;
 		};
 		if (changeTime) {
 			if (round.iter.startTime >= changeTime) break;
