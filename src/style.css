@@ -458,8 +458,36 @@ div {
 	    sunflower var(--anim-len) steps(4) infinite;
 }
 
-@keyframes sunflower-movein {
-	to { translate: 0 0; }
+.sunflower-moveout-top {
+	animation: sunflower-moveout-top 1s forwards;
+}
+
+@keyframes sunflower-moveout-top {
+	to { transform: translate(0, -20vw); }
+}
+
+.sunflower-moveout-bottom {
+	animation: sunflower-moveout-bottom 1s forwards;
+}
+
+@keyframes sunflower-moveout-bottom {
+	to { transform: translate(0, 20vw); }
+}
+
+.sunflower-moveout-left {
+	animation: sunflower-moveout-left 1s forwards;
+}
+
+@keyframes sunflower-moveout-left {
+	to { transform: translate(-20vw, 0); }
+}
+
+.sunflower-moveout-right {
+	animation: sunflower-moveout-right 1s forwards;
+}
+
+@keyframes sunflower-moveout-right {
+	to { transform: translate(20vw, 0); }
 }
 
 .coin {

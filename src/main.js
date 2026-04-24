@@ -21,14 +21,22 @@ const pc = new PlayerCharacter();
 
 const lyricsArena = document.getElementById("lyrics");
 
-const chart = [
-	{ time: 0, type: CharInChordType, pattern: FallingPattern, attack: AttackPattern, telegraph: PosTelegraph },
-	{ time: 20000, type: CharInWordType, pattern: RandomDirPattern, attack: AttackPattern, telegraph: Telegraph },
-	// { time: 25000, type: CharInWordType, pattern: RandomDirPosPattern, attack: LinePattern, telegraph: PosTelegraph, chorusEffect: true },
+const chart = [	
+	{ time: 0, type: CharInChordType, pattern: RandomDirPosPattern, attack: AttackPattern, telegraph: PosTelegraph },
+	{ time: 37414, type: CharInWordType, pattern: RandomDirPosPattern, attack: LinePattern, telegraph: PosTelegraph },
+	{ time: 65565, type: CharInWordType, pattern: RandomDirPosPattern, attack: AttackPattern, telegraph: PosTelegraph },
+	{ time: 78862, type: CharInWordType, pattern: RandomDirPattern, attack: AttackPattern, telegraph: Telegraph, chorusEffect: true },
+	{ time: 118377, type: CharInWordType, pattern: RandomDirPosPattern, attack: LinePattern, telegraph: PosTelegraph },
+	{ time: 132378, type: CharInWordType, pattern: FallingPattern, attack: AttackPattern, telegraph: PosTelegraph },
+	{ time: 152943, type: CharInWordType, pattern: RandomDirPosPattern, attack: BulletShootPattern, telegraph: PosTelegraph },
+	{ time: 168177, type: CharInWordType, pattern: RandomDirPosPattern, attack: LinePattern, telegraph: PosTelegraph },
+	{ time: 182443, type: CharInWordType, pattern: FallingPattern, attack: AttackPattern, telegraph: PosTelegraph, chorusEffect: true },
+	{ time: 222514, type: CharInWordType, pattern: RandomDirPattern, attack: AttackPattern, telegraph: PosTelegraph },
 ]
 
 let changes = 0;
 let currentRound = null;
+let isChorus = false;
 
 player.addListener({
 	onAppReady(app) {
@@ -37,7 +45,8 @@ player.addListener({
 				player.requestPlay();
 				// player.requestMediaSeek(230 * 1000);
 				// player.requestMediaSeek(30 * 1000);
-				player.requestMediaSeek(18 * 1000);
+				// player.requestMediaSeek(18 * 1000);
+				player.requestMediaSeek(18000);
 				new Coin().spawn();
 			});
 		}
@@ -71,6 +80,10 @@ function updateRound(now) {
 		const newRound = createRound(next);
 		if (newRound[1]) {
 		 	chorusEffect();
+		} else {
+			if (isChorus) {
+				deChorusEffect();
+			}
 		}
 		const upcoming = chart[changes + 1];
 		lyricUpdate(newRound[0], upcoming ? upcoming.time : null);
@@ -102,6 +115,8 @@ function gameUpdate() {
 gameUpdate();
 
 function chorusEffect() {
+	isChorus = true;
+
 	function spawnSunflower(x, y) {
 		const sunflower = document.createElement("div");
 		sunflower.classList.add(`sunflower-${Math.random() > 0.5 ? "large" : "small"}`);
@@ -120,21 +135,64 @@ function chorusEffect() {
 	for (let i = 0; i <= window.innerWidth - sunflowerWidth; i += Math.random() * sunflowerWidth / 3) {
         const flower = spawnSunflower(i, Math.random() * sunflowerHeight * 1.5 - sunflowerHeight / 2);
 		flower.style.transform = "translate(0, -20vw) " + flower.style.transform;
-		flower.classList.add("sunflower-movein")
+		flower.classList.add("sunflower-movein", "sunflower-top");
 	}
 	for (let i = 0; i <= window.innerWidth - sunflowerWidth; i += Math.random() * sunflowerWidth / 3) {
 		const flower = spawnSunflower(i, window.innerHeight - sunflowerHeight - Math.random() * sunflowerHeight * 1.5 + sunflowerHeight / 2);
 		flower.style.transform = "translate(0, 20vw) " + flower.style.transform;
-		flower.classList.add("sunflower-movein");
+		flower.classList.add("sunflower-movein", "sunflower-bottom");
 	}
 	for (let i = 0; i <= window.innerHeight - sunflowerHeight; i += Math.random() * sunflowerHeight / 3) {
 		const flower = spawnSunflower(Math.random() * sunflowerWidth * 1.5 - sunflowerWidth / 2, i);
 		flower.style.transform = "translate(-20vw, 0) " + flower.style.transform;
-		flower.classList.add("sunflower-movein");
+		flower.classList.add("sunflower-movein", "sunflower-left");
 	}
 	for (let i = 0; i <= window.innerHeight - sunflowerHeight; i += Math.random() * sunflowerHeight / 3) {
 		const flower = spawnSunflower(window.innerWidth - Math.random() * sunflowerWidth * 1.5 - sunflowerWidth / 2, i);
 		flower.style.transform = "translate(20vw, 0) " + flower.style.transform;
-		flower.classList.add("sunflower-movein");
+		flower.classList.add("sunflower-movein", "sunflower-right");
 	}
+}
+
+function deChorusEffect() {
+	[...document.getElementsByClassName("sunflower-top")].forEach(e => {
+		e.classList.remove("sunflower-top");
+		e.classList.add("sunflower-moveout-top");
+		e.style.transform = "translate(0, 0)";
+		e.addEventListener("animationend", a => {
+			if (a.animationName === "sunflower-moveout-top") {
+				e.remove();
+			}
+		});
+	});
+	[...document.getElementsByClassName("sunflower-bottom")].forEach(e => {
+		e.classList.remove("sunflower-bottom");
+		e.classList.add("sunflower-moveout-bottom");
+		e.style.transform = "translate(0, 0)";
+		e.addEventListener("animationend", a => {
+			if (a.animationName === "sunflower-moveout-bottom") {
+				e.remove();
+			}
+		});
+	});
+	[...document.getElementsByClassName("sunflower-left")].forEach(e => {
+		e.classList.remove("sunflower-left");
+		e.classList.add("sunflower-moveout-left");
+		e.style.transform = "translate(0, 0)";
+		e.addEventListener("animationend", a => {
+			if (a.animationName === "sunflower-moveout-left") {
+				e.remove();
+			}
+		});
+	});
+	[...document.getElementsByClassName("sunflower-right")].forEach(e => {
+		e.classList.remove("sunflower-right");
+		e.classList.add("sunflower-moveout-right");
+		e.style.transform = "translate(0, 0)";
+		e.addEventListener("animationend", a => {
+			if (a.animationName === "sunflower-moveout-right") {
+				e.remove();
+			}
+		});
+	});
 }

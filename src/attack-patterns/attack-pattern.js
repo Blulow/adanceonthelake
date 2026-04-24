@@ -4,4 +4,8 @@ export default class AttackPattern {
        this.bullet.classList.add("bullet");
        this.telegraph = new Telegraph();
     }
+
+    shoot() {
+        
+    }
 }

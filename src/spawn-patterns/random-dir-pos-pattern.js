@@ -92,6 +92,7 @@ export default class RandomDirPosPattern extends SpawnPattern {
     }
 
     spawnLyric(lyric) {
+        lyric.text.classList.add("bullet", "lyric-bullet");
         lyric.text.classList.add("text-movein");
         if (this.isColumn) lyric.text.classList.add("column");
 
