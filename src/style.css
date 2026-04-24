@@ -52,6 +52,12 @@ div {
 	image-rendering: pixelated;
 }
 
+.sprite {
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+}
+
 .hitbox {
 	width: 40%;
 	height: 100%;
@@ -223,7 +229,7 @@ div {
 	background-size: 300% 100%;
 	width: 100%;
 	height: 100%;
-	z-index: -1;
+	/* z-index: -1; */
 	transform: translateY(5%);
 	animation: idlewater 1s steps(3) infinite;
 }
@@ -237,7 +243,7 @@ div {
 	background-size: 300% 100%;
 	width: 100%;
 	height: 100%;
-	z-index: -1;
+	/* z-index: -1; */
 	transform: translateY(5%);
 	animation: splashwater 0.5s steps(3) infinite;
 }
@@ -251,7 +257,7 @@ div {
 	background-size: 500% 100%;
 	width: 100%;
 	height: 100%;
-	z-index: -1;
+	/* z-index: -1; */
 	transform-origin: 50% -5%;
 	transform: translate(0, 100%) rotate(calc(var(--angle-index) * -90deg + 180deg));
 	animation: watertrailstraight-fadein 0.2s steps(3) forwards;
@@ -266,7 +272,7 @@ div {
 	background-size: 300% 100%;
 	width: 100%;
 	height: 100%;
-	z-index: -1;
+	/* z-index: -1; */
 	transform-origin: 50% -5%;
 	transform: translate(0, 100%) rotate(calc(var(--angle-index) * -90deg + 180deg));
 	animation: watertrailstraight-sustain 0.5s steps(3) infinite;
@@ -286,7 +292,7 @@ div {
 	background-position: -200% 0;
 	width: 100%;
 	height: 100%;
-	z-index: -1;
+	/* z-index: -1; */
 	transform-origin: 50% -5%;
 	transform: translate(0, 100%) rotate(calc(var(--angle-index) * -90deg + 180deg));
 	animation: watertrailstraight-fadeout 0.2s steps(3) forwards;
@@ -301,7 +307,7 @@ div {
 	background-size: 500% 100%;
 	width: 100%;
 	height: 100%;
-	z-index: -1;
+	/* z-index: -1; */
 	transform-origin: 0 -5%;
 	transform: translate(50%, 100%) rotate(calc(var(--angle-index) * -90deg + 180deg));
 	animation: watertraildiagonal-fadein 0.2s steps(3) forwards;
@@ -316,7 +322,7 @@ div {
 	background-size: 300% 100%;
 	width: 100%;
 	height: 100%;
-	z-index: -1;
+	/* z-index: -1; */
 	transform-origin: 0 -5%;
 	transform: translate(50%, 100%) rotate(calc(var(--angle-index) * -90deg + 180deg));
 	animation: watertraildiagonal-sustain 0.5s steps(3) infinite;
@@ -336,7 +342,7 @@ div {
 	background-position: -200% 0;
 	width: 100%;
 	height: 100%;
-	z-index: -1;
+	/* z-index: -1; */
 	transform-origin: 0 -5%;
 	transform: translate(50%, 100%) rotate(calc(var(--angle-index) * -90deg + 180deg));
 	animation: watertraildiagonal-fadeout 0.2s steps(3) forwards;
@@ -404,6 +410,7 @@ div {
 	position: relative;
 	text-align: right;
 	font-size: 3vw;
+	z-index: 4;
 }
 
 #chorus-effect {
@@ -420,6 +427,7 @@ div {
 	width: 5vw;
 	aspect-ratio: 1;
 	background-size: 400% 100%;
+	image-rendering: pixelated;
 	animation: sunflower var(--anim-len) steps(4) infinite;
 }
 
@@ -431,6 +439,7 @@ div {
 	aspect-ratio: 1;
 	background-size: 400% 100%;
 	transform-origin: 25% 25%;
+	image-rendering: pixelated;
 	animation: sunflower var(--anim-len) steps(4) infinite;
 }
 
@@ -565,18 +574,25 @@ div {
 
 .water-wave {
 	position: absolute;
-	top: 7vw;
+	top: 3vw;
 	left: calc(50% - 10vw/2);
 	background: url("../assets/water_wave.png");
 	width: 10vw;
 	height: 10vw;
 	background-size: 400% 100%;
 	z-index: -1;
+	image-rendering: pixelated;
 	animation: water-wave 0.5s steps(4) infinite;
 }
 
 @keyframes water-wave {
 	to { background-position: 400% 0; }
+}
+
+@media (max-width: 1024px) {
+	.water-wave {
+		top: 7vw;
+	}
 }
 
 .pos-telegraph {

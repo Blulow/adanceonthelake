@@ -11,6 +11,10 @@ export default class PlayerCharacter {
         this.pc = document.createElement("div");
         this.pc.id = "player";
 
+        this.sprite = document.createElement("div");
+        this.sprite.classList.add("sprite");
+        this.pc.appendChild(this.sprite);
+
         this.velocity = { x: 0, y: 0 };
         this.x = 0;
         this.y = 0;
@@ -202,7 +206,7 @@ export default class PlayerCharacter {
         this.pc.style.left = `${this.x}px`;
         this.pc.style.top = `${this.y}px`;
 
-        if (this.currentAnim) this.pc.classList.remove(this.currentAnim);
+        if (this.currentAnim) this.sprite.classList.remove(this.currentAnim);
 
         if (this.velocity.x !== 0 || this.velocity.y !== 0) {
             const angle = Math.round(Math.atan2(this.velocity.y, this.velocity.x) / (Math.PI/4)) * (Math.PI/4);
@@ -302,7 +306,7 @@ export default class PlayerCharacter {
             }
             this.watertrail.style.setProperty("--angle-index", Math.floor(this.dir/2));
         }
-        this.pc.classList.add(this.currentAnim);
+        this.sprite.classList.add(this.currentAnim);
         this.lastAnim = this.currentAnim;
         this.lastDir = this.dir;
 
@@ -336,6 +340,14 @@ export default class PlayerCharacter {
         }
 
         if (this.isDashCoolDownFinished) this.isDashed = false;
+
+        [...document.getElementsByClassName("water-wave")].forEach(e => {
+            if (e.getBoundingClientRect().y + e.clientHeight < this.pc.getBoundingClientRect().y + this.pc.clientHeight) {
+                e.parentElement.style.zIndex = "1";
+            } else {
+                e.parentElement.style.zIndex = "2";
+            }
+        });
     }
 
     normalize(v) {

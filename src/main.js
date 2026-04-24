@@ -23,8 +23,8 @@ const lyricsArena = document.getElementById("lyrics");
 
 const chart = [
 	{ time: 0, type: CharInChordType, pattern: FallingPattern, attack: AttackPattern, telegraph: PosTelegraph },
-	{ time: 20000, type: WordType, pattern: RandomDirPattern, attack: AttackPattern, telegraph: Telegraph },
-	{ time: 25000, type: CharInWordType, pattern: RandomDirPosPattern, attack: LinePattern, telegraph: PosTelegraph, chorusEffect: true },
+	{ time: 20000, type: CharInWordType, pattern: RandomDirPattern, attack: AttackPattern, telegraph: Telegraph },
+	// { time: 25000, type: CharInWordType, pattern: RandomDirPosPattern, attack: LinePattern, telegraph: PosTelegraph, chorusEffect: true },
 ]
 
 let changes = 0;
@@ -37,7 +37,7 @@ player.addListener({
 				player.requestPlay();
 				// player.requestMediaSeek(230 * 1000);
 				// player.requestMediaSeek(30 * 1000);
-				// player.requestMediaSeek(18 * 1000);
+				player.requestMediaSeek(18 * 1000);
 				new Coin().spawn();
 			});
 		}
