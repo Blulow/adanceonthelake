@@ -31,7 +31,7 @@ body {
 
 button {
     position: absolute;
-    z-index: 3;
+    z-index: 100;
 	pointer-events: all;
 }
 
@@ -414,6 +414,7 @@ div {
 }
 
 .sunflower-large {
+	z-index: 3;
 	position: absolute;
 	background: url("../assets/sunflower_large.png");
 	width: 5vw;
@@ -423,6 +424,7 @@ div {
 }
 
 .sunflower-small {
+	z-index: 3;
 	position: absolute;
 	background: url("../assets/sunflower_small.png");
 	width: 5vw;
@@ -561,6 +563,22 @@ div {
 	writing-mode: vertical-rl;
 }
 
+.water-wave {
+	position: absolute;
+	top: 7vw;
+	left: calc(50% - 10vw/2);
+	background: url("../assets/water_wave.png");
+	width: 10vw;
+	height: 10vw;
+	background-size: 400% 100%;
+	z-index: -1;
+	animation: water-wave 0.5s steps(4) infinite;
+}
+
+@keyframes water-wave {
+	to { background-position: 400% 0; }
+}
+
 .pos-telegraph {
     position: absolute;
     width: 3vw;
@@ -669,4 +687,6 @@ div {
 	.text, .lyric-bullet, .beam-wrapper, .beam-column-wrapper {
 		font-size: 10vw;
 	}
+
+
 }

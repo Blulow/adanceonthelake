@@ -94,6 +94,10 @@ export default class RandomDirPosPattern extends SpawnPattern {
     spawnLyric(lyric) {
         lyric.text.classList.add("text-movein");
         if (this.isColumn) lyric.text.classList.add("column");
+
+        const waterWave = document.createElement("div");
+        waterWave.classList.add("water-wave");
+        lyric.text.appendChild(waterWave);
         
         lyric.onFadeOut(() => {
             const text = lyric.text;

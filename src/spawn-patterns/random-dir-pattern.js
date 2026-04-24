@@ -67,6 +67,10 @@ export default class RandomDirPattern extends SpawnPattern {
         lyric.text.classList.add("text-movetoedge");
         if (this.side === this.sides.TOP || this.side === this.sides.BOTTOM) lyric.text.classList.add("column");
         
+        const waterWave = document.createElement("div");
+        waterWave.classList.add("water-wave");
+        lyric.text.appendChild(waterWave);
+        
         lyric.onMoveToEdge(() => {
             const text = lyric.text;
             text.parentElement.dataset.length--;

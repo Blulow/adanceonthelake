@@ -29,7 +29,6 @@ const chart = [
 
 let changes = 0;
 let currentRound = null;
-let isChorusEffect = false;
 
 player.addListener({
 	onAppReady(app) {
@@ -60,7 +59,6 @@ player.addListener({
 });
 
 function createRound(data) {
-	// return new data.type(player, lyricsArena, new data.pattern(pc), data.attack, data.telegraph);
 	return [new data.type(player, lyricsArena, new data.pattern(pc), data.attack, data.telegraph), data.chorusEffect];
 }
 
