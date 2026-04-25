@@ -525,7 +525,7 @@ div {
 	z-index: 1;
     position: absolute;
     display: block;
-    font-size: 7vw;
+    font-size: 5vw;
     line-height: 1;
 	user-select: none;
 }

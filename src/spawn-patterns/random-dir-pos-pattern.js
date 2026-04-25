@@ -1,3 +1,6 @@
+import AttackPattern from "../attack-patterns/attack-pattern";
+import BulletShootPattern from "../attack-patterns/bullet-shoot-pattern";
+import LinePattern from "../attack-patterns/line-pattern";
 import SpawnPattern from "./spawn-pattern";
 export default class RandomDirPosPattern extends SpawnPattern {
     constructor(player) {
@@ -92,7 +95,7 @@ export default class RandomDirPosPattern extends SpawnPattern {
     }
 
     spawnLyric(lyric) {
-        lyric.text.classList.add("bullet", "lyric-bullet");
+        if (lyric.attack.constructor === AttackPattern) lyric.text.classList.add("bullet", "lyric-bullet");
         lyric.text.classList.add("text-movein");
         if (this.isColumn) lyric.text.classList.add("column");
 

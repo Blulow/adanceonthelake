@@ -23,15 +23,15 @@ const lyricsArena = document.getElementById("lyrics");
 
 const chart = [	
 	{ time: 0, type: CharInChordType, pattern: RandomDirPosPattern, attack: AttackPattern, telegraph: PosTelegraph },
-	{ time: 37414, type: CharInWordType, pattern: RandomDirPosPattern, attack: LinePattern, telegraph: PosTelegraph },
+	{ time: 37414, type: WordType, pattern: RandomDirPosPattern, attack: LinePattern, telegraph: PosTelegraph },
 	{ time: 65565, type: CharInWordType, pattern: RandomDirPosPattern, attack: AttackPattern, telegraph: PosTelegraph },
-	{ time: 78862, type: CharInWordType, pattern: RandomDirPattern, attack: AttackPattern, telegraph: Telegraph, chorusEffect: true },
-	{ time: 118377, type: CharInWordType, pattern: RandomDirPosPattern, attack: LinePattern, telegraph: PosTelegraph },
+	{ time: 78862, type: CharInChordType, pattern: RandomDirPattern, attack: AttackPattern, telegraph: Telegraph, chorusEffect: true },
+	{ time: 107196, type: WordType, pattern: RandomDirPosPattern, attack: LinePattern, telegraph: PosTelegraph },
 	{ time: 132378, type: CharInWordType, pattern: FallingPattern, attack: AttackPattern, telegraph: PosTelegraph },
 	{ time: 152943, type: CharInWordType, pattern: RandomDirPosPattern, attack: BulletShootPattern, telegraph: PosTelegraph },
-	{ time: 168177, type: CharInWordType, pattern: RandomDirPosPattern, attack: LinePattern, telegraph: PosTelegraph },
-	{ time: 182443, type: CharInWordType, pattern: FallingPattern, attack: AttackPattern, telegraph: PosTelegraph, chorusEffect: true },
-	{ time: 222514, type: CharInWordType, pattern: RandomDirPattern, attack: AttackPattern, telegraph: PosTelegraph },
+	{ time: 168177, type: WordType, pattern: RandomDirPosPattern, attack: LinePattern, telegraph: PosTelegraph },
+	{ time: 182443, type: CharInChordType, pattern: FallingPattern, attack: AttackPattern, telegraph: PosTelegraph, chorusEffect: true },
+	{ time: 210491, type: CharInChordType, pattern: RandomDirPattern, attack: AttackPattern, telegraph: PosTelegraph },
 ]
 
 let changes = 0;
@@ -45,8 +45,8 @@ player.addListener({
 				player.requestPlay();
 				// player.requestMediaSeek(230 * 1000);
 				// player.requestMediaSeek(30 * 1000);
-				// player.requestMediaSeek(18 * 1000);
-				player.requestMediaSeek(18000);
+				player.requestMediaSeek(18 * 1000);
+				// player.requestMediaSeek(107196);
 				new Coin().spawn();
 			});
 		}
@@ -83,6 +83,7 @@ function updateRound(now) {
 		} else {
 			if (isChorus) {
 				deChorusEffect();
+				isChorus = false;
 			}
 		}
 		const upcoming = chart[changes + 1];
