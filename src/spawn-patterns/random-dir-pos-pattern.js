@@ -9,7 +9,7 @@ export default class RandomDirPosPattern extends SpawnPattern {
 
         this.textTopValue = "";
         this.textLeftValue = "";
-        ({ x: this.x, y: this.y } = this.getRandomDirection());
+        ({ x: this.x, y: this.y } = { x: 0, y: 0 });
 
         this.textGroup = null;
 
@@ -86,7 +86,7 @@ export default class RandomDirPosPattern extends SpawnPattern {
         const angle = Math.random() * 360;
         const rad = angle * (Math.PI / 180);
 
-        const distance = 700;
+        const distance = 1200;
 
         const x = Math.cos(rad) * distance;
         const y = Math.sin(rad) * distance;
@@ -114,7 +114,7 @@ export default class RandomDirPosPattern extends SpawnPattern {
 
         const relLength = Math.hypot(this.x, this.y);
         const angle = Math.atan2(this.y / relLength, this.x / relLength);
-        lyric.spawnTelegraph({ angle: angle, column: this.isColumn });
+        lyric.spawnTelegraph(true, { angle: angle, column: this.isColumn });
     }
 
     offsetText(lyric) {

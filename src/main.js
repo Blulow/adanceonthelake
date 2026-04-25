@@ -22,18 +22,16 @@ const pc = new PlayerCharacter();
 const lyricsArena = document.getElementById("lyrics");
 
 const chart = [
-	{ time: 0, type: CharInChordType, pattern: RandomDirPosPattern, attack: LinePattern, telegraph: DirPosTelegraph },
-	// { time: 20000, type: CharInChordType, pattern: RandomDirPosPattern, attack: LinePattern, telegraph: DirPosTelegraph },
-	// { time: 0, type: CharInChordType, pattern: RandomDirPosPattern, attack: AttackPattern, telegraph: DirPosTelegraph },
-	// { time: 37414, type: WordType, pattern: RandomDirPosPattern, attack: LinePattern, telegraph: DirPosTelegraph },
-	// { time: 65565, type: CharInWordType, pattern: RandomDirPosPattern, attack: AttackPattern, telegraph: DirPosTelegraph },
-	// { time: 78862, type: CharInChordType, pattern: RandomDirPattern, attack: AttackPattern, telegraph: Telegraph, chorusEffect: true },
-	// { time: 107196, type: WordType, pattern: RandomDirPosPattern, attack: LinePattern, telegraph: DirPosTelegraph },
-	// { time: 132378, type: CharInWordType, pattern: FallingPattern, attack: AttackPattern, telegraph: DirPosTelegraph },
-	// { time: 152943, type: CharInWordType, pattern: RandomDirPosPattern, attack: BulletShootPattern, telegraph: DirPosTelegraph },
-	// { time: 168177, type: WordType, pattern: RandomDirPosPattern, attack: LinePattern, telegraph: DirPosTelegraph },
-	// { time: 182443, type: CharInChordType, pattern: FallingPattern, attack: AttackPattern, telegraph: DirPosTelegraph, chorusEffect: true },
-	// { time: 210491, type: CharInChordType, pattern: RandomDirPattern, attack: AttackPattern, telegraph: DirPosTelegraph },
+	{ time: 0, type: CharInChordType, pattern: RandomDirPosPattern, attack: AttackPattern, telegraph: DirPosTelegraph },
+	{ time: 37414, type: WordType, pattern: RandomDirPosPattern, attack: LinePattern, telegraph: DirPosTelegraph },
+	{ time: 65565, type: CharInWordType, pattern: RandomDirPosPattern, attack: AttackPattern, telegraph: DirPosTelegraph },
+	{ time: 78862, type: CharInChordType, pattern: RandomDirPattern, attack: AttackPattern, telegraph: Telegraph, chorusEffect: true },
+	{ time: 107196, type: WordType, pattern: RandomDirPosPattern, attack: LinePattern, telegraph: DirPosTelegraph },
+	{ time: 132378, type: CharInWordType, pattern: FallingPattern, attack: AttackPattern, telegraph: DirPosTelegraph },
+	{ time: 152943, type: CharInWordType, pattern: RandomDirPosPattern, attack: BulletShootPattern, telegraph: DirPosTelegraph },
+	{ time: 168177, type: WordType, pattern: RandomDirPosPattern, attack: LinePattern, telegraph: DirPosTelegraph },
+	{ time: 182443, type: CharInChordType, pattern: FallingPattern, attack: AttackPattern, telegraph: DirPosTelegraph, chorusEffect: true },
+	{ time: 210491, type: CharInChordType, pattern: RandomDirPattern, attack: AttackPattern, telegraph: DirPosTelegraph },
 ]
 
 let changes = 0;
@@ -98,7 +96,7 @@ function lyricUpdate(round, changeTime) {
 	while (round.iter) {
 		round.iter.animate = (now, unit) => {
 			if (player.findBeatChange(prev, player.mediaPosition).entered.length !== 0) console.log(now);
-			if (unit.contains(now)) {
+			if (unit.contains(now + 1500)) {
 				round.animate(now, unit);
 				updateRound(unit.startTime);
 			}

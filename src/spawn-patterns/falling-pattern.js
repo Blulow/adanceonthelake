@@ -85,13 +85,13 @@ export default class FallingPattern extends SpawnPattern {
         
         lyric.onFadeOut(() => {
             const text = lyric.text;
-            text.classList.remove("bullet", "lyric-bullet");
             text.parentElement.dataset.length--;
             if (text.parentElement.dataset.length <= 0) text.parentElement.remove();
         }, { isColumn: this.isColumn, playerPos: { x: this.player.x, y: this.player.y }});
         
         lyric.setPosAndMoveIn(this.textLeftValue, this.textTopValue, 0, 0);
         lyric.spawn(this.textGroup);
+        lyric.spawnTelegraph(false);
     }
 
     offsetText(lyric) {

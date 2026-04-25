@@ -531,7 +531,7 @@ div {
 }
 
 .text-movein {
-	animation: movein 1s ease-out forwards;
+	animation: movein 1.5s ease-out forwards;
 	transform: translate(var(--start-x), var(--start-y));
 }
 
@@ -551,7 +551,7 @@ div {
 }
 
 .text-movetoedge {
-	animation: movetoedge 3s forwards;
+	animation: movetoedge 3s 1.5s forwards;
 }
 
 .lyric-bullet {
@@ -563,7 +563,7 @@ div {
 }
 
 .fadeout-movetoedge {
-    animation: movetoedge 3s forwards,
+    animation: movetoedge 3s 1.5s forwards,
         fadeout 0.5s forwards;
 }
 

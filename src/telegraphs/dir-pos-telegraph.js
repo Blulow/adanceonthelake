@@ -13,24 +13,26 @@ export default class DirPosTelegraph extends Telegraph {
         this.telegraph.style.left = `${this.x}px`;
         this.telegraph.style.top = `${this.y}px`;
 
-        if (Object.hasOwn(params, "angle")) {
-            const arrow = document.createElement("div");
-            arrow.classList.add("arrow");
-            arrow.style.transform = `rotate(${params.angle}rad)`;
-            this.telegraph.appendChild(arrow);
-        } else if (Object.hasOwn(params, "column")) {
-            const arrow = document.createElement("div");
-            arrow.classList.add("arrow");
-            const arrow2 = arrow.cloneNode();
-            if (params.column) {
-                arrow.style.transform = `translate(-3vw, 0)`;
-                arrow2.style.transform = `translate(3vw, 0) rotate(180deg)`;
-            } else {
-                arrow.style.transform = `translate(0, -3vw) rotate(90deg) `;
-                arrow2.style.transform = `translate(0, 3vw) rotate(-90deg) `;
+        if (params) {
+            if (Object.hasOwn(params, "angle")) {
+                const arrow = document.createElement("div");
+                arrow.classList.add("arrow");
+                arrow.style.transform = `rotate(${params.angle}rad)`;
+                this.telegraph.appendChild(arrow);
+            } else if (Object.hasOwn(params, "column")) {
+                const arrow = document.createElement("div");
+                arrow.classList.add("arrow");
+                const arrow2 = arrow.cloneNode();
+                if (params.column) {
+                    arrow.style.transform = `translate(-3vw, 0)`;
+                    arrow2.style.transform = `translate(3vw, 0) rotate(180deg)`;
+                } else {
+                    arrow.style.transform = `translate(0, -3vw) rotate(90deg) `;
+                    arrow2.style.transform = `translate(0, 3vw) rotate(-90deg) `;
+                }
+                this.telegraph.appendChild(arrow);
+                this.telegraph.appendChild(arrow2);
             }
-            this.telegraph.appendChild(arrow);
-            this.telegraph.appendChild(arrow2);
         }
     }
 

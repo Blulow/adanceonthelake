@@ -18,7 +18,12 @@ export default class Lyric {
         parent.appendChild(this.text);
     }
     
-    spawnTelegraph(params) {
+    spawnTelegraph(isdirpos, params) {
+        if (!isdirpos) {
+            this.attack.telegraph.spawn(document.getElementById("telegraphs"), this.x, this.y, this.text);
+            return;
+        }
+
         if (this.attack.constructor === LinePattern) {
             this.attack.telegraph.spawn(document.getElementById("telegraphs"), this.x, this.y, this.text, { column: params.column });
         } else if (this.attack.constructor === BulletShootPattern) {
@@ -44,6 +49,7 @@ export default class Lyric {
                 if (typeof this.attack.shoot(this.x, this.y, this.text, params) === "function") this.attack.shoot(this.x, this.y, this.text, params);
                 if (typeof this.attack.telegraph.fadeOutAndRemove() === "function") this.attack.telegraph.fadeOutAndRemove();
             } else if (e.animationName === "fall") {
+                this.text.classList.remove("bullet");
                 this.text.classList.add("fadeout-fall");
                 if (typeof this.attack.telegraph.fadeOutAndRemove() === "function") this.attack.telegraph.fadeOutAndRemove();
             } else if (e.animationName === "fadeout") {
