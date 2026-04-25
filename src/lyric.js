@@ -1,3 +1,7 @@
+import AttackPattern from "./attack-patterns/attack-pattern";
+import BulletShootPattern from "./attack-patterns/bullet-shoot-pattern";
+import LinePattern from "./attack-patterns/line-pattern";
+
 export default class Lyric {
     constructor(unit, Attack, Telegraph) {
         this.text = document.createElement("div");
@@ -12,7 +16,16 @@ export default class Lyric {
 
     spawn(parent) {
         parent.appendChild(this.text);
-        if (this.attack) this.attack.telegraph.spawn(document.getElementById("telegraphs"), this.x, this.y, this.text);
+    }
+    
+    spawnTelegraph(params) {
+        if (this.attack.constructor === LinePattern) {
+            this.attack.telegraph.spawn(document.getElementById("telegraphs"), this.x, this.y, this.text, params); //column
+        } else if (this.attack.constructor === BulletShootPattern) {
+            this.attack.telegraph.spawn(document.getElementById("telegraphs"), this.x, this.y, this.text);
+        } else if (this.attack.constructor === AttackPattern) {
+            this.attack.telegraph.spawn(document.getElementById("telegraphs"), this.x, this.y, this.text, params); //angle
+        }
     }
     
     setPosAndMoveIn(x, y, startX, startY) {

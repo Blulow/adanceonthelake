@@ -11,7 +11,7 @@ import AttackPattern from "./attack-patterns/attack-pattern";
 import LinePattern from "./attack-patterns/line-pattern";
 import BulletShootPattern from "./attack-patterns/bullet-shoot-pattern";
 import Telegraph from "./telegraphs/telegraph";
-import PosTelegraph from "./telegraphs/pos-telegraph";
+import DirPosTelegraph from "./telegraphs/dir-pos-telegraph";
 
 const player = new Player({
 	app: { token: "4fLfxYZ0Ntw6flJe" }
@@ -21,17 +21,18 @@ const pc = new PlayerCharacter();
 
 const lyricsArena = document.getElementById("lyrics");
 
-const chart = [	
-	{ time: 0, type: CharInChordType, pattern: RandomDirPosPattern, attack: AttackPattern, telegraph: PosTelegraph },
-	{ time: 37414, type: WordType, pattern: RandomDirPosPattern, attack: LinePattern, telegraph: PosTelegraph },
-	{ time: 65565, type: CharInWordType, pattern: RandomDirPosPattern, attack: AttackPattern, telegraph: PosTelegraph },
-	{ time: 78862, type: CharInChordType, pattern: RandomDirPattern, attack: AttackPattern, telegraph: Telegraph, chorusEffect: true },
-	{ time: 107196, type: WordType, pattern: RandomDirPosPattern, attack: LinePattern, telegraph: PosTelegraph },
-	{ time: 132378, type: CharInWordType, pattern: FallingPattern, attack: AttackPattern, telegraph: PosTelegraph },
-	{ time: 152943, type: CharInWordType, pattern: RandomDirPosPattern, attack: BulletShootPattern, telegraph: PosTelegraph },
-	{ time: 168177, type: WordType, pattern: RandomDirPosPattern, attack: LinePattern, telegraph: PosTelegraph },
-	{ time: 182443, type: CharInChordType, pattern: FallingPattern, attack: AttackPattern, telegraph: PosTelegraph, chorusEffect: true },
-	{ time: 210491, type: CharInChordType, pattern: RandomDirPattern, attack: AttackPattern, telegraph: PosTelegraph },
+const chart = [
+	{ time: 0, type: CharInChordType, pattern: RandomDirPosPattern, attack: AttackPattern, telegraph: DirPosTelegraph },
+	// { time: 0, type: CharInChordType, pattern: RandomDirPosPattern, attack: AttackPattern, telegraph: DirPosTelegraph },
+	// { time: 37414, type: WordType, pattern: RandomDirPosPattern, attack: LinePattern, telegraph: DirPosTelegraph },
+	// { time: 65565, type: CharInWordType, pattern: RandomDirPosPattern, attack: AttackPattern, telegraph: DirPosTelegraph },
+	// { time: 78862, type: CharInChordType, pattern: RandomDirPattern, attack: AttackPattern, telegraph: Telegraph, chorusEffect: true },
+	// { time: 107196, type: WordType, pattern: RandomDirPosPattern, attack: LinePattern, telegraph: DirPosTelegraph },
+	// { time: 132378, type: CharInWordType, pattern: FallingPattern, attack: AttackPattern, telegraph: DirPosTelegraph },
+	// { time: 152943, type: CharInWordType, pattern: RandomDirPosPattern, attack: BulletShootPattern, telegraph: DirPosTelegraph },
+	// { time: 168177, type: WordType, pattern: RandomDirPosPattern, attack: LinePattern, telegraph: DirPosTelegraph },
+	// { time: 182443, type: CharInChordType, pattern: FallingPattern, attack: AttackPattern, telegraph: DirPosTelegraph, chorusEffect: true },
+	// { time: 210491, type: CharInChordType, pattern: RandomDirPattern, attack: AttackPattern, telegraph: DirPosTelegraph },
 ]
 
 let changes = 0;
@@ -62,7 +63,7 @@ player.addListener({
 			pc.spawn();
 			changes = 0;
 			currentRound = createRound(chart[changes]);
-			lyricUpdate(currentRound[0], chart[changes + 1].time);
+			lyricUpdate(currentRound[0], chart[changes + 1] ? chart[changes + 1].time : null);
 		}
 	}
 });
