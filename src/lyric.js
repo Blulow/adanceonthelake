@@ -20,11 +20,11 @@ export default class Lyric {
     
     spawnTelegraph(params) {
         if (this.attack.constructor === LinePattern) {
-            this.attack.telegraph.spawn(document.getElementById("telegraphs"), this.x, this.y, this.text, params); //column
+            this.attack.telegraph.spawn(document.getElementById("telegraphs"), this.x, this.y, this.text, { column: params.column });
         } else if (this.attack.constructor === BulletShootPattern) {
             this.attack.telegraph.spawn(document.getElementById("telegraphs"), this.x, this.y, this.text);
         } else if (this.attack.constructor === AttackPattern) {
-            this.attack.telegraph.spawn(document.getElementById("telegraphs"), this.x, this.y, this.text, params); //angle
+            this.attack.telegraph.spawn(document.getElementById("telegraphs"), this.x, this.y, this.text, { angle: params.angle });
         }
     }
     

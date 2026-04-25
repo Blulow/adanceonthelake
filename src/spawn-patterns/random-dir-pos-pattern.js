@@ -114,7 +114,7 @@ export default class RandomDirPosPattern extends SpawnPattern {
 
         const relLength = Math.hypot(this.x, this.y);
         const angle = Math.atan2(this.y / relLength, this.x / relLength);
-        lyric.spawnTelegraph({ angle: angle });
+        lyric.spawnTelegraph({ angle: angle, column: this.isColumn });
     }
 
     offsetText(lyric) {

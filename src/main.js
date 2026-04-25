@@ -22,7 +22,8 @@ const pc = new PlayerCharacter();
 const lyricsArena = document.getElementById("lyrics");
 
 const chart = [
-	{ time: 0, type: CharInChordType, pattern: RandomDirPosPattern, attack: AttackPattern, telegraph: DirPosTelegraph },
+	{ time: 0, type: CharInChordType, pattern: RandomDirPosPattern, attack: LinePattern, telegraph: DirPosTelegraph },
+	// { time: 20000, type: CharInChordType, pattern: RandomDirPosPattern, attack: LinePattern, telegraph: DirPosTelegraph },
 	// { time: 0, type: CharInChordType, pattern: RandomDirPosPattern, attack: AttackPattern, telegraph: DirPosTelegraph },
 	// { time: 37414, type: WordType, pattern: RandomDirPosPattern, attack: LinePattern, telegraph: DirPosTelegraph },
 	// { time: 65565, type: CharInWordType, pattern: RandomDirPosPattern, attack: AttackPattern, telegraph: DirPosTelegraph },
