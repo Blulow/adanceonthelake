@@ -185,7 +185,7 @@ export default class PlayerCharacter {
         });
     }
 
-    update() {
+    update(isChorus) {
         if (!this.touch) {
             this.velocity.x = 0;
             this.velocity.y = 0;
@@ -333,7 +333,7 @@ export default class PlayerCharacter {
                         e.classList.add("coin-spin-fade");
                         this.coins++;
                         document.getElementById("coin-count").innerText = this.coins;
-                        new Coin().spawn();
+                        new Coin().spawn({ x: e.getBoundingClientRect().x, y: e.getBoundingClientRect().y }, isChorus);
                     }
                 });
             }

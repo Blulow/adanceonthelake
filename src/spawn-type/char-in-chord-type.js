@@ -9,7 +9,7 @@ export default class CharInChordType extends SpawnType {
         this.lastChord = null;
     }
 
-    animate(now, unit) {
+    animate(now, unit, isChorus) {
         if (unit.text !== this.lastChar) {
             const chordChange = this.player.findChordChange(this.player.videoPosition, unit.startTime);
             const chord = chordChange.current;
@@ -22,7 +22,7 @@ export default class CharInChordType extends SpawnType {
                     .map(w => w.text)
                     .join("");
 
-                this.pattern.spawnGroup(charsInChord, this.arena);
+                this.pattern.spawnGroup(charsInChord, this.arena, isChorus);
 
                 this.lastChord = chord;
             }

@@ -47,7 +47,7 @@ player.addListener({
 				// player.requestMediaSeek(30 * 1000);
 				player.requestMediaSeek(18 * 1000);
 				// player.requestMediaSeek(107196);
-				new Coin().spawn();
+				new Coin().spawn({ x: window.innerWidth / 2, y: window.innerHeight / 2 }, isChorus);
 			});
 		}
 		if (!app.songUrl) {
@@ -97,7 +97,7 @@ function lyricUpdate(round, changeTime) {
 		round.iter.animate = (now, unit) => {
 			if (player.findBeatChange(prev, player.mediaPosition).entered.length !== 0) console.log(now);
 			if (unit.contains(now + 1500)) {
-				round.animate(now, unit);
+				round.animate(now, unit, isChorus);
 				updateRound(unit.startTime);
 			}
 			prev = player.mediaPosition;
@@ -110,7 +110,7 @@ function lyricUpdate(round, changeTime) {
 }
 
 function gameUpdate() {
-	pc.update();
+	pc.update(isChorus);
 	requestAnimationFrame(gameUpdate);
 }
 gameUpdate();

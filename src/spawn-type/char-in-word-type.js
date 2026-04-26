@@ -9,12 +9,12 @@ export default class CharInWordType extends SpawnType {
         this.lastChar = null;
     }
 
-    animate(now, unit) {
+    animate(now, unit, isChorus) {
         if (unit.text !== this.lastChar) {
             const lyric = new Lyric(unit, this.attack, this.telegraph);
 
             if (unit.parent.text !== this.lastWord) {
-                this.pattern.spawnGroup(unit.parent.text, this.arena);
+                this.pattern.spawnGroup(unit.parent.text, this.arena, isChorus);
 
                 this.lastWord = unit.parent.text;
             }

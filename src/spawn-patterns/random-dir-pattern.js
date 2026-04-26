@@ -22,8 +22,21 @@ export default class RandomDirPattern extends SpawnPattern {
         this.reverse = false;
     }
 
-    spawnGroup(textInGroup, arena, isWord = false) {
+    spawnGroup(textInGroup, arena, isChorus, isWord = false) {
         if (Math.random() > 0.5) this.reverse = !this.reverse;
+
+        let minHeight = 0;
+        let maxHeight = window.innerHeight;
+        let minWidth = 0;
+        let maxWidth = window.innerWidth;
+
+        if (isChorus) {
+            const landscape = window.matchMedia("(orientation: landscape)").matches;
+            minHeight = window.innerHeight * (landscape ? 0.03 : 0.05);
+            maxHeight = window.innerHeight * (landscape ? 0.97 : 0.95);
+            minWidth = window.innerWidth * (landscape ? 0.03 : 0.05);
+            maxWidth = window.innerWidth * (landscape ? 0.97 : 0.95);
+        }
 
         this.textGroup = document.createElement("div");
         this.textGroup.classList.add("text-group");
@@ -31,30 +44,36 @@ export default class RandomDirPattern extends SpawnPattern {
 
         const unitWord = document.createElement("div");
         unitWord.innerText = textInGroup[0];
-        const maxWidth = Math.max(window.innerHeight, window.innerWidth);
-        unitWord.style.fontSize = maxWidth > 1024 ? "7vw" : "10vw";
+        unitWord.style.fontSize = Math.max(window.innerHeight, window.innerWidth) > 1024 ? "7vw" : "10vw";
         unitWord.style.lineHeight = "1";
         arena.appendChild(unitWord);
 
         this.side = Math.floor(Math.random() * 4);
-        switch (this.side) {
-            case this.sides.TOP:
-                this.textTopValue = -unitWord.clientHeight;
-                this.textLeftValue = Math.random() * (window.innerWidth + unitWord.clientWidth) - unitWord.clientWidth;
-                break;
-            case this.sides.BOTTOM:
-                this.textTopValue = window.innerHeight;
-                this.textLeftValue = Math.random() * (window.innerWidth + unitWord.clientWidth) - unitWord.clientWidth;
-                break;
-            case this.sides.LEFT:
-                this.textTopValue = Math.random() * (window.innerHeight + unitWord.clientHeight) - unitWord.clientHeight;
-                this.textLeftValue = -unitWord.clientWidth;
-                break;
-            case this.sides.RIGHT:
-                this.textTopValue = Math.random() * (window.innerHeight + unitWord.clientHeight) - unitWord.clientHeight;
-                this.textLeftValue = window.innerWidth;
-                break;
-        }
+        do {
+            switch (this.side) {
+                case this.sides.TOP:
+                    this.textTopValue = minHeight - unitWord.clientHeight;
+                    this.textLeftValue = minWidth + Math.random() * ((maxWidth - minWidth) + unitWord.clientWidth) - unitWord.clientWidth;
+                    break;
+                case this.sides.BOTTOM:
+                    this.textTopValue = maxHeight - (window.innerHeight * 0.07);
+                    this.textLeftValue = minWidth + Math.random() * ((maxWidth - minWidth) + unitWord.clientWidth) - unitWord.clientWidth;
+                    break;
+                case this.sides.LEFT:
+                    this.textTopValue = minHeight + Math.random() * ((maxHeight - minHeight) + unitWord.clientHeight) - unitWord.clientHeight;
+                    this.textLeftValue = minWidth - unitWord.clientWidth;
+                    break;
+                case this.sides.RIGHT:
+                    this.textTopValue = minHeight + Math.random() * ((maxHeight - minHeight) + unitWord.clientHeight) - unitWord.clientHeight;
+                    this.textLeftValue = maxWidth;
+                    break;
+            }
+        } while ([...document.getElementsByClassName("text")].filter(e => !(
+            this.textLeftValue + unitWord.offsetWidth < e.getBoundingClientRect().left ||
+            this.textLeftValue > e.getBoundingClientRect().right ||
+            this.textTopValue + unitWord.offsetHeight < e.getBoundingClientRect().top ||
+            this.textTopValue > e.getBoundingClientRect().bottom
+        )).length > 0);
         this.unitDim = { width: unitWord.clientWidth, height: unitWord.clientHeight };
         unitWord.remove();
         
