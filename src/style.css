@@ -64,6 +64,11 @@ div {
 	left: 30%;
 }
 
+.dash {
+	transform: scaleY(0.7);
+	filter: blur(7px);
+}
+
 .idlebottom {
 	background: url("../assets/idlebottom.png");
 	background-size: 200%;

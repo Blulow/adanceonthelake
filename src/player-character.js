@@ -389,6 +389,7 @@ export default class PlayerCharacter {
     }
 
     dash() {
+        this.pc.classList.add("dash");
         this.isDashing = true;
         this.isDashCoolDownFinished = false;
         this.speed = this.DASH_SPEED;
@@ -396,6 +397,7 @@ export default class PlayerCharacter {
             this.speed = this.NORMAL_SPEED;
             this.dashCooldownBar.classList.add("dash-cooldown-bar-active");
             this.isDashing = false;
+            this.pc.classList.remove("dash");
         }, this.DASH_TIME);
         setTimeout(() => {
             this.isDashCoolDownFinished = true;
