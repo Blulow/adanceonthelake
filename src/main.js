@@ -93,18 +93,27 @@ function updateRound(now) {
 
 let prev = 0;
 function lyricUpdate(round, changeTime) {
+	let t = false;
 	while (round.iter) {
-		round.iter.animate = (now, unit) => {
-			if (player.findBeatChange(prev, player.mediaPosition).entered.length !== 0) console.log(now);
-			if (unit.contains(now + 1500)) {
-				round.animate(now, unit, isChorus);
-				updateRound(unit.startTime);
-			}
-			prev = player.mediaPosition;
-		};
 		if (changeTime) {
-			if (round.iter.startTime >= changeTime) break;
+			if (round.iter.startTime >= changeTime) {
+				t = true;
+			}
 		}
+		const anim = (t) => {
+			round.iter.animate = (now, unit) => {
+				if (player.findBeatChange(prev, player.mediaPosition).entered.length !== 0) console.log(now);
+				if (unit.contains(now + 1500)) {
+					if (!t) {
+						round.animate(now, unit, isChorus);
+					}
+					updateRound(unit.startTime);
+				}
+				prev = player.mediaPosition;
+			};
+		};
+		anim(t);
+		if (t) break;
 		round.iter = round.iter.next;
 	}
 }

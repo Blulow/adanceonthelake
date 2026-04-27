@@ -3,7 +3,7 @@ import Coin from "./coin";
 export default class PlayerCharacter {
     constructor() {
         const maxWidth = Math.max(window.innerHeight, window.innerWidth);
-        this.NORMAL_SPEED = maxWidth > 1024 ? 10 : 3;
+        this.NORMAL_SPEED = maxWidth > 1024 ? 10 : 7;
         this.DASH_SPEED = maxWidth > 1024 ? 50 : 20;
         this.DASH_TIME = 100;
         this.DASH_COOLDOWN = 500;

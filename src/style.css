@@ -530,7 +530,7 @@ div {
 	z-index: 1;
     position: absolute;
     display: block;
-    font-size: 5vw;
+    font-size: 7vw;
     line-height: 1;
 	user-select: none;
 }
@@ -747,7 +747,7 @@ div {
 	background-color: white;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1024px) and (orientation: portrait) {
 	.text, .lyric-bullet, .beam-wrapper, .beam-column-wrapper {
 		font-size: 10vw;
 	}
