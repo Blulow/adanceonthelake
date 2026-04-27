@@ -6,7 +6,7 @@ export default class Coin {
         this.x = 0;
         this.y = 0;
 
-        this.MIN_COIN_DIST = 300;
+        this.MIN_COIN_DIST = Math.max(window.innerWidth, window.innerHeight) > 1024 ? 300 : 50;
         
         this.instance = this;
     }
