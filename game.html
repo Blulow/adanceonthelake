@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+	<link rel="stylesheet" href="src/style.css">
+	<link rel="preload" as="image" href="assets/idlebottom.png">
+	<link rel="preload" as="image" href="assets/idlebottomright.png">
+	<link rel="preload" as="image" href="assets/idleright.png">
+	<link rel="preload" as="image" href="assets/idletopright.png">
+	<link rel="preload" as="image" href="assets/idletop.png">
+	<link rel="preload" as="image" href="assets/idletopleft.png">
+	<link rel="preload" as="image" href="assets/idleleft.png">
+	<link rel="preload" as="image" href="assets/idlebottomleft.png">
+	<link rel="preload" as="image" href="assets/glidebottom.png">
+	<link rel="preload" as="image" href="assets/glidebottomright.png">
+	<link rel="preload" as="image" href="assets/glideright.png">
+	<link rel="preload" as="image" href="assets/glidetopright.png">
+	<link rel="preload" as="image" href="assets/glidetop.png">
+	<link rel="preload" as="image" href="assets/glidetopleft.png">
+	<link rel="preload" as="image" href="assets/glideleft.png">
+	<link rel="preload" as="image" href="assets/glidebottomleft.png">
+	<title>lyricapp</title>
+</head>
+<body>
+	<div id="game">
+		<button id="play">Play</button>
+		<div id="arena">
+			<div id="lyrics"></div>
+			<div id="telegraphs"></div>
+			<div id="bullets"></div>
+			<div id="coins"></div>
+		</div>
+		<div class="game-ui">
+			<div id="hits">Hits: <span id="hit-count">0</span></div>
+			<div id="coins">Coins: <span id="coin-count">0</span></div>
+			<div id="chorus-effect"></div>
+		</div>
+		<div id="joystick"></div>
+		<div id="stick"></div>
+	</div>
+	<script type="module" src="/src/main.js"></script>
+</body>
+</html>

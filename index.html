@@ -1,42 +1,20 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
-	<link rel="stylesheet" href="src/style.css">
-	<link rel="preload" as="image" href="assets/idlebottom.png">
-	<link rel="preload" as="image" href="assets/idlebottomright.png">
-	<link rel="preload" as="image" href="assets/idleright.png">
-	<link rel="preload" as="image" href="assets/idletopright.png">
-	<link rel="preload" as="image" href="assets/idletop.png">
-	<link rel="preload" as="image" href="assets/idletopleft.png">
-	<link rel="preload" as="image" href="assets/idleleft.png">
-	<link rel="preload" as="image" href="assets/idlebottomleft.png">
-	<link rel="preload" as="image" href="assets/glidebottom.png">
-	<link rel="preload" as="image" href="assets/glidebottomright.png">
-	<link rel="preload" as="image" href="assets/glideright.png">
-	<link rel="preload" as="image" href="assets/glidetopright.png">
-	<link rel="preload" as="image" href="assets/glidetop.png">
-	<link rel="preload" as="image" href="assets/glidetopleft.png">
-	<link rel="preload" as="image" href="assets/glideleft.png">
-	<link rel="preload" as="image" href="assets/glidebottomleft.png">
-	<title>lyricapp</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lyricapp</title>
+    <link rel="stylesheet" href="src/style.css">
 </head>
 <body>
-	<button id="play">Play</button>
-	<div id="arena">
-		<div id="lyrics"></div>
-		<div id="telegraphs"></div>
-		<div id="bullets"></div>
-		<div id="coins"></div>
-	</div>
-	<div id="ui">
-		<div id="hits">Hits: <span id="hit-count">0</span></div>
-		<div id="coins">Coins: <span id="coin-count">0</span></div>
-		<div id="chorus-effect"></div>
-	</div>
-	<div id="joystick"></div>
-	<div id="stick"></div>
-	<script type="module" src="/src/main.js"></script>
+    <div class="main-menu">
+        <div id="button-container">
+            <button id="play" class="button big"><a href="game.html">Play</a></button>
+            <button id="options" class="button big">Options</button>
+            <button id="language" class="button small">L</button>
+            <button id="tutorial" class="button small">T</button>
+        </div>
+    </div>
+    <script src="src/index.js"></script>
 </body>
 </html>
