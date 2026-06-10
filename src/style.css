@@ -47,8 +47,8 @@ a {
 	grid-template-columns: 1fr 1fr;
 }
 
-.button, .button a {
-	padding: 0;
+.button {
+	padding: 10px;
 	border: none;
 	position: relative;
 	display: block;
@@ -58,6 +58,10 @@ a {
 	background-color: #fff;
 	color: black;
 	border-radius: 10px;
+}
+
+.button a {
+	color: black;
 }
 
 .button:hover, .button a:hover {
