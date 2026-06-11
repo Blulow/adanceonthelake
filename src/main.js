@@ -73,7 +73,7 @@ function createRound(data) {
 
 function updateRound(now) {
 	const next = chart[changes + 1];
-
+	
 	if (next && now >= next.time) {
 		changes++;
 
@@ -83,7 +83,6 @@ function updateRound(now) {
 		} else {
 			if (isChorus) {
 				deChorusEffect();
-				isChorus = false;
 			}
 		}
 		const upcoming = chart[changes + 1];
@@ -118,60 +117,107 @@ function lyricUpdate(round, changeTime) {
 	}
 }
 
-function gameUpdate() {
+const sunflowers = [];
+
+let lastTime = 0;
+function gameUpdate(timestamp) {
+	let delta = timestamp - lastTime;
+	if (!lastTime) delta = 0;
+	delta = Math.min(delta, 1000);
+	lastTime = timestamp;
+
 	pc.update(isChorus);
+
+	if (isChorus) drawSunflowers(delta);
+
 	requestAnimationFrame(gameUpdate);
 }
 gameUpdate();
 
+const sunflowerCanvasTop = document.getElementById("chorus-effect-top");
+const ctxTop = sunflowerCanvasTop.getContext("2d");
+const sunflowerCanvasBottom = document.getElementById("chorus-effect-bottom");
+const ctxBottom = sunflowerCanvasBottom.getContext("2d");
+const sunflowerCanvasLeft = document.getElementById("chorus-effect-left");
+const ctxLeft = sunflowerCanvasLeft.getContext("2d");
+const sunflowerCanvasRight = document.getElementById("chorus-effect-right");
+const ctxRight = sunflowerCanvasRight.getContext("2d");
+[...document.getElementsByClassName("chorus-effect")].forEach(e => {
+	e.width = window.innerWidth;
+	e.height = window.innerHeight;
+	e.getContext("2d").imageSmoothingEnabled = false;
+});
+
+function drawSunflowers(delta) {
+	ctxTop.clearRect(0, 0, sunflowerCanvasTop.width, sunflowerCanvasTop.height);
+	ctxBottom.clearRect(0, 0, sunflowerCanvasBottom.width, sunflowerCanvasBottom.height);
+	ctxLeft.clearRect(0, 0, sunflowerCanvasLeft.width, sunflowerCanvasLeft.height);
+	ctxRight.clearRect(0, 0, sunflowerCanvasRight.width, sunflowerCanvasRight.height);
+
+	for (let i = 0; i < sunflowers.length; i++) {
+		const sunflowerData = sunflowers[i];
+
+		const SUNFLOWER_IMGSIZE = 32;
+		sunflowerData.ctx.drawImage(sunflowerData.image, SUNFLOWER_IMGSIZE * sunflowerData.step, 0, SUNFLOWER_IMGSIZE, SUNFLOWER_IMGSIZE, sunflowerData.x, sunflowerData.y, sunflowerData.width, sunflowerData.height);
+		
+		if (sunflowerData.timer < sunflowerData.interval) {
+			sunflowerData.timer += delta;
+		} else {
+			if (sunflowerData.step < 3) sunflowerData.step++; else sunflowerData.step = 0;
+			sunflowerData.timer = 0;
+		}
+	}
+}
+
 function chorusEffect() {
 	isChorus = true;
+	
+	const maxWidth = Math.max(window.innerHeight, window.innerWidth);
+	const SUNFLOWER_WIDTH = maxWidth > 1024 ? 64 : 24;
+	const SUNFLOWER_HEIGHT = maxWidth > 1024 ? 64 : 24;
 
-	function spawnSunflower(x, y) {
-		const sunflower = document.createElement("div");
-		sunflower.classList.add(`sunflower-${Math.random() > 0.5 ? "large" : "small"}`);
-		document.getElementById("chorus-effect").appendChild(sunflower);
-		sunflower.style.left = `${x}px`;
-		sunflower.style.top = `${y}px`;
-		sunflower.style.transform = `rotate(${Math.floor(Math.random() * 4) * 90}deg)`;
-		sunflower.style.setProperty("--anim-len", `${Math.random() * 2 + 1}s`);
-		return sunflower;
+	function spawnSunflower(x, y, ctx) {
+		const sunflowerImg = new Image();
+		const SUNFLOWER_LARGE_SRC = "assets/sunflower_large.png";
+		const SUNFLOWER_SMALL_SRC = "assets/sunflower_small.png";
+		sunflowerImg.src = Math.random() > 0.5 ? SUNFLOWER_LARGE_SRC : SUNFLOWER_SMALL_SRC;
+		
+		const _sunflowerData = { ctx, image: sunflowerImg, step: 0, x, y, width: SUNFLOWER_WIDTH, height: SUNFLOWER_HEIGHT, timer: 0, interval: Math.random() * 2000 + 1000 };
+		sunflowers.push(_sunflowerData);
 	}
-	const unitSunflower = spawnSunflower();
-	const sunflowerWidth = unitSunflower.clientWidth;
-	const sunflowerHeight = unitSunflower.clientHeight;
-	unitSunflower.remove();
-
-	for (let i = 0; i <= window.innerWidth - sunflowerWidth; i += Math.random() * sunflowerWidth / 3) {
-        const flower = spawnSunflower(i, Math.random() * sunflowerHeight * 1.5 - sunflowerHeight / 2);
-		flower.style.transform = "translate(0, -20vw) " + flower.style.transform;
-		flower.classList.add("sunflower-movein", "sunflower-top");
+	
+	for (let i = 0; i <= window.innerWidth - SUNFLOWER_WIDTH; i += Math.random() * SUNFLOWER_WIDTH / 3) {
+		spawnSunflower(i, Math.random() * SUNFLOWER_HEIGHT * 1.5 - SUNFLOWER_HEIGHT / 2, ctxTop);
+		sunflowerCanvasTop.style.transform = "translate(0, -20vw)";
+		sunflowerCanvasTop.classList.add("sunflower-movein", "sunflower-top");
 	}
-	for (let i = 0; i <= window.innerWidth - sunflowerWidth; i += Math.random() * sunflowerWidth / 3) {
-		const flower = spawnSunflower(i, window.innerHeight - sunflowerHeight - Math.random() * sunflowerHeight * 1.5 + sunflowerHeight / 2);
-		flower.style.transform = "translate(0, 20vw) " + flower.style.transform;
-		flower.classList.add("sunflower-movein", "sunflower-bottom");
+	for (let i = 0; i <= window.innerWidth - SUNFLOWER_WIDTH; i += Math.random() * SUNFLOWER_WIDTH / 3) {
+		spawnSunflower(i, window.innerHeight - SUNFLOWER_HEIGHT - Math.random() * SUNFLOWER_HEIGHT * 1.5 + SUNFLOWER_HEIGHT / 2, ctxBottom);
+		sunflowerCanvasBottom.style.transform = "translate(0, 20vw)";
+		sunflowerCanvasBottom.classList.add("sunflower-movein", "sunflower-bottom");
 	}
-	for (let i = 0; i <= window.innerHeight - sunflowerHeight; i += Math.random() * sunflowerHeight / 3) {
-		const flower = spawnSunflower(Math.random() * sunflowerWidth * 1.5 - sunflowerWidth / 2, i);
-		flower.style.transform = "translate(-20vw, 0) " + flower.style.transform;
-		flower.classList.add("sunflower-movein", "sunflower-left");
+	for (let i = 0; i <= window.innerHeight - SUNFLOWER_HEIGHT; i += Math.random() * SUNFLOWER_HEIGHT / 3) {
+		spawnSunflower(Math.random() * SUNFLOWER_WIDTH * 1.5 - SUNFLOWER_WIDTH / 2, i, ctxLeft);
+		sunflowerCanvasLeft.style.transform = "translate(-20vw, 0)";
+		sunflowerCanvasLeft.classList.add("sunflower-movein", "sunflower-left");
 	}
-	for (let i = 0; i <= window.innerHeight - sunflowerHeight; i += Math.random() * sunflowerHeight / 3) {
-		const flower = spawnSunflower(window.innerWidth - Math.random() * sunflowerWidth * 1.5 - sunflowerWidth / 2, i);
-		flower.style.transform = "translate(20vw, 0) " + flower.style.transform;
-		flower.classList.add("sunflower-movein", "sunflower-right");
+	for (let i = 0; i <= window.innerHeight - SUNFLOWER_HEIGHT; i += Math.random() * SUNFLOWER_HEIGHT / 3) {
+		spawnSunflower(window.innerWidth - Math.random() * SUNFLOWER_WIDTH * 1.5 - SUNFLOWER_WIDTH / 2, i, ctxRight);
+		sunflowerCanvasRight.style.transform = "translate(20vw, 0)";
+		sunflowerCanvasRight.classList.add("sunflower-movein", "sunflower-right");
 	}
 }
 
 function deChorusEffect() {
+	isChorus = false;
+
 	[...document.getElementsByClassName("sunflower-top")].forEach(e => {
 		e.classList.remove("sunflower-top");
 		e.classList.add("sunflower-moveout-top");
 		e.style.transform = "translate(0, 0)";
 		e.addEventListener("animationend", a => {
 			if (a.animationName === "sunflower-moveout-top") {
-				e.remove();
+				ctxTop.clearRect(0, 0, sunflowerCanvasTop.width, sunflowerCanvasTop.height);
 			}
 		});
 	});
@@ -181,7 +227,7 @@ function deChorusEffect() {
 		e.style.transform = "translate(0, 0)";
 		e.addEventListener("animationend", a => {
 			if (a.animationName === "sunflower-moveout-bottom") {
-				e.remove();
+				ctxBottom.clearRect(0, 0, sunflowerCanvasBottom.width, sunflowerCanvasBottom.height);
 			}
 		});
 	});
@@ -191,7 +237,7 @@ function deChorusEffect() {
 		e.style.transform = "translate(0, 0)";
 		e.addEventListener("animationend", a => {
 			if (a.animationName === "sunflower-moveout-left") {
-				e.remove();
+				ctxLeft.clearRect(0, 0, sunflowerCanvasLeft.width, sunflowerCanvasLeft.height);
 			}
 		});
 	});
@@ -201,8 +247,12 @@ function deChorusEffect() {
 		e.style.transform = "translate(0, 0)";
 		e.addEventListener("animationend", a => {
 			if (a.animationName === "sunflower-moveout-right") {
-				e.remove();
+				ctxRight.clearRect(0, 0, sunflowerCanvasRight.width, sunflowerCanvasRight.height);
 			}
 		});
 	});
+
+	while (sunflowers.length > 0) {
+		sunflowers.pop();
+	}
 }

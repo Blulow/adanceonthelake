@@ -290,7 +290,6 @@ div {
 	background-size: 300% 100%;
 	width: 100%;
 	height: 100%;
-	/* z-index: -1; */
 	transform: translateY(5%);
 	animation: idlewater 1s steps(3) infinite;
 }
@@ -304,7 +303,6 @@ div {
 	background-size: 300% 100%;
 	width: 100%;
 	height: 100%;
-	/* z-index: -1; */
 	transform: translateY(5%);
 	animation: splashwater 0.5s steps(3) infinite;
 }
@@ -318,7 +316,6 @@ div {
 	background-size: 500% 100%;
 	width: 100%;
 	height: 100%;
-	/* z-index: -1; */
 	transform-origin: 50% -5%;
 	transform: translate(0, 100%) rotate(calc(var(--angle-index) * -90deg + 180deg));
 	animation: watertrailstraight-fadein 0.2s steps(3) forwards;
@@ -333,7 +330,6 @@ div {
 	background-size: 300% 100%;
 	width: 100%;
 	height: 100%;
-	/* z-index: -1; */
 	transform-origin: 50% -5%;
 	transform: translate(0, 100%) rotate(calc(var(--angle-index) * -90deg + 180deg));
 	animation: watertrailstraight-sustain 0.5s steps(3) infinite;
@@ -353,7 +349,6 @@ div {
 	background-position: -200% 0;
 	width: 100%;
 	height: 100%;
-	/* z-index: -1; */
 	transform-origin: 50% -5%;
 	transform: translate(0, 100%) rotate(calc(var(--angle-index) * -90deg + 180deg));
 	animation: watertrailstraight-fadeout 0.2s steps(3) forwards;
@@ -368,7 +363,6 @@ div {
 	background-size: 500% 100%;
 	width: 100%;
 	height: 100%;
-	/* z-index: -1; */
 	transform-origin: 0 -5%;
 	transform: translate(50%, 100%) rotate(calc(var(--angle-index) * -90deg + 180deg));
 	animation: watertraildiagonal-fadein 0.2s steps(3) forwards;
@@ -383,7 +377,6 @@ div {
 	background-size: 300% 100%;
 	width: 100%;
 	height: 100%;
-	/* z-index: -1; */
 	transform-origin: 0 -5%;
 	transform: translate(50%, 100%) rotate(calc(var(--angle-index) * -90deg + 180deg));
 	animation: watertraildiagonal-sustain 0.5s steps(3) infinite;
@@ -403,7 +396,6 @@ div {
 	background-position: -200% 0;
 	width: 100%;
 	height: 100%;
-	/* z-index: -1; */
 	transform-origin: 0 -5%;
 	transform: translate(50%, 100%) rotate(calc(var(--angle-index) * -90deg + 180deg));
 	animation: watertraildiagonal-fadeout 0.2s steps(3) forwards;
@@ -474,49 +466,14 @@ div {
 	z-index: 4;
 }
 
-#chorus-effect {
+.chorus-effect {
 	top: 0;
 	position: absolute;
-	width: 100%;
-	height: 100%;
-}
-
-.sunflower-large {
 	z-index: 3;
-	position: absolute;
-	background: url("../assets/sunflower_large.png");
-	width: 5vw;
-	aspect-ratio: 1;
-	background-size: 400% 100%;
-	image-rendering: pixelated;
-	animation: sunflower var(--anim-len) steps(4) infinite;
-}
-
-.sunflower-small {
-	z-index: 3;
-	position: absolute;
-	background: url("../assets/sunflower_small.png");
-	width: 5vw;
-	aspect-ratio: 1;
-	background-size: 400% 100%;
-	transform-origin: 25% 25%;
-	image-rendering: pixelated;
-	animation: sunflower var(--anim-len) steps(4) infinite;
-}
-
-@keyframes sunflower {
-	to { background-position: 400% 0;}
-}
-
-@media (orientation: landscape) {
-	.sunflower-large, .sunflower-small{
-		width: 3vw;
-	}
 }
 
 .sunflower-movein {
-	animation: movein 1s forwards,
-	    sunflower var(--anim-len) steps(4) infinite;
+	animation: movein 1s forwards
 }
 
 .sunflower-moveout-top {
