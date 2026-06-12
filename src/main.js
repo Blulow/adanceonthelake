@@ -1,17 +1,7 @@
 import { Player } from "textalive-app-api";
 import PlayerCharacter from "./player-character";
 import Coin from "./coin";
-import WordType from "./spawn-type/word-type";
-import CharInWordType from "./spawn-type/char-in-word-type";
-import CharInChordType from "./spawn-type/char-in-chord-type";
-import RandomDirPosPattern from "./spawn-patterns/random-dir-pos-pattern";
-import RandomDirPattern from "./spawn-patterns/random-dir-pattern";
-import FallingPattern from "./spawn-patterns/falling-pattern";
-import AttackPattern from "./attack-patterns/attack-pattern";
-import LinePattern from "./attack-patterns/line-pattern";
-import BulletShootPattern from "./attack-patterns/bullet-shoot-pattern";
-import Telegraph from "./telegraphs/telegraph";
-import DirPosTelegraph from "./telegraphs/dir-pos-telegraph";
+import Chart from "./chart-data";
 
 const player = new Player({
 	app: { token: "4fLfxYZ0Ntw6flJe" }
@@ -20,19 +10,8 @@ const player = new Player({
 const pc = new PlayerCharacter();
 
 const lyricsArena = document.getElementById("lyrics");
-
-const chart = [
-	{ time: 0, type: CharInChordType, pattern: RandomDirPosPattern, attack: AttackPattern, telegraph: DirPosTelegraph },
-	{ time: 37414, type: WordType, pattern: RandomDirPosPattern, attack: LinePattern, telegraph: DirPosTelegraph },
-	{ time: 65565, type: CharInWordType, pattern: RandomDirPosPattern, attack: AttackPattern, telegraph: DirPosTelegraph },
-	{ time: 78862, type: CharInChordType, pattern: RandomDirPattern, attack: AttackPattern, telegraph: Telegraph, chorusEffect: true },
-	{ time: 107196, type: WordType, pattern: RandomDirPosPattern, attack: LinePattern, telegraph: DirPosTelegraph },
-	{ time: 132378, type: CharInWordType, pattern: FallingPattern, attack: AttackPattern, telegraph: DirPosTelegraph },
-	{ time: 152943, type: CharInWordType, pattern: RandomDirPosPattern, attack: BulletShootPattern, telegraph: DirPosTelegraph },
-	{ time: 168177, type: WordType, pattern: RandomDirPosPattern, attack: LinePattern, telegraph: DirPosTelegraph },
-	{ time: 182443, type: CharInChordType, pattern: FallingPattern, attack: AttackPattern, telegraph: DirPosTelegraph, chorusEffect: true },
-	{ time: 210491, type: CharInChordType, pattern: RandomDirPattern, attack: AttackPattern, telegraph: DirPosTelegraph },
-];
+let url = localStorage.getItem("url");
+let chart = Chart.getChart(JSON.parse(localStorage.getItem("chart")));
 
 let changes = 0;
 let currentRound = null;
@@ -51,7 +30,7 @@ player.addListener({
 			});
 		}
 		if (!app.songUrl) {
-			player.createFromSongUrl("https://piapro.jp/t/6W2N/20251215164617"); // song url
+			player.createFromSongUrl(url);
 		}
 	},
 	onVideoReady() {
