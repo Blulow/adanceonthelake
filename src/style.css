@@ -8,14 +8,11 @@ body {
     margin: 0;
 	width: 100%;
 	height: 100vh;
-    overflow: hidden;
     background-color: black;
     color: white;
-	touch-action: none;
-	user-select: none;
-	pointer-events: none;
 }
 
+/*index*/
 .main-menu {
 	width: 100%;
 	height: 100%;
@@ -71,6 +68,66 @@ a {
 
 .big {
 	grid-column: span 2;
+}
+
+/*level-select*/
+#level-select-ui {
+	width: 100%;
+	height: 100vh;
+}
+
+#song-list {
+	width: 80%;
+	height: 100%;
+	padding: 0;
+	margin: 0 auto;
+	overflow-y: auto;
+	scroll-snap-type: y mandatory;
+	scrollbar-width: none;
+}
+
+@media (orientation: portrait) {
+	#song-list {
+		width: 100%
+	}
+}
+
+#song-list::before, #song-list::after {
+	content: "";
+	display: block;
+	height: 50vh;
+}
+
+#song-list > li {
+	background-color: #bbb;
+	width: 100%;
+	aspect-ratio: 7;
+	display: flex;
+	justify-content: space-between;
+	color: #000;
+	padding: 2% 5%;
+	margin: 3% 0;
+	box-sizing: border-box;
+	scroll-snap-align: center;
+}
+
+#song-list p {
+	margin: 0;
+	font-size: 5vw;
+}
+
+#song-list img {
+	margin: 0;
+	width: 7vw;
+	display: block;
+}
+
+/*game*/
+body.game-page {
+    overflow: hidden;
+	touch-action: none;
+	user-select: none;
+	pointer-events: none;
 }
 
 #game {
