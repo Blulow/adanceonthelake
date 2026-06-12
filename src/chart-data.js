@@ -1,4 +1,4 @@
-export default class Song {
+export default class Chart {
     constructor(name, imgSrc, data) {
         this.name = name;
         this.img = new Image();
@@ -6,14 +6,14 @@ export default class Song {
         this.data = data;
     }
 
-    addSongTo(songList) {
-        const song = document.createElement("li");
+    addSongTo(chartList) {
+        const chart = document.createElement("li");
 
         const label = document.createElement("p");
         label.innerText = this.name;
         
-        song.appendChild(label);
-        song.appendChild(this.img);
-        songList.appendChild(song);
+        chart.appendChild(label);
+        chart.appendChild(this.img);
+        chartList.appendChild(chart);
     }
 }

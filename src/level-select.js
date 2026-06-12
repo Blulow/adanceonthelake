@@ -1,10 +1,10 @@
-import Song from "./song-data";
+import Chart from "./chart-data";
 
-const songData = Object.values(import.meta.glob("../assets/song-data/*.json", { eager: true }));
-const songList = document.getElementById("song-list");
+const chartData = Object.values(import.meta.glob("../assets/chart-data/*.json", { eager: true }));
+const chartList = document.getElementById("chart-list");
 
-for (const data of songData) {
-    const song = new Song(data.name, data.img, data.data);
+for (const data of chartData) {
+    const chart = new Chart(data.name, data.img, data.data);
 
-    song.addSongTo(songList);
+    chart.addSongTo(chartList);
 }

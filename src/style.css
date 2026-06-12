@@ -76,7 +76,7 @@ a {
 	height: 100vh;
 }
 
-#song-list {
+#chart-list {
 	width: 80%;
 	height: 100%;
 	padding: 0;
@@ -87,18 +87,18 @@ a {
 }
 
 @media (orientation: portrait) {
-	#song-list {
+	#chart-list {
 		width: 100%
 	}
 }
 
-#song-list::before, #song-list::after {
+#chart-list::before, #chart-list::after {
 	content: "";
 	display: block;
 	height: 50vh;
 }
 
-#song-list > li {
+#chart-list > li {
 	background-color: #bbb;
 	width: 100%;
 	aspect-ratio: 7;
@@ -111,12 +111,12 @@ a {
 	scroll-snap-align: center;
 }
 
-#song-list p {
+#chart-list p {
 	margin: 0;
 	font-size: 5vw;
 }
 
-#song-list img {
+#chart-list img {
 	margin: 0;
 	width: 7vw;
 	display: block;
