@@ -123,7 +123,7 @@ a {
 }
 
 /*game*/
-body.game-page {
+body#game-page {
     overflow: hidden;
 	touch-action: none;
 	user-select: none;
@@ -133,7 +133,7 @@ body.game-page {
 #game {
 	width: 100%;
 	height: 100%;
-	background: url("../assets/background.png");
+	background: url("../assets/images/game/background.png");
 	background-repeat: no-repeat;
 	background-size: 500vw 100%;
 	animation: bg-anim 3s steps(5) infinite;
@@ -183,7 +183,7 @@ div {
 }
 
 .idlebottom {
-	background: url("../assets/idlebottom.png");
+	background: url("../assets/images/game/player/idle/idlebottom.png");
 	background-size: 200%;
 	animation: idlebottom 1s steps(2) infinite;
 }
@@ -193,7 +193,7 @@ div {
 }
 
 .glidebottom {
-	background: url("../assets/glidebottom.png");
+	background: url("../assets/images/game/player/glide/glidebottom.png");
 	background-size: 300%;
 	animation: glidebottom 0.7s steps(3) infinite;
 }
@@ -203,7 +203,7 @@ div {
 }
 
 .idlebottomright {
-	background: url("../assets/idlebottomright.png");
+	background: url("../assets/images/game/player/idle/idlebottomright.png");
 	background-size: 200%;
 	animation: idlebottomright 1s steps(2) infinite;
 }
@@ -213,7 +213,7 @@ div {
 }
 
 .glidebottomright {
-	background: url("../assets/glidebottomright.png");
+	background: url("../assets/images/game/player/glide/glidebottomright.png");
 	background-size: 300%;
 	animation: glidebottomright 0.7s steps(3) infinite;
 }
@@ -223,7 +223,7 @@ div {
 }
 
 .idleright {
-	background: url("../assets/idleright.png");
+	background: url("../assets/images/game/player/idle/idleright.png");
 	background-size: 200%;
 	animation: idleright 1s steps(2) infinite;
 }
@@ -233,7 +233,7 @@ div {
 }
 
 .glideright {
-	background: url("../assets/glideright.png");
+	background: url("../assets/images/game/player/glide/glideright.png");
 	background-size: 300%;
 	animation: glideright 0.7s steps(3) infinite;
 }
@@ -243,7 +243,7 @@ div {
 }
 
 .idletopright {
-	background: url("../assets/idletopright.png");
+	background: url("../assets/images/game/player/idle/idletopright.png");
 	background-size: 200%;
 	animation: idletopright 1s steps(2) infinite;
 }
@@ -253,7 +253,7 @@ div {
 }
 
 .glidetopright {
-	background: url("../assets/glidetopright.png");
+	background: url("../assets/images/game/player/glide/glidetopright.png");
 	background-size: 300%;
 	animation: glidetopright 0.7s steps(3) infinite;
 }
@@ -263,7 +263,7 @@ div {
 }
 
 .idletop {
-	background: url("../assets/idletop.png");
+	background: url("../assets/images/game/player/idle/idletop.png");
 	background-size: 200%;
 	animation: idletop 1s steps(2) infinite;
 }
@@ -273,7 +273,7 @@ div {
 }
 
 .glidetop {
-	background: url("../assets/glidetop.png");
+	background: url("../assets/images/game/player/glide/glidetop.png");
 	background-size: 300%;
 	animation: glidetop 0.7s steps(3) infinite;
 }
@@ -283,7 +283,7 @@ div {
 }
 
 .idletopleft {
-	background: url("../assets/idletopleft.png");
+	background: url("../assets/images/game/player/idle/idletopleft.png");
 	background-size: 200%;
 	animation: idletopleft 1s steps(2) infinite;
 }
@@ -293,7 +293,7 @@ div {
 }
 
 .glidetopleft {
-	background: url("../assets/glidetopleft.png");
+	background: url("../assets/images/game/player/glide/glidetopleft.png");
 	background-size: 300%;
 	animation: glidetopleft 0.7s steps(3) infinite;
 }
@@ -303,7 +303,7 @@ div {
 }
 
 .idleleft {
-	background: url("../assets/idleleft.png");
+	background: url("../assets/images/game/player/idle/idleleft.png");
 	background-size: 200%;
 	animation: idleleft 1s steps(2) infinite;
 }
@@ -313,7 +313,7 @@ div {
 }
 
 .glideleft {
-	background: url("../assets/glideleft.png");
+	background: url("../assets/images/game/player/glide/glideleft.png");
 	background-size: 300%;
 	animation: glideleft 0.7s steps(3) infinite;
 }
@@ -323,7 +323,7 @@ div {
 }
 
 .idlebottomleft {
-	background: url("../assets/idlebottomleft.png");
+	background: url("../assets/images/game/player/idle/idlebottomleft.png");
 	background-size: 200%;
 	animation: idlebottomleft 1s steps(2) infinite;
 }
@@ -333,7 +333,7 @@ div {
 }
 
 .glidebottomleft {
-	background: url("../assets/glidebottomleft.png");
+	background: url("../assets/images/game/player/glide/glidebottomleft.png");
 	background-size: 300%;
 	animation: glidebottomleft 0.7s steps(3) infinite;
 }
@@ -343,7 +343,7 @@ div {
 }
 
 .idlewater {
-	background: url("../assets/idlewater.png");
+	background: url("../assets/images/game/water/idlewater.png");
 	background-size: 300% 100%;
 	width: 100%;
 	height: 100%;
@@ -356,7 +356,7 @@ div {
 }
 
 .splashwater {
-	background: url("../assets/splashwater.png");
+	background: url("../assets/images/game/water/splashwater.png");
 	background-size: 300% 100%;
 	width: 100%;
 	height: 100%;
@@ -369,7 +369,7 @@ div {
 }
 
 .watertrailstraight-fadein {
-	background: url("../assets/watertrailstraightfade.png");
+	background: url("../assets/images/game/water/trail/watertrailstraightfade.png");
 	background-size: 500% 100%;
 	width: 100%;
 	height: 100%;
@@ -383,7 +383,7 @@ div {
 }
 
 .watertrailstraight-sustain {
-	background: url("../assets/watertrailstraightsustain.png");
+	background: url("../assets/images/game/water/trail/watertrailstraightsustain.png");
 	background-size: 300% 100%;
 	width: 100%;
 	height: 100%;
@@ -401,7 +401,7 @@ div {
 }
 
 .watertrailstraight-fadeout {
-	background: url("../assets/watertrailstraightfade.png");
+	background: url("../assets/images/game/water/trail/watertrailstraightfade.png");
 	background-size: 500% 100%;
 	background-position: -200% 0;
 	width: 100%;
@@ -416,7 +416,7 @@ div {
 }
 
 .watertraildiagonal-fadein {
-	background: url("../assets/watertraildiagonalfade.png");
+	background: url("../assets/images/game/water/trail/watertraildiagonalfade.png");
 	background-size: 500% 100%;
 	width: 100%;
 	height: 100%;
@@ -430,7 +430,7 @@ div {
 }
 
 .watertraildiagonal-sustain {
-	background: url("../assets/watertraildiagonalsustain.png");
+	background: url("../assets/images/game/water/trail/watertraildiagonalsustain.png");
 	background-size: 300% 100%;
 	width: 100%;
 	height: 100%;
@@ -448,7 +448,7 @@ div {
 }
 
 .watertraildiagonal-fadeout {
-	background: url("../assets/watertraildiagonalfade.png");
+	background: url("../assets/images/game/water/trail/watertraildiagonalfade.png");
 	background-size: 500% 100%;
 	background-position: -200% 0;
 	width: 100%;
@@ -679,7 +679,7 @@ div {
 	position: absolute;
 	top: 3vw;
 	left: calc(50% - 10vw/2);
-	background: url("../assets/water_wave.png");
+	background: url("../assets/images/game/water/water_wave.png");
 	width: 10vw;
 	height: 10vw;
 	background-size: 400% 100%;
@@ -699,7 +699,7 @@ div {
 }
 
 .pos-telegraph {
-	background-image: url("../assets/shadow.png");
+	background-image: url("../assets/images/game/shadow.png");
     position: absolute;
 	background-size: 100% 100%;
     width: 5vw;
@@ -709,7 +709,7 @@ div {
 }
 
 .arrow {
-	background-image: url("../assets/arrow.png");
+	background-image: url("../assets/images/game/arrow.png");
 	position: absolute;
 	width: 100%;
 	height: 100%;
