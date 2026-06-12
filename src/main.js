@@ -20,13 +20,15 @@ let isChorus = false;
 player.addListener({
 	onAppReady(app) {
 		if (!app.managed) {
-			setTimeout(() => {
-				player.requestPlay();
-				// player.requestMediaSeek(230 * 1000);
-				// player.requestMediaSeek(30 * 1000);
-				// player.requestMediaSeek(18 * 1000);
-				// player.requestMediaSeek(107196);
-				new Coin().spawn({ x: window.innerWidth / 2, y: window.innerHeight / 2 }, isChorus);
+			window.setTimeout(() => {
+				// document.getElementById("play").onclick = () => {
+					player.requestPlay();
+					// player.requestMediaSeek(230 * 1000);
+					// player.requestMediaSeek(30 * 1000);
+					// player.requestMediaSeek(18 * 1000);
+					// player.requestMediaSeek(180000);
+					new Coin().spawn({ x: window.innerWidth / 2, y: window.innerHeight / 2 }, isChorus);
+				// }
 			}, 5000);
 		}
 		if (!app.songUrl) {
@@ -55,7 +57,7 @@ function updateRound(now) {
 	
 	if (next && now >= next.time) {
 		changes++;
-
+		
 		const newRound = createRound(next);
 		if (newRound[1]) {
 		 	chorusEffect();
@@ -188,14 +190,14 @@ function chorusEffect() {
 }
 
 function deChorusEffect() {
-	isChorus = false;
-
 	[...document.getElementsByClassName("sunflower-top")].forEach(e => {
 		e.classList.remove("sunflower-top");
 		e.classList.add("sunflower-moveout-top");
+		e.classList.remove("sunflower-movein");
 		e.style.transform = "translate(0, 0)";
 		e.addEventListener("animationend", a => {
 			if (a.animationName === "sunflower-moveout-top") {
+				e.classList.remove("sunflower-moveout-top");
 				ctxTop.clearRect(0, 0, sunflowerCanvasTop.width, sunflowerCanvasTop.height);
 			}
 		});
@@ -203,9 +205,11 @@ function deChorusEffect() {
 	[...document.getElementsByClassName("sunflower-bottom")].forEach(e => {
 		e.classList.remove("sunflower-bottom");
 		e.classList.add("sunflower-moveout-bottom");
+		e.classList.remove("sunflower-movein");
 		e.style.transform = "translate(0, 0)";
 		e.addEventListener("animationend", a => {
 			if (a.animationName === "sunflower-moveout-bottom") {
+				e.classList.remove("sunflower-moveout-bottom");
 				ctxBottom.clearRect(0, 0, sunflowerCanvasBottom.width, sunflowerCanvasBottom.height);
 			}
 		});
@@ -213,9 +217,11 @@ function deChorusEffect() {
 	[...document.getElementsByClassName("sunflower-left")].forEach(e => {
 		e.classList.remove("sunflower-left");
 		e.classList.add("sunflower-moveout-left");
+		e.classList.remove("sunflower-movein");
 		e.style.transform = "translate(0, 0)";
 		e.addEventListener("animationend", a => {
 			if (a.animationName === "sunflower-moveout-left") {
+				e.classList.remove("sunflower-moveout-left");
 				ctxLeft.clearRect(0, 0, sunflowerCanvasLeft.width, sunflowerCanvasLeft.height);
 			}
 		});
@@ -223,9 +229,11 @@ function deChorusEffect() {
 	[...document.getElementsByClassName("sunflower-right")].forEach(e => {
 		e.classList.remove("sunflower-right");
 		e.classList.add("sunflower-moveout-right");
+		e.classList.remove("sunflower-movein");
 		e.style.transform = "translate(0, 0)";
 		e.addEventListener("animationend", a => {
 			if (a.animationName === "sunflower-moveout-right") {
+				e.classList.remove("sunflower-moveout-right");
 				ctxRight.clearRect(0, 0, sunflowerCanvasRight.width, sunflowerCanvasRight.height);
 			}
 		});
@@ -234,4 +242,5 @@ function deChorusEffect() {
 	while (sunflowers.length > 0) {
 		sunflowers.pop();
 	}
+	isChorus = false;
 }
