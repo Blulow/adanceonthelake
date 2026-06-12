@@ -178,8 +178,8 @@ function chorusEffect() {
 
 	function spawnSunflower(x, y, ctx) {
 		const sunflowerImg = new Image();
-		const SUNFLOWER_LARGE_SRC = "assets/sunflower_large.png";
-		const SUNFLOWER_SMALL_SRC = "assets/sunflower_small.png";
+		const SUNFLOWER_LARGE_SRC = "assets/images/game/sunflower/sunflower_large.png";
+		const SUNFLOWER_SMALL_SRC = "assets/images/game/sunflower/sunflower_small.png";
 		sunflowerImg.src = Math.random() > 0.5 ? SUNFLOWER_LARGE_SRC : SUNFLOWER_SMALL_SRC;
 		
 		const _sunflowerData = { ctx, image: sunflowerImg, step: 0, x, y, width: SUNFLOWER_WIDTH, height: SUNFLOWER_HEIGHT, timer: 0, interval: Math.random() * 2000 + 1000 };
