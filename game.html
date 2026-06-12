@@ -24,7 +24,6 @@
 </head>
 <body id="game-page">
 	<div id="game">
-		<button id="play">Play</button>
 		<div id="arena">
 			<div id="lyrics"></div>
 			<div id="telegraphs"></div>
@@ -32,8 +31,11 @@
 			<div id="coins"></div>
 		</div>
 		<div class="game-ui">
-			<div id="hits">Hits: <span id="hit-count">0</span></div>
-			<div id="coins">Coins: <span id="coin-count">0</span></div>
+			<button id="play" class="disabled">Play</button>
+			<div id="stats">
+				<div id="hits">Hits: <span id="hit-count">0</span></div>
+				<div id="coins">Coins: <span id="coin-count">0</span></div>
+			</div>
 			<canvas id="chorus-effect-top" class="chorus-effect"></canvas>
 			<canvas id="chorus-effect-bottom" class="chorus-effect"></canvas>
 			<canvas id="chorus-effect-left" class="chorus-effect"></canvas>

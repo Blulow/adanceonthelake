@@ -20,15 +20,19 @@ let isChorus = false;
 player.addListener({
 	onAppReady(app) {
 		if (!app.managed) {
+			console.log("e");
 			window.setTimeout(() => {
-				// document.getElementById("play").onclick = () => {
-					player.requestPlay();
+				const playBtn = document.getElementById("play");
+				playBtn.onclick = () => {
+					player.requestPlay()
 					// player.requestMediaSeek(230 * 1000);
 					// player.requestMediaSeek(30 * 1000);
 					// player.requestMediaSeek(18 * 1000);
 					// player.requestMediaSeek(180000);
 					new Coin().spawn({ x: window.innerWidth / 2, y: window.innerHeight / 2 }, isChorus);
-				// }
+					playBtn.style.display = "none";
+				}
+				playBtn.classList.remove("disabled");
 			}, 5000);
 		}
 		if (!app.songUrl) {
@@ -37,6 +41,7 @@ player.addListener({
 	},
 	onVideoReady() {
 		if (!player.app.managed) {
+			console.log("ee")
 			document.getElementById("lyrics").replaceChildren();
 			document.getElementById("telegraphs").replaceChildren();
 			document.getElementById("bullets").replaceChildren();
