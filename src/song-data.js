@@ -1,14 +1,19 @@
 export default class Song {
-    constructor() {
-        this.name;
-        this.img;
-        this.data;
+    constructor(name, imgSrc, data) {
+        this.name = name;
+        this.img = new Image();
+        this.img.src = imgSrc
+        this.data = data;
     }
 
-    addSong(songList) {
+    addSongTo(songList) {
         const song = document.createElement("li");
-        song.classList.add("song");
 
-        const nameLabel = document.createElement("p");
+        const label = document.createElement("p");
+        label.innerText = this.name;
+        
+        song.appendChild(label);
+        song.appendChild(this.img);
+        songList.appendChild(song);
     }
 }
