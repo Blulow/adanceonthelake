@@ -22,17 +22,17 @@ player.addListener({
 		if (!app.managed) {
 			console.log("e");
 			window.setTimeout(() => {
-				const playBtn = document.getElementById("play");
-				playBtn.onclick = () => {
+				const start = document.getElementById("start");
+				start.onclick = () => {
 					player.requestPlay()
 					// player.requestMediaSeek(230 * 1000);
 					// player.requestMediaSeek(30 * 1000);
-					// player.requestMediaSeek(18 * 1000);
+					player.requestMediaSeek(18 * 1000);
 					// player.requestMediaSeek(180000);
 					new Coin().spawn({ x: window.innerWidth / 2, y: window.innerHeight / 2 }, isChorus);
-					playBtn.style.display = "none";
+					start.style.display = "none";
 				}
-				playBtn.classList.remove("disabled");
+				start.classList.remove("disabled");
 			}, 5000);
 		}
 		if (!app.songUrl) {
