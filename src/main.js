@@ -20,14 +20,13 @@ let isChorus = false;
 player.addListener({
 	onAppReady(app) {
 		if (!app.managed) {
-			console.log("e");
 			window.setTimeout(() => {
 				const start = document.getElementById("start");
 				start.onclick = () => {
 					player.requestPlay()
 					// player.requestMediaSeek(230 * 1000);
 					// player.requestMediaSeek(30 * 1000);
-					// player.requestMediaSeek(18 * 1000);
+					player.requestMediaSeek(18 * 1000);
 					// player.requestMediaSeek(180000);
 					new Coin().spawn({ x: window.innerWidth / 2, y: window.innerHeight / 2 }, isChorus);
 					start.style.display = "none";
@@ -41,7 +40,6 @@ player.addListener({
 	},
 	onVideoReady() {
 		if (!player.app.managed) {
-			console.log("ee")
 			document.getElementById("lyrics").replaceChildren();
 			document.getElementById("telegraphs").replaceChildren();
 			document.getElementById("bullets").replaceChildren();
@@ -103,23 +101,8 @@ function lyricUpdate(round, changeTime) {
 	}
 }
 
-const sunflowers = [];
-
-let lastTime = 0;
-function gameUpdate(timestamp) {
-	let delta = timestamp - lastTime;
-	if (!lastTime) delta = 0;
-	delta = Math.min(delta, 1000);
-	lastTime = timestamp;
-
-	pc.update(isChorus);
-
-	if (isChorus) drawSunflowers(delta);
-
-	requestAnimationFrame(gameUpdate);
-}
-gameUpdate();
-
+//effects
+//chorus effect
 const sunflowerCanvasTop = document.getElementById("chorus-effect-top");
 const ctxTop = sunflowerCanvasTop.getContext("2d");
 const sunflowerCanvasBottom = document.getElementById("chorus-effect-bottom");
@@ -133,6 +116,8 @@ const ctxRight = sunflowerCanvasRight.getContext("2d");
 	e.height = window.innerHeight;
 	e.getContext("2d").imageSmoothingEnabled = false;
 });
+
+const sunflowers = [];
 
 function drawSunflowers(delta) {
 	ctxTop.clearRect(0, 0, sunflowerCanvasTop.width, sunflowerCanvasTop.height);
@@ -249,3 +234,81 @@ function deChorusEffect() {
 	}
 	isChorus = false;
 }
+
+//trail effect
+const trailEffectCanvas = document.getElementById("trail-effect");
+trailEffectCanvas.width = window.innerWidth;
+trailEffectCanvas.height = window.innerHeight;
+const ctxTrail = trailEffectCanvas.getContext("2d");
+ctxTrail.fillStyle = "#ffff34a4";
+
+const trailParticles = [];
+
+function drawTrail() {
+	ctxTrail.clearRect(0, 0, trailEffectCanvas.width, trailEffectCanvas.height);
+	
+	for (let i = 0; i < trailParticles.length; i++) {
+		const data = trailParticles[i];
+		
+		const size = data.size * data.progress;
+		ctxTrail.save();
+		ctxTrail.translate(data.x, data.y);
+		ctxTrail.rotate(data.angle);
+		ctxTrail.fillRect(0, 0, size, size);
+		ctxTrail.restore();
+
+		if (data.progress > 0.01) {
+			data.progress -= 0.01;
+		} else {
+			trailParticles.splice(trailParticles.indexOf(data), 1);
+		}
+	}
+
+}
+
+let trailSpawnTimer = 0;
+const trailSpawnTime = 100;
+function spawnTrails(delta) {
+	const lyrics = document.getElementsByClassName("text");
+
+	if (trailSpawnTimer < trailSpawnTime) {
+		trailSpawnTimer += delta;
+	} else {
+		trailSpawnTimer = 0;
+		for (let i = 0; i < lyrics.length; i++) {
+			const rect = lyrics[i].getBoundingClientRect();
+			const x = rect.left + rect.width / 2;
+			const y = rect.top + rect.height / 2;
+			const offsetAngle = Math.random() * Math.PI * 2;
+			const offsetDist = Math.random() * 25;
+			const offsetX = Math.cos(offsetAngle) * offsetDist;
+			const offsetY = Math.sin(offsetAngle) * offsetDist;
+			spawnTrail(x + offsetX, y + offsetY);
+		}
+	}
+}
+
+function spawnTrail(x, y) {
+	const size = Math.random() * 3 + 10;
+	const angle = Math.random() * Math.PI * 2;
+
+	trailParticles.push({ x, y, size: size, angle, progress: 1 })
+}
+
+//game loop
+let lastTime = 0;
+function gameUpdate(timestamp) {
+	let delta = timestamp - lastTime;
+	if (!lastTime) delta = 0;
+	delta = Math.min(delta, 1000);
+	lastTime = timestamp;
+
+	pc.update(isChorus);
+
+	drawTrail();
+	spawnTrails(delta);
+	if (isChorus) drawSunflowers(delta);
+
+	requestAnimationFrame(gameUpdate);
+}
+gameUpdate();

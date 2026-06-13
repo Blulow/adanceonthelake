@@ -15,6 +15,9 @@ export default class Lyric {
     }
 
     spawn(parent) {
+        const glowPulse = document.createElement("div");
+        glowPulse.classList.add("glow-pulse");
+        this.text.appendChild(glowPulse);
         parent.appendChild(this.text);
     }
     
