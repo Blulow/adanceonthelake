@@ -27,7 +27,7 @@ player.addListener({
 					player.requestPlay()
 					// player.requestMediaSeek(230 * 1000);
 					// player.requestMediaSeek(30 * 1000);
-					player.requestMediaSeek(18 * 1000);
+					// player.requestMediaSeek(18 * 1000);
 					// player.requestMediaSeek(180000);
 					new Coin().spawn({ x: window.innerWidth / 2, y: window.innerHeight / 2 }, isChorus);
 					start.style.display = "none";

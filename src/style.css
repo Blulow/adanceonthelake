@@ -35,10 +35,6 @@ button {
 	pointer-events: all;
 }
 
-a {
-	text-decoration: none;
-}
-
 #button-container {
 	position: absolute;
 	display: grid;
@@ -62,10 +58,6 @@ a {
 	background-color: #fff;
 	color: black;
 	border-radius: 10px;
-}
-
-.button a {
-	color: black;
 }
 
 .button:hover, .button a:hover {
@@ -105,7 +97,7 @@ a {
 	height: 50vh;
 }
 
-#chart-list > li {
+#chart-list>li {
 	background-color: #bbb;
 	width: 100%;
 	aspect-ratio: 7;
@@ -116,6 +108,11 @@ a {
 	margin: 3% 0;
 	box-sizing: border-box;
 	scroll-snap-align: center;
+	cursor: pointer;
+}
+
+#chart-list>li:hover {
+	background-color: #999;
 }
 
 #chart-list p {
@@ -132,9 +129,9 @@ a {
 /*game*/
 body#game-page {
     overflow: hidden;
-	touch-action: none;
+	/* touch-action: none; */
 	user-select: none;
-	pointer-events: none;
+	/* pointer-events: none; */
 }
 
 #game {
@@ -532,6 +529,7 @@ div {
 	aspect-ratio: 3;
 	font-size: 1.5rem;
 	cursor: pointer;
+	pointer-events: all;
 }
 
 #start.disabled {

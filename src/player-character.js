@@ -139,7 +139,7 @@ export default class PlayerCharacter {
         });
 
         window.addEventListener("touchstart", e => {
-            if (e.target.closest("#play")) return;
+            if (e.target.closest("#start")) return;
 
             e.preventDefault();
             for (let touch of e.changedTouches) {
@@ -164,7 +164,7 @@ export default class PlayerCharacter {
         }, { passive: false });
 
         window.addEventListener("touchmove", e => {
-            if (e.target.closest("#play")) return;
+            if (e.target.closest("#start")) return;
 
             e.preventDefault();
             for (let touch of e.touches) {
