@@ -117,8 +117,8 @@ export default class PlayerCharacter {
 
     spawn() {
         document.getElementById("arena").appendChild(this.pc, this.joystick);
-        this.x = window.innerWidth / 2;
-        this.y = window.innerHeight / 2;
+        this.x = window.innerWidth / 2 - this.pc.clientWidth / 2;
+        this.y = window.innerHeight / 2 - this.pc.clientHeight / 2;
         this.pc.style.top = `${this.y}px`;
         this.pc.style.left = `${this.x}px`;
         window.addEventListener("keydown", e => {
