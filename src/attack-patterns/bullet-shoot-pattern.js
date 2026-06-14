@@ -41,10 +41,9 @@ export default class BulletShootPattern extends AttackPattern {
 
     generateUUID() {
         if (typeof crypto !== "undefined" && crypto.randomUUID) {
-            return crypto.randomUUID(); // Works in all modern PC & mobile browsers (HTTPS required)
+            return crypto.randomUUID();
         }
 
-        // Fallback for older browsers
         return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function(c) {
             const r = Math.random() * 16 | 0;
             const v = c === "x" ? r : (r & 0x3 | 0x8);

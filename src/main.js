@@ -119,6 +119,24 @@ const ctxRight = sunflowerCanvasRight.getContext("2d");
 	e.getContext("2d").imageSmoothingEnabled = false;
 });
 
+const GLOW_BORDER_WIDTH = 50;
+const gradientTop = ctxTop.createLinearGradient(0, 0, 0, GLOW_BORDER_WIDTH);
+gradientTop.addColorStop(0, "#ffffa8");
+gradientTop.addColorStop(1, "#ffffa800");
+const gradientBottom = ctxBottom.createLinearGradient(0, sunflowerCanvasBottom.height - GLOW_BORDER_WIDTH, 0, sunflowerCanvasBottom.height);
+gradientBottom.addColorStop(0, "#ffffa800");
+gradientBottom.addColorStop(1, "#ffffa8");
+const gradientLeft = ctxLeft.createLinearGradient(0, 0, GLOW_BORDER_WIDTH, 0);
+gradientLeft.addColorStop(0, "#ffffa8");
+gradientLeft.addColorStop(1, "#ffffa800");
+const gradientRight = ctxRight.createLinearGradient(sunflowerCanvasRight.width - GLOW_BORDER_WIDTH, 0, sunflowerCanvasRight.width, 0);
+gradientRight.addColorStop(0, "#ffffa800");
+gradientRight.addColorStop(1, "#ffffa8");
+ctxTop.fillStyle = gradientTop;
+ctxBottom.fillStyle = gradientBottom;
+ctxLeft.fillStyle = gradientLeft;
+ctxRight.fillStyle = gradientRight;
+
 const sunflowers = [];
 
 function drawSunflowers(delta) {
@@ -140,6 +158,11 @@ function drawSunflowers(delta) {
 			sunflowerData.timer = 0;
 		}
 	}
+
+	ctxTop.fillRect(0, 0, sunflowerCanvasTop.width, GLOW_BORDER_WIDTH);
+	ctxBottom.fillRect(0, sunflowerCanvasBottom.height - GLOW_BORDER_WIDTH, sunflowerCanvasBottom.width, GLOW_BORDER_WIDTH);
+	ctxLeft.fillRect(0, 0, GLOW_BORDER_WIDTH, sunflowerCanvasLeft.height);
+	ctxRight.fillRect(sunflowerCanvasRight.width - GLOW_BORDER_WIDTH, 0, GLOW_BORDER_WIDTH, sunflowerCanvasRight.height);
 }
 
 function chorusEffect() {
@@ -369,7 +392,6 @@ function drawShotBullets() {
 		}
 		
 		ctxBullet.fillStyle = bullet.hit ? "#ffff00" : "#ffffff";
-		// ctxBullet.fillRect(bullet.x, bullet.y, bullet.size, bullet.size);
 		ctxBullet.beginPath();
 		ctxBullet.arc(bullet.x, bullet.y, bullet.size / 2, 0, Math.PI * 2);
 		ctxBullet.fill();
