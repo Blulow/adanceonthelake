@@ -26,7 +26,7 @@ player.addListener({
 					player.requestPlay()
 					// player.requestMediaSeek(230 * 1000);
 					// player.requestMediaSeek(30 * 1000);
-					player.requestMediaSeek(18 * 1000);
+					// player.requestMediaSeek(18 * 1000);
 					// player.requestMediaSeek(180000);
 					new Coin().spawn({ x: window.innerWidth / 2, y: window.innerHeight / 2 }, isChorus);
 					start.style.display = "none";
@@ -257,8 +257,8 @@ function drawTrail() {
 		ctxTrail.fillRect(0, 0, size, size);
 		ctxTrail.restore();
 
-		if (data.progress > 0.01) {
-			data.progress -= 0.01;
+		if (data.progress > 0.05) {
+			data.progress -= 0.05;
 		} else {
 			trailParticles.splice(trailParticles.indexOf(data), 1);
 		}
@@ -289,10 +289,10 @@ function spawnTrails(delta) {
 }
 
 function spawnTrail(x, y) {
-	const size = Math.random() * 3 + 10;
+	const size = Math.random() * 3 + (Math.max(window.innerWidth, window.innerHeight) > 1024 ? 10 : 5);
 	const angle = Math.random() * Math.PI * 2;
 
-	trailParticles.push({ x, y, size: size, angle, progress: 1 })
+	trailParticles.push({ x, y, size, angle, progress: 1 })
 }
 
 //game loop
