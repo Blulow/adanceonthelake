@@ -243,39 +243,53 @@ const ctxTrail = trailEffectCanvas.getContext("2d");
 ctxTrail.fillStyle = "#ffff34a4";
 
 const trailParticles = [];
+let trailParticlesLength = 0;
+const MAX_PARTICLES = 30;
+const TRAIL_LIFETIME = 300;
 
 function drawTrail() {
+	ctxTrail.setTransform(1, 0, 0, 1, 0, 0);
 	ctxTrail.clearRect(0, 0, trailEffectCanvas.width, trailEffectCanvas.height);
+	// ctxTrail.fillStyle = "rgba(0, 0, 0, 0.1)";
+	// ctxTrail.fillRect(0, 0, trailEffectCanvas.width, trailEffectCanvas.height);
+	// ctxTrail.setTransform(1, 0, 0, 1, 0, 0);
 	
-	for (let i = 0; i < trailParticles.length; i++) {
+	for (let i = trailParticlesLength - 1; i >= 0; i--) {
 		const data = trailParticles[i];
 		
-		const size = data.size * data.progress;
-		ctxTrail.save();
-		ctxTrail.translate(data.x, data.y);
-		ctxTrail.rotate(data.angle);
-		ctxTrail.fillRect(0, 0, size, size);
-		ctxTrail.restore();
+		const t = performance.now() - data.start;
+		const progress = 1 - t / TRAIL_LIFETIME;
 
-		if (data.progress > 0.05) {
-			data.progress -= 0.05;
-		} else {
-			trailParticles.splice(trailParticles.indexOf(data), 1);
+		if (data.x > 0 && data.x < trailEffectCanvas.width && data.y > 0 && data.y < trailEffectCanvas.height) {
+			const size = data.size * progress;
+			const cos = Math.cos(data.angle);
+			const sin = Math.sin(data.angle);
+			ctxTrail.setTransform(cos, sin, -sin, cos, data.x, data.y);
+			ctxTrail.fillRect(0, 0, size, size);
+		}
+
+		// data.progress -= 0.05;
+		// // console.log(data.progress);
+		// if (data.progress <= 0) {
+		// }
+		if (progress <= 0) {
+			trailParticles.splice(i, 1);
+			trailParticlesLength--;
 		}
 	}
-
 }
 
 let trailSpawnTimer = 0;
-const trailSpawnTime = 100;
+const TRAIL_SPAWN_TIME = 200;
 function spawnTrails(delta) {
 	const lyrics = document.getElementsByClassName("text");
 
-	if (trailSpawnTimer < trailSpawnTime) {
+	if (trailSpawnTimer < TRAIL_SPAWN_TIME) {
 		trailSpawnTimer += delta;
 	} else {
 		trailSpawnTimer = 0;
 		for (let i = 0; i < lyrics.length; i++) {
+			if (trailParticles.length > MAX_PARTICLES) return;
 			const rect = lyrics[i].getBoundingClientRect();
 			const x = rect.left + rect.width / 2;
 			const y = rect.top + rect.height / 2;
@@ -292,7 +306,8 @@ function spawnTrail(x, y) {
 	const size = Math.random() * 3 + (Math.max(window.innerWidth, window.innerHeight) > 1024 ? 10 : 5);
 	const angle = Math.random() * Math.PI * 2;
 
-	trailParticles.push({ x, y, size, angle, progress: 1 })
+	trailParticles.push({ x, y, size, angle, start: performance.now() });
+	trailParticlesLength++;
 }
 
 //game loop
@@ -305,8 +320,8 @@ function gameUpdate(timestamp) {
 
 	pc.update(isChorus);
 
-	drawTrail();
-	spawnTrails(delta);
+	// drawTrail();
+	// spawnTrails(delta);
 	if (isChorus) drawSunflowers(delta);
 
 	requestAnimationFrame(gameUpdate);
