@@ -18,6 +18,10 @@ body {
     color: white;
 }
 
+canvas {
+	position: absolute;
+}
+
 /*index*/
 .main-menu {
 	width: 100%;
