@@ -1,6 +1,7 @@
 import AttackPattern from "./attack-patterns/attack-pattern";
 import BulletShootPattern from "./attack-patterns/bullet-shoot-pattern";
 import LinePattern from "./attack-patterns/line-pattern";
+import { glowParticles } from "./glow-particles";
 
 export default class Lyric {
     constructor(unit, Attack, Telegraph) {
@@ -15,10 +16,14 @@ export default class Lyric {
     }
 
     spawn(parent) {
-        const glowPulse = document.createElement("div");
-        glowPulse.classList.add("glow-pulse");
-        this.text.appendChild(glowPulse);
         parent.appendChild(this.text);
+        window.setTimeout(() => this.spawnGlow(), 1500);
+    }
+
+    spawnGlow() {
+        const size = window.innerWidth * 0.15;
+        
+        glowParticles.push({ text: this.text, size, start: performance.now() });
     }
     
     spawnTelegraph(isdirpos, params) {

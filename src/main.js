@@ -2,6 +2,7 @@ import { Player } from "textalive-app-api";
 import PlayerCharacter from "./player-character";
 import Coin from "./coin";
 import Chart from "./chart-data";
+import { glowParticles } from "./glow-particles";
 
 const player = new Player({
 	app: { token: "4fLfxYZ0Ntw6flJe" }
@@ -235,12 +236,56 @@ function deChorusEffect() {
 	isChorus = false;
 }
 
+//lyric glow effect
+const glowEffectCanvas = document.getElementById("glow-effect");
+glowEffectCanvas.width = window.innerWidth;
+glowEffectCanvas.height = window.innerHeight;
+const ctxGlow = glowEffectCanvas.getContext("2d");
+ctxGlow.shadowBlur = 1000;
+
+const GLOW_LIFETIME = 800;
+
+function drawGlow() {
+	ctxGlow.clearRect(0, 0, glowEffectCanvas.width, glowEffectCanvas.height);
+
+	for (let i = glowParticles.length - 1; i >= 0; i--) {
+		const data = glowParticles[i];
+		const rect = data.text.getBoundingClientRect();
+		const x = rect.left + rect.width / 2;
+		const y = rect.top + rect.height / 2;
+		
+		const t = performance.now() - data.start;
+		const progress = t / GLOW_LIFETIME;
+		
+		let opacity = 0;
+		if (progress < 0.1) {
+			opacity = progress / 0.1;
+		} else {
+			opacity = (1 - progress) / 0.9;
+		}
+
+		if (opacity <= 0) {
+			glowParticles.splice(i, 1);
+			continue;
+		}
+
+		const gradient = ctxGlow.createRadialGradient(x, y, 0, x, y, data.size / 2);
+		gradient.addColorStop(0, `rgba(255, 255, 52, ${opacity * 0.5})`);
+		gradient.addColorStop(1, `rgba(255, 255, 52, 0)`);
+		ctxGlow.fillStyle = gradient;
+		
+		ctxGlow.beginPath();
+		ctxGlow.arc(x, y, data.size / 2, 0, Math.PI * 2);
+		ctxGlow.fill();
+	}
+}
+
 //trail effect
 const trailEffectCanvas = document.getElementById("trail-effect");
 trailEffectCanvas.width = window.innerWidth;
 trailEffectCanvas.height = window.innerHeight;
 const ctxTrail = trailEffectCanvas.getContext("2d");
-ctxTrail.fillStyle = "#ffff34a4";
+ctxTrail.fillStyle = "#ffff34a7";
 
 const trailParticles = [];
 let trailParticlesLength = 0;
@@ -250,11 +295,8 @@ const TRAIL_LIFETIME = 300;
 function drawTrail() {
 	ctxTrail.setTransform(1, 0, 0, 1, 0, 0);
 	ctxTrail.clearRect(0, 0, trailEffectCanvas.width, trailEffectCanvas.height);
-	// ctxTrail.fillStyle = "rgba(0, 0, 0, 0.1)";
-	// ctxTrail.fillRect(0, 0, trailEffectCanvas.width, trailEffectCanvas.height);
-	// ctxTrail.setTransform(1, 0, 0, 1, 0, 0);
 	
-	for (let i = trailParticlesLength - 1; i >= 0; i--) {
+	for (let i = trailParticles.length - 1; i >= 0; i--) {
 		const data = trailParticles[i];
 		
 		const t = performance.now() - data.start;
@@ -268,13 +310,8 @@ function drawTrail() {
 			ctxTrail.fillRect(0, 0, size, size);
 		}
 
-		// data.progress -= 0.05;
-		// // console.log(data.progress);
-		// if (data.progress <= 0) {
-		// }
 		if (progress <= 0) {
 			trailParticles.splice(i, 1);
-			trailParticlesLength--;
 		}
 	}
 }
@@ -307,7 +344,6 @@ function spawnTrail(x, y) {
 	const angle = Math.random() * Math.PI * 2;
 
 	trailParticles.push({ x, y, size, angle, start: performance.now() });
-	trailParticlesLength++;
 }
 
 //game loop
@@ -320,8 +356,10 @@ function gameUpdate(timestamp) {
 
 	pc.update(isChorus);
 
-	// drawTrail();
-	// spawnTrails(delta);
+	drawGlow();
+
+	drawTrail();
+	spawnTrails(delta);
 	if (isChorus) drawSunflowers(delta);
 
 	requestAnimationFrame(gameUpdate);
