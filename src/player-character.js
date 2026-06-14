@@ -1,3 +1,4 @@
+import { shotBullets } from "./attack-patterns/shot-bullets";
 import Coin from "./coin";
 
 export default class PlayerCharacter {
@@ -339,6 +340,14 @@ export default class PlayerCharacter {
             }
         }
 
+        const shotBulletCollisions = this.checkShotBulletCollisions();
+        for (const id in shotBulletCollisions) {
+            if (shotBulletCollisions[id].hit) continue;
+            shotBulletCollisions[id].hit = true;
+            this.hits++;
+            document.getElementById("hit-count").innerText = this.hits;
+        }
+
         if (this.isDashCoolDownFinished) this.isDashed = false;
 
         [...document.getElementsByClassName("water-wave")].forEach(e => {
@@ -383,6 +392,23 @@ export default class PlayerCharacter {
             hitbox.left > e.getBoundingClientRect().right ||
             hitbox.bottom < e.getBoundingClientRect().top ||
             hitbox.top > e.getBoundingClientRect().bottom
+        ));
+
+        return collided;
+    }
+
+    checkShotBulletCollisions() {
+        if (this.isDashing) return;
+
+        const hitbox = this.hitbox.getBoundingClientRect();
+
+        const collided = Object.fromEntries(Object.entries(shotBullets).filter(([k, v]) => 
+            !(
+            hitbox.right < v.x - (v.size / 2) / Math.SQRT2 ||
+            hitbox.left > v.x + (v.size / 2) / Math.SQRT2 ||
+            hitbox.bottom < v.y - (v.size / 2) / Math.SQRT2 ||
+            hitbox.top > v.y + (v.size / 2) / Math.SQRT2
+            )
         ));
 
         return collided;

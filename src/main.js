@@ -3,6 +3,7 @@ import PlayerCharacter from "./player-character";
 import Coin from "./coin";
 import Chart from "./chart-data";
 import { glowParticles } from "./glow-particles";
+import { shotBullets } from "./attack-patterns/shot-bullets";
 
 const player = new Player({
 	app: { token: "4fLfxYZ0Ntw6flJe" }
@@ -346,6 +347,35 @@ function spawnTrail(x, y) {
 	trailParticles.push({ x, y, size, angle, start: performance.now() });
 }
 
+//shot bullet movement
+const bulletCanvas = document.getElementById("bullet-shoot-pattern");
+bulletCanvas.width = window.innerWidth;
+bulletCanvas.height = window.innerHeight;
+const ctxBullet = bulletCanvas.getContext("2d");
+function drawShotBullets() {
+	ctxBullet.clearRect(0, 0, bulletCanvas.width, bulletCanvas.height);
+
+	for (const id in shotBullets) {
+		const bullet = shotBullets[id];
+		
+		bullet.x += bullet.dir.x * bullet.speed;
+		bullet.y += bullet.dir.y * bullet.speed;
+		
+		if (bullet.x + bullet.width <= 0 ||
+			bullet.x >= window.innerWidth ||
+			bullet.y + bullet.height <= 0 ||
+			bullet.y >= window.innerHeight) {
+				delete shotBullets[id];
+		}
+		
+		ctxBullet.fillStyle = bullet.hit ? "#ffff00" : "#ffffff";
+		// ctxBullet.fillRect(bullet.x, bullet.y, bullet.size, bullet.size);
+		ctxBullet.beginPath();
+		ctxBullet.arc(bullet.x, bullet.y, bullet.size / 2, 0, Math.PI * 2);
+		ctxBullet.fill();
+	}
+}
+
 //game loop
 let lastTime = 0;
 function gameUpdate(timestamp) {
@@ -355,6 +385,8 @@ function gameUpdate(timestamp) {
 	lastTime = timestamp;
 
 	pc.update(isChorus);
+
+	drawShotBullets();
 
 	drawGlow();
 

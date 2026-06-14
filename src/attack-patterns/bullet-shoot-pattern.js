@@ -1,4 +1,5 @@
 import AttackPattern from "./attack-pattern";
+import { shotBullets } from "./shot-bullets";
 
 export default class BulletShootPattern extends AttackPattern {
     constructor(Telegraph) {
@@ -13,49 +14,41 @@ export default class BulletShootPattern extends AttackPattern {
     
     shoot(x, y, text, params) {
         for (let i = -1; i <= 1; i++) {
-            const bullet = document.createElement("div");
-            bullet.classList.add("bullet", "bullet-shoot");
-            document.getElementById("bullets").appendChild(bullet);
+            const bullet = { hit: false, speed: this.SPEED };
             
             const playerPos = {
                 x: params.playerPos.x,
                 y: params.playerPos.y
             }
             
-            let bulletX = x + text.clientWidth / 2 - bullet.clientWidth / 2;
-            let bulletY = y + text.clientHeight / 2 - bullet.clientHeight / 2;
-            bullet.style.left = `${this.x}px`;
-            bullet.style.top = `${this.y}px`;
+            bullet.size = window.innerWidth * 0.01;
+            bullet.x = x + text.clientWidth / 2 - bullet.size / 2;
+            bullet.y = y + text.clientHeight / 2 - bullet.size / 2;
             
-            const relX = playerPos.x - bulletX;
-            const relY = playerPos.y - bulletY;
+            const relX = playerPos.x - bullet.x;
+            const relY = playerPos.y - bullet.y;
             const relLength = Math.hypot(relX, relY);
             const dirVec = { x: relX / relLength, y: relY / relLength };
             const angle = i * this.ANGLE;
-            let dirX = dirVec.x * Math.cos(angle) - dirVec.y * Math.sin(angle);
-            let dirY = dirVec.x * Math.sin(angle) + dirVec.y * Math.cos(angle);
+            const dirX = dirVec.x * Math.cos(angle) - dirVec.y * Math.sin(angle);
+            const dirY = dirVec.x * Math.sin(angle) + dirVec.y * Math.cos(angle);
+            bullet.dir = { x: dirX, y: dirY };
             
-            this.animate(bullet, bulletX, bulletY, { x: dirX, y: dirY });
+            const id = this.generateUUID();
+            shotBullets[id] = bullet;
         }
     }
-    
-    animate(bullet, x, y, dirVec)  {
-        const step = () => {
-            x += dirVec.x * this.SPEED;
-            y += dirVec.y * this.SPEED;
-            
-            if (x + bullet.clientWidth <= 0 ||
-                x >= window.innerWidth ||
-                y + bullet.clientHeight <= 0 ||
-                y >= window.innerHeight) {
-                    bullet.remove();
-            }
-                
-            bullet.style.left = `${x}px`;
-            bullet.style.top = `${y}px`;
-            
-            requestAnimationFrame(step);
+
+    generateUUID() {
+        if (typeof crypto !== "undefined" && crypto.randomUUID) {
+            return crypto.randomUUID(); // Works in all modern PC & mobile browsers (HTTPS required)
         }
-        step();
+
+        // Fallback for older browsers
+        return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function(c) {
+            const r = Math.random() * 16 | 0;
+            const v = c === "x" ? r : (r & 0x3 | 0x8);
+            return v.toString(16);
+        });
     }
 }

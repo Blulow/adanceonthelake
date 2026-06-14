@@ -726,32 +726,6 @@ div {
 	animation: water-wave 0.5s steps(4) infinite;
 }
 
-.glow-pulse {
-	width: 7vw;
-	height: 7vw;
-	top: calc(50% - 7vw/2);
-	left: calc(50% - 7vw/2);
-	display: block;
-	position: absolute;
-	background-color: #ffff3400;
-	border-radius: 50%;
-	z-index: -1;
-	filter: blur(20px);
-	animation: pulse 1s 1.5s ease-out forwards;
-}
-
-@keyframes pulse {
-	0% {
-		background-color: #ffff6300;
-	}
-	10% {
-		background-color: #ffff34a7;
-	}
-	100% {
-		background-color: #ffff6300;
-	}
-}
-
 @keyframes water-wave {
 	to { background-position: 400% 0; }
 }
@@ -874,12 +848,12 @@ div {
 	background-color: #ff0;
 }
 
-.bullet-shoot {
+/* .bullet-shoot {
 	width: 1vw;
 	aspect-ratio: 1;
 	border-radius: 50%;
 	background-color: white;
-}
+} */
 
 @media (max-width: 1024px) and (orientation: portrait) {
 	.text, .lyric-bullet, .beam-wrapper, .beam-column-wrapper {
