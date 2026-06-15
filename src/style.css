@@ -848,13 +848,6 @@ div {
 	background-color: #ff0;
 }
 
-/* .bullet-shoot {
-	width: 1vw;
-	aspect-ratio: 1;
-	border-radius: 50%;
-	background-color: white;
-} */
-
 @media (max-width: 1024px) and (orientation: portrait) {
 	.text, .lyric-bullet, .beam-wrapper, .beam-column-wrapper {
 		font-size: 10vw;

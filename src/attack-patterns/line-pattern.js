@@ -28,6 +28,7 @@ export default class LinePattern extends AttackPattern {
         this.bullet.addEventListener("animationend", e => {
             if (e.animationName === `beam${column}-shoot`) {
                 this.bullet.classList.add(`beam${column}-fade`);
+                this.bullet.classList.remove("bullet");
             } else if(e.animationName === `beam${column}-fade`) {
                 this.bullet.parentElement.remove();
             }
