@@ -141,19 +141,54 @@ body#game-page {
 #game {
 	width: 100%;
 	height: 100%;
-	background: url("../assets/images/game/background.png");
+	background: url("../assets/images/game/background/background.png");
 	background-repeat: no-repeat;
-	background-size: 500vw 100%;
+	background-size: 500% 100%;
+	image-rendering: pixelated;
+	animation: bg-anim 3s steps(5) infinite;
+}
+
+#rock-1 {
+	width: calc(79px / 640px * 100%);
+	aspect-ratio: calc(79 / 53);
+	background: url("../assets/images/game/background/rock_1.png");
+}
+
+#rock-2 {
+	right: 0;
+	width: calc(55px / 640px * 100%);
+	aspect-ratio: calc(55 / 56);
+	background: url("../assets/images/game/background/rock_2.png");
+}
+
+#rock-3 {
+	bottom: 0;
+	width: calc(33px / 640px * 100%);
+	aspect-ratio: calc(33 / 41);
+	background: url("../assets/images/game/background/rock_3.png");
+}
+
+#rock-4 {
+	bottom: 0;
+	right: 0;
+	width: calc(55px / 640px * 100%);
+	aspect-ratio: calc(55 / 74);
+	background: url("../assets/images/game/background/rock_4.png");
+}
+
+.background {
+	background-repeat: no-repeat !important;
+	background-size: 500% 100% !important;
 	image-rendering: pixelated;
 	animation: bg-anim 3s steps(5) infinite;
 }
 
 @keyframes bg-anim {
 	from {
-		background-position: 0 0;
+		background-position: 0% 0;
 	}
 	to {
-		background-position: -500vw 0;
+		background-position: 125% 0;
 	}
 }
 
