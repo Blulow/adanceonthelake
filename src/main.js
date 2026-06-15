@@ -398,6 +398,22 @@ function drawShotBullets() {
 	}
 }
 
+//vignette
+const vignetteCanvas = document.getElementById("vignette");
+vignetteCanvas.width = window.innerWidth;
+vignetteCanvas.height = window.innerHeight;
+vignetteCanvas.style.top = 0;
+const ctxVignette = vignetteCanvas.getContext("2d");
+const vignetteCenterX = vignetteCanvas.width / 2;
+const vignetteCenterY = vignetteCanvas.height / 2;
+const vignetteInner = Math.max(vignetteCanvas.width, vignetteCanvas.height) / 2 * 0.9;
+const vignetteOuter = Math.max(vignetteCanvas.width, vignetteCanvas.height) / 2 * 2;
+const vignetteGradient = ctxVignette.createRadialGradient(vignetteCenterX, vignetteCenterY, vignetteInner, vignetteCenterX, vignetteCenterY, vignetteOuter);
+vignetteGradient.addColorStop(0, "#00000000");
+vignetteGradient.addColorStop(1, "#00000099");
+ctxVignette.fillStyle = vignetteGradient;
+ctxVignette.fillRect(0, 0, vignetteCanvas.width, vignetteCanvas.height);
+
 //game loop
 let lastTime = 0;
 function gameUpdate(timestamp) {
