@@ -1,5 +1,6 @@
 import { shotBullets } from "./attack-patterns/shot-bullets";
 import Coin from "./coin";
+import { lyrics } from "./game-loop";
 
 export default class PlayerCharacter {
     constructor() {
@@ -326,6 +327,16 @@ export default class PlayerCharacter {
             }
         }
 
+        const lyricCollisions = this.checkLyricCollisions();
+        for (const id in lyricCollisions) {
+            if (!lyricCollisions[id].bullet || !lyricCollisions[id].fadeStart === null) continue;
+            if (Object.hasOwn(lyricCollisions[id], "hit")) continue;
+
+            lyricCollisions[id].hit = true;
+            this.hits++;
+            document.getElementById("hit-count").innerText = this.hits;
+        }
+
         const coinCollisions = this.checkCoinCollisions();
         if (coinCollisions) {
             if (coinCollisions.length > 0) {
@@ -376,6 +387,23 @@ export default class PlayerCharacter {
             hitbox.left > e.getBoundingClientRect().right ||
             hitbox.bottom < e.getBoundingClientRect().top ||
             hitbox.top > e.getBoundingClientRect().bottom
+        ));
+
+        return collided;
+    }
+
+    checkLyricCollisions() {
+        if (this.isDashing) return;
+
+        const hitbox = this.hitbox.getBoundingClientRect();
+
+        const collided = Object.fromEntries(Object.entries(lyrics).filter(([k, v]) =>
+            !(
+            hitbox.right < v.currentX ||
+            hitbox.left > v.currentX + v.size ||
+            hitbox.bottom < v.currentY ||
+            hitbox.top > v.currentY + v.size
+            )
         ));
 
         return collided;

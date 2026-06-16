@@ -1,9 +1,10 @@
-import { Player } from "textalive-app-api";
+import { dataUrlToString, Player } from "textalive-app-api";
 import PlayerCharacter from "./player-character";
 import Coin from "./coin";
 import Chart from "./chart-data";
-import { glowParticles } from "./glow-particles";
-import { shotBullets } from "./attack-patterns/shot-bullets";
+import { glowParticles } from "./game-loop";
+import { shotBullets } from "./game-loop";
+import { lyrics } from "./game-loop";
 
 const player = new Player({
 	app: { token: "4fLfxYZ0Ntw6flJe" }
@@ -28,7 +29,7 @@ player.addListener({
 					player.requestPlay()
 					// player.requestMediaSeek(230 * 1000);
 					// player.requestMediaSeek(30 * 1000);
-					// player.requestMediaSeek(18 * 1000);
+					player.requestMediaSeek(18 * 1000);
 					// player.requestMediaSeek(180000);
 					new Coin().spawn({ x: window.innerWidth / 2, y: window.innerHeight / 2 }, isChorus);
 					start.style.display = "none";
@@ -100,6 +101,56 @@ function lyricUpdate(round, changeTime) {
 		anim(t);
 		if (t) break;
 		round.iter = round.iter.next;
+	}
+}
+
+const lerp = (start, end, amt) => (1 - amt) * start + amt * end;
+
+const lyricCanvas = document.getElementById("lyrics");
+lyricCanvas.width = window.innerWidth;
+lyricCanvas.height = window.innerHeight;
+const ctxLyrics = lyricCanvas.getContext("2d");
+document.fonts.load("16px GNUUnifont").then(() => {
+	ctxLyrics.font = "16px GNUUnifon";
+});
+
+const LYRICS_LIFETIME = 1500;
+const LYRICS_FADE_LIFETIME = 500;
+
+function drawLyrics() {
+	ctxLyrics.clearRect(0, 0, lyricCanvas.width, lyricCanvas.height);
+	
+	for (const id in lyrics) {
+		const text = lyrics[id];
+		ctxLyrics.font = `${text.size}px GNUUnifont`;
+		
+		if (text.progress < 1) {
+			const x = lerp(text.startX, text.x, text.progress);
+			const y = lerp(text.startY, text.y, text.progress);
+			text.currentX = x;
+			text.currentY = y;
+			ctxLyrics.fillStyle = text.hit ? "#ffff00" : "#ffffff";
+			ctxLyrics.fillText(text.text, x + text.size / 4, y + text.size / 2);
+			
+			text.progress = (performance.now() - text.start) / LYRICS_LIFETIME;
+		} else {
+			if (text.fadeStart === null) {
+				text.fadeStart = performance.now();
+				text.fadeProgress = (performance.now() - text.fadeStart) / LYRICS_FADE_LIFETIME;
+
+				text.onMovedIn(text.attack, text.params);
+			}
+			
+			// ctxLyrics.fillText("eeee", text.x, text.y);
+			ctxLyrics.fillStyle = text.hit ? `rgba(255, 255, 0, ${1 - text.fadeProgress}` : `rgba(255, 255, 255, ${1 - text.fadeProgress})`;
+			ctxLyrics.fillText(text.text, text.currentX + text.size / 4, text.currentY + text.size / 2);
+			
+			text.fadeProgress = (performance.now() - text.fadeStart) / LYRICS_FADE_LIFETIME;
+		}
+
+		if (text.fadeProgress >= 1) {
+			delete lyrics[id];
+		}
 	}
 }
 
@@ -274,9 +325,8 @@ function drawGlow() {
 
 	for (let i = glowParticles.length - 1; i >= 0; i--) {
 		const data = glowParticles[i];
-		const rect = data.text.getBoundingClientRect();
-		const x = rect.left + rect.width / 2;
-		const y = rect.top + rect.height / 2;
+		const x = data.text.currentX;
+		const y = data.text.currentY;
 		
 		const t = performance.now() - data.start;
 		const progress = t / GLOW_LIFETIME;
@@ -423,6 +473,8 @@ function gameUpdate(timestamp) {
 	lastTime = timestamp;
 
 	pc.update(isChorus);
+
+	drawLyrics();
 
 	drawShotBullets();
 

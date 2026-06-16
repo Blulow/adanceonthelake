@@ -1,6 +1,7 @@
 import AttackPattern from "../attack-patterns/attack-pattern";
 import BulletShootPattern from "../attack-patterns/bullet-shoot-pattern";
 import LinePattern from "../attack-patterns/line-pattern";
+import { lyrics } from "../game-loop";
 import SpawnPattern from "./spawn-pattern";
 export default class RandomDirPosPattern extends SpawnPattern {
     constructor(player) {
@@ -16,7 +17,7 @@ export default class RandomDirPosPattern extends SpawnPattern {
         this.textLeftValue = "";
         ({ x: this.x, y: this.y } = { x: 0, y: 0 });
 
-        this.textGroup = null;
+        this.textGroup = { length: 0 };
 
         this.isColumn = false;
         this.reverse = false;
@@ -43,68 +44,69 @@ export default class RandomDirPosPattern extends SpawnPattern {
             maxWidth = window.innerWidth * (landscape ? 0.97 : 0.95);
         }
 
-        this.textGroup = document.createElement("div");
-        this.textGroup.classList.add("text-group");
-        arena.appendChild(this.textGroup);
+        //this.textGroup = document.createElement("div");
+        //this.textGroup.classList.add("text-group");
+        //arena.appendChild(this.textGroup);
 
-        const unitWord = document.createElement("div");
-        unitWord.innerText = textInGroup[0];
-        unitWord.style.fontSize = Math.max(window.innerHeight, window.innerWidth) > 1024 ? "7vw" : "10vw";
-        unitWord.style.lineHeight = "1";
-        arena.appendChild(unitWord);
+        const size = window.innerWidth * (Math.max(window.innerHeight, window.innerWidth) > 1024 ? 0.07 : 0.1);
+        //const unitWord = document.createElement("div");
+        //unitWord.innerText = textInGroup[0];
+        //unitWord.style.fontSize = Math.max(window.innerHeight, window.innerWidth) > 1024 ? "7vw" : "10vw";
+        //unitWord.style.lineHeight = "1";
+        //arena.appendChild(unitWord);
 
-        this.maxFitHeight = Math.floor((maxHeight - minHeight) / unitWord.clientHeight);
-        this.maxFitWidth = Math.floor((maxWidth - minWidth) / unitWord.clientWidth);
+        this.maxFitHeight = Math.floor((maxHeight - minHeight) / size);
+        this.maxFitWidth = Math.floor((maxWidth - minWidth) / size);
         do {
             if (this.isColumn) {
                 if (this.reverse) {
-                    if (unitWord.offsetHeight * textInGroup.length > this.maxHeight) {
-                        this.textTopValue = this.maxHeight - unitWord.offsetHeight;
+                    if (size * textInGroup.length > this.maxHeight) {
+                        this.textTopValue = this.maxHeight - size;
                         this.textTopValueCache = this.textTopValue;
                     } else {
-                        this.textTopValue = this.maxHeight - Math.random() * ((this.maxHeight - this.minHeight) - unitWord.offsetHeight * textInGroup.length) - unitWord.offsetHeight;
+                        this.textTopValue = this.maxHeight - Math.random() * ((this.maxHeight - this.minHeight) - size * textInGroup.length) - size;
                     }
-                    this.textLeftValue = this.minWidth + Math.random() * ((this.maxWidth - this.minWidth) - unitWord.offsetWidth);
+                    this.textLeftValue = this.minWidth + Math.random() * ((this.maxWidth - this.minWidth) - size);
                 } else {
-                    if (unitWord.offsetHeight * textInGroup.length > this.maxHeight) {
+                    if (size * textInGroup.length > this.maxHeight) {
                         this.textTopValue = this.minHeight;
                         this.textTopValueCache = this.textTopValue;
                     } else {
-                        this.textTopValue = this.minHeight + Math.random() * ((this.maxHeight - this.minHeight) - unitWord.offsetHeight * textInGroup.length);
+                        this.textTopValue = this.minHeight + Math.random() * ((this.maxHeight - this.minHeight) - size * textInGroup.length);
                     }
-                    this.textLeftValue = this.minWidth + Math.random() * ((this.maxWidth - this.minWidth) - unitWord.offsetWidth);
+                    this.textLeftValue = this.minWidth + Math.random() * ((this.maxWidth - this.minWidth) - size);
                 }
             } else {
                 if (this.reverse) {
-                    if (unitWord.offsetWidth * textInGroup.length > this.maxWidth) {
-                        this.textLeftValue = this.maxWidth - unitWord.offsetWidth;
+                    if (size * textInGroup.length > this.maxWidth) {
+                        this.textLeftValue = this.maxWidth - size;
                         this.textLeftValueCache = this.textLeftValue;
                     } else {
-                        this.textLeftValue = this.maxWidth - Math.random() * ((this.maxWidth - this.minWidth) - unitWord.offsetWidth * textInGroup.length) - unitWord.offsetWidth;
+                        this.textLeftValue = this.maxWidth - Math.random() * ((this.maxWidth - this.minWidth) - size * textInGroup.length) - size;
                     }
-                    this.textTopValue = this.minHeight + Math.random() * ((this.maxHeight - this.minHeight) - unitWord.offsetHeight);
+                    this.textTopValue = this.minHeight + Math.random() * ((this.maxHeight - this.minHeight) - size);
                 } else {
-                    if (unitWord.offsetWidth * textInGroup.length > this.maxWidth) {
+                    if (size * textInGroup.length > this.maxWidth) {
                         this.textLeftValue = this.minWidth;
                         this.textLeftValueCache = this.textLeftValue;
                     } else {
-                        this.textLeftValue = this.minWidth + Math.random() * ((this.maxWidth - this.minWidth) - unitWord.offsetWidth * textInGroup.length);
+                        this.textLeftValue = this.minWidth + Math.random() * ((this.maxWidth - this.minWidth) - size * textInGroup.length);
                     }
-                    this.textTopValue = this.minHeight + Math.random() * ((this.maxHeight - this.minHeight) - unitWord.offsetHeight);
+                    this.textTopValue = this.minHeight + Math.random() * ((this.maxHeight - this.minHeight) - size);
                 }
             }
-        } while ([...document.getElementsByClassName("text")].filter(e => !(
-            this.textLeftValue + unitWord.offsetWidth < e.getBoundingClientRect().left ||
-            this.textLeftValue > e.getBoundingClientRect().right ||
-            this.textTopValue + unitWord.offsetHeight < e.getBoundingClientRect().top ||
-            this.textTopValue > e.getBoundingClientRect().bottom
+        } while (Object.values(lyrics).filter(e => !(
+            this.textLeftValue + size < e.x ||
+            this.textLeftValue > e.x + size ||
+            this.textTopValue + size < e.y ||
+            this.textTopValue > e.y + size
         )).length > 0);
-        
-        unitWord.remove();
+
+        //unitWord.remove();
         ({ x: this.x, y: this.y } = this.getRandomDirection());
 
-        if (isWord) this.textGroup.dataset.length = 1;
-        else this.textGroup.dataset.length = textInGroup.length;
+        //if (isWord) this.textGroup.dataset.length = 1;
+        //else this.textGroup.dataset.length = textInGroup.length;
     }
 
     getRandomDirection() {
@@ -120,22 +122,28 @@ export default class RandomDirPosPattern extends SpawnPattern {
     }
 
     spawnLyric(lyric) {
-        if (lyric.attack.constructor === AttackPattern) lyric.text.classList.add("bullet", "lyric-bullet");
-        lyric.text.classList.add("text-movein");
-        if (this.isColumn) lyric.text.classList.add("column");
+        lyric.text.bullet = true
+        lyric.text.movein = true
+        if (this.isColumn) lyric.text.column = true
+        // if (lyric.attack.constructor === AttackPattern) lyric.text.classList.add("bullet", "lyric-bullet");
+        // lyric.text.classList.add("text-movein");
+        // if (this.isColumn) lyric.text.classList.add("column");
 
-        const waterWave = document.createElement("div");
-        waterWave.classList.add("water-wave");
-        lyric.text.appendChild(waterWave);
-        
-        lyric.onFadeOut(() => {
-            const text = lyric.text;
-            text.parentElement.dataset.length--;
-            if (text.parentElement.dataset.length <= 0) text.parentElement.remove();
-        }, { isColumn: this.isColumn, playerPos: { x: this.player.x, y: this.player.y }});
-        
-        lyric.setPosAndMoveIn(this.textLeftValue, this.textTopValue, this.x, this.y);
-        lyric.spawn(this.textGroup);
+        //TODO WATER WAVE
+        // const waterWave = document.createElement("div");
+        // waterWave.classList.add("water-wave");
+        // lyric.text.appendChild(waterWave);
+
+        // console.log("e");
+        lyric.params = { isColumn: this.isColumn, playerPos: { x: this.player.x, y: this.player.y } };
+        // lyric.onFadeOut(() => {
+        //     // const text = lyric.text;
+        //     // text.parentElement.dataset.length--;
+        //     // if (text.parentElement.dataset.length <= 0) text.parentElement.remove();
+        // }, { isColumn: this.isColumn, playerPos: { x: this.player.x, y: this.player.y } });
+
+        lyric.setPosAndMoveIn(this.textLeftValue, this.textTopValue, this.textLeftValue + this.x, this.textTopValue + this.y);
+        lyric.spawn();
 
         const relLength = Math.hypot(this.x, this.y);
         const angle = Math.atan2(this.y / relLength, this.x / relLength);
@@ -145,38 +153,38 @@ export default class RandomDirPosPattern extends SpawnPattern {
     offsetText(lyric) {
         if (this.isColumn) {
             if (this.reverse) {
-                this.textTopValue -= lyric.text.clientHeight;
+                this.textTopValue -= lyric.text.size;
                 if (this.textTopValue < 0) {
                     this.textTopValue = this.textTopValueCache;
-                    if (this.textLeftValue + lyric.text.clientWidth + lyric.text.clientWidth > this.maxWidth) {
-                        this.textLeftValue -= lyric.text.clientWidth;
-                    } else this.textLeftValue += lyric.text.clientWidth;
+                    if (this.textLeftValue + lyric.text.size + lyric.text.size > this.maxWidth) {
+                        this.textLeftValue -= lyric.text.size;
+                    } else this.textLeftValue += lyric.text.size;
                 }
             } else {
-                this.textTopValue += lyric.text.clientHeight;
-                if (this.textTopValue + lyric.text.clientHeight > this.maxFitHeight * lyric.text.clientHeight) {
+                this.textTopValue += lyric.text.size;
+                if (this.textTopValue + lyric.text.size > this.maxFitHeight * lyric.text.size) {
                     this.textTopValue = this.textTopValueCache;
-                    if (this.textLeftValue + lyric.text.clientWidth + lyric.text.clientWidth > this.maxWidth) {
-                        this.textLeftValue -= lyric.text.clientWidth;
-                    } else this.textLeftValue += lyric.text.clientWidth;
+                    if (this.textLeftValue + lyric.text.size + lyric.text.size > this.maxWidth) {
+                        this.textLeftValue -= lyric.text.size;
+                    } else this.textLeftValue += lyric.text.size;
                 }
             }
         } else {
             if (this.reverse) {
-                this.textLeftValue -= lyric.text.clientWidth;
+                this.textLeftValue -= lyric.text.size;
                 if (this.textLeftValue < 0) {
-                     this.textLeftValue = this.textLeftValueCache;
-                    if (this.textTopValue + lyric.text.clientHeight + lyric.text.clientHeight > this.maxHeight) {
-                        this.textTopValue -= lyric.text.clientHeight;
-                    } else this.textTopValue += lyric.text.clientHeight;
+                    this.textLeftValue = this.textLeftValueCache;
+                    if (this.textTopValue + lyric.text.size + lyric.text.size > this.maxHeight) {
+                        this.textTopValue -= lyric.text.size;
+                    } else this.textTopValue += lyric.text.size;
                 }
             } else {
-                this.textLeftValue += lyric.text.clientWidth;
-                if (this.textLeftValue + lyric.text.clientWidth > this.maxFitWidth * lyric.text.clientWidth) {
+                this.textLeftValue += lyric.text.size;
+                if (this.textLeftValue + lyric.text.size > this.maxFitWidth * lyric.text.size) {
                     this.textLeftValue = this.textLeftValueCache;
-                    if (this.textTopValue + lyric.text.clientHeight + lyric.text.clientHeight > this.maxHeight) {
-                        this.textTopValue -= lyric.text.clientHeight;
-                    } else this.textTopValue += lyric.text.clientHeight;
+                    if (this.textTopValue + lyric.text.size + lyric.text.size > this.maxHeight) {
+                        this.textTopValue -= lyric.text.size;
+                    } else this.textTopValue += lyric.text.size;
                 }
             }
         }

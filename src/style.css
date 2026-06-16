@@ -652,23 +652,23 @@ div {
 	}
 }
 
-#lyrics, #telegraphs {
+#telegraphs {
     position: absolute;
     width: 100%;
     height: 100%;
 }
 
-.text-group {
+/* .text-group {
     position: absolute;
     display: flex;
-}
+}*/
 
 @font-face {
 	font-family: "GNUUnifont";
 	src: url("../assets/fonts/unifont-17.0.04.otf");
 }
 
-.text {
+/* .text {
 	font-family: "GNUUnifont", sans-serif;
 	z-index: 1;
     position: absolute;
@@ -746,7 +746,7 @@ div {
 
 .column {
 	writing-mode: vertical-rl;
-}
+} */
 
 .water-wave {
 	position: absolute;
