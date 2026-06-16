@@ -668,6 +668,10 @@ div {
 	src: url("../assets/fonts/unifont-17.0.04.otf");
 }
 
+#lyrics {
+	z-index: 1;
+}
+
 /* .text {
 	font-family: "GNUUnifont", sans-serif;
 	z-index: 1;
@@ -748,7 +752,7 @@ div {
 	writing-mode: vertical-rl;
 } */
 
-.water-wave {
+/* .water-wave {
 	position: absolute;
 	top: 3vw;
 	left: calc(50% - 10vw/2);
@@ -769,7 +773,7 @@ div {
 	.water-wave {
 		top: 7vw;
 	}
-}
+} */
 
 .pos-telegraph {
 	background-image: url("../assets/images/game/shadow.png");

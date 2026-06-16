@@ -122,9 +122,9 @@ export default class RandomDirPosPattern extends SpawnPattern {
     }
 
     spawnLyric(lyric) {
-        lyric.text.bullet = true
-        lyric.text.movein = true
-        if (this.isColumn) lyric.text.column = true
+        lyric.text.bullet = true;
+        lyric.text.movein = true;
+        if (this.isColumn) lyric.text.column = true;
         // if (lyric.attack.constructor === AttackPattern) lyric.text.classList.add("bullet", "lyric-bullet");
         // lyric.text.classList.add("text-movein");
         // if (this.isColumn) lyric.text.classList.add("column");
@@ -133,6 +133,7 @@ export default class RandomDirPosPattern extends SpawnPattern {
         // const waterWave = document.createElement("div");
         // waterWave.classList.add("water-wave");
         // lyric.text.appendChild(waterWave);
+        lyric.text.waterWave = true;
 
         // console.log("e");
         lyric.params = { isColumn: this.isColumn, playerPos: { x: this.player.x, y: this.player.y } };

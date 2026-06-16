@@ -29,7 +29,7 @@ export default class Lyric {
         }
     }
 
-    spawn(parent) {
+    spawn() {
         //parent.appendChild(this.text);
         lyrics[this.id] = this.text;
         window.setTimeout(() => this.spawnGlow(), 1500);

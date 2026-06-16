@@ -125,8 +125,8 @@ function drawLyrics() {
 		ctxLyrics.font = `${text.size}px GNUUnifont`;
 		
 		if (text.progress < 1) {
-			const x = lerp(text.startX, text.x, text.progress);
-			const y = lerp(text.startY, text.y, text.progress);
+			const x = lerp(text.startX, text.x, 1 - (1 - text.progress) ** 2);
+			const y = lerp(text.startY, text.y, 1 - (1 - text.progress) ** 2);
 			text.currentX = x;
 			text.currentY = y;
 			ctxLyrics.fillStyle = text.hit ? "#ffff00" : "#ffffff";
@@ -137,19 +137,58 @@ function drawLyrics() {
 			if (text.fadeStart === null) {
 				text.fadeStart = performance.now();
 				text.fadeProgress = (performance.now() - text.fadeStart) / LYRICS_FADE_LIFETIME;
-
+				
 				text.onMovedIn(text.attack, text.params);
 			}
 			
-			// ctxLyrics.fillText("eeee", text.x, text.y);
 			ctxLyrics.fillStyle = text.hit ? `rgba(255, 255, 0, ${1 - text.fadeProgress}` : `rgba(255, 255, 255, ${1 - text.fadeProgress})`;
 			ctxLyrics.fillText(text.text, text.currentX + text.size / 4, text.currentY + text.size / 2);
 			
 			text.fadeProgress = (performance.now() - text.fadeStart) / LYRICS_FADE_LIFETIME;
 		}
-
+		
 		if (text.fadeProgress >= 1) {
 			delete lyrics[id];
+		}
+	}
+}
+
+//water wave
+const waterWaveCanvas = document.getElementById("water-wave");
+waterWaveCanvas.width = window.innerWidth;
+waterWaveCanvas.height = window.innerHeight;
+const ctxWaterWave = waterWaveCanvas.getContext("2d");
+
+const WATER_WAVE_IMG = new Image();
+const WATER_WAVE_IMGSRC = "assets/images/game/water/water_wave.png";
+WATER_WAVE_IMG.src = WATER_WAVE_IMGSRC
+const WATER_WAVE_INTERVAL = 500 / 4;
+const WATER_WAVE_IMGSIZE = 64;
+
+function drawWaterWaves(delta) {
+	ctxWaterWave.clearRect(0, 0, waterWaveCanvas.width, waterWaveCanvas.height);
+
+	for (const id in lyrics) {
+		const text = lyrics[id];
+		if (text.waterWave) {
+			if (!Object.hasOwn(text, "waterWaveTimer")) {
+				text.waterWaveTimer = 0;
+				text.waterWaveState = 0;
+			}
+			const x = text.currentX;
+			const y = text.currentY + window.innerWidth * 0.03;
+			ctxWaterWave.drawImage(WATER_WAVE_IMG, WATER_WAVE_IMGSIZE * text.waterWaveState, 0, WATER_WAVE_IMGSIZE, WATER_WAVE_IMGSIZE, x, y, window.innerWidth * 0.1, window.innerWidth * 0.1)
+		}
+
+		if (text.waterWaveTimer <= WATER_WAVE_INTERVAL) {
+			text.waterWaveTimer += delta;
+		} else {
+			if (text.waterWaveState > 2) {
+				text.waterWaveState = 0;
+				continue;
+			}
+			text.waterWaveState++;
+			text.waterWaveTimer = 0;
 		}
 	}
 }
@@ -325,8 +364,8 @@ function drawGlow() {
 
 	for (let i = glowParticles.length - 1; i >= 0; i--) {
 		const data = glowParticles[i];
-		const x = data.text.currentX;
-		const y = data.text.currentY;
+		const x = data.text.currentX + data.size / 3;
+		const y = data.text.currentY + data.size / 10;
 		
 		const t = performance.now() - data.start;
 		const progress = t / GLOW_LIFETIME;
@@ -393,17 +432,16 @@ function drawTrail() {
 let trailSpawnTimer = 0;
 const TRAIL_SPAWN_TIME = 200;
 function spawnTrails(delta) {
-	const lyrics = document.getElementsByClassName("text");
-
 	if (trailSpawnTimer < TRAIL_SPAWN_TIME) {
 		trailSpawnTimer += delta;
 	} else {
 		trailSpawnTimer = 0;
-		for (let i = 0; i < lyrics.length; i++) {
+		for (const id in lyrics) {
+			const text = lyrics[id];
+
 			if (trailParticles.length > MAX_PARTICLES) return;
-			const rect = lyrics[i].getBoundingClientRect();
-			const x = rect.left + rect.width / 2;
-			const y = rect.top + rect.height / 2;
+			const x = text.currentX + text.size / 2;
+			const y = text.currentY + text.size / 2;
 			const offsetAngle = Math.random() * Math.PI * 2;
 			const offsetDist = Math.random() * 25;
 			const offsetX = Math.cos(offsetAngle) * offsetDist;
@@ -473,15 +511,15 @@ function gameUpdate(timestamp) {
 	lastTime = timestamp;
 
 	pc.update(isChorus);
-
+	
+	drawTrail();
+	spawnTrails(delta);
+	drawWaterWaves(delta);
+	drawGlow();
 	drawLyrics();
 
 	drawShotBullets();
 
-	drawGlow();
-
-	drawTrail();
-	spawnTrails(delta);
 	if (isChorus) drawSunflowers(delta);
 
 	requestAnimationFrame(gameUpdate);
