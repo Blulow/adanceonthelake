@@ -129,7 +129,7 @@ function drawLyrics() {
 			if (Object.hasOwn(text, "delay") && text.delayStart === null) text.delayStart = performance.now();
 
 			if (Object.hasOwn(text, "delayProgress") && text.delayProgress < 1) {
-				text.delayProgress = (performance.now() - text.delayStart) / text.delay; 
+				text.delayProgress = (performance.now() - text.delayStart) / text.delay;
 			} else {
 				if (!Object.hasOwn(text, "run")) {
 					text.start = performance.now();
@@ -143,7 +143,20 @@ function drawLyrics() {
 			}
 			
 			ctxLyrics.fillStyle = text.hit ? "#ffff00" : "#ffffff";
-			ctxLyrics.fillText(text.text, text.currentX, text.currentY);
+
+			if (text.isWord) {
+				if (text.column) {
+					const renderY = text.currentY - text.size * (text.text.length - 1) / 2;
+					for (let i = 0; i < text.text.length; i++) {
+						ctxLyrics.fillText(text.text[i], text.currentX, renderY + i * text.size);
+					}
+				} else {
+					const renderX = text.currentX - text.size * (text.text.length - 1) / 2;
+					ctxLyrics.fillText(text.text, renderX, text.currentY);
+				}
+			} else {
+				ctxLyrics.fillText(text.text, text.currentX, text.currentY);
+			}
 		} else {
 			if (text.fadeStart === null) {
 				text.bullet = false;
@@ -156,7 +169,19 @@ function drawLyrics() {
 			if (text.fallin) text.currentY += 2;
 			
 			ctxLyrics.fillStyle = text.hit ? `rgba(255, 255, 0, ${1 - text.fadeProgress}` : `rgba(255, 255, 255, ${1 - text.fadeProgress})`;
-			ctxLyrics.fillText(text.text, text.currentX, text.currentY);
+			if (text.isWord) {
+				if (text.column) {
+					const renderY = text.currentY - text.size * (text.text.length - 1) / 2;
+					for (let i = 0; i < text.text.length; i++) {
+						ctxLyrics.fillText(text.text[i], text.currentX, renderY + i * text.size);
+					}
+				} else {
+					const renderX = text.currentX - text.size * (text.text.length - 1) / 2;
+					ctxLyrics.fillText(text.text, renderX, text.currentY);
+				}
+			} else {
+				ctxLyrics.fillText(text.text, text.currentX, text.currentY);
+			}
 			
 			text.fadeProgress = (performance.now() - text.fadeStart) / LYRICS_FADE_LIFETIME;
 		}

@@ -23,9 +23,12 @@ export default class RandomDirPosPattern extends SpawnPattern {
         this.textLeftValueCache = "";
         this.maxFitHeight = 0;
         this.maxFitWidth = 0;
+
+        this.isWord = false;
     }
 
     spawnGroup(textInGroup, arena, isChorus, isWord = false) {
+        this.isWord = isWord;
         if (Math.random() > 0.5) this.isColumn = !this.isColumn;
         if (Math.random() > 0.5) this.reverse = !this.reverse;
 
@@ -41,7 +44,7 @@ export default class RandomDirPosPattern extends SpawnPattern {
             minWidth = window.innerWidth * (landscape ? 0.03 : 0.05);
             maxWidth = window.innerWidth * (landscape ? 0.97 : 0.95);
         }
-        
+
         const size = window.innerWidth * (Math.max(window.innerHeight, window.innerWidth) > 1024 ? 0.07 : 0.1);
 
         this.maxFitHeight = Math.floor((maxHeight - minHeight) / size);
@@ -98,7 +101,7 @@ export default class RandomDirPosPattern extends SpawnPattern {
         const angle = Math.random() * 360;
         const rad = angle * (Math.PI / 180);
 
-        const distance = 1200;
+        const distance = window.innerWidth;
 
         const x = Math.cos(rad) * distance;
         const y = Math.sin(rad) * distance;
@@ -114,6 +117,7 @@ export default class RandomDirPosPattern extends SpawnPattern {
         lyric.text.delay = 500;
         if (this.isColumn) lyric.text.column = true;
         lyric.text.waterWave = true;
+        lyric.text.isWord = this.isWord;
 
         lyric.text.params = { isColumn: this.isColumn, playerPos: { x: this.player.x, y: this.player.y } };
 

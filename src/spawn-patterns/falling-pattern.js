@@ -19,9 +19,12 @@ export default class FallingPattern extends SpawnPattern {
         this.textLeftValueCache = "";
         this.maxFitHeight = 0;
         this.maxFitWidth = 0;
+
+        this.isWord = false;
     }
 
     spawnGroup(textInGroup, arena, isChorus, isWord = false) {
+        this.isWord = isWord;
         if (Math.random() > 0.5) this.isColumn = !this.isColumn;
         if (Math.random() > 0.5) this.reverse = !this.reverse;
 
@@ -90,6 +93,7 @@ export default class FallingPattern extends SpawnPattern {
         lyric.text.delayProgress = 0;
         lyric.text.delay = 500;
         if (this.isColumn) lyric.text.column = true;
+        lyric.text.isWord = this.isWord;
         
         lyric.setPosAndMoveIn(this.textLeftValue, this.textTopValue, this.textLeftValue, this.textTopValue - window.innerHeight);
         lyric.spawn();

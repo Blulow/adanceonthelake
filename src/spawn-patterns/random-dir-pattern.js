@@ -19,9 +19,12 @@ export default class RandomDirPattern extends SpawnPattern {
         this.unitDim = { width: 0, height: 0 };
 
         this.reverse = false;
+
+        this.isWord = false;
     }
 
     spawnGroup(textInGroup, arena, isChorus, isWord = false) {
+        this.isWord = isWord;
         if (Math.random() > 0.5) this.reverse = !this.reverse;
 
         let minHeight = 0;
@@ -76,7 +79,8 @@ export default class RandomDirPattern extends SpawnPattern {
         lyric.text.delay = 1500;
         if (this.side === this.sides.TOP || this.side === this.sides.BOTTOM) lyric.text.column = true;
         lyric.text.waterWave = true;
-        // });
+        lyric.text.isWord = this.isWord;
+
         const lyricPos = { x: this.textLeftValue, y: this.textTopValue };
         const endPos = this.getEndPos(lyricPos, this.unitDim);
         lyric.setPosAndMoveToEdge(this.textLeftValue, this.textTopValue, endPos.x, endPos.y);
