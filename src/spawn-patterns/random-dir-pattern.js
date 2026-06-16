@@ -37,16 +37,7 @@ export default class RandomDirPattern extends SpawnPattern {
             maxWidth = window.innerWidth * (landscape ? 0.97 : 0.95);
         }
 
-        // this.textGroup = document.createElement("div");
-        // this.textGroup.classList.add("text-group");
-        // arena.appendChild(this.textGroup);
-
         const size = window.innerWidth * (Math.max(window.innerHeight, window.innerWidth) > 1024 ? 0.07 : 0.1);
-        // const unitWord = document.createElement("div");
-        // unitWord.innerText = textInGroup[0];
-        // unitWord.style.fontSize = Math.max(window.innerHeight, window.innerWidth) > 1024 ? "7vw" : "10vw";
-        // unitWord.style.lineHeight = "1";
-        // arena.appendChild(unitWord);
 
         this.side = Math.floor(Math.random() * 4);
         do {
@@ -75,10 +66,6 @@ export default class RandomDirPattern extends SpawnPattern {
             this.textTopValue > e.y + size
         )).length > 0);
         this.unitDim = { width: size, height: size };
-        // unitWord.remove();
-        
-        // if (isWord) this.textGroup.dataset.length = 1;
-        // else this.textGroup.dataset.length = textInGroup.length;
     }
     
     spawnLyric(lyric) {
@@ -88,19 +75,7 @@ export default class RandomDirPattern extends SpawnPattern {
         lyric.text.delayProgress = 0;
         lyric.text.delay = 1500;
         if (this.side === this.sides.TOP || this.side === this.sides.BOTTOM) lyric.text.column = true;
-        // lyric.text.classList.add("bullet", "lyric-bullet");
-        // lyric.text.classList.add("text-movetoedge");
-        // if (this.side === this.sides.TOP || this.side === this.sides.BOTTOM) lyric.text.classList.add("column");
-        
-        // const waterWave = document.createElement("div");
-        // waterWave.classList.add("water-wave");
-        // lyric.text.appendChild(waterWave);
         lyric.text.waterWave = true;
-        
-        // lyric.onMoveToEdge(() => {
-        //     const text = lyric.text;
-        //     text.parentElement.dataset.length--;
-        //     if (text.parentElement.dataset.length <= 0) text.parentElement.remove();
         // });
         const lyricPos = { x: this.textLeftValue, y: this.textTopValue };
         const endPos = this.getEndPos(lyricPos, this.unitDim);

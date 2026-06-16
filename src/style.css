@@ -694,7 +694,7 @@ div {
 .fadeout-movein {
     animation: movein 1s ease-out forwards,
         fadeout 0.5s forwards;
-}
+}*/
 
 @keyframes movein {
     to {
@@ -702,7 +702,7 @@ div {
     }
 }
 
-.text-movetoedge {
+/* .text-movetoedge {
 	animation: movetoedge 3s 1.5s forwards;
 }
 

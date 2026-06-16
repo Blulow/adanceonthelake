@@ -5,12 +5,6 @@ import { glowParticles, lyrics } from "./game-loop";
 
 export default class Lyric {
     constructor(unit, Attack, Telegraph) {
-        //this.text = document.createElement("div");
-        //this.text.classList.add("text");
-        //this.text.innerText = unit.text;
-        
-        //this.x = 0;
-        //this.y = 0;
         this.id = this.generateUUID();
         
         this.attack = new Attack(Telegraph);
@@ -29,7 +23,6 @@ export default class Lyric {
     }
 
     spawn() {
-        //parent.appendChild(this.text);
         lyrics[this.id] = this.text;
         window.setTimeout(() => this.spawnGlow(), 1500);
     }
@@ -64,31 +57,11 @@ export default class Lyric {
         this.text.startY = startY;
         this.text.currentX = startX;
         this.text.currentY = startY;
-        //this.text.style.setProperty("--start-x", `${startX}px`);
-        //this.text.style.setProperty("--start-y", `${startY}px`);
     }
 
-    // onFadeOut(action) {
-    //     this.text.addEventListener("animationend", e => {
-    //         if (e.animationName === "movein") {
-    //             this.text.classList.add("fadeout-movein");
-    //             if (typeof this.attack.shoot(this.x, this.y, this.text, this.params) === "function") this.attack.shoot(this.x, this.y, this.text, this.params);
-    //             if (typeof this.attack.telegraph.fadeOutAndRemove() === "function") this.attack.telegraph.fadeOutAndRemove();
-    //         } else if (e.animationName === "fall") {
-    //             this.text.classList.remove("bullet");
-    //             this.text.classList.add("fadeout-fall");
-    //             if (typeof this.attack.telegraph.fadeOutAndRemove() === "function") this.attack.telegraph.fadeOutAndRemove();
-    //         } else if (e.animationName === "fadeout") {
-    //             this.text.style.display = "none";
-    //             action();
-    //         }
-    //     });
-    // }
-
     onMovedIn(text, attack, params) {
-        // console.log("e", typeof text);
         if (typeof attack.shoot(this.x, this.y, text, params) === "function") this.attack.shoot(this.x, this.y, text, params);
-        if (typeof attack.telegraph.fadeOutAndRemove() === "function") attack.telegraph.fadeOutAndRemove();
+        if (typeof attack.telegraph.fadeOutAndRemove === "function") attack.telegraph.fadeOutAndRemove();
     }
 
     setPosAndMoveToEdge(x, y, endX, endY) {
@@ -100,20 +73,7 @@ export default class Lyric {
         this.text.y = endY;
         this.text.currentX = x;
         this.text.currentY = y;
-        //this.text.style.setProperty("--end-x", `${endX}px`);
-        //this.text.style.setProperty("--end-y", `${endY}px`);
     }
-
-    // onMoveToEdge(action) {
-    //     this.text.addEventListener("animationend", e => {
-    //         if (e.animationName === "movetoedge") {
-    //             this.text.classList.add("fadeout-movetoedge");
-    //         } else if (e.animationName === "fadeout") {
-    //             this.text.style.display = "none";
-    //             action();
-    //         }
-    //     });
-    // }
 
     generateUUID() {
         if (typeof crypto !== "undefined" && crypto.randomUUID) {

@@ -41,17 +41,8 @@ export default class RandomDirPosPattern extends SpawnPattern {
             minWidth = window.innerWidth * (landscape ? 0.03 : 0.05);
             maxWidth = window.innerWidth * (landscape ? 0.97 : 0.95);
         }
-
-        //this.textGroup = document.createElement("div");
-        //this.textGroup.classList.add("text-group");
-        //arena.appendChild(this.textGroup);
-
+        
         const size = window.innerWidth * (Math.max(window.innerHeight, window.innerWidth) > 1024 ? 0.07 : 0.1);
-        //const unitWord = document.createElement("div");
-        //unitWord.innerText = textInGroup[0];
-        //unitWord.style.fontSize = Math.max(window.innerHeight, window.innerWidth) > 1024 ? "7vw" : "10vw";
-        //unitWord.style.lineHeight = "1";
-        //arena.appendChild(unitWord);
 
         this.maxFitHeight = Math.floor((maxHeight - minHeight) / size);
         this.maxFitWidth = Math.floor((maxWidth - minWidth) / size);
@@ -100,11 +91,7 @@ export default class RandomDirPosPattern extends SpawnPattern {
             this.textTopValue > e.y + size
         )).length > 0);
 
-        //unitWord.remove();
         ({ x: this.x, y: this.y } = this.getRandomDirection());
-
-        //if (isWord) this.textGroup.dataset.length = 1;
-        //else this.textGroup.dataset.length = textInGroup.length;
     }
 
     getRandomDirection() {
@@ -126,22 +113,9 @@ export default class RandomDirPosPattern extends SpawnPattern {
         lyric.text.delayProgress = 0;
         lyric.text.delay = 500;
         if (this.isColumn) lyric.text.column = true;
-        // if (lyric.attack.constructor === AttackPattern) lyric.text.classList.add("bullet", "lyric-bullet");
-        // lyric.text.classList.add("text-movein");
-        // if (this.isColumn) lyric.text.classList.add("column");
-
-        // const waterWave = document.createElement("div");
-        // waterWave.classList.add("water-wave");
-        // lyric.text.appendChild(waterWave);
         lyric.text.waterWave = true;
 
-        // console.log("e");
         lyric.text.params = { isColumn: this.isColumn, playerPos: { x: this.player.x, y: this.player.y } };
-        // lyric.onFadeOut(() => {
-        //     // const text = lyric.text;
-        //     // text.parentElement.dataset.length--;
-        //     // if (text.parentElement.dataset.length <= 0) text.parentElement.remove();
-        // }, { isColumn: this.isColumn, playerPos: { x: this.player.x, y: this.player.y } });
 
         lyric.setPosAndMoveIn(this.textLeftValue, this.textTopValue, this.textLeftValue + this.x, this.textTopValue + this.y);
         lyric.spawn();

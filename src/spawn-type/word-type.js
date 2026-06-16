@@ -11,7 +11,6 @@ export default class WordType extends SpawnType {
     animate(now, unit, isChorus) {
         if (unit.text !== this.lastWord) {
             const lyric = new Lyric(unit, this.attack, this.telegraph);
-            lyric.text.classList.add("text-word");
 
             this.pattern.spawnGroup(unit.text, this.arena, isChorus, true);
             this.pattern.spawnLyric(lyric);

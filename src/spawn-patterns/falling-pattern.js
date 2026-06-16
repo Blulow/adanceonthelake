@@ -12,8 +12,6 @@ export default class FallingPattern extends SpawnPattern {
 
         this.textTopValue = "";
         this.textLeftValue = "";
-        
-        // this.textGroup = null;
 
         this.isColumn = false;
         this.reverse = false;
@@ -35,16 +33,7 @@ export default class FallingPattern extends SpawnPattern {
             this.maxWidth = window.innerWidth * (landscape ? 0.97 : 0.95);
         }
 
-        // this.textGroup = document.createElement("div");
-        // this.textGroup.classList.add("text-group");
-        // arena.appendChild(this.textGroup);
-
         const size = window.innerWidth * (Math.max(window.innerHeight, window.innerWidth) > 1024 ? 0.07 : 0.1);
-        // const unitWord = document.createElement("div");
-        // unitWord.innerText = textInGroup[0];
-        // unitWord.style.fontSize = Math.max(window.innerHeight, window.innerWidth) > 1024 ? "7vw" : "10vw";
-        // unitWord.style.lineHeight = "1";
-        // arena.appendChild(unitWord);
 
         this.maxFitHeight = Math.floor((this.maxHeight - this.minHeight) / size);
         this.maxFitWidth = Math.floor((this.maxWidth - this.minWidth) / size);
@@ -92,10 +81,6 @@ export default class FallingPattern extends SpawnPattern {
             this.textTopValue + size < e.y ||
             this.textTopValue > e.y + size
         )).length > 0);
-        // unitWord.remove();
-
-        // if (isWord) this.textGroup.dataset.length = 1;
-        // else this.textGroup.dataset.length = textInGroup.length;
     }
 
     spawnLyric(lyric) {
@@ -105,15 +90,6 @@ export default class FallingPattern extends SpawnPattern {
         lyric.text.delayProgress = 0;
         lyric.text.delay = 500;
         if (this.isColumn) lyric.text.column = true;
-        // lyric.text.classList.add("bullet", "lyric-bullet")
-        // lyric.text.classList.add("text-fall");
-        // if (this.isColumn) lyric.text.classList.add("column");
-        
-        // lyric.onFadeOut(() => {
-        //     const text = lyric.text;
-        //     text.parentElement.dataset.length--;
-        //     if (text.parentElement.dataset.length <= 0) text.parentElement.remove();
-        // }, { isColumn: this.isColumn, playerPos: { x: this.player.x, y: this.player.y }});
         
         lyric.setPosAndMoveIn(this.textLeftValue, this.textTopValue, this.textLeftValue, this.textTopValue - window.innerHeight);
         lyric.spawn();
