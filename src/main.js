@@ -142,7 +142,11 @@ function drawLyrics() {
 				text.progress = (performance.now() - text.start) / lifetime;
 			}
 			
-			ctxLyrics.fillStyle = text.hit ? "#ffff00" : "#ffffff";
+			if (text.bullet) {
+				ctxLyrics.fillStyle = text.hit ? "#ffff00" : "#ffffff";
+			} else {
+				ctxLyrics.fillStyle = "#ffffffcc";
+			}
 
 			if (text.isWord) {
 				if (text.column) {
@@ -168,7 +172,11 @@ function drawLyrics() {
 
 			if (text.fallin) text.currentY += 2;
 			
-			ctxLyrics.fillStyle = text.hit ? `rgba(255, 255, 0, ${1 - text.fadeProgress}` : `rgba(255, 255, 255, ${1 - text.fadeProgress})`;
+			if (text.bullet) {
+				ctxLyrics.fillStyle = text.hit ? `rgba(255, 255, 0, ${1 - text.fadeProgress}` : `rgba(255, 255, 255, ${1 - text.fadeProgress})`;
+			} else {
+				ctxLyrics.fillStyle = `rgba(255, 255, 255, ${0.8 - text.fadeProgress})`;
+			}
 			if (text.isWord) {
 				if (text.column) {
 					const renderY = text.currentY - text.size * (text.text.length - 1) / 2;
@@ -197,6 +205,7 @@ const waterWaveCanvas = document.getElementById("water-wave");
 waterWaveCanvas.width = window.innerWidth;
 waterWaveCanvas.height = window.innerHeight;
 const ctxWaterWave = waterWaveCanvas.getContext("2d");
+ctxWaterWave.imageSmoothingEnabled = false;
 
 const WATER_WAVE_IMG = new Image();
 const WATER_WAVE_IMGSRC = "assets/images/game/water/water_wave.png";
@@ -217,8 +226,14 @@ function drawWaterWaves(delta) {
 			const size = window.innerWidth * 0.1;
 			const x = text.currentX - size / 5;
 			const y = text.currentY - size / 2 + window.innerWidth * 0.03;
+			if (text.fadeStart !== null) {
+				ctxWaterWave.globalAlpha = 1 - text.fadeProgress;
+			} else {
+				ctxWaterWave.globalAlpha = 1;
+			}
 			ctxWaterWave.drawImage(WATER_WAVE_IMG, WATER_WAVE_IMGSIZE * text.waterWaveState, 0, WATER_WAVE_IMGSIZE, WATER_WAVE_IMGSIZE, x, y, size, size);
 		}
+
 
 		if (text.waterWaveTimer <= WATER_WAVE_INTERVAL) {
 			text.waterWaveTimer += delta;
