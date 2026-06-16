@@ -94,24 +94,26 @@ export default class Lyric {
     setPosAndMoveToEdge(x, y, endX, endY) {
         this.x = x;
         this.y = y;
-        this.text.x = x;
-        this.text.y = y;
-        this.text.endX = endX;
-        this.text.endY = endY;
+        this.text.startX = x;
+        this.text.startY = y;
+        this.text.x = endX;
+        this.text.y = endY;
+        this.text.currentX = x;
+        this.text.currentY = y;
         //this.text.style.setProperty("--end-x", `${endX}px`);
         //this.text.style.setProperty("--end-y", `${endY}px`);
     }
 
-    onMoveToEdge(action) {
-        this.text.addEventListener("animationend", e => {
-            if (e.animationName === "movetoedge") {
-                this.text.classList.add("fadeout-movetoedge");
-            } else if (e.animationName === "fadeout") {
-                this.text.style.display = "none";
-                action();
-            }
-        });
-    }
+    // onMoveToEdge(action) {
+    //     this.text.addEventListener("animationend", e => {
+    //         if (e.animationName === "movetoedge") {
+    //             this.text.classList.add("fadeout-movetoedge");
+    //         } else if (e.animationName === "fadeout") {
+    //             this.text.style.display = "none";
+    //             action();
+    //         }
+    //     });
+    // }
 
     generateUUID() {
         if (typeof crypto !== "undefined" && crypto.randomUUID) {

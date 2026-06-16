@@ -17,8 +17,6 @@ export default class RandomDirPosPattern extends SpawnPattern {
         this.textLeftValue = "";
         ({ x: this.x, y: this.y } = { x: 0, y: 0 });
 
-        this.textGroup = { length: 0 };
-
         this.isColumn = false;
         this.reverse = false;
         this.textTopValueCache = "";
@@ -124,12 +122,14 @@ export default class RandomDirPosPattern extends SpawnPattern {
     spawnLyric(lyric) {
         lyric.text.bullet = true;
         lyric.text.movein = true;
+        lyric.text.delayStart = null;
+        lyric.text.delayProgress = 0;
+        lyric.text.delay = 500;
         if (this.isColumn) lyric.text.column = true;
         // if (lyric.attack.constructor === AttackPattern) lyric.text.classList.add("bullet", "lyric-bullet");
         // lyric.text.classList.add("text-movein");
         // if (this.isColumn) lyric.text.classList.add("column");
 
-        //TODO WATER WAVE
         // const waterWave = document.createElement("div");
         // waterWave.classList.add("water-wave");
         // lyric.text.appendChild(waterWave);

@@ -13,7 +13,7 @@ export default class FallingPattern extends SpawnPattern {
         this.textTopValue = "";
         this.textLeftValue = "";
         
-        this.textGroup = null;
+        // this.textGroup = null;
 
         this.isColumn = false;
         this.reverse = false;
@@ -35,119 +35,126 @@ export default class FallingPattern extends SpawnPattern {
             this.maxWidth = window.innerWidth * (landscape ? 0.97 : 0.95);
         }
 
-        this.textGroup = document.createElement("div");
-        this.textGroup.classList.add("text-group");
-        arena.appendChild(this.textGroup);
+        // this.textGroup = document.createElement("div");
+        // this.textGroup.classList.add("text-group");
+        // arena.appendChild(this.textGroup);
 
-        const unitWord = document.createElement("div");
-        unitWord.innerText = textInGroup[0];
-        unitWord.style.fontSize = Math.max(window.innerHeight, window.innerWidth) > 1024 ? "7vw" : "10vw";
-        unitWord.style.lineHeight = "1";
-        arena.appendChild(unitWord);
+        const size = window.innerWidth * (Math.max(window.innerHeight, window.innerWidth) > 1024 ? 0.07 : 0.1);
+        // const unitWord = document.createElement("div");
+        // unitWord.innerText = textInGroup[0];
+        // unitWord.style.fontSize = Math.max(window.innerHeight, window.innerWidth) > 1024 ? "7vw" : "10vw";
+        // unitWord.style.lineHeight = "1";
+        // arena.appendChild(unitWord);
 
-        this.maxFitHeight = Math.floor((this.maxHeight - this.minHeight) / unitWord.clientHeight);
-        this.maxFitWidth = Math.floor((this.maxWidth - this.minWidth) / unitWord.clientWidth);
+        this.maxFitHeight = Math.floor((this.maxHeight - this.minHeight) / size);
+        this.maxFitWidth = Math.floor((this.maxWidth - this.minWidth) / size);
         do {
             if (this.isColumn) {
                 if (this.reverse) {
-                    if (unitWord.offsetHeight * textInGroup.length > this.maxHeight/2) {
-                        this.textTopValue = this.maxHeight - unitWord.offsetHeight;
+                    if (size * textInGroup.length > this.maxHeight/2) {
+                        this.textTopValue = this.maxHeight - size;
                         this.textTopValueCache = this.textTopValue;
                     } else {
-                        this.textTopValue = this.maxHeight - Math.random() * ((this.maxHeight - this.minHeight)/2 - unitWord.offsetHeight * textInGroup.length) - unitWord.offsetHeight;
+                        this.textTopValue = this.maxHeight - Math.random() * ((this.maxHeight - this.minHeight)/2 - size * textInGroup.length) - size;
                     }
-                    this.textLeftValue = this.minWidth + Math.random() * ((this.maxWidth - this.minWidth) - unitWord.offsetWidth);
+                    this.textLeftValue = this.minWidth + Math.random() * ((this.maxWidth - this.minWidth) - size);
                 } else {
-                    if (unitWord.offsetHeight * textInGroup.length > this.maxHeight/2) {
+                    if (size * textInGroup.length > this.maxHeight/2) {
                         this.textTopValue = (this.maxHeight - this.minHeight)/2;
                         this.textTopValueCache = this.textTopValue;
                     } else {
-                        this.textTopValue = this.minHeight + Math.random() * ((this.maxHeight - this.minHeight)/2 - unitWord.offsetHeight * textInGroup.length) + (this.maxHeight - this.minHeight)/2;
+                        this.textTopValue = this.minHeight + Math.random() * ((this.maxHeight - this.minHeight)/2 - size * textInGroup.length) + (this.maxHeight - this.minHeight)/2;
                     }
-                    this.textLeftValue = this.minWidth + Math.random() * ((this.maxWidth - this.minWidth) - unitWord.offsetWidth);
+                    this.textLeftValue = this.minWidth + Math.random() * ((this.maxWidth - this.minWidth) - size);
                 }
             } else {
                 if (this.reverse) {
-                    if (unitWord.offsetWidth * textInGroup.length > this.maxWidth) {
-                        this.textLeftValue = this.maxWidth - unitWord.offsetWidth;
+                    if (size * textInGroup.length > this.maxWidth) {
+                        this.textLeftValue = this.maxWidth - size;
                         this.textLeftValueCache = this.textLeftValue;
                     } else {
-                        this.textLeftValue = this.maxWidth - Math.random() * ((this.maxWidth - this.minWidth) - unitWord.offsetWidth * textInGroup.length) - unitWord.offsetWidth;
+                        this.textLeftValue = this.maxWidth - Math.random() * ((this.maxWidth - this.minWidth) - size * textInGroup.length) - size;
                     }
-                    this.textTopValue = this.minHeight + Math.random() * ((this.maxHeight - this.minHeight)/2 - unitWord.offsetHeight) + (this.maxHeight - this.minHeight)/2;
+                    this.textTopValue = this.minHeight + Math.random() * ((this.maxHeight - this.minHeight)/2 - size) + (this.maxHeight - this.minHeight)/2;
                 } else {
-                    if (unitWord.offsetWidth * textInGroup.length > this.maxWidth) {
+                    if (size * textInGroup.length > this.maxWidth) {
                         this.textLeftValue = this.minWidth;
                         this.textLeftValueCache = this.textLeftValue;
                     } else {
-                        this.textLeftValue = this.minWidth + Math.random() * ((this.maxWidth - this.minWidth) - unitWord.offsetWidth * textInGroup.length);
+                        this.textLeftValue = this.minWidth + Math.random() * ((this.maxWidth - this.minWidth) - size * textInGroup.length);
                     }
-                    this.textTopValue = this.minHeight + Math.random() * ((this.maxHeight - this.minHeight)/2 - unitWord.offsetHeight) + (this.maxHeight - this.minHeight)/2;
+                    this.textTopValue = this.minHeight + Math.random() * ((this.maxHeight - this.minHeight)/2 - size) + (this.maxHeight - this.minHeight)/2;
                 }
             }
-        } while ([...document.getElementsByClassName("text")].filter(e => !(
-            this.textLeftValue + unitWord.offsetWidth < e.getBoundingClientRect().left ||
-            this.textLeftValue > e.getBoundingClientRect().right ||
-            this.textTopValue + unitWord.offsetHeight < e.getBoundingClientRect().top ||
-            this.textTopValue > e.getBoundingClientRect().bottom
+        } while (Object.values(lyrics).filter(e => !(
+            this.textLeftValue + size < e.x ||
+            this.textLeftValue > e.x + size ||
+            this.textTopValue + size < e.y ||
+            this.textTopValue > e.y + size
         )).length > 0);
-        unitWord.remove();
+        // unitWord.remove();
 
-        if (isWord) this.textGroup.dataset.length = 1;
-        else this.textGroup.dataset.length = textInGroup.length;
+        // if (isWord) this.textGroup.dataset.length = 1;
+        // else this.textGroup.dataset.length = textInGroup.length;
     }
 
     spawnLyric(lyric) {
-        lyric.text.classList.add("bullet", "lyric-bullet")
-        lyric.text.classList.add("text-fall");
-        if (this.isColumn) lyric.text.classList.add("column");
+        lyric.text.bullet = true;
+        lyric.text.fallin = true;
+        lyric.text.delayStart = null;
+        lyric.text.delayProgress = 0;
+        lyric.text.delay = 500;
+        if (this.isColumn) lyric.text.column = true;
+        // lyric.text.classList.add("bullet", "lyric-bullet")
+        // lyric.text.classList.add("text-fall");
+        // if (this.isColumn) lyric.text.classList.add("column");
         
-        lyric.onFadeOut(() => {
-            const text = lyric.text;
-            text.parentElement.dataset.length--;
-            if (text.parentElement.dataset.length <= 0) text.parentElement.remove();
-        }, { isColumn: this.isColumn, playerPos: { x: this.player.x, y: this.player.y }});
+        // lyric.onFadeOut(() => {
+        //     const text = lyric.text;
+        //     text.parentElement.dataset.length--;
+        //     if (text.parentElement.dataset.length <= 0) text.parentElement.remove();
+        // }, { isColumn: this.isColumn, playerPos: { x: this.player.x, y: this.player.y }});
         
-        lyric.setPosAndMoveIn(this.textLeftValue, this.textTopValue, 0, 0);
-        lyric.spawn(this.textGroup);
+        lyric.setPosAndMoveIn(this.textLeftValue, this.textTopValue, this.textLeftValue, this.textTopValue - window.innerHeight);
+        lyric.spawn();
         lyric.spawnTelegraph(false);
     }
 
     offsetText(lyric) {
         if (this.isColumn) {
             if (this.reverse) {
-                this.textTopValue -= lyric.text.clientHeight;
+                this.textTopValue -= lyric.text.size;
                 if (this.textTopValue < 0) {
                     this.textTopValue = this.textTopValueCache;
-                    if (this.textLeftValue + lyric.text.clientWidth + lyric.text.clientWidth > this.maxWidth) {
-                        this.textLeftValue -= lyric.text.clientWidth;
-                    } else this.textLeftValue += lyric.text.clientWidth;
+                    if (this.textLeftValue + lyric.text.size + lyric.text.size > this.maxWidth) {
+                        this.textLeftValue -= lyric.text.size;
+                    } else this.textLeftValue += lyric.text.size;
                 }
             } else {
-                this.textTopValue += lyric.text.clientHeight;
-                if (this.textTopValue + lyric.text.clientHeight > this.maxFitHeight * lyric.text.clientHeight) {
+                this.textTopValue += lyric.text.size;
+                if (this.textTopValue + lyric.text.size > this.maxFitHeight * lyric.text.size) {
                     this.textTopValue = this.textTopValueCache;
-                    if (this.textLeftValue + lyric.text.clientWidth + lyric.text.clientWidth > this.maxWidth) {
-                        this.textLeftValue -= lyric.text.clientWidth;
-                    } else this.textLeftValue += lyric.text.clientWidth;
+                    if (this.textLeftValue + lyric.text.size + lyric.text.size > this.maxWidth) {
+                        this.textLeftValue -= lyric.text.size;
+                    } else this.textLeftValue += lyric.text.size;
                 }
             }
         } else {
             if (this.reverse) {
-                this.textLeftValue -= lyric.text.clientWidth;
+                this.textLeftValue -= lyric.text.size;
                 if (this.textLeftValue < 0) {
                     this.textLeftValue = this.textLeftValueCache;
-                    if (this.textTopValue + lyric.text.clientHeight + lyric.text.clientHeight > this.maxHeight) {
-                        this.textTopValue -= lyric.text.clientHeight;
-                    } else this.textTopValue += lyric.text.clientHeight;
+                    if (this.textTopValue + lyric.text.size + lyric.text.size > this.maxHeight) {
+                        this.textTopValue -= lyric.text.size;
+                    } else this.textTopValue += lyric.text.size;
                 }
             } else {
-                this.textLeftValue += lyric.text.clientWidth;
-                if (this.textLeftValue + lyric.text.clientWidth > this.maxFitWidth * lyric.text.clientWidth) {
+                this.textLeftValue += lyric.text.size;
+                if (this.textLeftValue + lyric.text.size > this.maxFitWidth * lyric.text.size) {
                     this.textLeftValue = this.textLeftValueCache;
-                    if (this.textTopValue + lyric.text.clientHeight + lyric.text.clientHeight > this.maxHeight) {
-                        this.textTopValue -= lyric.text.clientHeight;
-                    } else this.textTopValue += lyric.text.clientHeight;
+                    if (this.textTopValue + lyric.text.size + lyric.text.size > this.maxHeight) {
+                        this.textTopValue -= lyric.text.size;
+                    } else this.textTopValue += lyric.text.size;
                 }
             }
         }

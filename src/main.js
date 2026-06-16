@@ -114,7 +114,6 @@ document.fonts.load("16px GNUUnifont").then(() => {
 	ctxLyrics.font = "16px GNUUnifon";
 });
 
-const LYRICS_LIFETIME = 1500;
 const LYRICS_FADE_LIFETIME = 500;
 
 function drawLyrics() {
@@ -124,22 +123,36 @@ function drawLyrics() {
 		const text = lyrics[id];
 		ctxLyrics.font = `${text.size}px GNUUnifont`;
 		
+		const lifetime = text.movein ? 1000 : text.movetoedge ? 3000 : 1000;
+
 		if (text.progress < 1) {
-			const x = lerp(text.startX, text.x, 1 - (1 - text.progress) ** 2);
-			const y = lerp(text.startY, text.y, 1 - (1 - text.progress) ** 2);
-			text.currentX = x;
-			text.currentY = y;
-			ctxLyrics.fillStyle = text.hit ? "#ffff00" : "#ffffff";
-			ctxLyrics.fillText(text.text, x + text.size / 4, y + text.size / 2);
+			if (Object.hasOwn(text, "delay") && text.delayStart === null) text.delayStart = performance.now();
+
+			if (Object.hasOwn(text, "delayProgress") && text.delayProgress < 1) {
+				text.delayProgress = (performance.now() - text.delayStart) / text.delay; 
+			} else {
+				if (!Object.hasOwn(text, "run")) {
+					text.start = performance.now();
+					text.run = true;
+				}
+				const x = lerp(text.startX, text.x, 1 - (1 - text.progress) ** 2);
+				const y = lerp(text.startY, text.y, 1 - (1 - text.progress) ** 2);
+				text.currentX = x;
+				text.currentY = y;
+				text.progress = (performance.now() - text.start) / lifetime;
+			}
 			
-			text.progress = (performance.now() - text.start) / LYRICS_LIFETIME;
+			ctxLyrics.fillStyle = text.hit ? "#ffff00" : "#ffffff";
+			ctxLyrics.fillText(text.text, text.currentX + text.size / 4, text.currentY + text.size / 2);
 		} else {
 			if (text.fadeStart === null) {
 				text.fadeStart = performance.now();
-				text.fadeProgress = (performance.now() - text.fadeStart) / LYRICS_FADE_LIFETIME;
+				text.fadeProgress = (performance.now() - text.fadeStart) / lifetime;
 				
 				text.onMovedIn(text.attack, text.params);
 			}
+
+			if (text.fallin) text.currentY += 2;
 			
 			ctxLyrics.fillStyle = text.hit ? `rgba(255, 255, 0, ${1 - text.fadeProgress}` : `rgba(255, 255, 255, ${1 - text.fadeProgress})`;
 			ctxLyrics.fillText(text.text, text.currentX + text.size / 4, text.currentY + text.size / 2);

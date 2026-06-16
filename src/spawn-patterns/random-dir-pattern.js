@@ -1,3 +1,4 @@
+import { lyrics } from "../game-loop";
 import SpawnPattern from "./spawn-pattern";
 
 export default class RandomDirPattern extends SpawnPattern {
@@ -7,8 +8,6 @@ export default class RandomDirPattern extends SpawnPattern {
 
         this.textTopValue = 0;
         this.textLeftValue = 0;
-
-        this.textGroup = null;
 
         this.sides = {
             TOP: 0,
@@ -38,69 +37,75 @@ export default class RandomDirPattern extends SpawnPattern {
             maxWidth = window.innerWidth * (landscape ? 0.97 : 0.95);
         }
 
-        this.textGroup = document.createElement("div");
-        this.textGroup.classList.add("text-group");
-        arena.appendChild(this.textGroup);
+        // this.textGroup = document.createElement("div");
+        // this.textGroup.classList.add("text-group");
+        // arena.appendChild(this.textGroup);
 
-        const unitWord = document.createElement("div");
-        unitWord.innerText = textInGroup[0];
-        unitWord.style.fontSize = Math.max(window.innerHeight, window.innerWidth) > 1024 ? "7vw" : "10vw";
-        unitWord.style.lineHeight = "1";
-        arena.appendChild(unitWord);
+        const size = window.innerWidth * (Math.max(window.innerHeight, window.innerWidth) > 1024 ? 0.07 : 0.1);
+        // const unitWord = document.createElement("div");
+        // unitWord.innerText = textInGroup[0];
+        // unitWord.style.fontSize = Math.max(window.innerHeight, window.innerWidth) > 1024 ? "7vw" : "10vw";
+        // unitWord.style.lineHeight = "1";
+        // arena.appendChild(unitWord);
 
         this.side = Math.floor(Math.random() * 4);
         do {
             switch (this.side) {
                 case this.sides.TOP:
-                    this.textTopValue = minHeight - unitWord.clientHeight;
-                    this.textLeftValue = minWidth + Math.random() * ((maxWidth - minWidth) + unitWord.clientWidth) - unitWord.clientWidth;
+                    this.textTopValue = minHeight - size;
+                    this.textLeftValue = minWidth + Math.random() * ((maxWidth - minWidth) + size) - size;
                     break;
                 case this.sides.BOTTOM:
                     this.textTopValue = maxHeight - (window.innerHeight * 0.07);
-                    this.textLeftValue = minWidth + Math.random() * ((maxWidth - minWidth) + unitWord.clientWidth) - unitWord.clientWidth;
+                    this.textLeftValue = minWidth + Math.random() * ((maxWidth - minWidth) + size) - size;
                     break;
                 case this.sides.LEFT:
-                    this.textTopValue = minHeight + Math.random() * ((maxHeight - minHeight) + unitWord.clientHeight) - unitWord.clientHeight;
-                    this.textLeftValue = minWidth - unitWord.clientWidth;
+                    this.textTopValue = minHeight + Math.random() * ((maxHeight - minHeight) + size) - size;
+                    this.textLeftValue = minWidth - size;
                     break;
                 case this.sides.RIGHT:
-                    this.textTopValue = minHeight + Math.random() * ((maxHeight - minHeight) + unitWord.clientHeight) - unitWord.clientHeight;
+                    this.textTopValue = minHeight + Math.random() * ((maxHeight - minHeight) + size) - size;
                     this.textLeftValue = maxWidth;
                     break;
             }
-        } while ([...document.getElementsByClassName("text")].filter(e => !(
-            this.textLeftValue + unitWord.offsetWidth < e.getBoundingClientRect().left ||
-            this.textLeftValue > e.getBoundingClientRect().right ||
-            this.textTopValue + unitWord.offsetHeight < e.getBoundingClientRect().top ||
-            this.textTopValue > e.getBoundingClientRect().bottom
+        } while (Object.values(lyrics).filter(e => !(
+            this.textLeftValue + size < e.x ||
+            this.textLeftValue > e.x + size ||
+            this.textTopValue + size < e.y ||
+            this.textTopValue > e.y + size
         )).length > 0);
-        this.unitDim = { width: unitWord.clientWidth, height: unitWord.clientHeight };
-        unitWord.remove();
+        this.unitDim = { width: size, height: size };
+        // unitWord.remove();
         
-        if (isWord) this.textGroup.dataset.length = 1;
-        else this.textGroup.dataset.length = textInGroup.length;
+        // if (isWord) this.textGroup.dataset.length = 1;
+        // else this.textGroup.dataset.length = textInGroup.length;
     }
     
     spawnLyric(lyric) {
-        lyric.text.classList.add("bullet", "lyric-bullet");
-        lyric.text.classList.add("text-movetoedge");
-        if (this.side === this.sides.TOP || this.side === this.sides.BOTTOM) lyric.text.classList.add("column");
+        lyric.text.bullet = true;
+        lyric.text.movetoedge = true;
+        lyric.text.delayStart = null;
+        lyric.text.delayProgress = 0;
+        lyric.text.delay = 1500;
+        if (this.side === this.sides.TOP || this.side === this.sides.BOTTOM) lyric.text.column = true;
+        // lyric.text.classList.add("bullet", "lyric-bullet");
+        // lyric.text.classList.add("text-movetoedge");
+        // if (this.side === this.sides.TOP || this.side === this.sides.BOTTOM) lyric.text.classList.add("column");
         
-        const waterWave = document.createElement("div");
-        waterWave.classList.add("water-wave");
-        lyric.text.appendChild(waterWave);
+        // const waterWave = document.createElement("div");
+        // waterWave.classList.add("water-wave");
+        // lyric.text.appendChild(waterWave);
+        lyric.text.waterWave = true;
         
-        lyric.onMoveToEdge(() => {
-            const text = lyric.text;
-            text.parentElement.dataset.length--;
-            if (text.parentElement.dataset.length <= 0) text.parentElement.remove();
-        });
-        
+        // lyric.onMoveToEdge(() => {
+        //     const text = lyric.text;
+        //     text.parentElement.dataset.length--;
+        //     if (text.parentElement.dataset.length <= 0) text.parentElement.remove();
+        // });
         const lyricPos = { x: this.textLeftValue, y: this.textTopValue };
-        
         const endPos = this.getEndPos(lyricPos, this.unitDim);
-        lyric.setPosAndMoveToEdge(this.textLeftValue, this.textTopValue, endPos.x - lyricPos.x, endPos.y - lyricPos.y);
-        lyric.spawn(this.textGroup);
+        lyric.setPosAndMoveToEdge(this.textLeftValue, this.textTopValue, endPos.x, endPos.y);
+        lyric.spawn();
     }
 
     getEndPos(lyricPos, lyricDim) {
@@ -127,15 +132,15 @@ export default class RandomDirPattern extends SpawnPattern {
         switch (this.side) {
             case this.sides.TOP:
                 if (this.reverse) {
-                    this.textLeftValue -= lyric.text.clientWidth;
+                    this.textLeftValue -= lyric.text.size;
                     if (this.textLeftValue < 0) {
                         this.side = this.sides.LEFT;
-                        this.textLeftValue = -lyric.text.clientWidth;
+                        this.textLeftValue = -lyric.text.size;
                         this.textTopValue = 0;
                     }
                 } else {
-                    this.textLeftValue += lyric.text.clientWidth;
-                    if (this.textLeftValue + lyric.text.clientWidth > window.innerWidth) {
+                    this.textLeftValue += lyric.text.size;
+                    if (this.textLeftValue + lyric.text.size > window.innerWidth) {
                         this.side = this.sides.RIGHT;
                         this.textLeftValue = window.innerWidth;
                         this.textTopValue = 0;
@@ -144,51 +149,51 @@ export default class RandomDirPattern extends SpawnPattern {
                 break;
             case this.sides.BOTTOM:
                 if (this.reverse) {
-                    this.textLeftValue += lyric.text.clientWidth;
-                    if (this.textLeftValue + lyric.text.clientWidth > window.innerWidth) {
+                    this.textLeftValue += lyric.text.size;
+                    if (this.textLeftValue + lyric.text.size > window.innerWidth) {
                         this.side = this.sides.RIGHT;
                         this.textLeftValue = window.innerWidth;
-                        this.textTopValue = window.innerHeight - lyric.text.clientHeight;
+                        this.textTopValue = window.innerHeight - lyric.text.size;
                     }
                 } else {
-                    this.textLeftValue -= lyric.text.clientWidth;
+                    this.textLeftValue -= lyric.text.size;
                     if (this.textLeftValue < 0) {
                         this.side = this.sides.LEFT;
-                        this.textLeftValue = -lyric.text.clientWidth;
-                        this.textTopValue = window.innerHeight - lyric.text.clientHeight;
+                        this.textLeftValue = -lyric.text.size;
+                        this.textTopValue = window.innerHeight - lyric.text.size;
                     }
                 }
                 break;
             case this.sides.LEFT:
                 if (this.reverse) {
-                    this.textTopValue += lyric.text.clientHeight;
-                    if (this.textTopValue + lyric.text.clientHeight > window.innerHeight) {
+                    this.textTopValue += lyric.text.size;
+                    if (this.textTopValue + lyric.text.size > window.innerHeight) {
                         this.side = this.sides.BOTTOM;
                         this.textLeftValue = 0;
                         this.textTopValue = window.innerHeight;
                     }
                 } else {
-                    this.textTopValue -= lyric.text.clientHeight;
+                    this.textTopValue -= lyric.text.size;
                     if (this.textTopValue < 0) {
                         this.side = this.sides.TOP;
                         this.textLeftValue = 0;
-                        this.textTopValue = -lyric.text.clientHeight;
+                        this.textTopValue = -lyric.text.size;
                     }
                 }
                 break;
             case this.sides.RIGHT:
                 if (this.reverse) {
-                    this.textTopValue -= lyric.text.clientHeight;
+                    this.textTopValue -= lyric.text.size;
                     if (this.textTopValue < 0) {
                         this.side = this.sides.TOP;
-                        this.textLeftValue = window.innerWidth - lyric.text.clientWidth;
-                        this.textTopValue = -lyric.text.clientHeight;
+                        this.textLeftValue = window.innerWidth - lyric.text.size;
+                        this.textTopValue = -lyric.text.size;
                     }
                 } else {
-                    this.textTopValue += lyric.text.clientHeight;
-                    if (this.textTopValue + lyric.text.clientHeight > window.innerHeight) {
+                    this.textTopValue += lyric.text.size;
+                    if (this.textTopValue + lyric.text.size > window.innerHeight) {
                         this.side = this.sides.BOTTOM;
-                        this.textLeftValue = window.innerWidth - lyric.text.clientWidth;
+                        this.textLeftValue = window.innerWidth - lyric.text.size;
                         this.textTopValue = window.innerHeight;
                     }
                 }
