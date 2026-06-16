@@ -101,7 +101,7 @@ export default class RandomDirPosPattern extends SpawnPattern {
         const angle = Math.random() * 360;
         const rad = angle * (Math.PI / 180);
 
-        const distance = window.innerWidth;
+        const distance = Math.max(window.innerHeight, window.innerWidth);
 
         const x = Math.cos(rad) * distance;
         const y = Math.sin(rad) * distance;
