@@ -1,4 +1,4 @@
-import { shotBullets } from "./attack-patterns/shot-bullets";
+import { shotBullets } from "./game-loop";
 import Coin from "./coin";
 import { lyrics } from "./game-loop";
 
@@ -329,7 +329,7 @@ export default class PlayerCharacter {
 
         const lyricCollisions = this.checkLyricCollisions();
         for (const id in lyricCollisions) {
-            if (!lyricCollisions[id].bullet || !lyricCollisions[id].fadeStart === null) continue;
+            if (!lyricCollisions[id].bullet) continue;
             if (Object.hasOwn(lyricCollisions[id], "hit")) continue;
 
             lyricCollisions[id].hit = true;

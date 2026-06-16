@@ -14,7 +14,6 @@ export default class Lyric {
         this.id = this.generateUUID();
         
         this.attack = new Attack(Telegraph);
-        this.params = {};
 
         this.text = {
             text: unit.text,
@@ -86,8 +85,9 @@ export default class Lyric {
     //     });
     // }
 
-    onMovedIn(attack, params) {
-        if (typeof attack.shoot(this.x, this.y, this.text, params) === "function") this.attack.shoot(this.x, this.y, this.text, params);
+    onMovedIn(text, attack, params) {
+        // console.log("e", typeof text);
+        if (typeof attack.shoot(this.x, this.y, text, params) === "function") this.attack.shoot(this.x, this.y, text, params);
         if (typeof attack.telegraph.fadeOutAndRemove() === "function") attack.telegraph.fadeOutAndRemove();
     }
 

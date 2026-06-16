@@ -1,5 +1,5 @@
 import AttackPattern from "./attack-pattern";
-import { shotBullets } from "./shot-bullets";
+import { shotBullets } from "../game-loop";
 
 export default class BulletShootPattern extends AttackPattern {
     constructor(Telegraph) {
@@ -16,14 +16,15 @@ export default class BulletShootPattern extends AttackPattern {
         for (let i = -1; i <= 1; i++) {
             const bullet = { hit: false, speed: this.SPEED };
             
+            console.log(params);
             const playerPos = {
                 x: params.playerPos.x,
                 y: params.playerPos.y
             }
             
             bullet.size = window.innerWidth * 0.01;
-            bullet.x = x + text.clientWidth / 2 - bullet.size / 2;
-            bullet.y = y + text.clientHeight / 2 - bullet.size / 2;
+            bullet.x = x + text.size / 2 - bullet.size / 2;
+            bullet.y = y + text.size / 2 - bullet.size / 2;
             
             const relX = playerPos.x - bullet.x;
             const relY = playerPos.y - bullet.y;

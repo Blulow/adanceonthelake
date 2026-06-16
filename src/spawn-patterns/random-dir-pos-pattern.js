@@ -120,7 +120,7 @@ export default class RandomDirPosPattern extends SpawnPattern {
     }
 
     spawnLyric(lyric) {
-        lyric.text.bullet = true;
+        if (lyric.attack.constructor === AttackPattern) lyric.text.bullet = true;
         lyric.text.movein = true;
         lyric.text.delayStart = null;
         lyric.text.delayProgress = 0;
@@ -136,7 +136,7 @@ export default class RandomDirPosPattern extends SpawnPattern {
         lyric.text.waterWave = true;
 
         // console.log("e");
-        lyric.params = { isColumn: this.isColumn, playerPos: { x: this.player.x, y: this.player.y } };
+        lyric.text.params = { isColumn: this.isColumn, playerPos: { x: this.player.x, y: this.player.y } };
         // lyric.onFadeOut(() => {
         //     // const text = lyric.text;
         //     // text.parentElement.dataset.length--;

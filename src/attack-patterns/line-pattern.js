@@ -14,8 +14,9 @@ export default class LinePattern extends AttackPattern {
         this.beamWrapper.appendChild(this.bullet);
         document.getElementById("bullets").appendChild(this.beamWrapper);
 
-        this.x = x + text.clientWidth / 2 - this.bullet.clientWidth / 2;
-        this.y = y + text.clientHeight / 2 - this.bullet.clientHeight / 2;
+        this.x = x + text.size / 2 - this.bullet.clientWidth / 2;
+        this.y = y + text.size / 2 - this.bullet.clientHeight / 2;
+        // console.log("ee", text)
 
         if (params.isColumn) {
             this.beamWrapper.style.left = 0;

@@ -137,25 +137,26 @@ function drawLyrics() {
 				}
 				const x = lerp(text.startX, text.x, 1 - (1 - text.progress) ** 2);
 				const y = lerp(text.startY, text.y, 1 - (1 - text.progress) ** 2);
-				text.currentX = x;
-				text.currentY = y;
+				text.currentX = x + text.size / 15;
+				text.currentY = y + text.size / 2;
 				text.progress = (performance.now() - text.start) / lifetime;
 			}
 			
 			ctxLyrics.fillStyle = text.hit ? "#ffff00" : "#ffffff";
-			ctxLyrics.fillText(text.text, text.currentX + text.size / 4, text.currentY + text.size / 2);
+			ctxLyrics.fillText(text.text, text.currentX, text.currentY);
 		} else {
 			if (text.fadeStart === null) {
+				text.bullet = false;
 				text.fadeStart = performance.now();
 				text.fadeProgress = (performance.now() - text.fadeStart) / lifetime;
 				
-				text.onMovedIn(text.attack, text.params);
+				text.onMovedIn(text, text.attack, text.params);
 			}
 
 			if (text.fallin) text.currentY += 2;
 			
 			ctxLyrics.fillStyle = text.hit ? `rgba(255, 255, 0, ${1 - text.fadeProgress}` : `rgba(255, 255, 255, ${1 - text.fadeProgress})`;
-			ctxLyrics.fillText(text.text, text.currentX + text.size / 4, text.currentY + text.size / 2);
+			ctxLyrics.fillText(text.text, text.currentX, text.currentY);
 			
 			text.fadeProgress = (performance.now() - text.fadeStart) / LYRICS_FADE_LIFETIME;
 		}
@@ -188,9 +189,10 @@ function drawWaterWaves(delta) {
 				text.waterWaveTimer = 0;
 				text.waterWaveState = 0;
 			}
-			const x = text.currentX;
-			const y = text.currentY + window.innerWidth * 0.03;
-			ctxWaterWave.drawImage(WATER_WAVE_IMG, WATER_WAVE_IMGSIZE * text.waterWaveState, 0, WATER_WAVE_IMGSIZE, WATER_WAVE_IMGSIZE, x, y, window.innerWidth * 0.1, window.innerWidth * 0.1)
+			const size = window.innerWidth * 0.1;
+			const x = text.currentX - size / 5;
+			const y = text.currentY - size / 2 + window.innerWidth * 0.03;
+			ctxWaterWave.drawImage(WATER_WAVE_IMG, WATER_WAVE_IMGSIZE * text.waterWaveState, 0, WATER_WAVE_IMGSIZE, WATER_WAVE_IMGSIZE, x, y, size, size);
 		}
 
 		if (text.waterWaveTimer <= WATER_WAVE_INTERVAL) {
