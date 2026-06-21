@@ -120,7 +120,7 @@ function drawLyrics() {
 	ctxLyrics.clearRect(0, 0, lyricCanvas.width, lyricCanvas.height);
 	
 	for (const id in lyrics) {
-		const text = lyrics[id];
+		const text = lyrics[id].text;
 		ctxLyrics.font = `${text.size}px GNUUnifont`;
 		
 		const lifetime = text.movein ? 1000 : text.movetoedge ? 3000 : 1000;
@@ -217,7 +217,7 @@ function drawWaterWaves(delta) {
 	ctxWaterWave.clearRect(0, 0, waterWaveCanvas.width, waterWaveCanvas.height);
 
 	for (const id in lyrics) {
-		const text = lyrics[id];
+		const text = lyrics[id].text;
 		if (text.waterWave) {
 			if (!Object.hasOwn(text, "waterWaveTimer")) {
 				text.waterWaveTimer = 0;
@@ -441,7 +441,7 @@ function drawGlow() {
 		gradient.addColorStop(0, `rgba(255, 255, 52, ${opacity * 0.5})`);
 		gradient.addColorStop(1, `rgba(255, 255, 52, 0)`);
 		ctxGlow.fillStyle = gradient;
-		
+	
 		ctxGlow.beginPath();
 		ctxGlow.arc(x, y, data.size / 2, 0, Math.PI * 2);
 		ctxGlow.fill();
@@ -492,7 +492,7 @@ function spawnTrails(delta) {
 	} else {
 		trailSpawnTimer = 0;
 		for (const id in lyrics) {
-			const text = lyrics[id];
+			const text = lyrics[id].text;
 
 			if (trailParticles.length > MAX_PARTICLES) return;
 			const x = text.currentX + text.size / 2;

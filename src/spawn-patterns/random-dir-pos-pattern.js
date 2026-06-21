@@ -13,14 +13,14 @@ export default class RandomDirPosPattern extends SpawnPattern {
         this.minWidth = 0;
         this.maxWidth = window.innerWidth;
 
-        this.textTopValue = "";
-        this.textLeftValue = "";
+        this.textTopValue = 0;
+        this.textLeftValue = 0;
         ({ x: this.x, y: this.y } = { x: 0, y: 0 });
 
         this.isColumn = false;
         this.reverse = false;
-        this.textTopValueCache = "";
-        this.textLeftValueCache = "";
+        this.textTopValueCache = 0;
+        this.textLeftValueCache = 0;
         this.maxFitHeight = 0;
         this.maxFitWidth = 0;
 
@@ -118,9 +118,9 @@ export default class RandomDirPosPattern extends SpawnPattern {
         if (this.isColumn) lyric.text.column = true;
         lyric.text.waterWave = true;
         lyric.text.isWord = this.isWord;
-
+        
         lyric.text.params = { isColumn: this.isColumn, playerPos: { x: this.player.x, y: this.player.y } };
-
+        
         lyric.setPosAndMoveIn(this.textLeftValue, this.textTopValue, this.textLeftValue + this.x, this.textTopValue + this.y);
         lyric.spawn();
 

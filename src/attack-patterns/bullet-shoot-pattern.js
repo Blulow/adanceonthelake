@@ -16,7 +16,6 @@ export default class BulletShootPattern extends AttackPattern {
         for (let i = -1; i <= 1; i++) {
             const bullet = { hit: false, speed: this.SPEED };
             
-            console.log(params);
             const playerPos = {
                 x: params.playerPos.x,
                 y: params.playerPos.y

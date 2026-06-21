@@ -10,13 +10,13 @@ export default class FallingPattern extends SpawnPattern {
         this.minWidth = 0;
         this.maxWidth = window.innerWidth;
 
-        this.textTopValue = "";
-        this.textLeftValue = "";
+        this.textTopValue = 0;
+        this.textLeftValue = 0;
 
         this.isColumn = false;
         this.reverse = false;
-        this.textTopValueCache = "";
-        this.textLeftValueCache = "";
+        this.textTopValueCache = 0;
+        this.textLeftValueCache = 0;
         this.maxFitHeight = 0;
         this.maxFitWidth = 0;
 
