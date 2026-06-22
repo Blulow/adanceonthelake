@@ -583,7 +583,7 @@ div {
 	right: 0;
 }
 
-#hits, #coins {
+#hits, #coins, #score {
 	position: relative;
 	text-align: right;
 	font-size: 3vw;

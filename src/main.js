@@ -20,13 +20,16 @@ let changes = 0;
 let currentRound = null;
 let isChorus = false;
 
+let playing = false;
+
 player.addListener({
 	onAppReady(app) {
 		if (!app.managed) {
 			window.setTimeout(() => {
 				const start = document.getElementById("start");
 				start.onclick = () => {
-					player.requestPlay()
+					player.requestPlay();
+					playing = true;
 					// player.requestMediaSeek(230 * 1000);
 					// player.requestMediaSeek(30 * 1000);
 					// player.requestMediaSeek(18 * 1000);
@@ -50,6 +53,15 @@ player.addListener({
 			changes = 0;
 			currentRound = createRound(chart[changes]);
 			lyricUpdate(currentRound[0], chart[changes + 1] ? chart[changes + 1].time : null);
+		}
+	},
+	onTimeUpdate(position) {
+		if (position >= player.video.duration - 1000 && playing) {
+			setTimeout(() => {
+				player.requestStop();
+				window.location.href = "results.html";
+			}, 1000);
+			playing = false;
 		}
 	}
 });
@@ -104,6 +116,8 @@ function lyricUpdate(round, changeTime) {
 	}
 }
 
+
+//game loop
 const lerp = (start, end, amt) => (1 - amt) * start + amt * end;
 
 const lyricCanvas = document.getElementById("lyrics");

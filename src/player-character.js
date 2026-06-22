@@ -24,6 +24,8 @@ export default class PlayerCharacter {
 
         this.hits = 0;
         this.coins = 0;
+        this.coinCombo = 0;
+        this.score = 0;
 
         this.hitbox = document.createElement("div");
         this.hitbox.classList.add("hitbox");
@@ -320,8 +322,7 @@ export default class PlayerCharacter {
                         e.classList.add("hit");
                         if (e.classList.contains("beam") || e.classList.contains("beam-column")) e.classList.add("beam-hit");
                         else if (e.classList.contains("lyric-bullet")) e.classList.add("lyric-bullet-hit");
-                        this.hits++;
-                        document.getElementById("hit-count").innerText = this.hits;
+                        this.hit();
                     }
                 });
             }
@@ -333,8 +334,7 @@ export default class PlayerCharacter {
             if (Object.hasOwn(lyricCollisions[id], "hit")) continue;
 
             lyricCollisions[id].hit = true;
-            this.hits++;
-            document.getElementById("hit-count").innerText = this.hits;
+            this.hit();
         }
 
         const coinCollisions = this.checkCoinCollisions();
@@ -343,8 +343,7 @@ export default class PlayerCharacter {
                 coinCollisions.forEach(e => {
                     if (!e.classList.contains("coin-spin-fade")) {
                         e.classList.add("coin-spin-fade");
-                        this.coins++;
-                        document.getElementById("coin-count").innerText = this.coins;
+                        this.coinCollect();
                         new Coin().spawn({ x: e.getBoundingClientRect().x, y: e.getBoundingClientRect().y }, isChorus);
                     }
                 });
@@ -355,8 +354,7 @@ export default class PlayerCharacter {
         for (const id in shotBulletCollisions) {
             if (shotBulletCollisions[id].hit) continue;
             shotBulletCollisions[id].hit = true;
-            this.hits++;
-            document.getElementById("hit-count").innerText = this.hits;
+            this.hit();
         }
 
         if (this.isDashCoolDownFinished) this.isDashed = false;
@@ -486,5 +484,20 @@ export default class PlayerCharacter {
                 this.joystickTouchId = null;
             }
         }
+    }
+
+    coinCollect() {
+        this.coins++;
+        this.coinCombo++;
+        const multiplier = 1 + this.coinCombo * 0.1;
+        this.score += 100 * multiplier;
+        document.getElementById("score-count").innerText = parseInt(this.score);
+        // document.getElementById("coin-count").innerText = this.coins;
+    }
+
+    hit() {
+        this.hits++;
+        this.coinCombo = 0;
+        // document.getElementById("hit-count").innerText = this.hits;
     }
 }
