@@ -583,11 +583,75 @@ div {
 	right: 0;
 }
 
-#hits, #coins, #score {
+#score {
 	position: relative;
 	text-align: right;
 	font-size: 3vw;
 	z-index: 4;
+}
+
+#combo-popups {
+	position: relative;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.combo-popup {
+	position: absolute;
+	font-weight: 900;
+	color: #4aff2b;
+	transform-origin: bottom left;
+	text-shadow:
+		0 0 10px #4aff2b,
+		0 0 20px #3cfff8,
+		4px 4px 0 #000;
+
+	animation: comboPop 1s ease-out forwards;
+}
+
+@keyframes comboPop {
+  /* Spawn */
+  0% {
+    opacity: 0;
+    transform:
+      translateY(20px)
+      scale(0.4)
+      rotate(25deg);
+  }
+
+  /* Swing forward */
+  25% {
+    opacity: 1;
+    transform:
+      translateY(0)
+      scale(1.15)
+      rotate(-12deg);
+  }
+
+  /* Swing back */
+  45% {
+    transform:
+      scale(1)
+      rotate(6deg);
+  }
+
+  /* Settle */
+  65% {
+    transform:
+      scale(1)
+      rotate(-2deg);
+  }
+
+  /* Fade away */
+  100% {
+    opacity: 0;
+    transform:
+      translateY(-40px)
+      scale(0.9)
+      rotate(0deg);
+  }
 }
 
 .chorus-effect {

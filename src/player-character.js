@@ -343,7 +343,7 @@ export default class PlayerCharacter {
                 coinCollisions.forEach(e => {
                     if (!e.classList.contains("coin-spin-fade")) {
                         e.classList.add("coin-spin-fade");
-                        this.coinCollect();
+                        this.coinCollect(e);
                         new Coin().spawn({ x: e.getBoundingClientRect().x, y: e.getBoundingClientRect().y }, isChorus);
                     }
                 });
@@ -486,18 +486,37 @@ export default class PlayerCharacter {
         }
     }
 
-    coinCollect() {
+    coinCollect(coin) {
         this.coins++;
         this.coinCombo++;
         const multiplier = 1 + this.coinCombo * 0.1;
         this.score += 100 * multiplier;
         document.getElementById("score-count").innerText = parseInt(this.score);
-        // document.getElementById("coin-count").innerText = this.coins;
+
+        if (this.coinCombo <= 2) return;
+
+        const comboPopup = document.createElement("div");
+        comboPopup.classList.add("combo-popup");
+        comboPopup.innerText = `COMBO x${this.coinCombo}`;
+        comboPopup.style.fontSize = this.coinCombo > 20 ? "4vw" : `${(this.coinCombo - 2) * 0.1 + 2}vw`;
+        
+        const coinRect = coin.getBoundingClientRect();
+        const clamp = (val, min, max) => Math.min(Math.max(val, min), max);
+        const comboPopupX = clamp(coinRect.x + window.innerWidth * 0.05, window.innerWidth * 0.1, window.innerWidth * 0.9);
+        const comboPopupY = clamp(coinRect.y - window.innerWidth * 0.05, window.innerHeight * 0.1, window.innerHeight * 0.9);
+        comboPopup.style.left = `${comboPopupX}px`;
+        comboPopup.style.top = `${comboPopupY}px`;
+
+        comboPopup.addEventListener("animationend", (e) => {
+            if (e.animationName === "comboPop") {
+                comboPopup.remove();
+            }
+        });
+        document.getElementById("combo-popups").appendChild(comboPopup);
     }
 
     hit() {
         this.hits++;
         this.coinCombo = 0;
-        // document.getElementById("hit-count").innerText = this.hits;
     }
 }
