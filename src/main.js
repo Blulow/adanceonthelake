@@ -111,7 +111,7 @@ lyricCanvas.width = window.innerWidth;
 lyricCanvas.height = window.innerHeight;
 const ctxLyrics = lyricCanvas.getContext("2d");
 document.fonts.load("16px GNUUnifont").then(() => {
-	ctxLyrics.font = "16px GNUUnifon";
+	ctxLyrics.font = "16px GNUUnifont";
 });
 
 const LYRICS_FADE_LIFETIME = 500;
@@ -120,7 +120,7 @@ function drawLyrics() {
 	ctxLyrics.clearRect(0, 0, lyricCanvas.width, lyricCanvas.height);
 	
 	for (const id in lyrics) {
-		const text = lyrics[id].text;
+		const text = lyrics[id];
 		ctxLyrics.font = `${text.size}px GNUUnifont`;
 		
 		const lifetime = text.movein ? 1000 : text.movetoedge ? 3000 : 1000;
@@ -145,7 +145,7 @@ function drawLyrics() {
 			if (text.bullet) {
 				ctxLyrics.fillStyle = text.hit ? "#ffff00" : "#ffffff";
 			} else {
-				ctxLyrics.fillStyle = "#ffffffcc";
+				ctxLyrics.fillStyle = "#ffffff99";
 			}
 
 			if (text.isWord) {
@@ -175,7 +175,7 @@ function drawLyrics() {
 			if (text.bullet) {
 				ctxLyrics.fillStyle = text.hit ? `rgba(255, 255, 0, ${1 - text.fadeProgress}` : `rgba(255, 255, 255, ${1 - text.fadeProgress})`;
 			} else {
-				ctxLyrics.fillStyle = `rgba(255, 255, 255, ${0.8 - text.fadeProgress})`;
+				ctxLyrics.fillStyle = text.hit ? `rgba(255, 255, 0, ${1 - text.fadeProgress}` : `rgba(255, 255, 255, ${0.6 - text.fadeProgress})`;
 			}
 			if (text.isWord) {
 				if (text.column) {
@@ -217,7 +217,7 @@ function drawWaterWaves(delta) {
 	ctxWaterWave.clearRect(0, 0, waterWaveCanvas.width, waterWaveCanvas.height);
 
 	for (const id in lyrics) {
-		const text = lyrics[id].text;
+		const text = lyrics[id];
 		if (text.waterWave) {
 			if (!Object.hasOwn(text, "waterWaveTimer")) {
 				text.waterWaveTimer = 0;
@@ -492,7 +492,7 @@ function spawnTrails(delta) {
 	} else {
 		trailSpawnTimer = 0;
 		for (const id in lyrics) {
-			const text = lyrics[id].text;
+			const text = lyrics[id];
 
 			if (trailParticles.length > MAX_PARTICLES) return;
 			const x = text.currentX + text.size / 2;

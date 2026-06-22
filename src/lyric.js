@@ -23,7 +23,7 @@ export default class Lyric {
     }
 
     spawn() {
-        lyrics[this.id] = this;
+        lyrics[this.id] = this.text;
         window.setTimeout(() => this.spawnGlow(), 1500);
     }
 
