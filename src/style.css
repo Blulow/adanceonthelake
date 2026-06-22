@@ -633,21 +633,29 @@ div {
 }
 
 .coin {
-	width: 1.5vw;
-	aspect-ratio: 1;
-	background-color: #0f0;
-	transform: rotateY(0deg) rotateZ(45deg);
+	width: calc(13/640 * 100vw);
+	aspect-ratio: 13/16;
+	background-image: url("../assets/images/game/coin.png");
+	background-size: 200% 100%;
 	top: 100px;
 	left: 100px;
+	animation: coin-idle 2s steps(2) infinite;
 }
 
 .coin-spin-fade {
 	animation: coin-spin-fade 1s;
 }
 
+@keyframes coin-idle {
+	to {
+		background-position: 200% 0;
+	}
+}
+
 @keyframes coin-spin-fade {
 	to {
-		transform: rotateY(360deg) rotateZ(45deg);
+		/* transform: rotateY(360deg) rotateZ(45deg); */
+		transform: rotateY(360deg);
 		opacity: 0;
 	}
 }
@@ -658,11 +666,6 @@ div {
     height: 100%;
 }
 
-/* .text-group {
-    position: absolute;
-    display: flex;
-}*/
-
 @font-face {
 	font-family: "GNUUnifont";
 	src: url("../assets/fonts/unifont-17.0.04.otf");
@@ -672,108 +675,11 @@ div {
 	z-index: 1;
 }
 
-/* .text {
-	font-family: "GNUUnifont", sans-serif;
-	z-index: 1;
-    position: absolute;
-    display: block;
-    font-size: 7vw;
-    line-height: 1;
-	user-select: none;
-}
-
-.text-movein {
-	animation: movein 1.5s ease-out forwards;
-	transform: translate(var(--start-x), var(--start-y));
-}
-
-.text-word {
-    position: absolute;
-}
-
-.fadeout-movein {
-    animation: movein 1s ease-out forwards,
-        fadeout 0.5s forwards;
-}*/
-
 @keyframes movein {
     to {
         transform: translate(0, 0);
     }
 }
-
-/* .text-movetoedge {
-	animation: movetoedge 3s 1.5s forwards;
-}
-
-.lyric-bullet {
-	font-size: 7vw;
-}
-
-.lyric-bullet-hit {
-	color: #ff0;
-}
-
-.fadeout-movetoedge {
-    animation: movetoedge 3s 1.5s forwards,
-        fadeout 0.5s forwards;
-}
-
-@keyframes movetoedge {
-	to {
-		transform: translate(var(--end-x), var(--end-y));
-	}
-}
-
-.text-fall {
-	animation: fall 1s forwards;
-	transform: translate(0, -100vh);
-}
-
-@keyframes fall {
-	to {
-		transform: translate(0, 0);
-	}
-}
-
-.fadeout-fall {
-	animation: fall 1s forwards,
-	    fadeout-fall 3s forwards,
-	    fadeout 3s forwards;
-}
-
-@keyframes fadeout-fall {
-	to {
-		transform: translate(0, 200px);
-	}
-}
-
-.column {
-	writing-mode: vertical-rl;
-} */
-
-/* .water-wave {
-	position: absolute;
-	top: 3vw;
-	left: calc(50% - 10vw/2);
-	background: url("../assets/images/game/water/water_wave.png");
-	width: 10vw;
-	height: 10vw;
-	background-size: 400% 100%;
-	z-index: -2;
-	image-rendering: pixelated;
-	animation: water-wave 0.5s steps(4) infinite;
-}
-
-@keyframes water-wave {
-	to { background-position: 400% 0; }
-}
-
-@media (max-width: 1024px) {
-	.water-wave {
-		top: 7vw;
-	}
-} */
 
 .pos-telegraph {
 	background-image: url("../assets/images/game/shadow.png");
