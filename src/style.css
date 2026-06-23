@@ -867,4 +867,49 @@ div {
 #results {
 	width: 100%;
 	height: 100%;
+	display: flex;
+	flex-direction: column;
 }
+
+#results div {
+	position: relative;
+}
+
+.section {
+	height: calc(50vh - 10px/2);
+}
+
+#head {
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 1fr 1fr;
+}
+
+#details {
+	display: grid;
+	grid-template-columns: 0.5fr 1.5fr;
+}
+
+.divider {
+	width: 100%;
+	height: 10px;
+	background-color: #fff;
+}
+
+.labelled-item {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.label {
+	position: absolute;
+	left: 0;
+	top: 0;
+	font-size: 3vw;
+}
+
+.item {
+	font-size: 10vw;
+}
+
