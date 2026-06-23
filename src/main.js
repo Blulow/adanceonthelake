@@ -59,6 +59,12 @@ player.addListener({
 		if (position >= player.video.duration - 1000 && playing) {
 			setTimeout(() => {
 				player.requestStop();
+				window.localStorage.setItem("hits", pc.hits);
+				window.localStorage.setItem("coins", pc.coins);
+				window.localStorage.setItem("maxCombo", pc.maxCombo);
+				window.localStorage.setItem("comboBonus", pc.comboBonus);
+				window.localStorage.setItem("score", pc.score);
+				window.localStorage.setItem("maxScore", pc.maxScore);
 				window.location.href = "results.html";
 			}, 1000);
 			playing = false;
@@ -115,7 +121,6 @@ function lyricUpdate(round, changeTime) {
 		round.iter = round.iter.next;
 	}
 }
-
 
 //game loop
 const lerp = (start, end, amt) => (1 - amt) * start + amt * end;

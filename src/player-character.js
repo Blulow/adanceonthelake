@@ -25,7 +25,10 @@ export default class PlayerCharacter {
         this.hits = 0;
         this.coins = 0;
         this.coinCombo = 0;
+        this.maxCombo = 0;
         this.score = 0;
+        this.comboBonus = 0;
+        this.maxScore = 0;
 
         this.hitbox = document.createElement("div");
         this.hitbox.classList.add("hitbox");
@@ -487,10 +490,14 @@ export default class PlayerCharacter {
     }
 
     coinCollect(coin) {
+        const BASE_COIN_SCORE = 100;
         this.coins++;
         this.coinCombo++;
-        const multiplier = 1 + this.coinCombo * 0.1;
-        this.score += 100 * multiplier;
+        if (this.coinCombo > this.maxCombo) this.maxCombo = this.coinCombo;
+        const bonus = Math.sqrt(this.coinCombo) * 0.1;
+        this.comboBonus += BASE_COIN_SCORE * bonus;
+        this.score += BASE_COIN_SCORE * (1 + bonus);
+        this.maxScore += BASE_COIN_SCORE * (1 + Math.sqrt(this.coins) * 0.1);
         document.getElementById("score-count").innerText = parseInt(this.score);
 
         if (this.coinCombo <= 2) return;
@@ -516,7 +523,9 @@ export default class PlayerCharacter {
     }
 
     hit() {
+        const HIT_PENALTY = 50;
         this.hits++;
         this.coinCombo = 0;
+        this.score -= HIT_PENALTY;
     }
 }
