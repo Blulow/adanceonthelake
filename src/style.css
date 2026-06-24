@@ -1053,13 +1053,33 @@ div {
 	transition: height 390ms ease-out;
 }
 
-/* .update-rankbar {
-	animation: updateRankbar 390ms ease-out forwards;
-} */
+#retrymsg-container {
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: end;
+	width: 100%;
+	height: 100%;
+}
 
-@keyframes updateRankbar {
-	to {
-		height: var(--progress);
+#retrymsg-container span {
+	position: absolute;
+	bottom: 5%;
+	font-size: 3vw;
+	opacity: 0.5;
+	color: #768aff;
+	animation: retrymsgPulse 5s infinite;
+}
+
+@keyframes retrymsgPulse {
+	0% {
+		opacity: 0;
+	}
+	50% {
+		opacity: 0.5;
+	}
+	100% {
+		opacity: 0;
 	}
 }
 

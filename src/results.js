@@ -132,3 +132,8 @@ async function animSequence() {
 }
 
 animSequence();
+
+window.addEventListener("keydown", e => {
+    window.location.href = "level-select.html";
+    window.localStorage.clear();
+});
