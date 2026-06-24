@@ -9,12 +9,46 @@
 <body>
     <div class="main-menu">
         <div id="button-container">
-            <button id="play" class="button big" onclick="window.location.href='level-select.html'">Play</button>
-            <button id="options" class="button big">Options</button>
-            <button id="language" class="button small">L</button>
-            <button id="tutorial" class="button small">T</button>
+            <button id="play-btn" class="button big" onclick="window.location.href='level-select.html'">Play</button>
+            <button id="options-btn" class="button big">Options</button>
+            <button id="language-btn" class="button small">L</button>
+            <button id="tutorial-btn" class="button small" onclick="openTutorialPanel()">T</button>
         </div>
+        <div id="tutorial" data-index="true">
+				<div id="tutorial-overlay" style="opacity: 0;"></div>
+				<div id="tutorial-panel-container" style="transform: scale(0);">
+					<div id="tutorial-panel"></div>
+					<div id="tutorial-container">
+						<div class="tutorial-section">
+							<img src="" alt="" class="tutorial-image">
+							<p class="tutorial-desc">Lorem Ipsum</p>
+						</div>
+						<div class="tutorial-section">
+							<img src="" alt="" class="tutorial-image">
+							<p class="tutorial-desc">Dolor sit amet</p>
+						</div>
+						<div class="tutorial-section">
+							<img src="" alt="" class="tutorial-image">
+							<p class="tutorial-desc">Hello World</p>
+						</div>
+						<div class="tutorial-section">
+							<img src="" alt="" class="tutorial-image">
+							<p class="tutorial-desc">AAAAAAAAA</p>
+						</div>
+						<div id="tutorial-closebtn">
+							<img src="assets/images/game/tutorial_closebtn_x.svg" alt="">
+						</div>
+					</div>
+				</div>
+				<div id="tutorial-dsta" style="transform: scale(0);">
+					<span>Don't show this again?</span>
+					<img src="assets/images/game/tutorial_closebtn_v.svg" alt="" id="tutorial-dsta-v">
+					<img src="assets/images/game/tutorial_closebtn_x.svg" alt="" id="tutorial-dsta-x">
+				</div>
+			</div>
+		</div>
     </div>
     <script src="src/index.js"></script>
+    <script src="src/tutorial.js"></script>
 </body>
 </html>

@@ -150,8 +150,8 @@ button {
 }
 
 /*game*/
-body#game-page {
-    overflow: hidden;
+.game-mode {
+	overflow: hidden;
 	touch-action: none;
 	user-select: none;
 	pointer-events: none;
@@ -710,6 +710,160 @@ div {
 	to { transform: translate(20vw, 0); }
 }
 
+#tutorial {
+	z-index: 101;
+}
+
+#tutorial, #tutorial-overlay {
+	width: 100%;
+	height: 100%;
+	pointer-events: auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#tutorial-overlay {
+	background-color: #00000039;
+	transition: opacity 0.2s ease;
+}
+
+#tutorial-panel-container {
+	height: 70%;
+	width: auto;
+	aspect-ratio: 1;
+	transition: transform 0.2s ease;
+}
+
+#tutorial-panel {
+	width: 100%;
+	height: 100%;
+	border: 64px solid transparent;
+	box-sizing: border-box;
+	border-image: url("../assets/images/game/tutorial_panel.png") 63 fill repeat;
+	image-rendering: pixelated;
+}
+
+#tutorial-container {
+	width: 100%;
+	height: 100%;
+	padding: 3vh;
+	box-sizing: border-box;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+}
+
+.tutorial-section {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.tutorial-image {
+	width: 25vh;
+	aspect-ratio: 1;
+	background-color: red;
+}
+
+.tutorial-desc {
+	font-size: 2vh;
+	margin: 0;
+}
+
+#tutorial-closebtn {
+	border: 16px solid transparent;
+	border-image: url("../assets/images/game/tutorial_closebtn.png") 15 fill repeat;
+	box-sizing: border-box;
+	image-rendering: pixelated;
+	width: 8vh;
+	height: auto;
+	aspect-ratio: 1;
+	right: -3%;
+	top: -3%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	transition: transform 0.15s ease;
+}
+
+#tutorial-closebtn:hover {
+	filter: brightness(0.8);
+}
+
+#tutorial-closebtn:active {
+	transform: scale(0.8);
+}
+
+#tutorial-closebtn img {
+	width: 5vh;
+	position: absolute;
+}
+
+#tutorial-dsta {
+	border: 16px solid transparent;
+	border-image: url("../assets/images/game/tutorial_closebtn.png") 15 fill repeat;
+	box-sizing: border-box;
+	image-rendering: pixelated;
+	color: #000000;
+	position: absolute;
+	display: flex;
+	align-items: center;
+	gap: 1vw;
+	transition: transform 0.2s ease;
+}
+
+#tutorial-dsta img {
+	padding: 3%;
+	border-radius: 20px;
+	border: 1px solid #2da7ff;
+	cursor: pointer;
+}
+
+#tutorial-dsta img:hover {
+	border: 1px solid #02295f;
+}
+
+@media (max-width: 1024px) {
+	#tutorial-panel-container {
+		height: 90%;
+	}
+	#tutorial-closebtn {
+		width: 12vh;
+		height: auto;
+		aspect-ratio: 1;
+	}
+	#tutorial-closebtn img {
+		width: 8vh;
+	}
+}
+
+@media (orientation: portrait) {
+	#tutorial-panel-container {
+		width: 90%;
+		height: auto;
+	}
+	.tutorial-image {
+		width: 25vw;
+	}
+	.tutorial-desc {
+		font-size: 2vw;
+	}
+	#tutorial-container {
+		padding: 3vw;
+	}
+	#tutorial-closebtn {
+		width: 12vw;
+		height: auto;
+		aspect-ratio: 1;
+	}
+	#tutorial-closebtn img {
+		width: 8vw;
+	}
+}
+
 .coin {
 	width: calc(13/640 * 100vw);
 	aspect-ratio: 13/16;
@@ -732,7 +886,6 @@ div {
 
 @keyframes coin-spin-fade {
 	to {
-		/* transform: rotateY(360deg) rotateZ(45deg); */
 		transform: rotateY(360deg);
 		opacity: 0;
 	}

@@ -36,6 +36,7 @@ player.addListener({
 					// player.requestMediaSeek(180000);
 					new Coin().spawn({ x: window.innerWidth / 2, y: window.innerHeight / 2 }, isChorus);
 					start.style.display = "none";
+					if (localStorage.getItem("dsta")) document.body.classList.add("game-mode");
 				}
 				start.classList.remove("disabled");
 			}, 5000);

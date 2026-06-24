@@ -49,10 +49,43 @@
 			<canvas id="chorus-effect-left" class="chorus-effect"></canvas>
 			<canvas id="chorus-effect-right" class="chorus-effect"></canvas>
 			<canvas id="vignette"></canvas>
+			<div id="tutorial">
+				<div id="tutorial-overlay" style="opacity: 0;"></div>
+				<div id="tutorial-panel-container" style="transform: scale(0);">
+					<div id="tutorial-panel"></div>
+					<div id="tutorial-container">
+						<div class="tutorial-section">
+							<img src="" alt="" class="tutorial-image">
+							<p class="tutorial-desc">Lorem Ipsum</p>
+						</div>
+						<div class="tutorial-section">
+							<img src="" alt="" class="tutorial-image">
+							<p class="tutorial-desc">Dolor sit amet</p>
+						</div>
+						<div class="tutorial-section">
+							<img src="" alt="" class="tutorial-image">
+							<p class="tutorial-desc">Hello World</p>
+						</div>
+						<div class="tutorial-section">
+							<img src="" alt="" class="tutorial-image">
+							<p class="tutorial-desc">AAAAAAAAA</p>
+						</div>
+						<div id="tutorial-closebtn">
+							<img src="assets/images/game/tutorial_closebtn_x.svg" alt="">
+						</div>
+					</div>
+				</div>
+				<div id="tutorial-dsta" style="transform: scale(0);">
+					<span>Don't show this again?</span>
+					<img src="assets/images/game/tutorial_closebtn_v.svg" alt="" id="tutorial-dsta-v">
+					<img src="assets/images/game/tutorial_closebtn_x.svg" alt="" id="tutorial-dsta-x">
+				</div>
+			</div>
 		</div>
 		<div id="joystick"></div>
 		<div id="stick"></div>
 	</div>
 	<script type="module" src="/src/main.js"></script>
+	<script type="module" src="/src/tutorial.js"></script>
 </body>
 </html>
