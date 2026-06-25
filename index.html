@@ -8,12 +8,14 @@
 </head>
 <body>
     <div class="main-menu">
-        <div id="button-container">
-            <button id="play-btn" class="button big" onclick="window.location.href='level-select.html'">Play</button>
-            <button id="options-btn" class="button big">Options</button>
-            <button id="language-btn" class="button small">L</button>
-            <button id="tutorial-btn" class="button small">T</button>
-        </div>
+		<div id="play-btn-container">
+			<div id="play-btn" onclick="location.href='level-select.html'">Play</div>
+		</div>
+		<div id="buttons">
+			<button id="options-btn" class="button"><span>O</span></button>
+			<button id="tutorial-btn" class="button"><span>T</span></button>
+			<button id="language-btn" class="button"><span>L</span></button>
+		</div>
 		<div id="options" class="ui">
 			<div id="options-overlay" class="ui-overlay" style="opacity: 0;"></div>
 			<div id="options-panel-container" class="ui-panel-container" style="transform: scale(0);">
