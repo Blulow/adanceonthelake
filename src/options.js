@@ -6,12 +6,12 @@ const settings = {
         moveRight: ["ArrowRight"],
         dash: ["Shift"]
     },
-    joystickSize: 1,
+    joystickSize: 0.5,
     sounds: {
-        music: 1,
-        sfx: 1
+        music: 0.5,
+        sfx: 0.5
     },
-    vignette: 1,
+    vignette: 0.5,
     glow: true,
     particles: true,
     screenshake: true,
@@ -171,3 +171,14 @@ function mapKeysToString(keys) {
 
     return mappedKeys.join("+");
 }
+
+const optionsMusicChannel = document.getElementsByClassName("options-musicchannel");
+[...optionsMusicChannel].forEach(e => {
+    if (!Object.hasOwn(settings.sounds, e.dataset.channel)) return;
+    e.value = settings.sounds[e.dataset.channel] * 100;
+
+    e.oninput = () => {
+        settings.sounds[e.dataset.channel] = e.value / 100;
+        console.log(settings.sounds);
+    }
+});

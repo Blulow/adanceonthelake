@@ -19,73 +19,117 @@
 			<div id="options-panel-container" class="ui-panel-container" style="transform: scale(0);">
 				<div id="options-panel" class="ui-panel"></div>
 				<div id="options-container" class="ui-container">
-					<div class="options-section">
-						<p class="options-label">Controls</p>
-						<div class="options-content">
-							<div class="options-expandable-btn" data-option="controls" data-expand="false">Expand</div>
-							<div class="options-expandable-content" data-option="controls">
-								<div class="options-expandable-section">
-									<p class="options-expandable-label">Move Up</p>
-									<div class="options-keybindconfig options-expandable-section-content" data-keybind="moveUp">
-										<div class="options-keybindconfig-wrapper">
-											<span>Input key...</span>
+					<div id="options-container-scrollbox">
+						<div class="options-section">
+							<p class="options-label">Controls</p>
+							<div class="options-content">
+								<div class="options-expandable-btn" data-option="controls" data-expand="false">Expand</div>
+								<div class="options-expandable-content" data-option="controls">
+									<div class="options-expandable-section">
+										<p class="options-expandable-label">Move Up</p>
+										<div class="options-keybindconfig options-expandable-section-content" data-keybind="moveUp">
+											<div class="options-keybindconfig-wrapper">
+												<span>Input key...</span>
+											</div>
 										</div>
 									</div>
-								</div>
-								<div class="options-expandable-section">
-									<p class="options-expandable-label">Move Left</p>
-									<div class="options-keybindconfig options-expandable-section-content" data-keybind="moveLeft">
-										<div class="options-keybindconfig-wrapper">
-											<span>Input key...</span>
+									<div class="options-expandable-section">
+										<p class="options-expandable-label">Move Left</p>
+										<div class="options-keybindconfig options-expandable-section-content" data-keybind="moveLeft">
+											<div class="options-keybindconfig-wrapper">
+												<span>Input key...</span>
+											</div>
 										</div>
 									</div>
-								</div>
-								<div class="options-expandable-section">
-									<p class="options-expandable-label">Move Down</p>
-									<div class="options-keybindconfig options-expandable-section-content" data-keybind="moveDown">
-										<div class="options-keybindconfig-wrapper">
-											<span>Input key...</span>
+									<div class="options-expandable-section">
+										<p class="options-expandable-label">Move Down</p>
+										<div class="options-keybindconfig options-expandable-section-content" data-keybind="moveDown">
+											<div class="options-keybindconfig-wrapper">
+												<span>Input key...</span>
+											</div>
 										</div>
 									</div>
-								</div>
-								<div class="options-expandable-section">
-									<p class="options-expandable-label">Move Right</p>
-									<div class="options-keybindconfig options-expandable-section-content" data-keybind="moveRight">
-										<div class="options-keybindconfig-wrapper">
-											<span>Input key...</span>
+									<div class="options-expandable-section">
+										<p class="options-expandable-label">Move Right</p>
+										<div class="options-keybindconfig options-expandable-section-content" data-keybind="moveRight">
+											<div class="options-keybindconfig-wrapper">
+												<span>Input key...</span>
+											</div>
 										</div>
 									</div>
-								</div>
-								<div class="options-expandable-section">
-									<p class="options-expandable-label">Dash</p>
-									<div class="options-keybindconfig options-expandable-section-content" data-keybind="dash">
-										<div class="options-keybindconfig-wrapper">
-											<span>Input key...</span>
+									<div class="options-expandable-section">
+										<p class="options-expandable-label">Dash</p>
+										<div class="options-keybindconfig options-expandable-section-content" data-keybind="dash">
+											<div class="options-keybindconfig-wrapper">
+												<span>Input key...</span>
+											</div>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-					<div class="options-section">
-						<p class="options-label">Sounds</p>
-						<div class="options-content">
-							<div class="options-expandable-btn" data-option="sounds" data-expand="false">Expand</div>
-							<div class="options-expandable-content" data-option="sounds">
-								<p>Blulow</p>
-								<p>Lublow</p>
-								<p>Blulow</p>
-								<p>Lublow</p>
-								<p>Blulow</p>
-								<p>Lublow</p>
-								<p>Blulow</p>
-								<p>Lublow</p>
+						<div class="options-section">
+							<p class="options-label">Joystick size</p>
+							<div class="options-content">
+								<input id="options-joysticksize" class="options-slider" type="range" min="0" max="100" value="50"></input>
+							</div>
+						</div>
+						<div class="options-section">
+							<p class="options-label">Sounds</p>
+							<div class="options-content">
+								<div class="options-expandable-btn" data-option="sounds" data-expand="false">Expand</div>
+								<div class="options-expandable-content" data-option="sounds">
+									<div class="options-expandable-section">
+										<p class="options-expandable-label">Music</p>
+										<input class="options-slider options-musicchannel options-expandable-section-content" type="range" min="0" max="100" value="50" data-channel="music"></input>
+									</div>
+									<div class="options-expandable-section">
+										<p class="options-expandable-label">SFX</p>
+										<input class="options-slider options-musicchannel options-expandable-section-content" type="range" min="0" max="100" value="50" data-channel="sfx"></input>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="options-section">
+							<p class="options-label">Vignette</p>
+							<div class="options-content">
+								<input id="options-vignette" class="options-slider" type="range" min="0" max="100" value="50"></input>
+							</div>
+						</div>
+						<div class="options-section">
+							<p class="options-label">Glow</p>
+							<div class="options-content">
+								<input id="options-glow" class="options-checkbox" type="checkbox"></input>
+							</div>
+						</div>
+						<div class="options-section">
+							<p class="options-label">Particles</p>
+							<div class="options-content">
+								<input id="options-particles" class="options-checkbox" type="checkbox"></input>
+							</div>
+						</div>
+						<div class="options-section">
+							<p class="options-label">Screen shake</p>
+							<div class="options-content">
+								<input id="options-screenshake" class="options-checkbox" type="checkbox"></input>
+							</div>
+						</div>
+						<div class="options-section">
+							<p class="options-label">Combo popups</p>
+							<div class="options-content">
+								<input id="options-combopopup" class="options-checkbox" type="checkbox" value="yes"></input>
+							</div>
+						</div>
+						<div class="options-section">
+							<p class="options-label">Coin animation</p>
+							<div class="options-content">
+								<input id="options-coinanim" class="options-checkbox" type="checkbox" value="yes"></input>
 							</div>
 						</div>
 					</div>
-					<div id="options-closebtn" class="ui-closebtn">
-						<img src="assets/images/game/closebtn_x.svg" alt="close button">
-					</div>
+				</div>
+				<div id="options-closebtn" class="ui-closebtn">
+					<img src="assets/images/game/closebtn_x.svg" alt="close button">
 				</div>
 			</div>
 		</div>

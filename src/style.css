@@ -763,6 +763,15 @@ div {
 #options-container {
 	display: flex;
 	flex-direction: column;
+	z-index: -1;
+}
+
+#options-container-scrollbox {
+	width: calc(100% - 3vh * 2);
+	height: calc(100% - 3vh * 2);
+	aspect-ratio: 1;
+	overflow-y: auto;
+	z-index: -1;
 }
 
 .tutorial-section {
@@ -819,6 +828,7 @@ div {
 	align-items: center;
 	cursor: pointer;
 	transition: transform 0.15s ease;
+	z-index: 1;
 }
 
 .options-expandable-btn::before {
@@ -850,6 +860,7 @@ div {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	z-index: 1;
 }
 
 .options-expandable-label {
@@ -864,6 +875,7 @@ div {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	z-index: -1;
 }
 
 .options-keybindconfig {
@@ -912,6 +924,63 @@ div {
 	box-sizing: border-box;
 	image-rendering: pixelated;
 	z-index: -1;
+}
+
+.options-slider {
+	-webkit-appearance: none;
+	appearance: none;
+	background-color: #ffe381;
+	height: 1vh;
+	width: 100%;
+	opacity: 0.85;
+	transition: opacity 0.2s ease;
+}
+
+.options-slider:hover {
+	opacity: 1;
+}
+
+.options-slider::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	appearance: none;
+	height: 1.5vh;
+	background-color: #101010;
+	width: auto;
+	aspect-ratio: 1;
+}
+
+.options-slider::-moz-range-thumb {
+	appearance: none;
+	height: 2vh;
+	width: auto;
+	aspect-ratio: 1;
+}
+
+.options-slider:focus-visible {
+  outline: 2px solid #ffe381;
+  outline-offset: 2px;
+}
+
+.options-checkbox {
+	-webkit-appearance: none;
+	appearance: none;
+	width: 3vh;
+	height: auto;
+	aspect-ratio: 1;
+	outline: none;
+	background-image: url("../assets/images/game/checkbox_background.png");
+	image-rendering: pixelated;
+	background-size: 100% 100%;
+	cursor: pointer;
+	transition: background-image 0.2s ease-in-out;
+}
+
+.options-checkbox:hover {
+	background-image: url("../assets/images/game/checkbox_hover.png");
+}
+
+.options-checkbox:checked {
+	background-image: url("../assets/images/game/checkbox_checked.png");
 }
 
 .ui-closebtn {
@@ -981,6 +1050,11 @@ div {
 	.ui-container {
 		padding: 10vh;
 	}
+	#options-container-scrollbox {
+		width: calc(100% - 10vh * 2);
+		height: calc(100% - 10vh * 2);
+		aspect-ratio: 1;
+	}
 	.options-content {
 		gap: 3vw;
 	}
@@ -1005,6 +1079,10 @@ div {
 	.tutorial-desc {
 		font-size: 2vw;
 	}
+	#options-container-scrollbox {
+		width: calc(100% - 10vw * 2);
+		height: calc(100% - 10vw * 2);
+	}
 	.options-content {
 		gap: 3vh;
 	}
@@ -1018,6 +1096,17 @@ div {
 	}
 	.options-keybindconfig {
 		max-width: 20vw;
+	}
+	.options-slider {
+		height: 1vw;
+	}
+	.options-slider::-webkit-slider-thumb, .options-slider::-moz-range-thumb {
+		height: 1.5vw;
+		width: auto;
+		aspect-ratio: 1;
+	}
+	.options-checkbox {
+		width: 3vw;
 	}
 	.ui-container {
 		padding: 10vw;
