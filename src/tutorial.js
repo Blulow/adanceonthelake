@@ -1,10 +1,10 @@
 const tutorial = document.getElementById("tutorial");
-const panelContainer = document.getElementById("tutorial-panel-container");
-const overlay = document.getElementById("tutorial-overlay");
-const closeBtn = document.getElementById("tutorial-closebtn");
-const dsta = document.getElementById("tutorial-dsta");
-const dstaV = document.getElementById("tutorial-dsta-v");
-const dstaX = document.getElementById("tutorial-dsta-x");
+const tutorialPanelContainer = document.getElementById("tutorial-panel-container");
+const tutorialOverlay = document.getElementById("tutorial-overlay");
+const tutorialCloseBtn = document.getElementById("tutorial-closebtn");
+const tutorialDsta = document.getElementById("tutorial-dsta");
+const tutorialDstaV = document.getElementById("tutorial-dsta-v");
+const tutorialDstaX = document.getElementById("tutorial-dsta-x");
 
 if (!localStorage.getItem("dsta") && !tutorial.dataset.index) {
     setTimeout(() => {
@@ -12,26 +12,28 @@ if (!localStorage.getItem("dsta") && !tutorial.dataset.index) {
     }, 100);
 } else tutorial.style.display = "none";
 
-closeBtn.addEventListener("pointerup", async() => {
+tutorialCloseBtn.addEventListener("pointerup", async() => {
     if (!localStorage.getItem("dsta")) {
-        dsta.style.transform = "scale(1)";
-        const closeBtnRect = closeBtn.getBoundingClientRect();
+        tutorialDsta.style.display = "flex";
+        tutorialDsta.offsetWidth;
+        tutorialDsta.style.transform = "scale(1)";
+        const closeBtnRect = tutorialCloseBtn.getBoundingClientRect();
         const clamp = (val, min, max) => Math.min(Math.max(val, min), max);
-        const dstaX = clamp(closeBtnRect.x - window.innerWidth * 0.06, window.innerWidth * 0.05, window.innerWidth * 0.95 - dsta.clientWidth);
-        const dstaY = clamp(closeBtnRect.y + window.innerWidth * 0.04, window.innerWidth * 0.05, window.innerHeight - window.innerWidth * 0.05 - dsta.clientHeight);
-        dsta.style.left = `${dstaX}px`;
-        dsta.style.top = `${dstaY}px`;
+        const dstaX = clamp(closeBtnRect.x - window.innerWidth * 0.06, window.innerWidth * 0.05, window.innerWidth * 0.95 - tutorialDsta.clientWidth);
+        const dstaY = clamp(closeBtnRect.y + window.innerWidth * 0.04, window.innerWidth * 0.05, window.innerHeight - window.innerWidth * 0.05 - tutorialDsta.clientHeight);
+        tutorialDsta.style.left = `${dstaX}px`;
+        tutorialDsta.style.top = `${dstaY}px`;
         return;
     }
     closeTutorialPanel();
 });
 
-[dstaV, dstaX].forEach(e => e.addEventListener("pointerup", async() => {
-    if (e === dstaV) localStorage.setItem("dsta", true);
-    dsta.style.transform = "scale(0)";
+[tutorialDstaV, tutorialDstaX].forEach(e => e.addEventListener("pointerup", async() => {
+    if (e === tutorialDstaV) localStorage.setItem("dsta", true);
+    tutorialDsta.style.transform = "scale(0)";
     closeTutorialPanel();
-    await waitTransition(dsta);
-    dsta.style.display = "none";
+    await waitTransition(tutorialDsta);
+    tutorialDsta.style.display = "none";
 }));
 
 function waitTransition(e) {
@@ -41,14 +43,14 @@ function waitTransition(e) {
 function openTutorialPanel() {
     tutorial.style.display = "flex";
     tutorial.offsetWidth;
-    panelContainer.style.transform = "scale(1)";
-    overlay.style.opacity = 1;
+    tutorialPanelContainer.style.transform = "scale(1)";
+    tutorialOverlay.style.opacity = 1;
 }
 
 async function closeTutorialPanel() {
-    panelContainer.style.transform = "scale(0)";
-    overlay.style.opacity = 0;
-    await waitTransition(panelContainer);
+    tutorialPanelContainer.style.transform = "scale(0)";
+    tutorialOverlay.style.opacity = 0;
+    await waitTransition(tutorialPanelContainer);
     tutorial.style.display = "none";
     document.body.classList.add("game-mode");
 }

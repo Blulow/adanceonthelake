@@ -10,45 +10,120 @@
     <div class="main-menu">
         <div id="button-container">
             <button id="play-btn" class="button big" onclick="window.location.href='level-select.html'">Play</button>
-            <button id="options-btn" class="button big">Options</button>
+            <button id="options-btn" class="button big" onclick="openOptionsPanel()">Options</button>
             <button id="language-btn" class="button small">L</button>
             <button id="tutorial-btn" class="button small" onclick="openTutorialPanel()">T</button>
         </div>
-        <div id="tutorial" data-index="true">
-				<div id="tutorial-overlay" style="opacity: 0;"></div>
-				<div id="tutorial-panel-container" style="transform: scale(0);">
-					<div id="tutorial-panel"></div>
-					<div id="tutorial-container">
-						<div class="tutorial-section">
-							<img src="" alt="" class="tutorial-image">
-							<p class="tutorial-desc">Lorem Ipsum</p>
-						</div>
-						<div class="tutorial-section">
-							<img src="" alt="" class="tutorial-image">
-							<p class="tutorial-desc">Dolor sit amet</p>
-						</div>
-						<div class="tutorial-section">
-							<img src="" alt="" class="tutorial-image">
-							<p class="tutorial-desc">Hello World</p>
-						</div>
-						<div class="tutorial-section">
-							<img src="" alt="" class="tutorial-image">
-							<p class="tutorial-desc">AAAAAAAAA</p>
-						</div>
-						<div id="tutorial-closebtn">
-							<img src="assets/images/game/tutorial_closebtn_x.svg" alt="">
+		<div id="options" class="ui">
+			<div id="options-overlay" class="ui-overlay" style="opacity: 0;"></div>
+			<div id="options-panel-container" class="ui-panel-container" style="transform: scale(0);">
+				<div id="options-panel" class="ui-panel"></div>
+				<div id="options-container" class="ui-container">
+					<div class="options-section">
+						<p class="options-label">Controls</p>
+						<div class="options-content">
+							<div class="options-expandable-btn" data-option="controls" data-expand="false">Expand</div>
+							<div class="options-expandable-content" data-option="controls">
+								<div class="options-expandable-section">
+									<p class="options-expandable-label">Move Up</p>
+									<div class="options-keybindconfig options-expandable-section-content" data-keybind="moveUp">
+										<div class="options-keybindconfig-wrapper">
+											<span>Input key...</span>
+										</div>
+									</div>
+								</div>
+								<div class="options-expandable-section">
+									<p class="options-expandable-label">Move Left</p>
+									<div class="options-keybindconfig options-expandable-section-content" data-keybind="moveLeft">
+										<div class="options-keybindconfig-wrapper">
+											<span>Input key...</span>
+										</div>
+									</div>
+								</div>
+								<div class="options-expandable-section">
+									<p class="options-expandable-label">Move Down</p>
+									<div class="options-keybindconfig options-expandable-section-content" data-keybind="moveDown">
+										<div class="options-keybindconfig-wrapper">
+											<span>Input key...</span>
+										</div>
+									</div>
+								</div>
+								<div class="options-expandable-section">
+									<p class="options-expandable-label">Move Right</p>
+									<div class="options-keybindconfig options-expandable-section-content" data-keybind="moveRight">
+										<div class="options-keybindconfig-wrapper">
+											<span>Input key...</span>
+										</div>
+									</div>
+								</div>
+								<div class="options-expandable-section">
+									<p class="options-expandable-label">Dash</p>
+									<div class="options-keybindconfig options-expandable-section-content" data-keybind="dash">
+										<div class="options-keybindconfig-wrapper">
+											<span>Input key...</span>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
-				</div>
-				<div id="tutorial-dsta" style="transform: scale(0);">
-					<span>Don't show this again?</span>
-					<img src="assets/images/game/tutorial_closebtn_v.svg" alt="" id="tutorial-dsta-v">
-					<img src="assets/images/game/tutorial_closebtn_x.svg" alt="" id="tutorial-dsta-x">
+					<div class="options-section">
+						<p class="options-label">Sounds</p>
+						<div class="options-content">
+							<div class="options-expandable-btn" data-option="sounds" data-expand="false">Expand</div>
+							<div class="options-expandable-content" data-option="sounds">
+								<p>Blulow</p>
+								<p>Lublow</p>
+								<p>Blulow</p>
+								<p>Lublow</p>
+								<p>Blulow</p>
+								<p>Lublow</p>
+								<p>Blulow</p>
+								<p>Lublow</p>
+							</div>
+						</div>
+					</div>
+					<div id="options-closebtn" class="ui-closebtn">
+						<img src="assets/images/game/closebtn_x.svg" alt="close button">
+					</div>
 				</div>
 			</div>
 		</div>
-    </div>
+        <div id="tutorial" class="ui" data-index="true">
+			<div id="tutorial-overlay" class="ui-overlay" style="opacity: 0;"></div>
+			<div id="tutorial-panel-container" class="ui-panel-container" style="transform: scale(0);">
+				<div id="tutorial-panel" class="ui-panel"></div>
+				<div id="tutorial-container" class="ui-container">
+					<div class="tutorial-section">
+						<img src="" alt="" class="tutorial-image">
+						<p class="tutorial-desc">Lorem Ipsum</p>
+					</div>
+					<div class="tutorial-section">
+						<img src="" alt="" class="tutorial-image">
+						<p class="tutorial-desc">Dolor sit amet</p>
+					</div>
+					<div class="tutorial-section">
+						<img src="" alt="" class="tutorial-image">
+						<p class="tutorial-desc">Hello World</p>
+					</div>
+					<div class="tutorial-section">
+						<img src="" alt="" class="tutorial-image">
+						<p class="tutorial-desc">AAAAAAAAA</p>
+					</div>
+					<div id="tutorial-closebtn" class="ui-closebtn">
+						<img src="assets/images/game/closebtn_x.svg" alt="close button">
+					</div>
+				</div>
+			</div>
+			<div id="tutorial-dsta" style="transform: scale(0);">
+				<span>Don't show this again?</span>
+				<img src="assets/images/game/closebtn_v.svg" alt="yes" id="tutorial-dsta-v">
+				<img src="assets/images/game/closebtn_x.svg" alt="no" id="tutorial-dsta-x">
+			</div>
+		</div>
+	</div>
     <script src="src/index.js"></script>
     <script src="src/tutorial.js"></script>
+    <script src="src/options.js"></script>
 </body>
 </html>
