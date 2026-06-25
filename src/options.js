@@ -1,23 +1,7 @@
-const settings = {
-    keybinds: {
-        moveUp: ["ArrowUp"],
-        moveLeft: ["ArrowLeft"],
-        moveDown: ["ArrowDown"],
-        moveRight: ["ArrowRight"],
-        dash: ["Shift"]
-    },
-    joystickSize: 0.5,
-    sounds: {
-        music: 0.5,
-        sfx: 0.5
-    },
-    vignette: 0.5,
-    glow: true,
-    particles: true,
-    screenshake: true,
-    comboPopups: true,
-    coinAnimation: true
-}
+import { settings } from "./settings";
+
+document.getElementById("options-btn").onclick = () => openOptionsPanel();
+const _settings = JSON.parse(localStorage.getItem("settings")) ?? settings;
 
 const options = document.getElementById("options");
 const optionsPanelContainer = document.getElementById("options-panel-container");
@@ -40,6 +24,8 @@ async function closeOptionsPanel() {
     await waitTransition(optionsPanelContainer);
     options.style.display = "none";
     document.body.classList.add("game-mode");
+    localStorage.setItem("settings", JSON.stringify(_settings));
+    console.log(_settings);
 }
 
 const optionsExpandableButton = document.getElementsByClassName("options-expandable-btn");
@@ -83,7 +69,7 @@ let keys = [];
 let keybind = "None";
 
 [...optionsKeybindConfig].forEach(e => {
-    e.children[0].children[0].innerText = mapKeysToString(settings.keybinds[e.dataset.keybind]);
+    e.children[0].children[0].innerText = mapKeysToString(_settings.keybinds[e.dataset.keybind]);
 });
 
 [...optionsKeybindConfig].forEach(e => e.addEventListener("pointerup", () => {
@@ -121,8 +107,8 @@ document.addEventListener("keyup", e => {
     e.preventDefault();
     
     currentKeybindListener.children[0].children[0].style.color = "#000000";
-    if (Object.hasOwn(settings.keybinds, currentKeybind)) settings.keybinds[currentKeybind] = keys;
-    console.log(settings.keybinds);
+    if (Object.hasOwn(_settings.keybinds, currentKeybind)) _settings.keybinds[currentKeybind] = keys;
+    console.log(_settings.keybinds);
 
     const span = currentKeybindListener.children[0].children[0];
     const overflow = span.scrollWidth - currentKeybindListener.clientWidth;
@@ -174,11 +160,46 @@ function mapKeysToString(keys) {
 
 const optionsMusicChannel = document.getElementsByClassName("options-musicchannel");
 [...optionsMusicChannel].forEach(e => {
-    if (!Object.hasOwn(settings.sounds, e.dataset.channel)) return;
-    e.value = settings.sounds[e.dataset.channel] * 100;
+    if (!Object.hasOwn(_settings.sounds, e.dataset.channel)) return;
+    e.value = _settings.sounds[e.dataset.channel] * 100;
 
     e.oninput = () => {
-        settings.sounds[e.dataset.channel] = e.value / 100;
-        console.log(settings.sounds);
-    }
+        _settings.sounds[e.dataset.channel] = e.value / 100;
+    };
 });
+
+const optionsJoystickSize = document.getElementById("options-joysticksize");
+optionsJoystickSize.value = _settings.joystickSize * 100;
+optionsJoystickSize.oninput = () => {
+    _settings.joystickSize = optionsJoystickSize.value / 100;
+};
+const optionsVignette = document.getElementById("options-vignette");
+optionsVignette.value = _settings.vignette * 100;
+optionsVignette.oninput = () => {
+    _settings.vignette = optionsVignette.value / 100;
+};
+const optionsGlow = document.getElementById("options-glow");
+optionsGlow.checked = _settings.glow;
+optionsGlow.oninput = () => {
+    _settings.glow = optionsGlow.checked;
+};
+const optionsParticles = document.getElementById("options-particles");
+optionsParticles.checked = _settings.particles;
+optionsParticles.oninput = () => {
+    _settings.particles = optionsParticles.checked;
+};
+const optionsScreenshake = document.getElementById("options-screenshake");
+optionsScreenshake.checked = _settings.screenshake;
+optionsScreenshake.oninput = () => {
+    _settings.screenshake = optionsScreenshake.checked;
+};
+const optionsComboPopups = document.getElementById("options-combopopup");
+optionsComboPopups.checked = _settings.comboPopups;
+optionsComboPopups.oninput = () => {
+    _settings.comboPopups = optionsComboPopups.checked;
+};
+const optionsCoinAnimation = document.getElementById("options-coinanim");
+optionsCoinAnimation.checked = _settings.coinAnimation;
+optionsCoinAnimation.oninput = () => {
+    _settings.coinAnimation = optionsCoinAnimation.checked;
+};

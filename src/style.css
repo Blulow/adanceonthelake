@@ -545,7 +545,7 @@ div {
 }
 
 #joystick {
-	width: 12vh;
+	width: calc(24vh * var(--joystick-size));
 	aspect-ratio: 1;
 	border-radius: 50%;
 	outline: 1px solid #fff;
@@ -555,7 +555,7 @@ div {
 }
 
 #stick {
-	width: 6vh;
+	width: calc(12vh * var(--joystick-size));
 	aspect-ratio: 1;
 	border-radius: 50%;
 	background-color: #fff;
@@ -566,11 +566,11 @@ div {
 
 @media (orientation: landscape) {
 	#joystick {
-		width: 12vw;
+		width: calc(24vw * var(--joystick-size));
 	}
 
 	#stick {
-		width: 6vw;
+		width: calc(12vw * var(--joystick-size));
 	}
 }
 
@@ -770,8 +770,21 @@ div {
 	width: calc(100% - 3vh * 2);
 	height: calc(100% - 3vh * 2);
 	aspect-ratio: 1;
+	scrollbar-color: #ffe381;
 	overflow-y: auto;
 	z-index: -1;
+}
+
+#options-container-scrollbox::-webkit-scrollbar {
+	background-color: #ffe381;
+}
+
+#options-container-scrollbox::-webkit-scrollbar-thumb {
+	background-color: #c2ae65;
+}
+
+#options-container-scrollbox::-webkit-scrollbar-thumb:hover {
+	background-color: #b19f5e;
 }
 
 .tutorial-section {
@@ -851,8 +864,21 @@ div {
 	font-size: 3vh;
 	border: 1vh solid transparent;
 	border-image: url("../assets/images/game/expandable_content_border.png") 3 repeat;
+	scrollbar-color: #ffe381;
 	image-rendering: pixelated;
 	transition: border-top-width 0.2s ease, border-bottom-width 0.2s ease, max-height 0.5s ease;
+}
+
+.options-expandable-content::-webkit-scrollbar {
+	background-color: #ffe381;
+}
+
+.options-expandable-content::-webkit-scrollbar-thumb {
+	background-color: #c2ae65;
+}
+
+.options-expandable-content::-webkit-scrollbar-thumb:hover {
+	background-color: #b19f5e;
 }
 
 .options-expandable-section {

@@ -5,12 +5,14 @@ import Chart from "./chart-data";
 import { glowParticles } from "./game-loop";
 import { shotBullets } from "./game-loop";
 import { lyrics } from "./game-loop";
+import { settings } from "./settings";
 
 const player = new Player({
 	app: { token: "4fLfxYZ0Ntw6flJe" }
 });
 
 const pc = new PlayerCharacter();
+const _settings = JSON.parse(localStorage.getItem("settings")) ?? settings;
 
 const lyricsArena = document.getElementById("lyrics");
 let url = localStorage.getItem("url");
@@ -60,13 +62,13 @@ player.addListener({
 		if (position >= player.video.duration - 1000 && playing) {
 			setTimeout(() => {
 				player.requestStop();
-				window.localStorage.setItem("hits", pc.hits);
-				window.localStorage.setItem("coins", pc.coins);
-				window.localStorage.setItem("maxCombo", pc.maxCombo);
-				window.localStorage.setItem("comboBonus", pc.comboBonus);
-				window.localStorage.setItem("score", pc.score);
-				window.localStorage.setItem("maxScore", pc.maxScore);
-				window.location.href = "results.html";
+				localStorage.setItem("hits", pc.hits);
+				localStorage.setItem("coins", pc.coins);
+				localStorage.setItem("maxCombo", pc.maxCombo);
+				localStorage.setItem("comboBonus", pc.comboBonus);
+				localStorage.setItem("score", pc.score);
+				localStorage.setItem("maxScore", pc.maxScore);
+				location.href = "results.html";
 			}, 1000);
 			playing = false;
 		}
@@ -324,10 +326,12 @@ function drawSunflowers(delta) {
 		}
 	}
 
-	ctxTop.fillRect(0, 0, sunflowerCanvasTop.width, GLOW_BORDER_WIDTH);
-	ctxBottom.fillRect(0, sunflowerCanvasBottom.height - GLOW_BORDER_WIDTH, sunflowerCanvasBottom.width, GLOW_BORDER_WIDTH);
-	ctxLeft.fillRect(0, 0, GLOW_BORDER_WIDTH, sunflowerCanvasLeft.height);
-	ctxRight.fillRect(sunflowerCanvasRight.width - GLOW_BORDER_WIDTH, 0, GLOW_BORDER_WIDTH, sunflowerCanvasRight.height);
+	if (_settings.glow) {
+		ctxTop.fillRect(0, 0, sunflowerCanvasTop.width, GLOW_BORDER_WIDTH);
+		ctxBottom.fillRect(0, sunflowerCanvasBottom.height - GLOW_BORDER_WIDTH, sunflowerCanvasBottom.width, GLOW_BORDER_WIDTH);
+		ctxLeft.fillRect(0, 0, GLOW_BORDER_WIDTH, sunflowerCanvasLeft.height);
+		ctxRight.fillRect(sunflowerCanvasRight.width - GLOW_BORDER_WIDTH, 0, GLOW_BORDER_WIDTH, sunflowerCanvasRight.height);
+	}
 }
 
 function chorusEffect() {
@@ -435,6 +439,7 @@ ctxGlow.shadowBlur = 1000;
 const GLOW_LIFETIME = 800;
 
 function drawGlow() {
+	if (!_settings.glow) return;
 	ctxGlow.clearRect(0, 0, glowEffectCanvas.width, glowEffectCanvas.height);
 
 	for (let i = glowParticles.length - 1; i >= 0; i--) {
@@ -481,6 +486,7 @@ const MAX_PARTICLES = 30;
 const TRAIL_LIFETIME = 300;
 
 function drawTrail() {
+	if (!_settings.particles) return;
 	ctxTrail.setTransform(1, 0, 0, 1, 0, 0);
 	ctxTrail.clearRect(0, 0, trailEffectCanvas.width, trailEffectCanvas.height);
 	
@@ -569,7 +575,7 @@ vignetteCanvas.style.top = 0;
 const ctxVignette = vignetteCanvas.getContext("2d");
 const vignetteCenterX = vignetteCanvas.width / 2;
 const vignetteCenterY = vignetteCanvas.height / 2;
-const vignetteInner = Math.max(vignetteCanvas.width, vignetteCanvas.height) / 2 * 0.8;
+const vignetteInner = Math.max(vignetteCanvas.width, vignetteCanvas.height) / 2 * (lerp(1, 0.6, _settings.vignette));
 const vignetteOuter = Math.max(vignetteCanvas.width, vignetteCanvas.height) / 2 * 2;
 const vignetteGradient = ctxVignette.createRadialGradient(vignetteCenterX, vignetteCenterY, vignetteInner, vignetteCenterX, vignetteCenterY, vignetteOuter);
 vignetteGradient.addColorStop(0, "#00000000");

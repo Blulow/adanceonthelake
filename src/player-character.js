@@ -1,6 +1,7 @@
 import { shotBullets } from "./game-loop";
 import Coin from "./coin";
 import { lyrics } from "./game-loop";
+import { settings } from "./settings";
 
 export default class PlayerCharacter {
     constructor() {
@@ -34,15 +35,19 @@ export default class PlayerCharacter {
         this.hitbox.classList.add("hitbox");
         this.pc.appendChild(this.hitbox);
 
+        this._settings = JSON.parse(localStorage.getItem("settings")) ?? settings;
+
         this.keys = {
-            ArrowUp: false,
-            ArrowDown: false,
-            ArrowLeft: false,
-            ArrowRight: false,
+            moveUp: false,
+            moveDown: false,
+            moveLeft: false,
+            moveRight: false,
         };
         this.isDashed = false;
         this.isDashing = false;
         this.isDashCoolDownFinished = false;
+
+        this.pressed = [];
 
         this.dirs = {
             BOTTOM: 0,
@@ -114,6 +119,8 @@ export default class PlayerCharacter {
         //mobile
         this.joystick = document.getElementById("joystick");
         this.stick = document.getElementById("stick");
+        this.joystick.style.setProperty("--joystick-size", this._settings.joystickSize);
+        this.stick.style.setProperty("--joystick-size", this._settings.joystickSize);
 
         this.touch = false;
         this.initialTouchPos = { x: 0, y: 0 };
@@ -129,20 +136,13 @@ export default class PlayerCharacter {
         this.pc.style.top = `${this.y}px`;
         this.pc.style.left = `${this.x}px`;
         window.addEventListener("keydown", e => {
-            if (this.keys.hasOwnProperty(e.key)) {
-                this.keys[e.key] = true;
-            }
-            if (e.key === "Shift") {
-                if ((this.velocity.x !== 0 || this.velocity.y !== 0) && !this.isDashed) {
-                    this.dash();
-                    this.isDashed = true;
-                }
-            }
+            if (e.repeat) return;
+            this.pressed.push(e.key);
+            this.checkKeyPress();
         });
         window.addEventListener("keyup", e => {
-            if (this.keys.hasOwnProperty(e.key)) {
-                this.keys[e.key] = false;
-            }
+            this.pressed.splice(this.pressed.indexOf(e.key), 1);
+            this.checkKeyPress();
         });
 
         window.addEventListener("touchstart", e => {
@@ -198,10 +198,10 @@ export default class PlayerCharacter {
             this.velocity.y = 0;
         }
 
-        if (this.keys.ArrowUp) this.velocity.y -= 1;
-        if (this.keys.ArrowDown) this.velocity.y += 1;
-        if (this.keys.ArrowLeft) this.velocity.x -= 1;
-        if (this.keys.ArrowRight) this.velocity.x += 1;
+        if (this.keys.moveUp) this.velocity.y -= 1;
+        if (this.keys.moveDown) this.velocity.y += 1;
+        if (this.keys.moveLeft) this.velocity.x -= 1;
+        if (this.keys.moveRight) this.velocity.x += 1;
 
         const veloNorm = this.normalize(this.velocity);
         if (this.x + veloNorm.x * this.speed <= window.innerWidth - this.pc.offsetWidth && this.x + veloNorm.x * this.speed >= 0) {
@@ -348,6 +348,7 @@ export default class PlayerCharacter {
                         e.classList.add("coin-spin-fade");
                         this.coinCollect(e);
                         new Coin().spawn({ x: e.getBoundingClientRect().x, y: e.getBoundingClientRect().y }, isChorus);
+                        if (!this._settings.coinAnimation) e.remove();
                     }
                 });
             }
@@ -443,6 +444,25 @@ export default class PlayerCharacter {
         return collided;
     }
 
+    checkKeyPress() {
+        Object.entries(this._settings.keybinds).forEach(([k, v]) => {
+            if (v.every(f => this.pressed.includes(f))) {
+                if (Object.hasOwn(this.keys, k)) {
+                    this.keys[k] = true;
+                }
+                
+                if (k === "dash") {
+                    if ((this.velocity.x !== 0 || this.velocity.y !== 0) && !this.isDashed) {
+                        this.dash();
+                        this.isDashed = true;
+                    }
+                }
+            } else {
+                this.keys[k] = false;
+            }
+        });
+    }
+
     dash() {
         this.pc.classList.add("dash");
         this.isDashing = true;
@@ -501,6 +521,7 @@ export default class PlayerCharacter {
         document.getElementById("score-count").innerText = parseInt(this.score);
 
         if (this.coinCombo <= 2) return;
+        if (!this._settings.comboPopup) return;
 
         const comboPopup = document.createElement("div");
         comboPopup.classList.add("combo-popup");

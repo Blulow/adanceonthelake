@@ -1,3 +1,5 @@
+import { settings } from "./settings";
+
 const hitsItem = document.getElementById("item-hits");
 const coinsItem = document.getElementById("item-coins");
 const scoreItem = document.getElementById("item-score");
@@ -33,14 +35,14 @@ rankLabel.style.opacity = 0;
 const rankBar = document.getElementById("rankbar-progress");
 rankBar.style.opacity = 0;
 
-const hits = parseInt(window.localStorage.getItem("hits"));
-const coins = parseInt(window.localStorage.getItem("coins"));
-const maxCombo = parseInt(window.localStorage.getItem("maxCombo"));
+const hits = parseInt(localStorage.getItem("hits"));
+const coins = parseInt(localStorage.getItem("coins"));
+const maxCombo = parseInt(localStorage.getItem("maxCombo"));
 const score = coins * 100;
-const comboBonus = parseInt(window.localStorage.getItem("comboBonus"));
+const comboBonus = parseInt(localStorage.getItem("comboBonus"));
 const hitPenalty = hits * 50;
-const totalScore = parseInt(window.localStorage.getItem("score"));
-const maxScore = parseInt(window.localStorage.getItem("maxScore"));
+const totalScore = parseInt(localStorage.getItem("score"));
+const maxScore = parseInt(localStorage.getItem("maxScore"));
 
 class Rank {
     static NOHIT = "N";
@@ -128,12 +130,13 @@ async function animSequence() {
     rankLabel.classList.add("label-pop");
     rankItem.innerText = getRank(totalScore);
     rankItem.classList.add("rank-pop");
-    document.body.classList.add("screenshake");
+    if ((JSON.parse(localStorage.getItem("settings")) ?? settings).screenshake) document.body.classList.add("screenshake");
 }
 
 animSequence();
 
 window.addEventListener("keydown", e => {
     window.location.href = "level-select.html";
-    window.localStorage.clear();
+    localStorage.removeItem("chart");
+    localStorage.removeItem("url");
 });
