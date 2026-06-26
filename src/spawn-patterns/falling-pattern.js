@@ -1,3 +1,4 @@
+import AttackPattern from "../attack-patterns/attack-pattern";
 import SpawnPattern from "./spawn-pattern";
 
 export default class FallingPattern extends SpawnPattern {
@@ -87,13 +88,15 @@ export default class FallingPattern extends SpawnPattern {
     }
 
     spawnLyric(lyric) {
-        lyric.text.bullet = true;
+        if (lyric.attack.constructor === AttackPattern) lyric.text.bullet = true;
         lyric.text.fallin = true;
         lyric.text.delayStart = null;
         lyric.text.delayProgress = 0;
         lyric.text.delay = 500;
         if (this.isColumn) lyric.text.column = true;
         lyric.text.isWord = this.isWord;
+        
+        lyric.text.params = { playerPos: { x: this.player.x, y: this.player.y } };
         
         lyric.setPosAndMoveIn(this.textLeftValue, this.textTopValue, this.textLeftValue, this.textTopValue - window.innerHeight);
         lyric.spawn();
