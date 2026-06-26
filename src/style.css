@@ -82,6 +82,10 @@ button {
 	transform: scale(1.5);
 }
 
+.button img {
+	image-rendering: pixelated;
+}
+
 .button::before {
 	content: "";
 	position: absolute;
@@ -91,6 +95,7 @@ button {
 	border: 64px solid transparent;
 	border-image: url("../assets/images/game/ui_panel.png") 63 fill repeat;
 	transform: scale(0.5);
+	image-rendering: pixelated;
 }
 
 .button span {
