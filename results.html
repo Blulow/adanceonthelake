@@ -19,12 +19,34 @@
                     <div id="rankbar-progress"></div>
                     <div id="rankbar-frame"></div>
                     <div id="rankbar-marks">
-                        <div id="rankbar-N" class="rankbar-mark">-N</div>
-                        <div id="rankbar-S" class="rankbar-mark">-S</div>
-                        <div id="rankbar-A" class="rankbar-mark">-A</div>
-                        <div id="rankbar-B" class="rankbar-mark">-B</div>
-                        <div id="rankbar-C" class="rankbar-mark">-C</div>
-                        <div id="rankbar-D" class="rankbar-mark">-D</div>
+                        <div class="rankbar-mark" data-rankbar="NOHIT">
+                            <div class="rankbar-dash"></div>
+                            <span class="rankbar-label">NO HIT</span>
+                        </div>
+                        <div class="rankbar-mark" data-rankbar="SS">
+                            <div class="rankbar-dash"></div>
+                            <span class="rankbar-label">SS</span>
+                        </div>
+                        <div class="rankbar-mark" data-rankbar="S">
+                            <div class="rankbar-dash"></div>
+                            <span class="rankbar-label">S</span>
+                        </div>
+                        <div class="rankbar-mark" data-rankbar="A">
+                            <div class="rankbar-dash"></div>
+                            <span class="rankbar-label">A</span>
+                        </div>
+                        <div class="rankbar-mark" data-rankbar="B">
+                            <div class="rankbar-dash"></div>
+                            <span class="rankbar-label">B</span>
+                        </div>
+                        <div class="rankbar-mark" data-rankbar="C">
+                            <div class="rankbar-dash"></div>
+                            <span class="rankbar-label">C</span>
+                        </div>
+                        <div class="rankbar-mark" data-rankbar="D">
+                            <div class="rankbar-dash"></div>
+                            <span class="rankbar-label">D</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -64,7 +86,7 @@
             <span>PRESS ANY KEY TO CONTINUE</span>
         </div>
     </div>
-    <script src="src/results.js"></script>
+    <script type="module" src="src/results.js"></script>
 </body>
 
 </html>

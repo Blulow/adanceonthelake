@@ -1589,18 +1589,31 @@ div {
 
 #rankbar-marks {
 	position: absolute;
-	width: 8vw;
+	width: fit-content;
 	height: 100%;
+	outline: 1px red;
 	display: flex;
-	white-space: nowrap;
 }
 
 .rankbar-mark {
-	width: fit-content;
+	display: flex;
+	align-items: center;
 	position: absolute;
+	top: -3%; /*min -3% max 97%*/
+}
+
+.rankbar-dash {
+	position: relative;
+	width: 9vh;
+	height: 0.5vh;
+	background-color: #ffffff;
+}
+
+.rankbar-label {
+	position: relative;
 	font-size: 3vh;
-	right: -40%;
-	top: 0;
+	white-space: nowrap;
+	margin-left: 1vh;
 }
 
 #retrymsg-container {
@@ -1747,5 +1760,13 @@ div {
 	#rankbar {
 		top: 25%;
 		height: 70%;
+	}
+	.rankbar-dash {
+		width: 9vw;
+		height: 0.5vw;
+	}
+	.rankbar-label {
+		font-size: 3vw;
+		margin-left: 1vw;
 	}
 }

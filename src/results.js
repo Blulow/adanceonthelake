@@ -34,15 +34,16 @@ negSign.style.opacity = 0;
 rankLabel.style.opacity = 0;
 const rankBar = document.getElementById("rankbar-progress");
 rankBar.style.opacity = 0;
+const rankBarMark = document.getElementsByClassName("rankbar-mark");
 
-const hits = parseInt(localStorage.getItem("hits"));
-const coins = parseInt(localStorage.getItem("coins"));
-const maxCombo = parseInt(localStorage.getItem("maxCombo"));
+const hits = parseInt(localStorage.getItem("hits") ?? 39);
+const coins = parseInt(localStorage.getItem("coins") ?? 39);
+const maxCombo = parseInt(localStorage.getItem("maxCombo") ?? 39);
 const score = coins * 100;
-const comboBonus = parseInt(localStorage.getItem("comboBonus"));
+const comboBonus = parseInt(localStorage.getItem("comboBonus") ?? 3939);
 const hitPenalty = hits * 50;
-const totalScore = parseInt(localStorage.getItem("score"));
-const maxScore = parseInt(localStorage.getItem("maxScore"));
+const totalScore = parseInt(localStorage.getItem("score") ?? 39393);
+const maxScore = parseInt(localStorage.getItem("maxScore") ?? 93939);
 
 class Rank {
     static NOHIT = "N";
@@ -53,6 +54,34 @@ class Rank {
     static C = "C";
     static D = "D";
 }
+
+const lerp = (start, end, amt) => (1 - amt) * start + amt * end;
+[...rankBarMark].forEach(e => {
+    let amount = 0;
+    
+    switch (e.dataset.rankbar) {
+        case "NOHIT":
+            amount = 1;
+            break;
+        case "SS":
+            amount = 0.95;
+            break;
+        case "S":
+            amount = 0.8;
+            break;
+        case "A":
+            amount = 0.7;
+            break;
+        case "B":
+            amount = 0.6;
+            break;
+        case "C":
+            amount = 0.5;
+            break;
+    }
+
+    e.style.top = `${lerp(-3, 97, 1 - amount)}%`
+});
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
