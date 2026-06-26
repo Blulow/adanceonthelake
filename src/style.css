@@ -1587,6 +1587,22 @@ div {
 	transition: height 390ms ease-out;
 }
 
+#rankbar-marks {
+	position: absolute;
+	width: 8vw;
+	height: 100%;
+	display: flex;
+	white-space: nowrap;
+}
+
+.rankbar-mark {
+	width: fit-content;
+	position: absolute;
+	font-size: 3vh;
+	right: -40%;
+	top: 0;
+}
+
 #retrymsg-container {
 	position: absolute;
 	display: flex;
