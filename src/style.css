@@ -93,7 +93,7 @@ button {
 	width: 80%;
 	height: 80%;
 	border: 64px solid transparent;
-	border-image: url("../assets/images/game/ui_panel.png") 63 fill repeat;
+	border-image: url("../assets/images/game/ui/panels/ui_panel.png") 63 fill repeat;
 	transform: scale(0.5);
 	image-rendering: pixelated;
 }
@@ -841,7 +841,7 @@ div {
 	height: 100%;
 	border: 64px solid transparent;
 	box-sizing: border-box;
-	border-image: url("../assets/images/game/ui_panel.png") 63 fill repeat;
+	border-image: url("../assets/images/game/ui/panels/ui_panel.png") 63 fill repeat;
 	image-rendering: pixelated;
 	z-index: -1;
 }
@@ -948,7 +948,7 @@ div {
 	height: 130%;
 	position: absolute;
 	border: 16px solid transparent;
-	border-image: url("../assets/images/game/closebtn.png") 15 fill repeat;
+	border-image: url("../assets/images/game/ui/closebtn/closebtn.png") 15 fill repeat;
 	box-sizing: border-box;
 	image-rendering: pixelated;
 	z-index: -1;
@@ -961,7 +961,7 @@ div {
 	width: 100%;
 	font-size: 3vh;
 	border: 1vh solid transparent;
-	border-image: url("../assets/images/game/expandable_content_border.png") 3 repeat;
+	border-image: url("../assets/images/game/ui/expandable_content_border.png") 3 repeat;
 	scrollbar-color: #ffe381;
 	image-rendering: pixelated;
 	transition: border-top-width 0.2s ease, border-bottom-width 0.2s ease, max-height 0.5s ease;
@@ -1044,7 +1044,7 @@ div {
 	height: 130%;
 	position: absolute;
 	border: 16px solid transparent;
-	border-image: url("../assets/images/game/closebtn.png") 15 fill repeat;
+	border-image: url("../assets/images/game/ui/closebtn/closebtn.png") 15 fill repeat;
 	box-sizing: border-box;
 	image-rendering: pixelated;
 	z-index: -1;
@@ -1092,7 +1092,7 @@ div {
 	height: auto;
 	aspect-ratio: 1;
 	outline: none;
-	background-image: url("../assets/images/game/checkbox_background.png");
+	background-image: url("../assets/images/game/ui/checkbox/checkbox_background.png");
 	image-rendering: pixelated;
 	background-size: 100% 100%;
 	cursor: pointer;
@@ -1100,16 +1100,16 @@ div {
 }
 
 .options-checkbox:hover {
-	background-image: url("../assets/images/game/checkbox_hover.png");
+	background-image: url("../assets/images/game/ui/checkbox/checkbox_hover.png");
 }
 
 .options-checkbox:checked {
-	background-image: url("../assets/images/game/checkbox_checked.png");
+	background-image: url("../assets/images/game/ui/checkbox/checkbox_checked.png");
 }
 
 .ui-closebtn {
 	border: 16px solid transparent;
-	border-image: url("../assets/images/game/closebtn.png") 15 fill repeat;
+	border-image: url("../assets/images/game/ui/closebtn/closebtn.png") 15 fill repeat;
 	box-sizing: border-box;
 	image-rendering: pixelated;
 	display: flex;
@@ -1145,7 +1145,7 @@ div {
 
 #tutorial-dsta {
 	border: 16px solid transparent;
-	border-image: url("../assets/images/game/closebtn.png") 15 fill repeat;
+	border-image: url("../assets/images/game/ui/closebtn/closebtn.png") 15 fill repeat;
 	box-sizing: border-box;
 	image-rendering: pixelated;
 	color: #000000;
@@ -1538,7 +1538,7 @@ div {
 }
 
 #combobonus::before {
-	border-image-source: url("../assets/images/game/combobonus_panel.png");
+	border-image-source: url("../assets/images/game/ui/panels/combobonus_panel.png");
 	box-sizing: border-box;
 }
 
@@ -1549,7 +1549,7 @@ div {
 }
 
 #hitpenalty::before {
-	border-image-source: url("../assets/images/game/hitpenalty_panel.png");
+	border-image-source: url("../assets/images/game/ui/panels/hitpenalty_panel.png");
 	box-sizing: border-box;
 }
 
@@ -1572,7 +1572,7 @@ div {
 	width: 100%;
 	height: 100%;
 	border: 16px solid transparent;
-	border-image: url("../assets/images/game/rankbar.png") 31 fill repeat;
+	border-image: url("../assets/images/game/ui/rankbar/rankbar.png") 31 fill repeat;
 	border-radius: 20px;
 	box-sizing: border-box;
 }
@@ -1583,7 +1583,7 @@ div {
 	height: 0%;
 	border: 16px solid transparent;
 	box-sizing: border-box;
-	border-image: url("../assets/images/game/rankbar_fill.png") 31 fill repeat;
+	border-image: url("../assets/images/game/ui/rankbar/rankbar_fill.png") 31 fill repeat;
 	transition: height 390ms ease-out;
 }
 
