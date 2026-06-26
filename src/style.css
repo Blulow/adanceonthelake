@@ -1478,7 +1478,7 @@ div {
 	inset: 0;
 	position: absolute;
 	border: 16px solid transparent;
-	border-image: url("../assets/images/game/panel.png") 31 fill repeat;
+	border-image: url("../assets/images/game/ui/panels/panel.png") 31 fill repeat;
 	box-sizing: border-box;
 	image-rendering: pixelated;
 }

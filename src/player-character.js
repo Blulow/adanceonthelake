@@ -521,7 +521,7 @@ export default class PlayerCharacter {
         document.getElementById("score-count").innerText = parseInt(this.score);
 
         if (this.coinCombo <= 2) return;
-        if (!this._settings.comboPopup) return;
+        if (!this._settings.comboPopups) return;
 
         const comboPopup = document.createElement("div");
         comboPopup.classList.add("combo-popup");

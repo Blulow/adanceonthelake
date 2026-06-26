@@ -1,4 +1,4 @@
-document.getElementById("tutorial-btn").onclick = () => openTutorialPanel();
+if (document.getElementById("tutorial-btn")) document.getElementById("tutorial-btn").onclick = () => openTutorialPanel();
 
 const tutorial = document.getElementById("tutorial");
 const tutorialPanelContainer = document.getElementById("tutorial-panel-container");
