@@ -80,7 +80,7 @@ const lerp = (start, end, amt) => (1 - amt) * start + amt * end;
             break;
     }
 
-    e.style.top = `${lerp(-3, 97, 1 - amount)}%`
+    e.style.top = `${lerp(-2, 97.5, 1 - amount)}%`;
 });
 
 function sleep(ms) {
@@ -164,7 +164,7 @@ async function animSequence() {
 
 animSequence();
 
-window.addEventListener("keydown", e => {
+window.addEventListener("pointerup", e => {
     window.location.href = "level-select.html";
     localStorage.removeItem("chart");
     localStorage.removeItem("url");
