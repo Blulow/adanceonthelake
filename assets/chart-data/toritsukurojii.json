@@ -1,0 +1,14 @@
+{
+    "name": "トリツクロジー",
+    "img": "",
+    "url": "https://piapro.jp/t/QBdL/20251215094303",
+    "data": {},
+    "chart": [
+        { "time": 0, "type": "WordType", "pattern": "RandomDirPosPattern", "attack": "LinePattern", "telegraph": "DirPosTelegraph" },
+        { "time": 29821, "type": "CharInChordType", "pattern": "RandomDirPosPattern", "attack": "AttackPattern", "telegraph": "DirPosTelegraph" },
+        { "time": 61887, "type": "CharInWordType", "pattern": "RandomDirPosPattern", "attack": "LinePattern", "telegraph": "DirPosTelegraph" },
+        { "time": 92141, "type": "WordType", "pattern": "RandomDirPattern", "attack": "AttackPattern", "telegraph": "Telegraph", "chorusEffect": true },
+        { "time": 106838, "type": "CharInChordType", "pattern": "RandomDirPosPattern", "attack": "BulletShootPattern", "telegraph": "DirPosTelegraph"},
+        { "time": 131534, "type": "CharInChordType", "pattern": "RandomDirPattern", "attack": "AttackPattern", "telegraph": "Telegraph" }
+    ]
+}

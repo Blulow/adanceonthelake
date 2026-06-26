@@ -1,0 +1,18 @@
+{
+    "name": "アフター・ザ・カーテン",
+    "img": "",
+    "url": "https://piapro.jp/t/zoqO/20251214200738",
+    "data": {},
+    "chart": [
+        { "time": 0, "type": "WordType", "pattern": "RandomDirPosPattern", "attack": "LinePattern", "telegraph": "DirPosTelegraph" },
+        { "time": 27613, "type": "CharInChordType", "pattern": "RandomDirPosPattern", "attack": "AttackPattern", "telegraph": "DirPosTelegraph" },
+        { "time": 40475, "type": "CharInWordType", "pattern": "FallingPattern", "attack": "AttackPattern", "telegraph": "DirPosTelegraph" },
+        { "time": 70476, "type": "CharInChordType", "pattern": "RandomDirPosPattern", "attack": "LinePattern", "telegraph": "DirPosTelegraph" },
+        { "time": 111636, "type": "CharInWordType", "pattern": "RandomDirPosPattern", "attack": "AttackPattern", "telegraph": "DirPosTelegraph" },
+        { "time": 125333, "type": "WordType", "pattern": "RandomDirPosPattern", "attack": "BulletShootPattern", "telegraph": "Telegraph" },
+        { "time": 142500, "type": "CharInWordType", "pattern": "RandomDirPosPattern", "attack": "AttackPattern", "telegraph": "DirPosTelegraph" },
+        { "time": 169887, "type": "WordType", "pattern": "RandomDirPattern", "attack": "AttackPattern", "telegraph": "Telegraph" },
+        { "time": 191356, "type": "CharInChordType", "pattern": "FallingPattern", "attack": "AttackPattern", "telegraph": "DirPosTelegraph", "chorusEffect": true },
+        { "time": 217912, "type": "CharInChordType", "pattern": "RandomDirPattern", "attack": "AttackPattern", "telegraph": "Telegraph", "chorusEffect": true }
+    ]
+}

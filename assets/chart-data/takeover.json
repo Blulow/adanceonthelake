@@ -1,0 +1,26 @@
+{
+    "name": "TAKEOVER",
+    "img": "",
+    "url": "https://piapro.jp/t/E2i3/20251215092113",
+    "data": {},
+    "chart": [
+        { "time": 0, "type": "CharInChordType", "pattern": "RandomDirPosPattern", "attack": "AttackPattern", "telegraph": "DirPosTelegraph" },
+        { "time": 12402, "type": "WordType", "pattern": "RandomDirPattern", "attack": "AttackPattern", "telegraph": "Telegraph" },
+        { "time": 23368, "type": "CharInChordType", "pattern": "RandomDirPosPattern", "attack": "AttackPattern", "telegraph": "DirPosTelegraph" },
+        { "time": 31629, "type": "CharInChordType", "pattern": "RandomDirPosPattern", "attack": "LinePattern", "telegraph": "DirPosTelegraph" },
+        { "time": 44532, "type": "CharInWordType", "pattern": "RandomDirPosPattern", "attack": "LinePattern", "telegraph": "DirPosTelegraph" },
+        { "time": 56296, "type": "CharInChordType", "pattern": "RandomDirPosPattern", "attack": "AttackPattern", "telegraph": "DirPosTelegraph" },
+        { "time": 66948, "type": "WordType", "pattern": "FallingPattern", "attack": "BulletShootPattern", "telegraph": "DirPosTelegraph" },
+        { "time": 78246, "type": "CharInChordType", "pattern": "FallingPattern", "attack": "AttackPattern", "telegraph": "DirPosTelegraph" },
+        { "time": 87518, "type": "CharInWordType", "pattern": "RandomDirPosPattern", "attack": "LinePattern", "telegraph": "DirPosTelegraph", "chorusEffect": true },
+        { "time": 101197, "type": "CharInWordType", "pattern": "RandomDirPosPattern", "attack": "AttackPattern", "telegraph": "DirPosTelegraph" },
+        { "time": 121440, "type": "CharInChordType", "pattern": "RandomDirPosPattern", "attack": "BulletShootPattern", "telegraph": "DirPosTelegraph" },
+        { "time": 133089, "type": "CharInChordType", "pattern": "RandomDirPosPattern", "attack": "AttackPattern", "telegraph": "DirPosTelegraph" },
+        { "time": 143726, "type": "WordType", "pattern": "RandomDirPattern", "attack": "AttackPattern", "telegraph": "Telegraph" },
+        { "time": 155059, "type": "CharInWordType", "pattern": "FallingPattern", "attack": "BulletShootPattern", "telegraph": "DirPosTelegraph" },
+        { "time": 163947, "type": "WordType", "pattern": "RandomDirPosPattern", "attack": "AttackPattern", "telegraph": "DirPosTelegraph" },
+        { "time": 176993, "type": "CharInChordType", "pattern": "RandomDirPosPattern", "attack": "AttackPattern", "telegraph": "DirPosTelegraph", "chorusEffect": true },
+        { "time": 197547, "type": "CharInChordType", "pattern": "RandomDirPosPattern", "attack": "LinePattern", "telegraph": "DirPosTelegraph", "chorusEffect": true },
+        { "time": 220509, "type": "CharInWordType", "pattern": "RandomDirPosPattern", "attack": "BulletShootPattern", "telegraph": "DirPosTelegraph" }
+    ]
+}

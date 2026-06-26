@@ -1,0 +1,18 @@
+{
+    "name": "世界最後の音楽隊",
+    "img": "",
+    "url": "https://piapro.jp/t/B3yJ/20251215061727",
+    "data": {},
+    "chart": [
+        { "time": 0, "type": "CharInWordType", "pattern": "RandomDirPosPattern", "attack": "AttackPattern", "telegraph": "DirPosTelegraph" },
+        { "time": 39235, "type": "CharInWordType", "pattern": "RandomDirPosPattern", "attack": "BulletShootPattern", "telegraph": "DirPosTelegraph" },
+        { "time": 66874, "type": "CharInChordType", "pattern": "FallingPattern", "attack": "AttackPattern", "telegraph": "DirPosTelegraph", "chorusEffect": true },
+        { "time": 106467, "type": "WordType", "pattern": "RandomDirPosPattern", "attack": "LinePattern", "telegraph": "DirPosTelegraph" },
+        { "time": 118465, "type": "CharInWordType", "pattern": "RandomDirPosPattern", "attack": "AttackPattern", "telegraph": "DirPosTelegraph" },
+        { "time": 154032, "type": "CharInChordType", "pattern": "RandomDirPattern", "attack": "AttackPattern", "telegraph": "Telegraph" },
+        { "time": 166447, "type": "CharInWordType", "pattern": "FallingPattern", "attack": "BulletShootPattern", "telegraph": "DirPosTelegraph" },
+        { "time": 184430, "type": "WordType", "pattern": "RandomDirPattern", "attack": "AttackPattern", "telegraph": "Telegraph", "chorusEffect": true },
+        { "time": 211647, "type": "CharInChordType", "pattern": "RandomDirPosPattern", "attack": "LinePattern", "telegraph": "DirPosTelegraph", "chorusEffect": true },
+        { "time": 240061, "type": "CharInWordType", "pattern": "RandomDirPosPattern", "attack": "BulletShootPattern", "telegraph": "DirPosTelegraph" }
+    ]
+}
