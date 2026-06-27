@@ -20,7 +20,7 @@
 	<link rel="preload" as="image" href="assets/images/game/player/glide/glidetopleft.png">
 	<link rel="preload" as="image" href="assets/images/game/player/glide/glideleft.png">
 	<link rel="preload" as="image" href="assets/images/game/player/glide/glidebottomleft.png">
-	<title>lyricapp</title>
+	<title>Game</title>
 </head>
 <body id="game-page">
 	<div id="game">
@@ -39,7 +39,7 @@
 			<canvas id="trail-effect"></canvas>
 		</div>
 		<div class="game-ui">
-			<button id="start" class="disabled">Start</button>
+			<button id="start" class="disabled" data-i18n="game.start">Start</button>
 			<div id="stats">
 				<div id="score">Score: <span id="score-count">0</span></div>
 			</div>
@@ -56,19 +56,19 @@
 					<div id="tutorial-container" class="ui-container">
 						<div class="tutorial-section">
 							<img src="assets/images/game/tutorial/tutorial_1.png" alt="miku moving around" class="tutorial-image">
-							<p class="tutorial-desc">Use Arrow Keys to move around. You may configure in settings.</p>
+							<p class="tutorial-desc" data-i18n="tutorial.tutorial1">Use Arrow Keys to move around. You may configure in settings.</p>
 						</div>
 						<div class="tutorial-section">
 							<img src="assets/images/game/tutorial/tutorial_2.png" alt="miku dashing through objects and going through it" class="tutorial-image">
-							<p class="tutorial-desc">Press shift to dash, giving a boost to go through and ignore objects (including coins).</p>
+							<p class="tutorial-desc" data-i18n="tutorial.tutorial2">Press shift to dash, giving a boost to go through and ignore objects (including coins).</p>
 						</div>
 						<div class="tutorial-section">
 							<img src="assets/images/game/tutorial/tutorial_3.png" alt="miku getting a coin, combo x3" class="tutorial-image">
-							<p class="tutorial-desc">Collect coins and maintain a combo, once you get hit you lose it!</p>
+							<p class="tutorial-desc" data-i18n="tutorial.tutorial3">Collect coins and maintain a combo, once you get hit you lose it!</p>
 						</div>
 						<div class="tutorial-section">
 							<img src="assets/images/game/tutorial/tutorial_4.png" alt="miku dancing through the lyrics" class="tutorial-image">
-							<p class="tutorial-desc">Dance through the lyrics, create a beautiful show!</p>
+							<p class="tutorial-desc" data-i18n="tutorial.tutorial4">Dance through the lyrics, create a beautiful show!</p>
 						</div>
 						<div id="tutorial-closebtn" class="ui-closebtn">
 							<img src="assets/images/game/ui/closebtn/closebtn_x.svg" alt="close button">
@@ -76,7 +76,7 @@
 					</div>
 				</div>
 				<div id="tutorial-dsta" style="transform: scale(0);">
-					<span>Don't show this again?</span>
+					<span data-i18n="tutorial.dsta">Don't show this again?</span>
 					<img src="assets/images/game/ui/closebtn/closebtn_v.svg" alt="yes" id="tutorial-dsta-v">
 					<img src="assets/images/game/ui/closebtn/closebtn_x.svg" alt="no" id="tutorial-dsta-x">
 				</div>
@@ -87,5 +87,6 @@
 	</div>
 	<script type="module" src="/src/main.js"></script>
 	<script type="module" src="/src/tutorial.js"></script>
+	<script type="module" src="/src/localization.js"></script>
 </body>
 </html>

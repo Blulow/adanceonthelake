@@ -1,8 +1,8 @@
 {
-    "name": "トリツクロジー",
+    "name": "chart.toritsukurojii.name",
     "img": "assets/images/charts/coverimg_toritsukurojii.jpg",
     "url": "https://piapro.jp/t/QBdL/20251215094303",
-    "author": "鶴三",
+    "author": "chart.toritsukurojii.author",
     "difficulty": "EASY",
     "chart": [
         { "time": 0, "type": "WordType", "pattern": "RandomDirPosPattern", "attack": "LinePattern", "telegraph": "DirPosTelegraph" },

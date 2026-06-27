@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>lyricapp</title>
+    <title>Game Name</title>
     <link rel="stylesheet" href="src/style.css">
 </head>
 <body>
     <div class="main-menu">
 		<div id="play-btn-container">
-			<div id="play-btn" onclick="location.href='level-select.html'">Play</div>
+			<div id="play-btn" onclick="location.href='level-select.html'" data-i18n="index.play">Play</div>
 		</div>
 		<div id="buttons">
 			<button id="options-btn" class="button">
@@ -29,12 +29,12 @@
 				<div id="options-container" class="ui-container">
 					<div id="options-container-scrollbox">
 						<div class="options-section">
-							<p class="options-label">Controls</p>
+							<p class="options-label" data-i18n="options.controls">Controls</p>
 							<div class="options-content">
-								<div class="options-expandable-btn" data-option="controls" data-expand="false">Expand</div>
+								<div class="options-expandable-btn" data-option="controls" data-expand="false" data-i18n="options.expand">Expand</div>
 								<div class="options-expandable-content" data-option="controls">
 									<div class="options-expandable-section">
-										<p class="options-expandable-label">Move Up</p>
+										<p class="options-expandable-label" data-i18n="options.controls.moveup">Move Up</p>
 										<div class="options-keybindconfig options-expandable-section-content" data-keybind="moveUp">
 											<div class="options-keybindconfig-wrapper">
 												<span>Input key...</span>
@@ -42,7 +42,7 @@
 										</div>
 									</div>
 									<div class="options-expandable-section">
-										<p class="options-expandable-label">Move Left</p>
+										<p class="options-expandable-label" data-i18n="options.controls.moveleft">Move Left</p>
 										<div class="options-keybindconfig options-expandable-section-content" data-keybind="moveLeft">
 											<div class="options-keybindconfig-wrapper">
 												<span>Input key...</span>
@@ -50,7 +50,7 @@
 										</div>
 									</div>
 									<div class="options-expandable-section">
-										<p class="options-expandable-label">Move Down</p>
+										<p class="options-expandable-label" data-i18n="options.controls.movedown">Move Down</p>
 										<div class="options-keybindconfig options-expandable-section-content" data-keybind="moveDown">
 											<div class="options-keybindconfig-wrapper">
 												<span>Input key...</span>
@@ -58,7 +58,7 @@
 										</div>
 									</div>
 									<div class="options-expandable-section">
-										<p class="options-expandable-label">Move Right</p>
+										<p class="options-expandable-label" data-i18n="options.controls.moveright">Move Right</p>
 										<div class="options-keybindconfig options-expandable-section-content" data-keybind="moveRight">
 											<div class="options-keybindconfig-wrapper">
 												<span>Input key...</span>
@@ -66,7 +66,7 @@
 										</div>
 									</div>
 									<div class="options-expandable-section">
-										<p class="options-expandable-label">Dash</p>
+										<p class="options-expandable-label" data-i18n="options.controls.dash">Dash</p>
 										<div class="options-keybindconfig options-expandable-section-content" data-keybind="dash">
 											<div class="options-keybindconfig-wrapper">
 												<span>Input key...</span>
@@ -77,59 +77,59 @@
 							</div>
 						</div>
 						<div class="options-section">
-							<p class="options-label">Joystick size</p>
+							<p class="options-label" data-i18n="options.joysticksize">Joystick size</p>
 							<div class="options-content">
 								<input id="options-joysticksize" class="options-slider" type="range" min="0" max="100" value="50"></input>
 							</div>
 						</div>
 						<div class="options-section">
-							<p class="options-label">Sounds</p>
+							<p class="options-label" data-i18n="options.sounds">Sounds</p>
 							<div class="options-content">
-								<div class="options-expandable-btn" data-option="sounds" data-expand="false">Expand</div>
+								<div class="options-expandable-btn" data-option="sounds" data-expand="false" data-i18n="options.expand">Expand</div>
 								<div class="options-expandable-content" data-option="sounds">
 									<div class="options-expandable-section">
-										<p class="options-expandable-label">Music</p>
+										<p class="options-expandable-label" data-i18n="options.sounds.music">Music</p>
 										<input class="options-slider options-musicchannel options-expandable-section-content" type="range" min="0" max="100" value="50" data-channel="music"></input>
 									</div>
 									<div class="options-expandable-section">
-										<p class="options-expandable-label">SFX</p>
+										<p class="options-expandable-label" data-i18n="options.sounds.sfx">SFX</p>
 										<input class="options-slider options-musicchannel options-expandable-section-content" type="range" min="0" max="100" value="50" data-channel="sfx"></input>
 									</div>
 								</div>
 							</div>
 						</div>
 						<div class="options-section">
-							<p class="options-label">Vignette</p>
+							<p class="options-label" data-i18n="options.vignette">Vignette</p>
 							<div class="options-content">
 								<input id="options-vignette" class="options-slider" type="range" min="0" max="100" value="50"></input>
 							</div>
 						</div>
 						<div class="options-section">
-							<p class="options-label">Glow</p>
+							<p class="options-label" data-i18n="options.glow">Glow</p>
 							<div class="options-content">
 								<input id="options-glow" class="options-checkbox" type="checkbox"></input>
 							</div>
 						</div>
 						<div class="options-section">
-							<p class="options-label">Particles</p>
+							<p class="options-label" data-i18n="options.particles">Particles</p>
 							<div class="options-content">
 								<input id="options-particles" class="options-checkbox" type="checkbox"></input>
 							</div>
 						</div>
 						<div class="options-section">
-							<p class="options-label">Screen shake</p>
+							<p class="options-label" data-i18n="options.screenshake">Screen shake</p>
 							<div class="options-content">
 								<input id="options-screenshake" class="options-checkbox" type="checkbox"></input>
 							</div>
 						</div>
 						<div class="options-section">
-							<p class="options-label">Combo popups</p>
+							<p class="options-label" data-i18n="options.combopopup">Combo popups</p>
 							<div class="options-content">
 								<input id="options-combopopup" class="options-checkbox" type="checkbox"></input>
 							</div>
 						</div>
 						<div class="options-section">
-							<p class="options-label">Coin animation</p>
+							<p class="options-label" data-i18n="options.coinanim">Coin animation</p>
 							<div class="options-content">
 								<input id="options-coinanim" class="options-checkbox" type="checkbox"></input>
 							</div>
@@ -148,19 +148,19 @@
 				<div id="tutorial-container" class="ui-container">
 					<div class="tutorial-section">
 						<img src="assets/images/game/tutorial/tutorial_1.png" alt="miku moving around" class="tutorial-image">
-						<p class="tutorial-desc">Use Arrow Keys to move around. You may configure in settings.</p>
+						<p class="tutorial-desc" data-i18n="tutorial.tutorial1">Use Arrow Keys to move around. You may configure in settings.</p>
 					</div>
 					<div class="tutorial-section">
 						<img src="assets/images/game/tutorial/tutorial_2.png" alt="miku dashing through objects and going through it" class="tutorial-image">
-						<p class="tutorial-desc">Press shift to dash, giving a boost to go through and ignore objects (including coins).</p>
+						<p class="tutorial-desc" data-i18n="tutorial.tutorial2">Press shift to dash, giving a boost to go through and ignore objects (including coins).</p>
 					</div>
 					<div class="tutorial-section">
 						<img src="assets/images/game/tutorial/tutorial_3.png" alt="miku getting a coin, combo x3" class="tutorial-image">
-						<p class="tutorial-desc">Collect coins and maintain a combo, once you get hit you lose it!</p>
+						<p class="tutorial-desc" data-i18n="tutorial.tutorial3">Collect coins and maintain a combo, once you get hit you lose it!</p>
 					</div>
 					<div class="tutorial-section">
 						<img src="assets/images/game/tutorial/tutorial_4.png" alt="miku dancing through the lyrics" class="tutorial-image">
-						<p class="tutorial-desc">Dance through the lyrics, create a beautiful show!</p>
+						<p class="tutorial-desc" data-i18n="tutorial.tutorial4">Dance through the lyrics, create a beautiful show!</p>
 					</div>
 					<div id="tutorial-closebtn" class="ui-closebtn">
 						<img src="assets/images/game/ui/closebtn/closebtn_x.svg" alt="close button">
@@ -168,7 +168,7 @@
 				</div>
 			</div>
 			<div id="tutorial-dsta" style="transform: scale(0);">
-				<span>Don't show this again?</span>
+				<span data-i18n="tutorial.dsta">Don't show this again?</span>
 				<img src="assets/images/game/ui/closebtn/closebtn_v.svg" alt="yes" id="tutorial-dsta-v">
 				<img src="assets/images/game/ui/closebtn/closebtn_x.svg" alt="no" id="tutorial-dsta-x">
 			</div>
@@ -176,6 +176,7 @@
 	</div>
     <script src="src/index.js"></script>
     <script src="src/tutorial.js"></script>
-    <script type="module" src="/src/options.js"></script>
+    <script type="module" src="src/options.js"></script>
+	<script type="module" src="src/localization.js"></script>
 </body>
 </html>

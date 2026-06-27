@@ -1,8 +1,8 @@
 {
-    "name": "アフター・ザ・カーテン",
+    "name": "chart.afterthecurtain.name",
     "img": "assets/images/charts/coverimg_afterthecurtain.jpg",
     "url": "https://piapro.jp/t/zoqO/20251214200738",
-    "author": "Rulmry",
+    "author": "chart.afterthecurtain.author",
     "difficulty": "NORMAL",
     "chart": [
         { "time": 0, "type": "WordType", "pattern": "RandomDirPosPattern", "attack": "LinePattern", "telegraph": "DirPosTelegraph" },

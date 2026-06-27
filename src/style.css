@@ -5,12 +5,12 @@
 }
 
 @font-face {
-	font-family: "Silver";
-	src: url("../assets/fonts/EnkaDotGothic24.ttf");
+	font-family: "DotGothic";
+	src: url("../assets/fonts/DotGothic16-Regular.ttf");
 }
 
 body {
-	font-family: "Silver", sans-serif;
+	font-family: "DotGothic", "GNUUnifont", sans-serif;
 	margin: 0;
 	width: 100%;
 	height: 100vh;
@@ -51,7 +51,6 @@ canvas {
 }
 
 button {
-	font-family: "Silver", sans-serif;
 	position: absolute;
 	z-index: 100;
 	pointer-events: all;
@@ -100,6 +99,7 @@ button {
 
 .button span {
 	position: absolute;
+	display: flex;
 }
 
 .button:hover {
@@ -116,13 +116,14 @@ button {
 }
 
 #play-btn {
-	font-size: 30vh;
+	font-size: 25vh;
 	color: white;
 	text-shadow:
 	10px 10px 0 #000000,
 	-2px -2px 20px #78e6ff,
 	0 0 100px #ffe381;
 	animation: pulse 0.5s ease-out infinite;
+	white-space: nowrap;
 	cursor: pointer;
 	pointer-events: all;
 	transition: font-size 0.2s ease, transform 0.5s ease;
@@ -167,6 +168,9 @@ button {
 	.button::before {
 		transform: scale(0.3);
 	}
+	.button img {
+		transform: scale(0.6);
+	}
 }
 
 @media (orientation: portrait) {
@@ -174,12 +178,14 @@ button {
 		margin: 0;
 		transform: scale(0.8);
 	}
-	
 	.button::before {
 		transform: scale(0.5);
 	}
+	.button img {
+		transform: scale(1);
+	}
 	#play-btn {
-		font-size: 30vw;
+		font-size: 25vw;
 	}
 	#play-btn:hover {
 		font-size: 35vw;
@@ -973,7 +979,7 @@ div {
 }
 
 .tutorial-desc {
-	font-size: 2vh;
+	font-size: 1.5vh;
 	margin: 0.5vh 1vh;
 	height: 6vh;
 }
@@ -1275,7 +1281,7 @@ div {
 		width: 25vw;
 	}
 	.tutorial-desc {
-		font-size: 2vw;
+		font-size: 1.5vw;
 		margin: 0.5vw 1vw;
 		height: 6vw;
 	}

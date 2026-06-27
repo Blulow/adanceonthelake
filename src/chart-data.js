@@ -9,6 +9,7 @@ import LinePattern from "./attack-patterns/line-pattern";
 import BulletShootPattern from "./attack-patterns/bullet-shoot-pattern";
 import Telegraph from "./telegraphs/telegraph";
 import DirPosTelegraph from "./telegraphs/dir-pos-telegraph";
+import { t } from "./localization";
 
 const SpawnTypes = {
     "WordType": WordType,
@@ -51,8 +52,8 @@ export default class Chart {
 
         chart.innerHTML = 
             `
-            <p class="label-title">${this.name}</p>
-            <p class="label-author">${this.author}</p>
+            <p class="label-title">${t(this.name)}</p>
+            <p class="label-author">${t(this.author)}</p>
             <p class="label-difficulty ${this.getDifficultyStyle(this.difficulty)}">${this.difficulty}</p>
             <div class="label-img">${this.img.outerHTML}</div>
             `;

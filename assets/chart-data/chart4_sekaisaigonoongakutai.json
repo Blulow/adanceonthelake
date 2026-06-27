@@ -1,8 +1,8 @@
 {
-    "name": "世界最後の音楽隊",
+    "name": "chart.sekaisaigonoongakutai.name",
     "img": "assets/images/charts/coverimg_sekaisaigonoongakutai.jpg",
     "url": "https://piapro.jp/t/B3yJ/20251215061727",
-    "author": "夏山よつぎ×ど～ぱみん",
+    "author": "chart.sekaisaigonoongakutai.author",
     "difficulty": "NORMAL",
     "chart": [
         { "time": 0, "type": "CharInWordType", "pattern": "RandomDirPosPattern", "attack": "AttackPattern", "telegraph": "DirPosTelegraph" },
