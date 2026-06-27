@@ -901,7 +901,8 @@ div {
 
 .tutorial-desc {
 	font-size: 2vh;
-	margin: 0;
+	margin: 0.5vh 1vh;
+	height: 6vh;
 }
 
 .options-section {
@@ -1202,6 +1203,8 @@ div {
 	}
 	.tutorial-desc {
 		font-size: 2vw;
+		margin: 0.5vw 1vw;
+		height: 6vw;
 	}
 	#options-container-scrollbox {
 		width: calc(100% - 10vw * 2);
