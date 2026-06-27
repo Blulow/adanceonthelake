@@ -196,6 +196,7 @@ button {
 	height: 100vh;
 	pointer-events: all;
 	touch-action: auto;
+	z-index: 1;
 }
 
 #chart-list {
