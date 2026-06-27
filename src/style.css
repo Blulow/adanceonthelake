@@ -194,6 +194,8 @@ button {
 #level-select-ui {
 	width: 100%;
 	height: 100vh;
+	pointer-events: all;
+	touch-action: auto;
 }
 
 #chart-list {
