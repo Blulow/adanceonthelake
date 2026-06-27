@@ -306,6 +306,20 @@ button {
 	background-color: red;
 }
 
+@media (orientation: portrait) {
+	.label-title {
+		font-size: 6vw;
+	}
+
+	.label-author {
+		font-size: 3vw;
+	}
+
+	.label-difficulty {
+		font-size: 5vw;
+	}
+}
+
 /*game*/
 .game-mode {
 	overflow: hidden;
