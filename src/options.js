@@ -25,7 +25,6 @@ async function closeOptionsPanel() {
     options.style.display = "none";
     document.body.classList.add("game-mode");
     localStorage.setItem("settings", JSON.stringify(_settings));
-    console.log(_settings);
 }
 
 const optionsExpandableButton = document.getElementsByClassName("options-expandable-btn");

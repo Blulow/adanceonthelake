@@ -891,6 +891,11 @@ div {
 	z-index: 101;
 }
 
+#language {
+	z-index: 1;
+	pointer-events: none;
+}
+
 .ui, .ui-overlay {
 	width: 100%;
 	height: 100%;
@@ -913,6 +918,17 @@ div {
 	height: 70%;
 	width: auto;
 	aspect-ratio: 1;
+}
+
+#language-panel-container {
+	margin-right: 1vh;
+	height: 15vh;
+	width: auto;
+	aspect-ratio: 2;
+	right: 0;
+	top: 12vh;
+	transform-origin: top right;
+	pointer-events: auto;
 }
 
 .ui-panel {
@@ -941,6 +957,12 @@ div {
 	display: flex;
 	flex-direction: column;
 	z-index: -1;
+}
+
+#language-container {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
 }
 
 #options-container-scrollbox {
@@ -1187,6 +1209,26 @@ div {
 	background-image: url("../assets/images/game/ui/checkbox/checkbox_checked.png");
 }
 
+.language-stroke {
+	position: relative;
+	height: 150%;
+	width: 5%;
+	background-color: #ffe381;
+}
+
+.lang-btn {
+	position: relative;
+	font-size: 5vh;
+}
+
+#lang-current {
+	width: 5vh;
+	aspect-ratio: 1;
+	border: 16px solid transparent;
+	border-image: url("../assets/images/game/ui/closebtn/closebtn.png") 15 fill repeat;
+	transition: color 0.2s ease, left 0.2s ease;
+}
+
 .ui-closebtn {
 	border: 16px solid transparent;
 	border-image: url("../assets/images/game/ui/closebtn/closebtn.png") 15 fill repeat;
@@ -1270,6 +1312,26 @@ div {
 	#tutorial-closebtn img, #options-closebtn img {
 		width: 8vh;
 	}
+	#language-panel-container {
+		margin-right: 1vw;
+		height: 35vh;
+		width: auto;
+		top: 16vh;
+	}
+	#language-panel, #language-container {
+		transform-origin: top right;
+		transform: scale(0.5);
+	}
+	.language-stroke {
+		height: 220%;
+	}
+	.lang-btn {
+		font-size: 10vh;
+	}
+	#lang-current {
+		width: 10vh;
+		aspect-ratio: 1;
+	}
 }
 
 @media (orientation: portrait) {
@@ -1324,6 +1386,22 @@ div {
 	}
 	#tutorial-closebtn img, #options-closebtn img {
 		width: 8vw;
+	}
+	#language-panel-container {
+		margin-right: 1vw;
+		height: 20vh;
+		width: auto;
+		top: 18vw;
+	}
+	.language-stroke {
+		height: 220%;
+	}
+	.lang-btn {
+		font-size: 8vw;
+	}
+	#lang-current {
+		width: 8vw;
+		aspect-ratio: 1;
 	}
 }
 

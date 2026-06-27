@@ -3,8 +3,9 @@ export class Lang {
     static EN = "en";
     static JA = "ja";
 }
-let currentLang = Lang.EN;
-let lang =  languages.find(e => e.lang === currentLang);
+export let currentLang = localStorage.getItem("lang") ?? Lang.JA;
+
+let lang = languages.find(e => e.lang === currentLang);
 setLanguage(currentLang);
 
 export function t(key, params = {}) {
@@ -20,10 +21,15 @@ export function t(key, params = {}) {
 export function setLanguage(_lang) {
     currentLang = _lang;
     document.documentElement.lang = _lang;
-    lang = languages.find(e => e.lang === _lang);
-    
-    document.querySelectorAll("[data-i18n]").forEach(e => {
-        const key = e.dataset.i18n;
-        e.textContent = t(key);
-    });
+    lang = languages.find(e => e.lang === _lang);    
+}
+
+document.querySelectorAll("[data-i18n]").forEach(e => {
+    const key = e.dataset.i18n;
+    e.textContent = t(key);
+});
+
+export function setCurrentLang(_lang) {
+    localStorage.setItem("lang", _lang);
+    currentLang = _lang;
 }
