@@ -1,8 +1,9 @@
 {
     "name": "TAKEOVER",
-    "img": "",
+    "img": "assets/images/charts/coverimg_takeover.jpg",
     "url": "https://piapro.jp/t/E2i3/20251215092113",
-    "data": {},
+    "author": "Twinfield",
+    "difficulty": "HARD",
     "chart": [
         { "time": 0, "type": "CharInChordType", "pattern": "RandomDirPosPattern", "attack": "AttackPattern", "telegraph": "DirPosTelegraph" },
         { "time": 12402, "type": "WordType", "pattern": "RandomDirPattern", "attack": "AttackPattern", "telegraph": "Telegraph" },

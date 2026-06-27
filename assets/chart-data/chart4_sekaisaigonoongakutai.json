@@ -1,8 +1,9 @@
 {
     "name": "世界最後の音楽隊",
-    "img": "",
+    "img": "assets/images/charts/coverimg_sekaisaigonoongakutai.jpg",
     "url": "https://piapro.jp/t/B3yJ/20251215061727",
-    "data": {},
+    "author": "夏山よつぎ×ど～ぱみん",
+    "difficulty": "NORMAL",
     "chart": [
         { "time": 0, "type": "CharInWordType", "pattern": "RandomDirPosPattern", "attack": "AttackPattern", "telegraph": "DirPosTelegraph" },
         { "time": 39235, "type": "CharInWordType", "pattern": "RandomDirPosPattern", "attack": "BulletShootPattern", "telegraph": "DirPosTelegraph" },

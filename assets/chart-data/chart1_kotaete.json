@@ -1,8 +1,9 @@
 {
     "name": "こたえて",
-    "img": "",
+    "img": "assets/images/charts/coverimg_kotaete.jpg",
     "url": "https://piapro.jp/t/6W2N/20251215164617",
-    "data": {},
+    "author": "imie",
+    "difficulty": "EASY",
     "chart": [
         { "time": 0, "type": "CharInChordType", "pattern": "RandomDirPosPattern", "attack": "AttackPattern", "telegraph": "DirPosTelegraph" },
         { "time": 37414, "type": "WordType", "pattern": "RandomDirPosPattern", "attack": "LinePattern", "telegraph": "DirPosTelegraph" },

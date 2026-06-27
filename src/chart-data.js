@@ -36,7 +36,8 @@ export default class Chart {
         this.img = new Image();
         this.img.src = data.img
         this.url = data.url
-        this.data = data.data;
+        this.author = data.author;
+        this.difficulty = data.difficulty;
         this.chart = data.chart;
     }
 
@@ -48,11 +49,14 @@ export default class Chart {
             window.location.href = `game.html`;
         };
 
-        const label = document.createElement("p");
-        label.innerText = this.name;
+        chart.innerHTML = 
+            `
+            <p class="label-title">${this.name}</p>
+            <p class="label-author">${this.author}</p>
+            <p class="label-difficulty ${this.getDifficultyStyle(this.difficulty)}">${this.difficulty}</p>
+            <div class="label-img">${this.img.outerHTML}</div>
+            `;
         
-        chart.appendChild(label);
-        chart.appendChild(this.img);
         chartList.appendChild(chart);
     }
 
@@ -66,5 +70,16 @@ export default class Chart {
         });
 
         return chart;
+    }
+
+    getDifficultyStyle(diff) {
+        switch (diff) {
+            case "EASY":
+                return "difficulty-easy";
+            case "NORMAL":
+                return "difficulty-normal";
+            case "HARD":
+                return "difficulty-hard";
+        }
     }
 }

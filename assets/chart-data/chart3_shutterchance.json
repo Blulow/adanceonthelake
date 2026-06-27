@@ -1,8 +1,9 @@
 {
     "name": "シャッターチャンス",
-    "img": "",
+    "img": "assets/images/charts/coverimg_shutterchance.jpg",
     "url": "https://piapro.jp/t/PNpQ/20251209170719",
-    "data": {},
+    "author": "夜未アガリ",
+    "difficulty": "HARD",
     "chart": [
         { "time": 0, "type": "WordType", "pattern": "RandomDirPosPattern", "attack": "AttackPattern", "telegraph": "DirPosTelegraph" },
         { "time": 17298, "type": "CharInChordType", "pattern": "RandomDirPosPattern", "attack": "AttackPattern", "telegraph": "DirPosTelegraph" },
