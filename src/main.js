@@ -48,6 +48,7 @@ player.addListener({
 		}
 	},
 	onVideoReady() {
+		player.volume = _settings.sounds.music * 100;
 		if (!player.app.managed) {
 			document.getElementById("lyrics").replaceChildren();
 			document.getElementById("telegraphs").replaceChildren();
