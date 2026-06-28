@@ -48,6 +48,8 @@ canvas {
 	position: relative;
 	display: flex;
 	justify-content: center;
+	background-image: url("../assets/images/game/menu_bg.png");
+	background-size: 100%;
 }
 
 button {
@@ -171,6 +173,9 @@ button {
 	.button img {
 		transform: scale(0.6);
 	}
+	.main-menu {
+		background-size: auto 100%;
+	}
 }
 
 @media (orientation: portrait) {
@@ -194,6 +199,9 @@ button {
 	#play-btn:active {
 		font-size: 28vw;
 	}
+	.main-menu {
+		background-position: 10%;
+	}
 }
 
 /*level-select*/
@@ -203,6 +211,14 @@ button {
 	pointer-events: all;
 	touch-action: auto;
 	z-index: 1;
+}
+
+#level-select-ui-bg {
+	width: 100%;
+	height: 100%;
+	background-image: url("../assets/images/game/menu_bg.png");
+	background-size: 100%;
+	filter: brightness(0.8);
 }
 
 #chart-list {
@@ -228,7 +244,7 @@ button {
 }
 
 #chart-list>li {
-	background-color: #ddd;
+	background-color: #ffffff;
 	box-shadow:
 	    0 0 39px #ffe381;
 	width: 100%;
@@ -312,6 +328,12 @@ button {
 	background-color: red;
 }
 
+@media (max-width: 1024px) {
+	#level-select-ui-bg {
+		background-size: auto 100%;
+	}
+}
+
 @media (orientation: portrait) {
 	.label-title {
 		font-size: 6vw;
@@ -323,6 +345,9 @@ button {
 
 	.label-difficulty {
 		font-size: 5vw;
+	}
+	#level-select-ui-bg {
+		background-position: 9%;
 	}
 }
 
