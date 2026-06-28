@@ -8,6 +8,7 @@
         "options.controls.movedown": "下",
         "options.controls.moveright": "右",
         "options.controls.dash": "ダッシュ",
+        "options.joysticksize": "ジョイスティックサイズ",
         "options.sounds": "サウンド",
         "options.sounds.music": "音楽",
         "options.sounds.sfx": "効果音",
