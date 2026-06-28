@@ -548,5 +548,6 @@ export default class PlayerCharacter {
         this.hits++;
         this.coinCombo = 0;
         this.score -= HIT_PENALTY;
+        document.getElementById("score-count").innerText = parseInt(this.score);
     }
 }
